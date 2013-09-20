@@ -1,0 +1,69 @@
+----------------------September 19, 2013------------------------------------------------
+
+Attendees:
+Fliden Demiri ‎; Chih-Chi (Vincent) Hsu; Gloria Jensen‎‎; Elizabeth (Beth) Haines;  Mohammed (Imaad) Khan;  Fyodor Wolf; Samuel Tan
+Chao-Te Yang‎ (out sick)
+
+Minutes Taker: 
+Gloria Jensen
+Agenda Items:
+Tools
+Requirements
+Presentation Preparation
+Discussion:
+Reviewed related site, Visimojoto, to discuss how the survey will work—will it have sample  templates?
+Everyone is all set with tools!
+Reviewed, discussed and updated requirements document including:
+Related Projects for Reference
+Project Description
+Identify Users
+Functionality & Authentication
+Reporting Results
+Localization (nice to do)
+How do we identify unique users and prevent multiple submissions? Cookies and IP Session
+Non-Functional Requirements
+Split up work for completing the Requirements Document. Everyone will review.	
+
+Action Items:
+	Everyone to fill out Weekly Report (Due Friday)
+Everyone do a commit on GitHub to become familiar with Git
+Everyone create several (2 minimum) User Stories on Pivotal Tracker
+Due Monday, 5pm: Complete Requirements Document (excluding Risk Management section)
+
+Fliden to set up project on Pivotal Tracker
+Fyodor to upload docs from Google Drive to GitHub (weekly)
+Gloria to create logo for project
+Gloria to start User Flow and Wireframes
+Gloria to create presentation doc for Thursday’s group presentation
+----------------------September 12, 2013------------------------------------------------
+ 
+Attendees:
+Fliden Demiri, ‎; Chih-Chi (Vincent) Hsu; Gloria Jensen‎; Chao-Te Yang‎;Elizabeth (Beth) Haines;  Mohammed (Imaad) Khan,  Fyodor Wolf, Samuel Tan
+Minutes Taker: 
+Beth Haines
+Agenda Items:
+Decide on a project
+Assign roles
+Set up future meeting times
+Discussion:
+We discussed four major possibilities for projects
+A parking app using crowdsourcing to find available parking spaces
+A picture/phonetic app for speech therapy
+An online quiz app
+A survey building tool
+We settled on the survey building tool since it was easy to modularize, easy to extend if need be, and Fliden had some experience with this kind of project.
+We sketched out some basic functional requirements, and decided on the framework (YII) and the language (PHP).  The group decided it was ok to use any IDE that seemed to work.
+We also assigned roles.  Fyodor updated them on Google mail.  They were as follows:
+	Project Leader – Fliden
+	Backup project leader – Fyodor
+	Environment and Integration Leader – Chao-Te
+	Requirement Leader – Beth
+	Design Leader – Gloria
+	Implementation Leaders – Imaad and Vincent
+	QA Leader – Sam
+The group decided we would meet after class on Thursday nights.
+
+Action Items:
+	Fliden – set up a Google group so we can share documents
+Fyodor – establish a GitHub repository, and send out directions about                                             installing Mamp or Wamp.
+Beth – send out minutes and functional requirements for review
