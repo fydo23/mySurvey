@@ -1,0 +1,138 @@
+2013/09/19 06:07:42 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/Users/mohammedkhan/Documents/mySurvey/mySurvey_app/assets" is invalid. Please make sure the directory exists and is writable by the Web server process.' in /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/Users/mohammed...')
+#1 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(510): CAssetManager->publish('/Users/mohammed...')
+#3 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(547): CClientScript->getCoreScriptUrl()
+#4 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(348): CClientScript->getPackageBaseUrl('jquery')
+#5 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(208): CClientScript->renderCoreScripts()
+#6 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(351): CClientScript->render('<!DOCTYPE html ...')
+#7 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(788): CController->processOutput('<!DOCTYPE html ...')
+#8 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/protected/controllers/SiteController.php(72): CController->render('contact', Array)
+#9 /Users/mohammedkhan/Documents/mySurvey/framework/web/actions/CInlineAction.php(49): SiteController->actionContact()
+#10 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(282): CController->run('contact')
+#14 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(141): CWebApplication->runController('site/contact')
+#15 /Users/mohammedkhan/Documents/mySurvey/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=site/contact
+HTTP_REFERER=http://localhost:8888/index.php?r=site/page&view=about
+---
+2013/09/19 06:07:58 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/Users/mohammedkhan/Documents/mySurvey/mySurvey_app/assets" is invalid. Please make sure the directory exists and is writable by the Web server process.' in /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/Users/mohammed...')
+#1 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(510): CAssetManager->publish('/Users/mohammed...')
+#3 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(547): CClientScript->getCoreScriptUrl()
+#4 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(348): CClientScript->getPackageBaseUrl('jquery')
+#5 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(208): CClientScript->renderCoreScripts()
+#6 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(351): CClientScript->render('<!DOCTYPE html ...')
+#7 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(788): CController->processOutput('<!DOCTYPE html ...')
+#8 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/protected/controllers/SiteController.php(98): CController->render('login', Array)
+#9 /Users/mohammedkhan/Documents/mySurvey/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#10 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(282): CController->run('login')
+#14 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 /Users/mohammedkhan/Documents/mySurvey/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=site/login
+HTTP_REFERER=http://localhost:8888/index.php?r=site/page&view=about
+---
+2013/09/19 06:08:20 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/Users/mohammedkhan/Documents/mySurvey/mySurvey_app/assets" is invalid. Please make sure the directory exists and is writable by the Web server process.' in /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/Users/mohammed...')
+#1 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(510): CAssetManager->publish('/Users/mohammed...')
+#3 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(547): CClientScript->getCoreScriptUrl()
+#4 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(348): CClientScript->getPackageBaseUrl('jquery')
+#5 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(208): CClientScript->renderCoreScripts()
+#6 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(351): CClientScript->render('<!DOCTYPE html ...')
+#7 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(788): CController->processOutput('<!DOCTYPE html ...')
+#8 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/protected/controllers/SiteController.php(72): CController->render('contact', Array)
+#9 /Users/mohammedkhan/Documents/mySurvey/framework/web/actions/CInlineAction.php(49): SiteController->actionContact()
+#10 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(282): CController->run('contact')
+#14 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(141): CWebApplication->runController('site/contact')
+#15 /Users/mohammedkhan/Documents/mySurvey/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=site/contact
+HTTP_REFERER=http://localhost:8888/index.php?r=site/page&view=about
+---
+2013/09/19 06:08:25 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/Users/mohammedkhan/Documents/mySurvey/mySurvey_app/assets" is invalid. Please make sure the directory exists and is writable by the Web server process.' in /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/Users/mohammed...')
+#1 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(510): CAssetManager->publish('/Users/mohammed...')
+#3 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(547): CClientScript->getCoreScriptUrl()
+#4 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(348): CClientScript->getPackageBaseUrl('jquery')
+#5 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(208): CClientScript->renderCoreScripts()
+#6 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(351): CClientScript->render('<!DOCTYPE html ...')
+#7 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(788): CController->processOutput('<!DOCTYPE html ...')
+#8 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/protected/controllers/SiteController.php(72): CController->render('contact', Array)
+#9 /Users/mohammedkhan/Documents/mySurvey/framework/web/actions/CInlineAction.php(49): SiteController->actionContact()
+#10 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(282): CController->run('contact')
+#14 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(141): CWebApplication->runController('site/contact')
+#15 /Users/mohammedkhan/Documents/mySurvey/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=site/contact
+HTTP_REFERER=http://localhost:8888/index.php?r=site/page&view=about
+---
+2013/09/19 06:08:26 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/Users/mohammedkhan/Documents/mySurvey/mySurvey_app/assets" is invalid. Please make sure the directory exists and is writable by the Web server process.' in /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/Users/mohammed...')
+#1 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(510): CAssetManager->publish('/Users/mohammed...')
+#3 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(547): CClientScript->getCoreScriptUrl()
+#4 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(348): CClientScript->getPackageBaseUrl('jquery')
+#5 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(208): CClientScript->renderCoreScripts()
+#6 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(351): CClientScript->render('<!DOCTYPE html ...')
+#7 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(788): CController->processOutput('<!DOCTYPE html ...')
+#8 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/protected/controllers/SiteController.php(72): CController->render('contact', Array)
+#9 /Users/mohammedkhan/Documents/mySurvey/framework/web/actions/CInlineAction.php(49): SiteController->actionContact()
+#10 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(282): CController->run('contact')
+#14 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(141): CWebApplication->runController('site/contact')
+#15 /Users/mohammedkhan/Documents/mySurvey/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=site/contact
+HTTP_REFERER=http://localhost:8888/index.php?r=site/page&view=about
+---
+2013/09/19 06:08:27 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/Users/mohammedkhan/Documents/mySurvey/mySurvey_app/assets" is invalid. Please make sure the directory exists and is writable by the Web server process.' in /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/Users/mohammed...')
+#1 /Users/mohammedkhan/Documents/mySurvey/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(510): CAssetManager->publish('/Users/mohammed...')
+#3 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(547): CClientScript->getCoreScriptUrl()
+#4 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(348): CClientScript->getPackageBaseUrl('jquery')
+#5 /Users/mohammedkhan/Documents/mySurvey/framework/web/CClientScript.php(208): CClientScript->renderCoreScripts()
+#6 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(351): CClientScript->render('<!DOCTYPE html ...')
+#7 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(788): CController->processOutput('<!DOCTYPE html ...')
+#8 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/protected/controllers/SiteController.php(72): CController->render('contact', Array)
+#9 /Users/mohammedkhan/Documents/mySurvey/framework/web/actions/CInlineAction.php(49): SiteController->actionContact()
+#10 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Users/mohammedkhan/Documents/mySurvey/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(282): CController->run('contact')
+#14 /Users/mohammedkhan/Documents/mySurvey/framework/web/CWebApplication.php(141): CWebApplication->runController('site/contact')
+#15 /Users/mohammedkhan/Documents/mySurvey/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /Users/mohammedkhan/Documents/mySurvey/mySurvey_app/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=site/contact
+HTTP_REFERER=http://localhost:8888/index.php?r=site/page&view=about
+---
