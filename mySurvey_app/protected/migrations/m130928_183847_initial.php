@@ -12,7 +12,7 @@ class m130928_183847_initial extends CDbMigration
                         'first_name'=> 'VARCHAR(45) NULL',
                         'last_name'=> 'VARCHAR(45) NULL',
                 ));
-                $this->insert(survey_creator, array(
+                $this->insert('survey_creator', array(
                     'username'=>'test1',
                     'email'=>'test1@example.com',
                     'password'=>'pass1',
