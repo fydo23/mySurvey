@@ -11,14 +11,6 @@ $shared_config = array(
 
 	// application components
 	'components'=>array(
-		// uncomment the following to use a MySQL database
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=mySurvey_app',
-			'emulatePrepare' => true,
-			'username' => 'srv-svc',
-			'password' => ')7ZQm!G<4Y#q`t%',
-			'charset' => 'utf8',
-		),
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
