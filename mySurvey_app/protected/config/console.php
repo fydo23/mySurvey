@@ -2,7 +2,7 @@
 
 // This is the configuration for yiic console application.
 // Any writable CConsoleApplication properties can be configured here.
-return array(
+$shared_config = array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Console Application',
 
@@ -11,19 +11,6 @@ return array(
 
 	// application components
 	'components'=>array(
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
-		// uncomment the following to use a MySQL database
-		/*
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
-			'charset' => 'utf8',
-		),
-		*/
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
@@ -35,3 +22,12 @@ return array(
 		),
 	),
 );
+$env_config = require_once( dirname(__FILE__).'/db/dev.php');
+$config = CMap::mergeArray($shared_config, $env_config);
+
+/* UNCOMMENT FOLLOWING LINES BELOW TO SEE app config.*/
+//echo '<pre>';
+//print_r($config);
+//die();
+
+return $config;

@@ -32,6 +32,10 @@ body
 	padding: 20px 20px 20px 0;
 }
 
+#content{
+    padding:10px 20px;
+}
+
 #footer
 {
 	padding: 10px;
@@ -49,7 +53,7 @@ body
 
 #mainmenu
 {
-	background:white url(bg.gif) repeat-x left top;
+	background:white url(/static/img/bg.gif) repeat-x left top;
 }
 
 #mainmenu ul
