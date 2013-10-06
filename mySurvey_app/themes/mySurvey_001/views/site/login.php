@@ -51,3 +51,4 @@ $this->breadcrumbs=array(
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+<?php echo 'Or '.CHtml::link('Create an Account',array('site/register'),'');?>
