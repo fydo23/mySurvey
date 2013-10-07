@@ -23,13 +23,17 @@ class UserIdentity extends CUserIdentity
 	}
 	public function authenticate()
 	{
-                $user = SurveyCreator::model()->findByAttributes(array(
-                    'email'=>$this->email,
-                ));
+		/*
+		 * find user with the same email and password
+		 * password is hashed using mysql password() function
+		*/
+		$user = SurveyCreator::model()->findByAttributes(
+        	array('email'=>$this->email),
+            'password=password(:pswd)',
+            array(':pswd'=>$this->password)
+        );
 		if(!$user)
-			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($user->password !== $this->password)
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+			$this->errorCode=self::ERROR_UNKNOWN_IDENTITY;
 		else{
 			$this->username=$user->username;
 			$this->_id=$user->id;
@@ -37,6 +41,7 @@ class UserIdentity extends CUserIdentity
 		}
 		return !$this->errorCode;
 	}
+	//over writes default getId to return _id instead of username
 	public function getId(){
 		return $this->_id;
 	}
