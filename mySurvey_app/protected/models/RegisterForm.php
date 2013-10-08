@@ -7,11 +7,12 @@
  */
 class RegisterForm extends CFormModel
 {
-	public $firstName;
-	public $lastName;
+	public $firstname;
+	public $lastname;
 	public $email;
 	public $password;
 	public $password2;
+	public $username;
 	
 
 	private $_identity;
@@ -25,18 +26,29 @@ class RegisterForm extends CFormModel
 	{
 		return array(
 			// all fields are required
-			array('firstName, lastName, email, password, password2', 'required'),
+			array('username, email, password, password2', 'required'),
 			// ensuring email field is a valid email address
 			array('email','email'),
 			// password length must exceed 8 characters
-			array('password','length','min' => 8),
+			array('password','length','min' => 8,'max'=> 45),
 			// two passwords must match
-			array('password', 'compare', 'compareAttribute'=>'password2', 'on'=>'register'),
+			array('password2', 'compare', 'compareAttribute'=>'password'),
 			// password needs to be authenticated
-			array('password', 'authenticate'),
+			array('email', 'authenticate'),
+			// default values for firstname and lastname
+			array('firstname, lastname', 'default','value'=>null),
 		);
 	}
-
+	// labels for attributes
+	public function attributeLabels(){
+		return array(
+			'username'=>'User name',
+			'email'=>'Email',
+			'password2'=>'Retype password',
+			'firstname'=>'First name',
+			'lastname'=>'Last name'
+		);
+	}
 	/**
 	 * Authenticates the password.
 	 * This is the 'authenticate' validator as declared in rules().
@@ -45,9 +57,9 @@ class RegisterForm extends CFormModel
 	{
 		if(!$this->hasErrors())
 		{
-			$this->_identity=new UserIdentity($this->username,$this->password);
-			if(!$this->_identity->authenticate())
-				$this->addError('password','Incorrect username or password.');
+			$this->_identity=new UserIdentity($this->email,'');
+			if(!$this->_identity->authenticateRegister())
+				$this->addError('email','This email account is already registered.');
 		}
 	}
 
@@ -55,18 +67,30 @@ class RegisterForm extends CFormModel
 	 * Logs in the user using the given username and password in the model.
 	 * @return boolean whether login is successful
 	 */
-	public function login()
+	public function register()
 	{
 		if($this->_identity===null)
 		{
-			$this->_identity=new UserIdentity($this->username,$this->password);
-			$this->_identity->authenticate();
+			$this->_identity=new UserIdentity($this->email,'');
+			$this->_identity->authenticateRegister();
 		}
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
-			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
-			Yii::app()->user->login($this->_identity,$duration);
-			return true;
+			//sql insert code
+			$sqlStmt="insert into survey_creator(username, email, password, first_name, last_name) values(:username,:email,password(:password),:firstname, :lastname)";
+			$connection = Yii::app()->db;
+			$command=$connection->createCommand($sqlStmt);
+			$command->bindValue(':username',$this->username);
+			$command->bindValue(':email',$this->email);
+			$command->bindValue(':password',$this->password);
+			$command->bindValue(':firstname',$this->firstname);
+			$command->bindValue(':lastname',$this->lastname); 
+			if($command->execute())
+				return true;
+			else{
+				$this->addError('email','Error with the database');
+				return false;
+			}
 		}
 		else
 			return false;
