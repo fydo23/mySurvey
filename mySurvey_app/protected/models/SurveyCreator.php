@@ -10,6 +10,10 @@
  * @property string $password
  * @property string $first_name
  * @property string $last_name
+ * @property integer $level
+ *
+ * The followings are the available model relations:
+ * @property Survey[] $surveys
  */
 class SurveyCreator extends Model
 {
@@ -30,10 +34,11 @@ class SurveyCreator extends Model
 		// will receive user inputs.
 		return array(
 			array('username, email, password', 'required'),
+			array('level', 'numerical', 'integerOnly'=>true),
 			array('username, email, password, first_name, last_name', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, email, password, first_name, last_name', 'safe', 'on'=>'search'),
+			array('id, username, email, password, first_name, last_name, level', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,6 +50,7 @@ class SurveyCreator extends Model
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'surveys' => array(self::HAS_MANY, 'Survey', 'survey_creator_ID'),
 		);
 	}
 
@@ -60,6 +66,7 @@ class SurveyCreator extends Model
 			'password' => 'Password',
 			'first_name' => 'First Name',
 			'last_name' => 'Last Name',
+			'level' => 'Level',
 		);
 	}
 
@@ -87,6 +94,7 @@ class SurveyCreator extends Model
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('first_name',$this->first_name,true);
 		$criteria->compare('last_name',$this->last_name,true);
+		$criteria->compare('level',$this->level);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
