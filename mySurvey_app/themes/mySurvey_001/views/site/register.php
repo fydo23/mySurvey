@@ -40,21 +40,21 @@ $this->breadcrumbs=array(
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'password2'); ?>
-		<?php echo $form->passwordField($model,'password2',array('placeholder'=>'Retype password')); ?>
-		<?php echo $form->error($model,'password2'); ?>
+		<?php echo $form->labelEx($model,'password_repeat'); ?>
+		<?php echo $form->passwordField($model,'password_repeat',array('placeholder'=>'Retype password')); ?>
+		<?php echo $form->error($model,'password_repeat'); ?>
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'firstname'); ?>
-		<?php echo $form->textField($model,'firstname',array('placeholder'=>'First name')); ?>
-		<?php echo $form->error($model,'firstname'); ?>
+		<?php echo $form->labelEx($model,'first_name'); ?>
+		<?php echo $form->textField($model,'first_name',array('placeholder'=>'First name')); ?>
+		<?php echo $form->error($model,'first_name'); ?>
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'lastname'); ?>
-		<?php echo $form->textField($model,'lastname',array('placeholder'=>'Last name')); ?>
-		<?php echo $form->error($model,'lastname'); ?>
+		<?php echo $form->labelEx($model,'last_name'); ?>
+		<?php echo $form->textField($model,'last_name',array('placeholder'=>'Last name')); ?>
+		<?php echo $form->error($model,'last_name'); ?>
 	</div>
 
 	<div class="row buttons">

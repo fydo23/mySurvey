@@ -23,7 +23,7 @@ class UserIdentity extends CUserIdentity
 	// overloaded constructor for storing email address and hasing the password with sha1 algo
 	public function __construct($email,$password){
 		$this->email=$email;
-		parent::__construct('', hash('sha1',$password)); 
+                $this->password=$password;
 	}
 	public function authenticate()
 	{
@@ -31,30 +31,19 @@ class UserIdentity extends CUserIdentity
 		$user = SurveyCreator::model()->findByAttributes(array(
                     'email'=>$this->email,
                 ));
+                
 		if(!$user)
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($user->password !== $this->password)
+		elseif($user->password !== sha1($this->password))
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else{
-			$this->username=$user->username;
 			$this->_id=$user->id;
+			$this->username=$user->username;
 			$this->errorCode=self::ERROR_NONE;
 		}
 		return !$this->errorCode;
 	}
-	public function authenticateRegister()
-	{
-		//check if the email is already registered
-		$user = SurveyCreator::model()->findByAttributes(
-        	array('email'=>$this->email)
-        );
-		if($user)
-			$this->errorCode=$this::ERROR_EMAIL_DUPLICATE;
-		else{
-			$this->errorCode=self::ERROR_NONE;
-		}
-		return !$this->errorCode;
-	}
+        
 	//over writes default getId used by WebUser class to return _id instead of username
 	public function getId(){
 		return $this->_id;
