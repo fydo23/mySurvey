@@ -122,7 +122,7 @@ class SiteController extends Controller
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->Register()){
 			// log the user in
-				$loginModel=new LoginForm();
+				$loginModel=new LoginForm;
 				$loginModel->email=$model->email;
 				$loginModel->password=$model->password;
 				if($loginModel->validate() && $loginModel->login())

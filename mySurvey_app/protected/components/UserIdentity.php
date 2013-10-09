@@ -7,34 +7,34 @@
  */
 class UserIdentity extends CUserIdentity
 {
+	// custom field to store user email and id
 	public $email;
 	private $_id;
+	// custom error no.
 	const ERROR_EMAIL_DUPLICATE=3;
 	/**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
-	 * are both 'demo'.
-	 * In practical applications, this should be changed to authenticate
-	 * against some persistent user identity storage (e.g. database).
+	 * are both found in the database on login,
+	 * or checks if the email already exists on the database on register.
 	 * @return boolean whether authentication succeeds.
 	 */
+	
+	// overloaded constructor for storing email address and hasing the password with sha1 algo
 	public function __construct($email,$password){
 		$this->email=$email;
-		parent::__construct('', $password); 
+		parent::__construct('', hash('sha1',$password)); 
 	}
 	public function authenticate()
 	{
-		/*
-		 * find user with the same email and password
-		 * password is hashed using mysql password() function
-		*/
-		$user = SurveyCreator::model()->findByAttributes(
-        	array('email'=>$this->email),
-            'password=password(:pswd)',
-            array(':pswd'=>$this->password)
-        );
+		//find user with the same email and password
+		$user = SurveyCreator::model()->findByAttributes(array(
+                    'email'=>$this->email,
+                ));
 		if(!$user)
-			$this->errorCode=self::ERROR_UNKNOWN_IDENTITY;
+			$this->errorCode=self::ERROR_USERNAME_INVALID;
+		elseif($user->password !== $this->password)
+			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else{
 			$this->username=$user->username;
 			$this->_id=$user->id;
@@ -44,10 +44,7 @@ class UserIdentity extends CUserIdentity
 	}
 	public function authenticateRegister()
 	{
-		/*
-		 * find user with the same email and password
-		 * password is hashed using mysql password() function
-		*/
+		//check if the email is already registered
 		$user = SurveyCreator::model()->findByAttributes(
         	array('email'=>$this->email)
         );
@@ -58,7 +55,7 @@ class UserIdentity extends CUserIdentity
 		}
 		return !$this->errorCode;
 	}
-	//over writes default getId to return _id instead of username
+	//over writes default getId used by WebUser class to return _id instead of username
 	public function getId(){
 		return $this->_id;
 	}

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * LoginForm class.
- * LoginForm is the data structure for keeping
- * user login form data. It is used by the 'login' action of 'SiteController'.
+ * RegisterForm class.
+ * RegisterForm is the data structure for keeping
+ * user register form data. It is used by the 'register' action of 'SiteController'.
  */
 class RegisterForm extends CFormModel
 {
@@ -19,13 +19,15 @@ class RegisterForm extends CFormModel
 
 	/**
 	 * Declares the validation rules.
-	 * The rules state that username and password are required,
-	 * and password needs to be authenticated.
+	 * The rules state that username email password and password2 are required,
+	 * password length needs to be >= 8 but <= 45
+	 * password and password2 need to be the same
+	 * and email needs to be authenticated.
 	 */
 	public function rules()
 	{
 		return array(
-			// all fields are required
+			// list fields that are required
 			array('username, email, password, password2', 'required'),
 			// ensuring email field is a valid email address
 			array('email','email'),
@@ -50,7 +52,7 @@ class RegisterForm extends CFormModel
 		);
 	}
 	/**
-	 * Authenticates the password.
+	 * Authenticates the email for duplicates.
 	 * This is the 'authenticate' validator as declared in rules().
 	 */
 	public function authenticate($attribute,$params)
@@ -64,8 +66,8 @@ class RegisterForm extends CFormModel
 	}
 
 	/**
-	 * Logs in the user using the given username and password in the model.
-	 * @return boolean whether login is successful
+	 * inserts the new user data into the database
+	 * @return boolean whether insert is successful
 	 */
 	public function register()
 	{
@@ -76,17 +78,16 @@ class RegisterForm extends CFormModel
 		}
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
-			//sql insert code
-			$sqlStmt="insert into survey_creator(username, email, password, first_name, last_name) values(:username,:email,password(:password),:firstname, :lastname)";
-			$connection = Yii::app()->db;
-			$command=$connection->createCommand($sqlStmt);
-			$command->bindValue(':username',$this->username);
-			$command->bindValue(':email',$this->email);
-			$command->bindValue(':password',$this->password);
-			$command->bindValue(':firstname',$this->firstname);
-			$command->bindValue(':lastname',$this->lastname); 
-			if($command->execute())
+			//sql insert code, password is hashed with sha1 algo
+			$insertModel=new SurveyCreator;
+			$insertModel->email=$this->email;
+			$insertModel->username=$this->username;
+			$insertModel->password=hash('sha1',$this->password);
+			$insertModel->last_name=$this->lastname;
+			$insertModel->first_name=$this->firstname;
+			if($insertModel->save()){
 				return true;
+			}
 			else{
 				$this->addError('email','Error with the database');
 				return false;
