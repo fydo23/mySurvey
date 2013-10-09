@@ -3,28 +3,28 @@ body
 	margin: 0;
 	padding: 0;
 	color: #555;
-	font: normal 10pt Arial,Helvetica,sans-serif;
-	background: #EFEFEF;
+	font: normal 13pt Helvetica, Arial, sans-serif;
 }
 
 #page
 {
 	margin-top: 5px;
-	margin-bottom: 5px;
 	background: white;
-	border: 1px solid #C9E0ED;
 }
 
 #header
 {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+	width: 980px
 }
 
 #content
 {
-    padding: 20px;
+    padding: 40px;
+	width: 980px;
+	margin: 0 auto;
+	text-align: center;
 }
 
 #sidebar
@@ -32,17 +32,16 @@ body
 	padding: 20px 20px 20px 0;
 }
 
-#content{
-    padding:10px 20px;
-}
 
 #footer
 {
-	padding: 10px;
-	margin: 10px 20px;
-	font-size: 0.8em;
+	padding: 15px;
+	font-size: 12px;
 	text-align: center;
-	border-top: 1px solid #C9E0ED;
+	background: #222;
+	color: #fff;
+	clear: both;
+	min-height: 60px;
 }
 
 #logo
@@ -230,4 +229,127 @@ div.search-form
 .operations li a:hover
 {
 	background: #80CFFF;
+}
+
+
+/* HOMEPAGE */
+
+h1 {font-size: 26px;}
+p {
+	font-size: 14px;
+	font-weight: lighter;
+	width: 65%;
+	margin: 0 auto;
+	line-height: 21px;
+}
+
+.makeCenter {
+	margin: 0 auto;
+	width: 400px;
+}
+
+
+#appLogo {
+	width: 400px;
+	margin-top: 100px;
+}
+
+#login-logout {
+	min-height: 300px;
+	padding-top: 50px;	
+}
+
+#login-logout .button {
+	margin-bottom: 15px;
+}
+
+#sign-in:hover {
+	text-decoration: none;
+}
+
+
+#learn-more {
+	border-bottom: 2px dotted #666;
+}
+
+#learn-more p {margin-bottom: 15px;}
+
+
+#about {
+	text-align: left;
+	padding-left: 25px;
+}
+
+#about h1 {
+	padding-top: 95px;
+	font-weight: lighter;
+	font-size: 30px;
+}
+
+#about p {
+	margin: 0;
+	width: 100%;
+}
+
+.text {
+	width: 45%;
+	float: left;
+	position: relative;
+}
+.image {
+	position: relative;
+	float: right;
+}
+
+.image img{
+	padding-top: 50px;
+}
+
+#feature-1,
+#feature-2 {
+	clear: both;
+	padding-top: 50px;
+}
+
+#feature-1 .image {
+	float: left;
+}
+#feature-1 .text {
+	float: right;
+}
+
+#feature-2 img {
+	margin-bottom: 80px;
+}
+
+#signup-button {
+	clear: both;
+	padding: 65px 0 50px;
+}
+
+
+.button {
+	width: 208px;
+	height: 18px;
+	display: inline-block;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 15px 0;
+	margin: 0 5px;
+	border-radius: 10px;
+	color: #fff;
+	border: 1px solid #1c74b3;
+	border-top-color: #2c8ed1;
+	border-bottom-color: #0d5b97;
+	background: #2181cf;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#2181cf");
+	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#2181cf));
+	background: -moz-linear-gradient(top, #37a3eb, #2181cf);
+	-moz-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	-webkit-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+	-webkit-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+	-moz-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
 }
