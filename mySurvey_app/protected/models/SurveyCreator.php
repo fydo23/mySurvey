@@ -36,7 +36,7 @@ class SurveyCreator extends Model
 			array('username, email, password', 'required'),
 			array('username, email, password, first_name, last_name', 'length', 'max'=>45),
                         //registration scenario validation 
-                        array('password_repeat', 'compare', 'compareAttribute'=>'password', 'on'=>'register'),
+                        array('password_repeat', 'compare', 'compareAttribute'=>'password', 'on'=>'register', 'message'=>'Password must be repeated exactly.'),
                         array('password_repeat', 'required', 'on'=>'register'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
