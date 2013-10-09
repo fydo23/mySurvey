@@ -1,6 +1,6 @@
 <?php
 /* @var $this SiteController */
-/* @var $model LoginForm */
+/* @var $model RegisterForm */
 /* @var $form CActiveForm  */
 
 $this->pageTitle=Yii::app()->name . ' - Register';
