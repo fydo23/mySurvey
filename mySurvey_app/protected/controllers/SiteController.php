@@ -72,13 +72,6 @@ class SiteController extends Controller
 		$this->render('contact',array('model'=>$model));
 	}
 	/**
-	 * Displays the login or register selection page
-	 */
-	public function actionLoginOrRegister()
-	{
-		$this->render('loginOrRegister');
-	}
-	/**
 	 * Displays the login page
 	 */
 	public function actionLogin()
@@ -108,28 +101,28 @@ class SiteController extends Controller
 	 */
 	public function actionRegister()
 	{
-		$model=new RegisterForm;
+		$survey_creator = new SurveyCreator('register');
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='register-form')
 		{
-			echo CActiveForm::validate($model);
+			echo CActiveForm::validate($survey_creator);
 			Yii::app()->end();
 		}
 		// collect user input data
-		if(isset($_POST['RegisterForm']))
+		if(isset($_POST['SurveyCreator']))
 		{
-			$model->attributes=$_POST['RegisterForm'];
+			$survey_creator->attributes=$_POST['SurveyCreator'];
+                        $survey_creator->password_repeat = $_POST['SurveyCreator']['password_repeat'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->Register()){
-			// log the user in
-				$loginModel=new LoginForm;
-				$loginModel->email=$model->email;
-				$loginModel->password=$model->password;
-				if($loginModel->validate() && $loginModel->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+			if($survey_creator->validate() && $survey_creator->save()){
+                                // log the user in
+                                $identity = new UserIdentity($_POST['SurveyCreator']['email'], $_POST['SurveyCreator']['password']);
+                                $identity->authenticate();
+                                yii::app()->user->login($identity);
+                                $this->redirect(Yii::app()->user->returnUrl);
 			}
 		}
-		$this->render('register',array('model'=>$model));
+		$this->render('register',array('model'=>$survey_creator));
 	}
 
 	/**
