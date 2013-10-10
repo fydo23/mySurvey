@@ -35,7 +35,7 @@ class SurveyCreator extends Model
 			array('username, email, password', 'required'),
                         array('username, email', 'unique'),
                         array('email','email'),
-+			array('password','length','min' => 8),
+                        array('password','length','min' => 8),
 			array('username, email, password, first_name, last_name', 'length', 'max'=>45),
                         //registration scenario validation 
                         array('password_repeat', 'compare', 'compareAttribute'=>'password', 'on'=>'register', 'message'=>'Password must be repeated exactly.'),
