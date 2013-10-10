@@ -10,16 +10,9 @@
  * @property string $password
  * @property string $first_name
  * @property string $last_name
- * @property integer $level
- *
- * The followings are the available model relations:
- * @property Survey[] $surveys
  */
 class SurveyCreator extends Model
 {
-        //used for registration.
-        public $password_repeat;
-        
 	/**
 	 * @return string the associated database table name
 	 */
@@ -36,28 +29,13 @@ class SurveyCreator extends Model
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-                        array('username, email', 'unique'),
 			array('username, email, password', 'required'),
-			array('level', 'numerical', 'integerOnly'=>true),
 			array('username, email, password, first_name, last_name', 'length', 'max'=>45),
-                        //registration scenario validation 
-                        array('password_repeat', 'compare', 'compareAttribute'=>'password', 'on'=>'register', 'message'=>'Password must be repeated exactly.'),
-                        array('password_repeat', 'required', 'on'=>'register'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, email, password, first_name, last_name, level', 'safe', 'on'=>'search'),
+			array('id, username, email, password, first_name, last_name', 'safe', 'on'=>'search'),
 		);
 	}
-        
-        public function beforeSave() {
-            parent::beforeSave();
-            switch($this->scenario){
-                case 'register':
-                    $this->password = sha1($this->password);
-                    break;
-            }
-            return true;
-        }
 
 	/**
 	 * @return array relational rules.
@@ -67,7 +45,6 @@ class SurveyCreator extends Model
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'surveys' => array(self::HAS_MANY, 'Survey', 'survey_creator_ID'),
 		);
 	}
 
@@ -81,10 +58,8 @@ class SurveyCreator extends Model
 			'username' => 'Username',
 			'email' => 'Email',
 			'password' => 'Password',
-			'password_repeat' => 'Repeat Password',
 			'first_name' => 'First Name',
 			'last_name' => 'Last Name',
-			'level' => 'Level',
 		);
 	}
 
@@ -112,7 +87,6 @@ class SurveyCreator extends Model
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('first_name',$this->first_name,true);
 		$criteria->compare('last_name',$this->last_name,true);
-		$criteria->compare('level',$this->level);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
