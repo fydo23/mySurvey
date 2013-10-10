@@ -13,6 +13,9 @@
  */
 class SurveyCreator extends Model
 {
+        //used for registration.
+        public $password_repeat;
+        
 	/**
 	 * @return string the associated database table name
 	 */
@@ -29,13 +32,27 @@ class SurveyCreator extends Model
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+                        array('username, email', 'unique'),
 			array('username, email, password', 'required'),
 			array('username, email, password, first_name, last_name', 'length', 'max'=>45),
+                        //registration scenario validation 
+                        array('password_repeat', 'compare', 'compareAttribute'=>'password', 'on'=>'register', 'message'=>'Password must be repeated exactly.'),
+                        array('password_repeat', 'required', 'on'=>'register'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, username, email, password, first_name, last_name', 'safe', 'on'=>'search'),
 		);
 	}
+        
+        public function beforeSave() {
+            parent::beforeSave();
+            switch($this->scenario){
+                case 'register':
+                    $this->password = sha1($this->password);
+                    break;
+            }
+            return true;
+        }
 
 	/**
 	 * @return array relational rules.
@@ -58,6 +75,7 @@ class SurveyCreator extends Model
 			'username' => 'Username',
 			'email' => 'Email',
 			'password' => 'Password',
+			'password_repeat' => 'Repeat Password',
 			'first_name' => 'First Name',
 			'last_name' => 'Last Name',
 		);
