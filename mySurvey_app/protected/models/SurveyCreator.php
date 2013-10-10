@@ -30,6 +30,9 @@ class SurveyCreator extends Model
 		// will receive user inputs.
 		return array(
 			array('username, email, password', 'required'),
+                        array('username, email', 'unique'),
+                        array('email','email'),
+                        array('password','length','min' => 8),
 			array('username, email, password, first_name, last_name', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
