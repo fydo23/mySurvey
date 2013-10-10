@@ -4,28 +4,43 @@ body
 	padding: 0;
 	color: #555;
 	font: normal 13pt Helvetica, Arial, sans-serif;
+	background: #222;
 }
 
 #page
 {
-	margin-top: 5px;
-	background: white;
+	background: #fff;
 }
 
-#header
-{
-	margin: 0 auto;
-	padding: 0;
-	width: 980px
-}
 
-#content
-{
-    padding: 40px;
-	width: 980px;
-	margin: 0 auto;
+.button {
+	width: 208px;
+	height: 18px;
+	display: inline-block;
+	text-decoration: none;
+	font-size: 14px;
 	text-align: center;
+	font-weight: normal;
+	padding: 15px 0;
+	margin: 0 5px;
+	border-radius: 10px;
+	color: #fff;
+	border: 1px solid #1c74b3;
+	border-top-color: #2c8ed1;
+	border-bottom-color: #0d5b97;
+	background: #2181cf;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#2181cf");
+	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#2181cf));
+	background: -moz-linear-gradient(top, #37a3eb, #2181cf);
+	-moz-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	-webkit-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+	-webkit-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+	-moz-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
 }
+
+
 
 #sidebar
 {
@@ -52,7 +67,10 @@ body
 
 #mainmenu
 {
-	background:white url(/static/img/bg.gif) repeat-x left top;
+	width: 20%;
+	position: relative;
+	float: left;
+	margin-top: 20px;
 }
 
 #mainmenu ul
@@ -63,12 +81,13 @@ body
 
 #mainmenu ul li
 {
-	display: inline;
+	display: block;
+	padding: 10px 0;
 }
 
 #mainmenu ul li a
 {
-	color:#ffffff;
+	color:#666;
 	background-color:transparent;
 	font-size:12px;
 	font-weight:bold;
@@ -232,7 +251,125 @@ div.search-form
 }
 
 
+
+/* SURVEYS -- VIEW ALL */
+
+#new {
+	padding-left: 13px;
+	padding-top: 15px;
+}
+
+#published h2,
+#unpublished h2 {
+	text-transform: uppercase;
+	font-size: 13px;
+	margin: 55px 0px 20px 15px;
+	background: #e3e3e3;
+	padding: 10px 15px;
+}
+
+#published p,
+#unpublished p {
+	width: 100%;
+	margin-left: 30px;
+}
+
+
+/* PAGE TEMPLATE */
+
+#header {
+	background: #e3e3e3;
+	height: 65px;
+}
+
+#logo-container {
+	width: 300px;
+	float: left;
+}
+
+#headerLogo {
+	width: 225px;
+	padding-top: 4px;
+}
+
+#content {
+	width: 75%;
+	margin: 0 auto;
+	text-align: left;
+	float: left;
+}
+
+.content-area {
+	width: 980px;
+	margin: 0 auto;
+	clear: both;
+	min-height: 500px;
+}
+
+.content-area #content {
+	border-left: 1px solid #e3e3e3;
+	padding-left: 30px;
+	margin-top: 20px;
+}
+
+.page-name {
+	padding-left: 15px;
+}
+
+.page-name h1 {
+	font-weight: 200;
+	font-size: 40px;
+	margin-top: 10px;
+}
+
+#logout {
+	width: 135px;
+	position: relative;
+	float: right;
+}
+
+#logout ul {
+	list-style-type: none;
+}
+
+
+#logout ul li a {
+	background: #666;
+	color: #fff;
+	text-decoration: none;
+	padding: 8px 20px;
+	font-size: 13px;
+	border-radius: 10px;
+	font-weight: 700;
+	border: 2px solid #fff;
+}
+
+#logout ul li a:hover {
+	background: #2c8ed1;
+}
+
+
+
+
 /* HOMEPAGE */
+
+#home #header
+{
+	margin: 0 auto;
+	padding: 0;
+	width: 980px;
+	background: transparent;
+	height: auto;
+}
+
+#home #content
+{
+    padding: 40px;
+	width: 980px;
+	margin: 0 auto;
+	text-align: center;
+	float: none;
+}
 
 h1 {font-size: 26px;}
 p {
@@ -328,28 +465,4 @@ p {
 }
 
 
-.button {
-	width: 208px;
-	height: 18px;
-	display: inline-block;
-	text-decoration: none;
-	font-size: 14px;
-	font-weight: normal;
-	padding: 15px 0;
-	margin: 0 5px;
-	border-radius: 10px;
-	color: #fff;
-	border: 1px solid #1c74b3;
-	border-top-color: #2c8ed1;
-	border-bottom-color: #0d5b97;
-	background: #2181cf;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#2181cf");
-	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#2181cf));
-	background: -moz-linear-gradient(top, #37a3eb, #2181cf);
-	-moz-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
-	-webkit-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
-	box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
-	text-shadow: rgba(0,0,0,0.2) 0 1px 0;
-	-webkit-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
-	-moz-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
-}
+

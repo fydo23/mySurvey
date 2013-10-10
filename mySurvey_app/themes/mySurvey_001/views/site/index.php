@@ -59,6 +59,6 @@ $this->pageTitle=Yii::app()->name;
 
 <div id="signup-button">
 		<a href="#" class="button">Sign up</a>
-	</div>
+</div>
 
 
