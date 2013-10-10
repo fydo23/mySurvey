@@ -18,11 +18,12 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
                 $user = SurveyCreator::model()->findByAttributes(array(
-                    'username'=>$this->username,
+                    'email'=>$this->username, //using email as identity username.
                 ));
+                
 		if(!$user)
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($user->password !== $this->password)
+		elseif($user->password !== sha1($this->password))
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 			$this->errorCode=self::ERROR_NONE;

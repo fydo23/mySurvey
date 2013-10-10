@@ -42,14 +42,13 @@
 	<div class="content-area">
 		<div id="mainmenu">
 			<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Surveys', 'url'=>array('/site/page', 'view'=>'surveys')),
-				array('label'=>'Reports', 'url'=>array('/site/page', 'view'=>'reports')),
-				array('label'=>'Account Settings', 'url'=>array('/site/page', 'view'=>'settings'))
-				
-			),
-			)); ?>
+                            'items'=>array(
+                                    array('label'=>'Home', 'url'=>'/'),
+                                    array('label'=>'Surveys', 'url'=>array('/page/surveys')),
+                                    array('label'=>'Reports', 'url'=>array('/page/reports')),
+                                    array('label'=>'Account Settings', 'url'=>array('/page/settings'))
+                            ),
+                        )); ?>
 		</div><!-- mainmenu -->
 	
 	<?php if(isset($this->breadcrumbs)):?>

@@ -11,8 +11,8 @@ $this->pageTitle=Yii::app()->name;
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed nulla ultricies, pellentesque felis nec, fringilla augue. Sed rutrum in nibh a mollis.</p>
 
 <div id="login-logout">
-	<a href="#" class="button">Sign up</a>
-	<p>or <a href="#" id="sign-in">Sign in</a></p>
+	<a href="<?php echo $this->createUrl('register');?>" class="button">Sign up</a>
+	<p>or <a href="<?php echo $this->createUrl('login');?>" id="sign-in">Sign in</a></p>
 		
 </div>
 
@@ -58,7 +58,7 @@ $this->pageTitle=Yii::app()->name;
 </div>
 
 <div id="signup-button">
-		<a href="#" class="button">Sign up</a>
+		<a href="<?php echo $this->createUrl('register');?>" class="button">Sign up</a>
 </div>
 
 
