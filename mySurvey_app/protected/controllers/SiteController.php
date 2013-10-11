@@ -27,10 +27,17 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+            
+            $this->render('index',array(
+                'loginForm'=>new LoginForm(), 
+                'surveyCreator'=>new SurveyCreator('register')
+            ));
 	}
+        
+        
+        public function actionView($page){
+            $this->render('pages/'.$page);
+        }
 
 	/**
 	 * This is the action to handle external exceptions.
@@ -71,31 +78,63 @@ class SiteController extends Controller
 		}
 		$this->render('contact',array('model'=>$model));
 	}
-
 	/**
 	 * Displays the login page
 	 */
 	public function actionLogin()
 	{
-		$model=new LoginForm;
+		$loginForm=new LoginForm();
 
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
-			echo CActiveForm::validate($model);
+			echo CActiveForm::validate($loginForm);
 			Yii::app()->end();
 		}
 
 		// collect user input data
 		if(isset($_POST['LoginForm']))
 		{
-			$model->attributes=$_POST['LoginForm'];
+			$loginForm->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+			if($loginForm->validate() && $loginForm->login())
+				$this->redirect('/survey');
 		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
+                $this->render('index',array(
+                    'loginForm'=>$loginForm, 
+                    'surveyCreator'=>new SurveyCreator('register')
+                ));
+	}
+	/**
+	 * Displays the login or register selection page
+	 */
+	public function actionRegister()
+	{
+		$survey_creator = new SurveyCreator('register');
+		// if it is ajax validation request
+		if(isset($_POST['ajax']) && $_POST['ajax']==='register-form')
+		{
+			echo CActiveForm::validate($survey_creator);
+			Yii::app()->end();
+		}
+		// collect user input data
+		if(isset($_POST['SurveyCreator']))
+		{
+			$survey_creator->attributes=$_POST['SurveyCreator'];
+                        $survey_creator->password_repeat = $_POST['SurveyCreator']['password_repeat'];
+			// validate user input and redirect to the previous page if valid
+			if($survey_creator->validate() && $survey_creator->save()){
+                                // log the user in
+                                $identity = new UserIdentity($_POST['SurveyCreator']['email'], $_POST['SurveyCreator']['password']);
+                                $identity->authenticate();
+                                yii::app()->user->login($identity);
+				$this->redirect('/survey');
+			}
+		}
+                $this->render('index',array(
+                    'loginForm'=>new LoginForm(), 
+                    'surveyCreator'=>$survey_creator
+                ));
 	}
 
 	/**

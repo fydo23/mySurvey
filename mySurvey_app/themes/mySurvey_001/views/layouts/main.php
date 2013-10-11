@@ -27,12 +27,7 @@
 		
 		
 			<div id="logout">
-				<?php $this->widget('zii.widgets.CMenu',array(
-					'items'=>array(
-					array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-					array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-					),
-					)); ?>
+                            <?Yii::app()->user->name?><a href="<?= $this->createUrl('/logout')?>">Logout</a>
 			</div><!-- logout -->
 		
 		</div>
@@ -42,14 +37,12 @@
 	<div class="content-area">
 		<div id="mainmenu">
 			<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Surveys', 'url'=>array('/site/page', 'view'=>'surveys')),
-				array('label'=>'Reports', 'url'=>array('/site/page', 'view'=>'reports')),
-				array('label'=>'Account Settings', 'url'=>array('/site/page', 'view'=>'settings'))
-				
-			),
-			)); ?>
+                            'items'=>array(
+                                    array('label'=>'Surveys', 'url'=>array('/survey')),
+                                    array('label'=>'Reports', 'url'=>array('/reports')),
+                                    array('label'=>'Account Settings', 'url'=>array('/settings'))
+                            ),
+                        )); ?>
 		</div><!-- mainmenu -->
 	
 	<?php if(isset($this->breadcrumbs)):?>
