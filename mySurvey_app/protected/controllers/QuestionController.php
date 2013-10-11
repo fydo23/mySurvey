@@ -1,13 +1,7 @@
 <?php
 
-class SurveyResponseController extends Controller
+class SurveyQuestionController extends Controller
 {
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	public $layout='//layouts/column2';
-
 	/**
 	 * @return array action filters
 	 */
@@ -62,14 +56,14 @@ class SurveyResponseController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new SurveyResponse;
+		$model=new SurveyQuestion;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['SurveyResponse']))
+		if(isset($_POST['SurveyQuestion']))
 		{
-			$model->attributes=$_POST['SurveyResponse'];
+			$model->attributes=$_POST['SurveyQuestion'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -91,9 +85,9 @@ class SurveyResponseController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['SurveyResponse']))
+		if(isset($_POST['SurveyQuestion']))
 		{
-			$model->attributes=$_POST['SurveyResponse'];
+			$model->attributes=$_POST['SurveyQuestion'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -122,7 +116,7 @@ class SurveyResponseController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('SurveyResponse');
+		$dataProvider=new CActiveDataProvider('SurveyQuestion');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -133,10 +127,10 @@ class SurveyResponseController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new SurveyResponse('search');
+		$model=new SurveyQuestion('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['SurveyResponse']))
-			$model->attributes=$_GET['SurveyResponse'];
+		if(isset($_GET['SurveyQuestion']))
+			$model->attributes=$_GET['SurveyQuestion'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -147,12 +141,12 @@ class SurveyResponseController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return SurveyResponse the loaded model
+	 * @return SurveyQuestion the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=SurveyResponse::model()->findByPk($id);
+		$model=SurveyQuestion::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -160,11 +154,11 @@ class SurveyResponseController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param SurveyResponse $model the model to be validated
+	 * @param SurveyQuestion $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='survey-response-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='survey-question-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

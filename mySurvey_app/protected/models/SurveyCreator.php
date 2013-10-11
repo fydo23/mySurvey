@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'survey_creator':
  * @property integer $id
- * @property string $username
  * @property string $email
  * @property string $password
  * @property string $first_name
@@ -36,18 +35,19 @@ class SurveyCreator extends Model
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, email, password', 'required'),
-                        array('username, email', 'unique'),
+			array('email, password', 'required'),
+                        array('email', 'unique'),
 			array('level', 'numerical', 'integerOnly'=>true),
                         array('email','email'),
                         array('password','length','min' => 8),
-			array('username, email, password, first_name, last_name', 'length', 'max'=>45),
-                        //registration scenario validation 
+			array('email, password, first_name, last_name', 'length', 'max'=>45),
+                        //registration scenario validation
+                        array('email', 'unique','on'=>'register'), 
                         array('password_repeat', 'compare', 'compareAttribute'=>'password', 'on'=>'register', 'message'=>'Password must be repeated exactly.'),
                         array('password_repeat', 'required', 'on'=>'register'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, email, password, first_name, last_name, level', 'safe', 'on'=>'search'),
+			array('id, email, password, first_name, last_name, level', 'safe', 'on'=>'search'),
 		);
 	}
         
@@ -80,7 +80,6 @@ class SurveyCreator extends Model
 	{
 		return array(
 			'id' => 'ID',
-			'username' => 'Username',
 			'email' => 'Email',
 			'password' => 'Password',
 			'password_repeat' => 'Repeat Password',
@@ -109,7 +108,6 @@ class SurveyCreator extends Model
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('username',$this->username,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('first_name',$this->first_name,true);

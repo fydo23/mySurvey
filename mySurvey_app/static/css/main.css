@@ -475,7 +475,7 @@ p.placeholder {
 }
 
 
-#logout ul li a {
+#logout a {
 	background: #666;
 	color: #fff;
 	text-decoration: none;
@@ -486,7 +486,7 @@ p.placeholder {
 	border: 2px solid #fff;
 }
 
-#logout ul li a:hover {
+#logout a:hover {
 	background: #2c8ed1;
 }
 

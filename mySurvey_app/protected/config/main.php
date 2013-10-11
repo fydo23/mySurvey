@@ -42,11 +42,13 @@ $shared_config = array(
                         'caseSensitive'=>false,
 			'rules'=>array(
                                 '/'=>'site/index',
-//                                '<action:\w+>'=>'site/<action>',
-                                'page/<view:\w+>'=>'site/page',
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                                '<action:(login|logout|register|home)>'=>'site/<action>',
+                                '<page:(reports|settings)>'=>'site/view/page/<page>',
+                                 //any single word url handleded as controlle
+                                '<controller:\w+>'=>'<controller>/index', //view all
+				'<controller:\w+>/<id:\d+>'=>'<controller>/view', //view one
+				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>', //specific model/action
+				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>', //general model/action
 			),
 		),
 		'db'=>array(
