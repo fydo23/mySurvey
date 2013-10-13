@@ -117,11 +117,15 @@ class SurveyController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$published_dataProvider=new CActiveDataProvider('Survey');
-                $published_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 1')));
+                $survey_creator = SurveyCreator::model()->findByAttributes(
+                        array('email'=> Yii::app()->user->id)
+                );
+
+                $published_dataProvider=new CActiveDataProvider('Survey');
+                $published_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 1 AND survey_creator_ID = '.($survey_creator->id))));
 
                 $unPublished_dataProvider=new CActiveDataProvider('Survey');
-                $unPublished_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 0')));
+                $unPublished_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 0 AND survey_creator_ID = '.($survey_creator->id))));
                 
 		$this->render('index',array(
 			'published_dataProvider'=>$published_dataProvider,
