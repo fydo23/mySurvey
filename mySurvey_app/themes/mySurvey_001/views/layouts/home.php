@@ -16,7 +16,7 @@
 <div class="container" id="page">
 
 	<div id="header">
-		<div class="makeCenter"><img id="appLogo" src="http://localhost/static/img/logo.png"></div>
+		<div class="makeCenter"><img id="appLogo" src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/logo.png"></div>
 	</div><!-- header -->
 
                 

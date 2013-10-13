@@ -98,7 +98,7 @@ class SiteController extends Controller
 			$loginForm->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($loginForm->validate() && $loginForm->login())
-				$this->redirect('/survey');
+				$this->redirect(Yii::app()->request->baseUrl . '/survey');
 		}
                 $this->render('index',array(
                     'loginForm'=>$loginForm, 
@@ -128,7 +128,7 @@ class SiteController extends Controller
                                 $identity = new UserIdentity($_POST['SurveyCreator']['email'], $_POST['SurveyCreator']['password']);
                                 $identity->authenticate();
                                 yii::app()->user->login($identity);
-				$this->redirect('/survey');
+				$this->redirect(Yii::app()->request->baseUrl . '/survey');
 			}
 		}
                 $this->render('index',array(

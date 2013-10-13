@@ -23,7 +23,7 @@ $this->pageTitle=Yii::app()->name;
     <p>Please fill out the following form with your login credentials:</p>
     <div class="form">
         <?php $form=$this->beginWidget('CActiveForm', array(
-                'action'=>'/login',
+                'action'=>Yii::app()->request->baseUrl . '/login',
                 'id'=>'login-form',
                 'enableClientValidation'=>true,
                 'clientOptions'=>array(
@@ -65,7 +65,7 @@ $this->pageTitle=Yii::app()->name;
     <div class="form">
 
         <?php $form=$this->beginWidget('CActiveForm', array(
-                'action'=>'/register',
+                'action'=>Yii::app()->request->baseUrl . '/register',
                 'id'=>'register-form',
                 'enableClientValidation'=>true,
                 'clientOptions'=>array(
@@ -127,14 +127,14 @@ $this->pageTitle=Yii::app()->name;
 			<p>Nullam et mollis neque, egestas faucibus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec turpis et nisl vestibulum aliquam pharetra a dui.</p>
 		</div>
 		<div class="image">
-			<img src="http://localhost/static/img/placeholder.gif">
+			<img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/placeholder.gif">
 		</div>		
 	</div>
 	
 	
 	<div id="feature-1">	
 		<div class="image">
-			<img src="http://localhost/static/img/placeholder.gif">
+			<img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/placeholder.gif">
 		</div>				
 		<div class="text">
 			<h1>Wherever you are</h1>
@@ -149,7 +149,7 @@ $this->pageTitle=Yii::app()->name;
 			<p>Nullam et mollis neque, egestas faucibus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec turpis et nisl vestibulum aliquam pharetra a dui.</p>
 		</div>
 		<div class="image">
-			<img src="http://localhost/static/img/placeholder.gif">
+			<img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/placeholder.gif">
 		</div>		
 	</div>
 	
@@ -160,5 +160,4 @@ $this->pageTitle=Yii::app()->name;
     <div id="signup-button">
                     <a href="#register" class="button">Sign up</a>
     </div>
-<?}?>
-
+<?php }?>
