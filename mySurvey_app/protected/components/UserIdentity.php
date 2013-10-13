@@ -18,7 +18,7 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
                 $user = SurveyCreator::model()->findByAttributes(array(
-                    'email'=>$this->username, //using email as identity username.
+                    'email'=>$this->email, //using email as identity username.
                 ));
                 
 		if(!$user)
