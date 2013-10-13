@@ -5,11 +5,11 @@
  *
  * The followings are the available columns in table 'survey':
  * @property integer $id
- * @property string $survey_URL
- * @property string $survey_date_time_created
+ * @property string $url
+ * @property string $created
  * @property integer $survey_creator_ID
- * @property string $survey_publish_status
- * @property string $survey_publish_date_time
+ * @property integer $is_published
+ * @property string $title
  *
  * The followings are the available model relations:
  * @property SurveyCreator $surveyCreator
@@ -17,7 +17,7 @@
  * @property SurveyQuestion[] $surveyQuestions
  * @property SurveyResponse[] $surveyResponses
  */
-class Survey extends Model
+class Survey extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -35,14 +35,13 @@ class Survey extends Model
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('survey_URL, survey_date_time_created, survey_creator_ID', 'required'),
-			array('survey_creator_ID', 'numerical', 'integerOnly'=>true),
-			array('survey_URL', 'length', 'max'=>80),
-			array('survey_publish_status', 'length', 'max'=>1),
-			array('survey_publish_date_time', 'safe'),
+			array('url, created, survey_creator_ID', 'required'),
+			array('survey_creator_ID, is_published', 'numerical', 'integerOnly'=>true),
+			array('url', 'length', 'max'=>80),
+			array('title', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, survey_URL, survey_date_time_created, survey_creator_ID, survey_publish_status, survey_publish_date_time', 'safe', 'on'=>'search'),
+			array('id, url, created, survey_creator_ID, is_published, title', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,11 +67,11 @@ class Survey extends Model
 	{
 		return array(
 			'id' => 'ID',
-			'survey_URL' => 'Survey Url',
-			'survey_date_time_created' => 'Survey Date Time Created',
+			'url' => 'Url',
+			'created' => 'Created',
 			'survey_creator_ID' => 'Survey Creator',
-			'survey_publish_status' => 'Survey Publish Status',
-			'survey_publish_date_time' => 'Survey Publish Date Time',
+			'is_published' => 'Is Published',
+			'title' => 'Title',
 		);
 	}
 
@@ -95,11 +94,11 @@ class Survey extends Model
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('survey_URL',$this->survey_URL,true);
-		$criteria->compare('survey_date_time_created',$this->survey_date_time_created,true);
+		$criteria->compare('url',$this->url,true);
+		$criteria->compare('created',$this->created,true);
 		$criteria->compare('survey_creator_ID',$this->survey_creator_ID);
-		$criteria->compare('survey_publish_status',$this->survey_publish_status,true);
-		$criteria->compare('survey_publish_date_time',$this->survey_publish_date_time,true);
+		$criteria->compare('is_published',$this->is_published);
+		$criteria->compare('title',$this->title,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

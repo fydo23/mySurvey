@@ -9,7 +9,7 @@ class SurveyController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
+//			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
@@ -117,9 +117,15 @@ class SurveyController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Survey');
+		$published_dataProvider=new CActiveDataProvider('Survey');
+                $published_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 1')));
+
+                $unPublished_dataProvider=new CActiveDataProvider('Survey');
+                $unPublished_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 0')));
+                
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'published_dataProvider'=>$published_dataProvider,
+			'unPublished_dataProvider'=>$unPublished_dataProvider,
 		));
 	}
 

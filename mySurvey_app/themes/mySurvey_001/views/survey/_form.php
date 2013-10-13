@@ -19,16 +19,23 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+
 	<div class="row">
-		<?php echo $form->labelEx($model,'survey_URL'); ?>
-		<?php echo $form->textField($model,'survey_URL',array('size'=>60,'maxlength'=>80)); ?>
-		<?php echo $form->error($model,'survey_URL'); ?>
+		<?php echo $form->labelEx($model,'title'); ?>
+		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->error($model,'title'); ?>
+	</div>
+        
+	<div class="row">
+		<?php echo $form->labelEx($model,'url'); ?>
+		<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>80)); ?>
+		<?php echo $form->error($model,'url'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'survey_date_time_created'); ?>
-		<?php echo $form->textField($model,'survey_date_time_created'); ?>
-		<?php echo $form->error($model,'survey_date_time_created'); ?>
+		<?php echo $form->labelEx($model,'created'); ?>
+		<?php echo $form->textField($model,'created'); ?>
+		<?php echo $form->error($model,'created'); ?>
 	</div>
 
 	<div class="row">
@@ -38,15 +45,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'survey_publish_status'); ?>
-		<?php echo $form->textField($model,'survey_publish_status',array('size'=>1,'maxlength'=>1)); ?>
-		<?php echo $form->error($model,'survey_publish_status'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'survey_publish_date_time'); ?>
-		<?php echo $form->textField($model,'survey_publish_date_time'); ?>
-		<?php echo $form->error($model,'survey_publish_date_time'); ?>
+		<?php echo $form->labelEx($model,'is_published'); ?>
+		<?php echo $form->textField($model,'is_published',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->error($model,'is_published'); ?>
 	</div>
 
 	<div class="row buttons">
