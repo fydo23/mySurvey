@@ -50,11 +50,20 @@ class SurveyController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
+                $survey_creator = SurveyCreator::model()->findByAttributes(
+                        array('email'=> Yii::app()->user->id)
+                );
+                    
+                //we need to remove url from the survey model
+                $model->url = '/survey/take/id' ;
+                $model->survey_creator_ID = $survey_creator->id;
+                $model->is_published = 0;
+                $model->created = (new DateTime('NOW'))->format('c');
 		if(isset($_POST['Survey']))
 		{
 			$model->attributes=$_POST['Survey'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -78,14 +87,44 @@ class SurveyController extends Controller
 		{
 			$model->attributes=$_POST['Survey'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
+        
+	/**
+	 * Publish a survey model.
+	 * If publish is successful, the browser will be redirected to the 'index' page.
+	 * @param integer $id the ID of the model to be updated
+	 */
+	public function actionPublish($id)
+	{
+		$model=$this->loadModel($id);
 
+                $model->is_published = 1;
+                $model->save();
+
+                $this->redirect(array('index'));
+	}       
+ 
+	/**
+	 * Unpublish a survey model.
+	 * If publish is successful, the browser will be redirected to the 'index' page.
+	 * @param integer $id the ID of the model to be updated
+	 */
+	public function actionUnpublish($id)
+	{
+		$model=$this->loadModel($id);
+
+                $model->is_published = 0;
+                $model->save();
+
+                $this->redirect(array('index'));
+	}            
+        
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -97,7 +136,7 @@ class SurveyController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
 	/**
@@ -119,6 +158,7 @@ class SurveyController extends Controller
 			'published_dataProvider'=>$published_dataProvider,
 			'unPublished_dataProvider'=>$unPublished_dataProvider,
 		));
+                
 	}
 
 	/**
