@@ -23,11 +23,11 @@
 
 	<div id="header">
 		<div class="content-area">			
-			<div id="logo-container"><img id="headerLogo" src="http://localhost/static/img/logo.png"></div>
+			<div id="logo-container"><img id="headerLogo" src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/logo.png"></div>
 		
 		
 			<div id="logout">
-                            <?Yii::app()->user->name?><a href="<?= $this->createUrl('/logout')?>">Logout</a>
+                            <?php echo Yii::app()->user->name?><a href="<?php echo $this->createUrl('/logout')?>">Logout</a>
 			</div><!-- logout -->
 		
 		</div>

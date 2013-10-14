@@ -16,7 +16,7 @@
 	<p>
             <?php
                 $this->widget('zii.widgets.CListView', array(
-                        'dataProvider'=>$dataProvider,
+                        'dataProvider'=>$published_dataProvider,
                         'itemView'=>'_view',
                 )); 
             ?>
@@ -29,7 +29,7 @@
 	<p>
             <?php
                 $this->widget('zii.widgets.CListView', array(
-                        'dataProvider'=>$dataProvider,
+                        'dataProvider'=>$unPublished_dataProvider,
                         'itemView'=>'_view',
                 )); 
             ?>
