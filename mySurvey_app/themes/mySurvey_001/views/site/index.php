@@ -6,6 +6,13 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
+
+<?php
+/* Redirect to survey index if the user is logged in. */
+if (Yii::app()->user->id) {
+  $this->redirect(array('/survey'));
+}?>
+
 <div id="top-half">
 
 	<h1>Design. Collect. Analyze.</h1>

@@ -25,30 +25,6 @@
 		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'title'); ?>
 	</div>
-        
-	<div class="row">
-		<?php echo $form->labelEx($model,'url'); ?>
-		<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>80)); ?>
-		<?php echo $form->error($model,'url'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'created'); ?>
-		<?php echo $form->textField($model,'created'); ?>
-		<?php echo $form->error($model,'created'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'survey_creator_ID'); ?>
-		<?php echo $form->textField($model,'survey_creator_ID'); ?>
-		<?php echo $form->error($model,'survey_creator_ID'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_published'); ?>
-		<?php echo $form->textField($model,'is_published',array('size'=>1,'maxlength'=>1)); ?>
-		<?php echo $form->error($model,'is_published'); ?>
-	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
