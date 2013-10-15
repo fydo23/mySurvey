@@ -13,9 +13,11 @@ $(document).ready(function(){
    
    //-------------------- Default Hompage with Login & Register Buttons --------------------//
    
-   $('#login-logout').show();
    $('#login').hide();
    $('#register').hide();
+   if($('#register,#login').filter('[data-visible="True"]').show().length){
+       $('#login-logout').hide();
+   }    
    
    
 

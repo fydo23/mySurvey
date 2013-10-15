@@ -1,5 +1,5 @@
 <?php Yii::app()->controller->layout = 'home'?> 
-
+<?php $action = Yii::app()->controller->action->id ?>
 <?php
 /* @var $this SiteController */
 
@@ -20,14 +20,14 @@ if (Yii::app()->user->id) {
 	<p>MySurvey is a web application that allows you to create, share and analyze online surveys.</p>
 
 	<div id="login-logout">
-        <a id="register-link" class="button">Sign up</a>
-        <p>or <a id="sign-in">Sign in</a></p>
+                <a id="register-link" class="button">Sign up</a>
+                <p>or <a id="sign-in">Sign in</a></p>
 	</div>
 
 
 
 
-	<div id="login" class="modal">
+	<div id="login" class="modal" <?php if($action=='login')echo 'data-visible="True"' ?>>
   		<div class="form">
         	<?php $form=$this->beginWidget('CActiveForm', array(
                 'action'=>Yii::app()->request->baseUrl . '/login',
@@ -70,7 +70,7 @@ if (Yii::app()->user->id) {
 	</div>
     
     
-	<div id="register" class="modal">
+	<div id="register" class="modal" <?php if($action=='register')echo 'data-visible="True"' ?>>
 
    		<div class="form">
 
