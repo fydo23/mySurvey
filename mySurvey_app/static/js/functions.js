@@ -19,7 +19,7 @@ $(document).ready(function(){
        $('#login-logout').hide();
    }    
    
-   
+   $('.errorMessage:visible').closest('.row').addClass('error');
 
 
    //-------------------- Show/Hide Login --------------------//
