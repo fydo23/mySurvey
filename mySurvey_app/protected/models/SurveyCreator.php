@@ -39,7 +39,7 @@ class SurveyCreator extends Model
                         array('email', 'unique'),
 			array('level', 'numerical', 'integerOnly'=>true),
                         array('email','email'),
-                        array('password','length','min' => 8,'tooShort'=>Yii::t("translation", "{attribute} is too short (8 characters min.).")),
+                        array('password','length','min' => 8,'tooShort'=>'{attribute} is too short ({min} characters min.).'),
 			array('email, password, first_name, last_name', 'length', 'max'=>45),
                         //registration scenario validation
                         array('email', 'unique','on'=>'register'), 
