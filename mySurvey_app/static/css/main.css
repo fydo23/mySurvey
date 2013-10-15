@@ -1,19 +1,38 @@
+/*
+	Main CSS Stylesheet for MySurvey Project
+	Boston University MET CS673
+	Software Engineering
+	Fall 2013
+*/
+
+
 body
 {
 	margin: 0;
 	padding: 0;
 	color: #555;
-	font: normal 13pt Helvetica, Arial, sans-serif;
+	font-family: 'Open Sans', Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
 	background: #222;
 }
 
 #page
 {
-	background: #fff;
+	/*background: transparent url("/static/img/hp-background.jpg") no-repeat 0 0;*/
+	background: url("/static/img/hp-background.jpg") no-repeat 50% 0 fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 100%;
+	left: 0;
 }
 
+h1 {font-size: 26px;}
 
-.button {
+.button,
+input[type="submit"] {
 	width: 208px;
 	height: 18px;
 	display: inline-block;
@@ -40,6 +59,24 @@ body
 	-moz-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
 }
 
+.button:hover,
+input[type="submit"]:hover {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#1e73b9");
+	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#1e73b9));
+	background: -moz-linear-gradient(top, #37a3eb, #1e73b9);
+}
+
+a {
+	cursor: pointer;
+	color: #fff;
+	text-decoration: underline;
+	font-weight: 400;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
 
 
 #sidebar
@@ -57,6 +94,10 @@ body
 	color: #fff;
 	clear: both;
 	min-height: 60px;
+}
+
+#footer p {
+	color: #fff;
 }
 
 #logo
@@ -420,7 +461,7 @@ p.placeholder {
 /* PAGE TEMPLATE */
 
 #header {
-	background: #e3e3e3;
+	/*background: #e3e3e3;*/
 	height: 65px;
 }
 
@@ -492,16 +533,17 @@ p.placeholder {
 
 
 
-
-/* HOMEPAGE */
+/* -------------------------- */
+/* -------- HOMEPAGE -------- */
+/* -------------------------- */
 
 #home #header
 {
 	margin: 0 auto;
 	padding: 0;
 	width: 980px;
-	background: transparent;
 	height: auto;
+	color: transparent;
 }
 
 #home #content
@@ -513,13 +555,20 @@ p.placeholder {
 	float: none;
 }
 
-h1 {font-size: 26px;}
-p {
-	font-size: 14px;
+#home h1 {
+	font-family: "Open Sans";
+	text-transform: uppercase;
+	font-size: 20px;
+	color: #fff;
+}
+
+#home p {
+	font-size: 15px;
 	font-weight: lighter;
-	width: 65%;
+	width: 46%;
 	margin: 0 auto;
-	line-height: 21px;
+	line-height: 22px;
+	color: #d5f1f9;
 }
 
 .makeCenter {
@@ -546,9 +595,110 @@ p {
 	text-decoration: none;
 }
 
+#top-half {
+	padding-bottom: 50px;
+}
+
+#login,
+#register {
+	padding-top: 35px;	
+}
+
+input[type="submit"] {
+	cursor: pointer;
+	padding-bottom: 30px;
+	margin-top: 25px;
+	margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: 0 0 0 #000,inset 0px 3px 3px #eee;
+	-webkit-box-shadow: 0 0 0 #000,inset 0px 3px 3px #eee;
+	box-shadow: 0 0 0 #000,inset 0px 3px 3px #eee;
+	/*border: 1px solid #bfbfbf;*/
+	border: 1px solid #6eb4cd;
+	padding: 5px;
+	margin-bottom: 5px;
+	
+	font-family: "Open Sans", Helvetica, sans-serif;
+	font-size: 13px;
+	color: #444;
+	font-weight: normal;
+	
+	width: 204px;
+
+}
+
+.rememberMe {
+	color: #fff;
+	padding-top: 15px;
+}
+
+.errorMessage {
+	text-align: left;
+	width: auto;
+	margin: 0 auto;
+	padding-bottom: 15px;
+	
+	background: #eed3d7;
+	color: #a21636;
+	float: left;
+	padding: 5px 15px;
+	margin-top: 3px;
+	
+	font-size: 12px;
+}
+
+
+.error {
+	margin: 0 auto;
+	width: 500px;
+	padding-left: 285px;
+}
+
+.error .arrow-left {
+	display: inline-block;
+	width: 0; 
+	height: 0; 
+	border-top: 14px solid transparent;
+	border-bottom: 14px solid transparent; 
+	
+	border-right:8px solid #eed3d7;
+	
+	float: left;
+	margin-left: 10px;
+	margin-top: 3px;
+}
+
+
+
+.error input[type="text"],
+.error input[type="password"] {
+	border: 1px solid #a73a35;
+	float: left;
+}
+
+.row {
+	clear: both;
+}
+
+
+
+
+
+/* -------- Homepage: Learn More -------- */
 
 #learn-more {
 	border-bottom: 2px dotted #666;
+	position: absolute;
+	bottom: 30px;
+	width: 980px;
 }
 
 #learn-more p {margin-bottom: 15px;}
