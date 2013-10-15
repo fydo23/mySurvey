@@ -2,6 +2,36 @@
 
 class SiteController extends Controller
 {
+
+	/**
+	 * @return array action filters
+	 */
+	public function filters()
+	{
+		return array(
+			'accessControl', // perform access control for CRUD operations
+		);
+	}
+
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
+	public function accessRules()
+	{
+		return array(
+                        array('allow',
+                                'actions'=>array('index', 'register', 'login'),
+                                'users'=>array('?'),
+                        ),
+			array('deny',
+				'users'=>array('?'),
+			),
+		);
+	}
+        
+        
 	/**
 	 * Declares class-based actions.
 	 */
@@ -98,7 +128,7 @@ class SiteController extends Controller
 			$loginForm->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($loginForm->validate() && $loginForm->login())
-				$this->redirect('/survey');
+				$this->redirect(Yii::app()->request->baseUrl . '/survey');
 		}
                 $this->render('index',array(
                     'loginForm'=>$loginForm, 
@@ -128,7 +158,7 @@ class SiteController extends Controller
                                 $identity = new UserIdentity($_POST['SurveyCreator']['email'], $_POST['SurveyCreator']['password']);
                                 $identity->authenticate();
                                 yii::app()->user->login($identity);
-				$this->redirect('/survey');
+				$this->redirect(Yii::app()->request->baseUrl . '/survey');
 			}
 		}
                 $this->render('index',array(

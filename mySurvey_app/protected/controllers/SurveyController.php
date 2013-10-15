@@ -22,20 +22,8 @@ class SurveyController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
+			array('deny', 
+                            'users'=>array('?'),
 			),
 		);
 	}
@@ -62,11 +50,20 @@ class SurveyController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
+                $survey_creator = SurveyCreator::model()->findByAttributes(
+                        array('email'=> Yii::app()->user->id)
+                );
+                    
+                //we need to remove url from the survey model
+                $model->url = '/survey/take/id' ;
+                $model->survey_creator_ID = $survey_creator->id;
+                $model->is_published = 0;
+                $model->created = (new DateTime('NOW'))->format('c');
 		if(isset($_POST['Survey']))
 		{
 			$model->attributes=$_POST['Survey'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -90,14 +87,44 @@ class SurveyController extends Controller
 		{
 			$model->attributes=$_POST['Survey'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
+        
+	/**
+	 * Publish a survey model.
+	 * If publish is successful, the browser will be redirected to the 'index' page.
+	 * @param integer $id the ID of the model to be updated
+	 */
+	public function actionPublish($id)
+	{
+		$model=$this->loadModel($id);
 
+                $model->is_published = 1;
+                $model->save();
+
+                $this->redirect(array('index'));
+	}       
+ 
+	/**
+	 * Unpublish a survey model.
+	 * If publish is successful, the browser will be redirected to the 'index' page.
+	 * @param integer $id the ID of the model to be updated
+	 */
+	public function actionUnpublish($id)
+	{
+		$model=$this->loadModel($id);
+
+                $model->is_published = 0;
+                $model->save();
+
+                $this->redirect(array('index'));
+	}            
+        
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -109,7 +136,7 @@ class SurveyController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
 	/**
@@ -117,10 +144,21 @@ class SurveyController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Survey');
+                $survey_creator = SurveyCreator::model()->findByAttributes(
+                        array('email'=> Yii::app()->user->id)
+                );
+
+                $published_dataProvider=new CActiveDataProvider('Survey');
+                $published_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 1 AND survey_creator_ID = '.($survey_creator->id))));
+
+                $unPublished_dataProvider=new CActiveDataProvider('Survey');
+                $unPublished_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 0 AND survey_creator_ID = '.($survey_creator->id))));
+                
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'published_dataProvider'=>$published_dataProvider,
+			'unPublished_dataProvider'=>$unPublished_dataProvider,
 		));
+                
 	}
 
 	/**

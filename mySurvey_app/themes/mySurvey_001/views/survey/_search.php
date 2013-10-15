@@ -12,18 +12,23 @@
 )); ?>
 
 	<div class="row">
+		<?php echo $form->label($model,'title'); ?>
+		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'id'); ?>
 		<?php echo $form->textField($model,'id'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'survey_URL'); ?>
-		<?php echo $form->textField($model,'survey_URL',array('size'=>60,'maxlength'=>80)); ?>
+		<?php echo $form->label($model,'url'); ?>
+		<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>80)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'survey_date_time_created'); ?>
-		<?php echo $form->textField($model,'survey_date_time_created'); ?>
+		<?php echo $form->label($model,'created'); ?>
+		<?php echo $form->textField($model,'created'); ?>
 	</div>
 
 	<div class="row">
@@ -32,13 +37,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'survey_publish_status'); ?>
-		<?php echo $form->textField($model,'survey_publish_status',array('size'=>1,'maxlength'=>1)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'survey_publish_date_time'); ?>
-		<?php echo $form->textField($model,'survey_publish_date_time'); ?>
+		<?php echo $form->label($model,'is_published'); ?>
+		<?php echo $form->textField($model,'is_published',array('size'=>1,'maxlength'=>1)); ?>
 	</div>
 
 	<div class="row buttons">
