@@ -83,6 +83,14 @@ class SurveyController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
+                $survey_creator = SurveyCreator::model()->findByAttributes(
+                        array('email'=> Yii::app()->user->id)
+                );
+
+                $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
+                $questions_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'survey_ID = ' . $model->id)));
+                
+                                
 		if(isset($_POST['Survey']))
 		{
 			$model->attributes=$_POST['Survey'];
@@ -92,6 +100,7 @@ class SurveyController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+                        'questions_dataProvider'=>$questions_dataProvider,
 		));
 	}
         

@@ -28,8 +28,29 @@
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+                <input type="button" onclick="window.location='<?php echo Yii::app()->request->baseUrl; ?>/survey';" value="Cancel" />
+	</div>   
+        <h4>Questions</h4>
+        <div>
+            <ul>
+                <?php if(isset($questions_dataProvider)) { ?>
+                    <?php foreach($questions_dataProvider->getData() as $record) { ?>
+                       <li>
+                           <?php echo $record->survey_question_number ?>: 
+                           <?php echo $record->text ?>
+                           <a href="<?php echo Yii::app()->request->baseUrl . '/question/update/' . $record->id; ?>">Edit</a>
+                           <a href="<?php echo Yii::app()->request->baseUrl . '/question/delete/' . $record->id; ?>">Delete</a>
+                       </li>
+                    <?php } ?>   
+                <?php } ?>
+            </ul>
+            <?php if (isset($model->id)) { ?>
+                <div class="row buttons">
+                    <?php echo CHtml::link('Add new question',array('/question/create/' . $model->id)); ?>
+                </div>
+            <?php } ?> 
 	</div>
-
+        
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

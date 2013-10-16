@@ -1,6 +1,6 @@
 <?php
 
-class SurveyQuestionController extends Controller
+class QuestionController extends Controller
 {
 	/**
 	 * @return array action filters
@@ -8,8 +8,8 @@ class SurveyQuestionController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'accessControl', // perform access control for CRUD operations
+			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -54,7 +54,7 @@ class SurveyQuestionController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id)
 	{
 		$model=new SurveyQuestion;
 
@@ -64,8 +64,10 @@ class SurveyQuestionController extends Controller
 		if(isset($_POST['SurveyQuestion']))
 		{
 			$model->attributes=$_POST['SurveyQuestion'];
+                        $model->survey_ID = $id;
+                        $model->survey_question_type = 1;
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('survey/update/' . $model->survey_ID));
 		}
 
 		$this->render('create',array(
@@ -89,7 +91,7 @@ class SurveyQuestionController extends Controller
 		{
 			$model->attributes=$_POST['SurveyQuestion'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('survey/update/' . $model->survey_ID));
 		}
 
 		$this->render('update',array(
@@ -104,11 +106,10 @@ class SurveyQuestionController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		$model = $this->loadModel($id);
+                $model->delete();
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+                $this->redirect(array('survey/update/' . $model->survey_ID));
 	}
 
 	/**

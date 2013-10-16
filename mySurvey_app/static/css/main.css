@@ -20,7 +20,7 @@ body
 #page
 {
 	/*background: transparent url("/static/img/hp-background.jpg") no-repeat 0 0;*/
-	background: url("/static/img/hp-background.jpg") no-repeat 50% 0 fixed;
+	background: url(../img/hp-background.jpg) no-repeat 50% 0 fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
