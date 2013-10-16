@@ -12,8 +12,12 @@ class SurveyCreatorTest extends CDbTestCase{
 			'last_name'=>'testLast',
 			'level'=>0,
 		));
+		
 		//asserts the insert is success, and can be retrieved
 		$this->assertTrue($surveyCreator->save());
+		
+		//Access static member model(), get the AR instance of a specific row
+		//Assert the row is not null
 		$this->assertNotNull($surveyCreator::model()->findByAttributes(array('email'=>$surveyCreator->email,'password'=>$surveyCreator->password)));
 	}
 	public function testUpdate(){
