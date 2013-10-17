@@ -54,7 +54,7 @@ class QuestionController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($id)
+	public function actionCreate($survey_id)
 	{
 		$model=new SurveyQuestion;
 
@@ -64,7 +64,7 @@ class QuestionController extends Controller
 		if(isset($_POST['SurveyQuestion']))
 		{
 			$model->attributes=$_POST['SurveyQuestion'];
-                        $model->survey_ID = $id;
+                        $model->survey_ID = $survey_id;
                         $model->type = 1;
 			if($model->save())
 				$this->redirect(array('survey/update/' . $model->survey_ID));
