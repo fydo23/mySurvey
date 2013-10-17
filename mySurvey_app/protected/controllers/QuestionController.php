@@ -1,6 +1,6 @@
 <?php
 
-class SurveyQuestionController extends Controller
+class QuestionController extends Controller
 {
 	/**
 	 * @return array action filters
