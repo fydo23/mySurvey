@@ -35,7 +35,7 @@ class Survey extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('url, created, survey_creator_ID', 'required'),
+			array('url, created, survey_creator_ID, title', 'required'),
 			array('survey_creator_ID, is_published', 'numerical', 'integerOnly'=>true),
 			array('url', 'length', 'max'=>80),
 			array('title', 'length', 'max'=>100),

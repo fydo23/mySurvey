@@ -65,7 +65,7 @@ class QuestionController extends Controller
 		{
 			$model->attributes=$_POST['SurveyQuestion'];
                         $model->survey_ID = $id;
-                        $model->survey_question_type = 1;
+                        $model->type = 1;
 			if($model->save())
 				$this->redirect(array('survey/update/' . $model->survey_ID));
 		}
