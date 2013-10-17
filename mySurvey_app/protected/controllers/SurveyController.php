@@ -10,7 +10,6 @@ class SurveyController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -83,6 +82,14 @@ class SurveyController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
+                $survey_creator = SurveyCreator::model()->findByAttributes(
+                        array('email'=> Yii::app()->user->id)
+                );
+
+                $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
+                $questions_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'survey_ID = ' . $model->id)));
+                
+                                
 		if(isset($_POST['Survey']))
 		{
 			$model->attributes=$_POST['Survey'];
@@ -92,6 +99,7 @@ class SurveyController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+                        'questions_dataProvider'=>$questions_dataProvider,
 		));
 	}
         
@@ -133,10 +141,7 @@ class SurveyController extends Controller
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+                $this->redirect('/survey');
 	}
 
 	/**

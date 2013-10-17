@@ -10,6 +10,7 @@
  * @property integer $survey_question_type
  * @property string $survey_question_answer_required
  * @property string $survey_question_default_next_link
+ * @property string $text 
  *
  * The followings are the available model relations:
  * @property SurveyAnswer[] $surveyAnswers
@@ -38,9 +39,10 @@ class SurveyQuestion extends CActiveRecord
 			array('survey_ID, survey_question_number, survey_question_type', 'numerical', 'integerOnly'=>true),
 			array('survey_question_answer_required', 'length', 'max'=>1),
 			array('survey_question_default_next_link', 'length', 'max'=>80),
+                        array('text', 'length', 'max'=>1000),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, survey_ID, survey_question_number, survey_question_type, survey_question_answer_required, survey_question_default_next_link', 'safe', 'on'=>'search'),
+			array('id, survey_ID, survey_question_number, survey_question_type, survey_question_answer_required, survey_question_default_next_link, text', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,6 +72,7 @@ class SurveyQuestion extends CActiveRecord
 			'survey_question_type' => 'Survey Question Type',
 			'survey_question_answer_required' => 'Survey Question Answer Required',
 			'survey_question_default_next_link' => 'Survey Question Default Next Link',
+                        'text' => 'Text',
 		);
 	}
 
@@ -97,7 +100,8 @@ class SurveyQuestion extends CActiveRecord
 		$criteria->compare('survey_question_type',$this->survey_question_type);
 		$criteria->compare('survey_question_answer_required',$this->survey_question_answer_required,true);
 		$criteria->compare('survey_question_default_next_link',$this->survey_question_default_next_link,true);
-
+                $criteria->compare('text',$this->text,true);
+                
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
