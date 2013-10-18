@@ -20,7 +20,7 @@ body
 #page
 {
 	/*background: transparent url("/static/img/hp-background.jpg") no-repeat 0 0;*/
-	background: url("/static/img/hp-background.jpg") no-repeat 50% 0 fixed;
+	background: url(../img/hp-background.jpg) no-repeat 50% 0 fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -29,7 +29,13 @@ body
 	left: 0;
 }
 
-h1 {font-size: 26px;}
+
+
+h1 {
+	font-weight: 200;
+	font-size: 40px;
+	margin-top: 10px;
+}
 
 .button,
 input[type="submit"] {
@@ -128,7 +134,7 @@ a:hover {
 
 #mainmenu ul li a
 {
-	color:#666;
+	color:#6cb3cc;
 	background-color:transparent;
 	font-size:12px;
 	font-weight:bold;
@@ -297,16 +303,29 @@ div.search-form
 
 #new {
 	padding-left: 13px;
-	padding-top: 15px;
+}
+
+#published,
+#unpublished {
+	background: #f1f1f1;
+	padding: 20px;
+	margin-left: 20px;
+	margin-top: 40px;
+	border: 2px solid #c8e2ea;
+}
+
+#unpublished {
+	margin-bottom: 50px;
 }
 
 #published h2,
 #unpublished h2 {
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	font-size: 13px;
-	margin: 55px 0px 20px 15px;
-	background: #e3e3e3;
-	padding: 10px 15px;
+	margin: 0 0 15px;
+	color: #666;
+	/*background: #e3e3e3;
+	padding: 10px 15px;*/
 }
 
 #published p,
@@ -316,7 +335,44 @@ div.search-form
 }
 
 
+
+.survey-lists {
+	margin: 0 0 5px;
+	-webkit-padding-start: 0;
+}
+
+.survey-lists li {
+	background: #6eb4cd;
+	padding: 10px 15px;
+	list-style: none;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin-bottom: 7px;
+}
+
+.survey-lists li a {
+	float: right;
+	padding-left: 10px;
+	text-decoration: none;
+	font-size: 12px;
+	text-transform: none;
+	font-weight: 400;
+	color: #F0F8FF;
+}
+
+.survey-lists li a:hover {
+	text-decoration: underline;
+	color: #fff;
+}
+
+
 /* SURVEY EDITOR */
+
+.note {
+	color: #a5a5a5;
+}
+
 #toolbar {
 	background: #666;
 	color: #fff;
@@ -461,7 +517,7 @@ p.placeholder {
 /* PAGE TEMPLATE */
 
 #header {
-	/*background: #e3e3e3;*/
+	background: #568c9e;
 	height: 65px;
 }
 
@@ -476,7 +532,7 @@ p.placeholder {
 }
 
 #content {
-	width: 75%;
+	width: 77%;
 	margin: 0 auto;
 	text-align: left;
 	float: left;
@@ -490,7 +546,7 @@ p.placeholder {
 }
 
 .content-area #content {
-	border-left: 1px solid #e3e3e3;
+	/*border-left: 1px solid #e3e3e3;*/
 	padding-left: 30px;
 	margin-top: 20px;
 }
@@ -506,9 +562,11 @@ p.placeholder {
 }
 
 #logout {
-	width: 135px;
+	width: auto;
 	position: relative;
 	float: right;
+	margin-top: 25px;
+	color: #fff;
 }
 
 #logout ul {
@@ -517,18 +575,19 @@ p.placeholder {
 
 
 #logout a {
-	background: #666;
+	background: #005a82;
 	color: #fff;
 	text-decoration: none;
 	padding: 8px 20px;
-	font-size: 13px;
+	font-size: 12px;
 	border-radius: 10px;
 	font-weight: 700;
-	border: 2px solid #fff;
+	border: 2px solid #c8e2ea;
+	margin-left: 15px;
 }
 
 #logout a:hover {
-	background: #2c8ed1;
+	background: #0079af;
 }
 
 
@@ -537,13 +596,25 @@ p.placeholder {
 /* -------- HOMEPAGE -------- */
 /* -------------------------- */
 
+#home #page
+{
+	background: url("/static/img/hp-background.jpg") no-repeat 50% 0 fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 100%;
+	left: 0;
+}
+
+
 #home #header
 {
 	margin: 0 auto;
 	padding: 0;
 	width: 980px;
 	height: auto;
-	color: transparent;
+	background: transparent;
 }
 
 #home #content
@@ -560,6 +631,7 @@ p.placeholder {
 	text-transform: uppercase;
 	font-size: 20px;
 	color: #fff;
+	font-weight: 700;
 }
 
 #home p {
@@ -657,9 +729,7 @@ input[type="password"] {
 
 
 .error {
-	margin: 0 auto;
-	width: 500px;
-	padding-left: 285px;
+	padding-left: 382px;
 }
 
 .error .arrow-left {

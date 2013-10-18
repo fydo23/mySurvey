@@ -2,11 +2,6 @@
 /* @var $this SurveyController */
 /* @var $model Survey */
 
-$this->breadcrumbs=array(
-	'Surveys'=>array('index'),
-	$model->id,
-);
-
 $this->menu=array(
 	array('label'=>'List Survey', 'url'=>array('index')),
 	array('label'=>'Create Survey', 'url'=>array('create')),
