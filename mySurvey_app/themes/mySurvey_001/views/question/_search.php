@@ -22,23 +22,18 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'survey_question_number'); ?>
-		<?php echo $form->textField($model,'survey_question_number'); ?>
+		<?php echo $form->label($model,'order_number'); ?>
+		<?php echo $form->textField($model,'order_number'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'survey_question_type'); ?>
-		<?php echo $form->textField($model,'survey_question_type'); ?>
+		<?php echo $form->label($model,'type'); ?>
+		<?php echo $form->textField($model,'type'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'survey_question_answer_required'); ?>
-		<?php echo $form->textField($model,'survey_question_answer_required',array('size'=>1,'maxlength'=>1)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'survey_question_default_next_link'); ?>
-		<?php echo $form->textField($model,'survey_question_default_next_link',array('size'=>60,'maxlength'=>80)); ?>
+		<?php echo $form->label($model,'text'); ?>
+		<?php echo $form->textField($model,'text',array('size'=>60,'maxlength'=>1000)); ?>
 	</div>
 
 	<div class="row buttons">
