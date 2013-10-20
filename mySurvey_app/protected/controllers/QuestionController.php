@@ -57,7 +57,7 @@ class QuestionController extends Controller
 	public function actionCreate($survey_id)
 	{
 		$model=new SurveyQuestion();
-
+                
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -66,7 +66,7 @@ class QuestionController extends Controller
 			$model->attributes=$_POST['SurveyQuestion'];
                         $model->survey_ID = $survey_id;
                         $model->type = 1;
-                        $model->order_number = count(SurveyQuestion::model()->findByAttributes(array('survey_ID'=>$survey_id)));
+                        $model->order_number = count(SurveyQuestion::model()->findAllByAttributes(array('survey_ID'=>$survey_id)));
 			if($model->validate() && $model->save())
 				$this->redirect(array('survey/update/' . $model->survey_ID));
 		}
