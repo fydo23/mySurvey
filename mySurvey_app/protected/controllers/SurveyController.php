@@ -87,7 +87,11 @@ class SurveyController extends Controller
                 );
 
                 $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
-                $questions_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'survey_ID = ' . $model->id)));
+                $questions_criteria = new CDbCriteria(array(
+                    'condition'=>'survey_ID = ' . $model->id,
+                    'order'=>'order_number'
+                ));
+                $questions_dataProvider->setCriteria($questions_criteria);
                 
                                 
 		if(isset($_POST['Survey']))
@@ -165,6 +169,17 @@ class SurveyController extends Controller
 		));
                 
 	}
+        
+        public function actionReorderQuestions($survey_id){
+            $questions = SurveyQuestion::model()->findAllByAttributes(array('survey_ID'=>$survey_id));
+            if($questions){
+                foreach($questions as $idx => $question){
+                    $question->setAttribute('order_number', $_POST['SurveyQuestion'][$question->id]['order_number']);
+                    $question->save();
+                }
+            }
+        }
+        
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
