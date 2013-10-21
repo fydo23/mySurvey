@@ -19,44 +19,20 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-<!--	<div class="row">
-		<?php echo $form->labelEx($model,'survey_ID'); ?>
-		<?php echo $form->textField($model,'survey_ID'); ?>
-		<?php echo $form->error($model,'survey_ID'); ?>
-	</div>-->
+	<div class="row">
+		<?php echo $form->labelEx($model,'order_number'); ?>
+		<?php echo $form->textField($model,'order_number'); ?>
+		<?php echo $form->error($model,'order_number'); ?>
+	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'survey_question_number'); ?>
-		<?php echo $form->textField($model,'survey_question_number'); ?>
-		<?php echo $form->error($model,'survey_question_number'); ?>
-	</div>
-
-        <div class="row">
 		<?php echo $form->labelEx($model,'text'); ?>
-		<?php echo $form->textField($model,'text'); ?>
+		<?php echo $form->textField($model,'text',array('size'=>60,'maxlength'=>1000)); ?>
 		<?php echo $form->error($model,'text'); ?>
 	</div>
-<!--	<div class="row">
-		<?php echo $form->labelEx($model,'survey_question_type'); ?>
-		<?php echo $form->textField($model,'survey_question_type'); ?>
-		<?php echo $form->error($model,'survey_question_type'); ?>
-	</div>-->
-
-<!--	<div class="row">
-		<?php echo $form->labelEx($model,'survey_question_answer_required'); ?>
-		<?php echo $form->textField($model,'survey_question_answer_required',array('size'=>1,'maxlength'=>1)); ?>
-		<?php echo $form->error($model,'survey_question_answer_required'); ?>
-	</div>-->
-
-<!--	<div class="row">
-		<?php echo $form->labelEx($model,'survey_question_default_next_link'); ?>
-		<?php echo $form->textField($model,'survey_question_default_next_link',array('size'=>60,'maxlength'=>80)); ?>
-		<?php echo $form->error($model,'survey_question_default_next_link'); ?>
-	</div>-->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-                <input type="button" onclick="window.location='<?php echo Yii::app()->request->baseUrl; ?>/survey';" value="Cancel" />
 	</div>
 
 <?php $this->endWidget(); ?>

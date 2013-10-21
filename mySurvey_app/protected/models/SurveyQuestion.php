@@ -6,11 +6,9 @@
  * The followings are the available columns in table 'survey_question':
  * @property integer $id
  * @property integer $survey_ID
- * @property integer $survey_question_number
- * @property integer $survey_question_type
- * @property string $survey_question_answer_required
- * @property string $survey_question_default_next_link
- * @property string $text 
+ * @property integer $order_number
+ * @property integer $type
+ * @property string $text
  *
  * The followings are the available model relations:
  * @property SurveyAnswer[] $surveyAnswers
@@ -35,14 +33,12 @@ class SurveyQuestion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('survey_ID, survey_question_number, survey_question_type', 'required'),
-			array('survey_ID, survey_question_number, survey_question_type', 'numerical', 'integerOnly'=>true),
-			array('survey_question_answer_required', 'length', 'max'=>1),
-			array('survey_question_default_next_link', 'length', 'max'=>80),
-                        array('text', 'length', 'max'=>1000),
+			array('survey_ID, order_number, type, text', 'required'),
+			array('survey_ID, order_number, type', 'numerical', 'integerOnly'=>true),
+			array('text', 'length', 'max'=>1000),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, survey_ID, survey_question_number, survey_question_type, survey_question_answer_required, survey_question_default_next_link, text', 'safe', 'on'=>'search'),
+			array('id, survey_ID, order_number, type, text', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,11 +64,9 @@ class SurveyQuestion extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'survey_ID' => 'Survey',
-			'survey_question_number' => 'Survey Question Number',
-			'survey_question_type' => 'Survey Question Type',
-			'survey_question_answer_required' => 'Survey Question Answer Required',
-			'survey_question_default_next_link' => 'Survey Question Default Next Link',
-                        'text' => 'Text',
+			'order_number' => 'Order Number',
+			'type' => 'Type',
+			'text' => 'Text',
 		);
 	}
 
@@ -96,12 +90,10 @@ class SurveyQuestion extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('survey_ID',$this->survey_ID);
-		$criteria->compare('survey_question_number',$this->survey_question_number);
-		$criteria->compare('survey_question_type',$this->survey_question_type);
-		$criteria->compare('survey_question_answer_required',$this->survey_question_answer_required,true);
-		$criteria->compare('survey_question_default_next_link',$this->survey_question_default_next_link,true);
-                $criteria->compare('text',$this->text,true);
-                
+		$criteria->compare('order_number',$this->order_number);
+		$criteria->compare('type',$this->type);
+		$criteria->compare('text',$this->text,true);
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

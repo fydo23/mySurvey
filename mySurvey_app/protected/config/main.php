@@ -21,12 +21,6 @@ $shared_config = array(
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-//		'gii'=>array(
-//			'class'=>'system.gii.GiiModule',
-//			'password'=>'Enter Your Password Here',
-//			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-//			'ipFilters'=>array('127.0.0.1','::1'),
-//		),
 	),
 
 	// application components
@@ -40,7 +34,12 @@ $shared_config = array(
 			'urlFormat'=>'path',
                         'showScriptName'=>false,
                         'caseSensitive'=>false,
-			'rules'=>array(
+                        'rules'=>array(
+                                //gii specific rules.
+                                'gii'=>'gii',
+                                'gii/<controller:\w+>'=>'gii/<controller>',
+                                'gii/<controller:\w+>/<action:\w+>'=>'gii/<controller>/<action>',
+                                //site specific rules.
                                 '/'=>'site/index',
                                 '<action:(login|logout|register|home)>'=>'site/<action>',
                                 '<page:(reports|settings)>'=>'site/view/page/<page>',

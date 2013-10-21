@@ -57,7 +57,7 @@ class SurveyController extends Controller
                 $model->url = '/survey/take/id' ;
                 $model->survey_creator_ID = $survey_creator->id;
                 $model->is_published = 0;
-                $model->created = (new DateTime('NOW'))->format('c');
+                $model->created = new CDbExpression('NOW()');
 		if(isset($_POST['Survey']))
 		{
 			$model->attributes=$_POST['Survey'];

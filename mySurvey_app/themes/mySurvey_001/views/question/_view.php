@@ -13,20 +13,16 @@
 	<?php echo CHtml::encode($data->survey_ID); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('survey_question_number')); ?>:</b>
-	<?php echo CHtml::encode($data->survey_question_number); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('order_number')); ?>:</b>
+	<?php echo CHtml::encode($data->order_number); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('survey_question_type')); ?>:</b>
-	<?php echo CHtml::encode($data->survey_question_type); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
+	<?php echo CHtml::encode($data->type); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('survey_question_answer_required')); ?>:</b>
-	<?php echo CHtml::encode($data->survey_question_answer_required); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('survey_question_default_next_link')); ?>:</b>
-	<?php echo CHtml::encode($data->survey_question_default_next_link); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('text')); ?>:</b>
+	<?php echo CHtml::encode($data->text); ?>
 	<br />
 
 
