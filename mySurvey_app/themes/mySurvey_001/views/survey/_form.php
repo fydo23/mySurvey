@@ -1,4 +1,6 @@
 <?php
+//This form is shared by create and update actions.
+
 /* @var $this SurveyController */
 /* @var $model Survey */
 /* @var $form CActiveForm */

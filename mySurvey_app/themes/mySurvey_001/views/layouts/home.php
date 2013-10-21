@@ -8,31 +8,33 @@
 
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/static/css/main.css" />
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/static/js/functions.js"></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
-<body>
+    <body>
 
-<div class="container" id="page">
+        <div class="container" id="page">
 
-	<div id="header">
-		<div class="makeCenter"><img id="appLogo" src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/logo-white.png"></div>
-	</div><!-- header -->
+                <div id="header">
+                        <div class="makeCenter"><img id="appLogo" src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/logo-white.png"></div>
+                </div><!-- header -->
 
-                
-        <div id="content">
-            <?php echo $content; ?>
-        </div>
-                
 
-	<div id="footer">
-		<p>Footer content tk...</p>
-	</div><!-- footer -->
+                <div id="content">
+                    <?php echo $content; ?>
+                </div>
 
-</div><!-- page -->
 
-</body>
+                <div id="footer">
+                        <p>Footer content tk...</p>
+                </div><!-- footer -->
+
+        </div><!-- page -->
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/static/js/functions.js"></script>
+        
+    </body>
 </html>
