@@ -62,7 +62,10 @@ class SurveyController extends Controller
 		{
 			$model->attributes=$_POST['Survey'];
 			if($model->save())
-				$this->redirect(array('index'));
+				$this->redirect(array(
+                                    'update',
+                                    'id'=>$model->id
+                                ));
 		}
 
 		$this->render('create',array(
