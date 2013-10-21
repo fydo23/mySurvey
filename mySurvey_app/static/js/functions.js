@@ -71,35 +71,21 @@ $(function(){
 
 
     //DRAGGABLE CONTENT
-    $('[draggable]').on({
-        drag:function(event){
-            $(this).addClass('dragging');
+    $('#sortable').sortable({
+        items: '> li',
+        start:function(event, ui){
+            $(ui.item).addClass('dragging');
         },
-        dragend:function(event){
-            $('.dragging').removeClass('dragging');
-        },    
-        drop: function(event){
-            $(this).siblings('[draggable]').andSelf().each(function(idx,elem){
+        stop:function(event, ui){
+            $(ui.item).removeClass('dragging');
+            $(ui.item).siblings().andSelf().each(function(idx,elem){
                 $(elem).find('.order_number').val(idx);
             });
-            $.post($(this).closest('form').attr('action'),$(this).closest('form').serialize());
-            return false;
-        }, 
-        dragover:function(event){
-            if($(this).prevAll('.dragging').length){
-                $(this).after($('.dragging'));
-            }else if($(this).nextAll('.dragging').length){
-                $(this).before($('.dragging'));
-            }
-            return false;
+            $.post(
+                $(ui.item).closest('form').attr('action'),
+                $(ui.item).closest('form').serialize()
+            );
         }
     });
 
 });
-
-
-    function reorder_questions(){
-        $.ajax({
-            
-        });
-    }

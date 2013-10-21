@@ -41,7 +41,6 @@
         background:#E4F5F8;
     }
 </style>
-
 <div class="form">
     <h4>Questions</h4>
     <div>
@@ -51,10 +50,10 @@
         ));
         
         ?>
-        <ul>
+        <ul id="sortable">
             <?php if(isset($questions_dataProvider)) { ?>
                 <?php foreach($questions_dataProvider->getData() as $record) { ?>
-                   <li class="question_summary" draggable="true">
+                   <li class="question_summary" >
                        <span class="text"><?php echo $record->text ?></span>
                        <input class="order_number" type="hidden" name="SurveyQuestion[<?php echo $record->id ?>][order_number]" value="<?php echo $record->order_number ?>"/>
                        <a href="<?php echo Yii::app()->request->baseUrl . '/question/delete/' . $record->id; ?>">Delete</a>
