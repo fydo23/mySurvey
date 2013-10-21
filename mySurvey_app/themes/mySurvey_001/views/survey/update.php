@@ -18,7 +18,6 @@
         /* Required to make elements draggable in old WebKit */
         -khtml-user-drag: element;
         -webkit-user-drag: element;
-        cursor: move;
     }
     .question_summary{
         height:10px;
@@ -27,6 +26,9 @@
         background:#A1DCE7;
         padding: 8px 20px;
         margin: 5px 0px;
+    }
+    #sortable li{
+        cursor: move;
     }
     .question_summary .order_number{
         float: left;
