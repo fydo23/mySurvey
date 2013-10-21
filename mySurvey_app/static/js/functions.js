@@ -71,7 +71,7 @@ $(function(){
 
 
     //DRAGGABLE CONTENT
-    $('#sortable').sortable({
+    $('ul#sortable').sortable({
         items: '> li',
         start:function(event, ui){
             $(ui.item).addClass('dragging');
