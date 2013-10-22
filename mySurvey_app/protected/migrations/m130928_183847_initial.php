@@ -19,13 +19,11 @@ class m130928_183847_initial extends CDbMigration
                     'first_name'=>'test',
                     'last_name'=>'one'
                 ));
-                return true;
 	}
 
 	public function down()
 	{
 		$this->dropTable('survey_creator');
-                return true;
 	}
 
 	/*

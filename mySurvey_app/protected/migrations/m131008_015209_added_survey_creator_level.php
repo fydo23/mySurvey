@@ -10,7 +10,6 @@ class m131008_015209_added_survey_creator_level extends CDbMigration
 	public function down()
 	{
             $this->dropColumn('survey_creator', 'level');
-            return false;
 	}
 
 	/*
