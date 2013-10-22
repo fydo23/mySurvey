@@ -20,18 +20,6 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'survey_ID'); ?>
-		<?php echo $form->textField($model,'survey_ID'); ?>
-		<?php echo $form->error($model,'survey_ID'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'survey_question_ID'); ?>
-		<?php echo $form->textField($model,'survey_question_ID'); ?>
-		<?php echo $form->error($model,'survey_question_ID'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'survey_answer_ID'); ?>
 		<?php echo $form->textField($model,'survey_answer_ID'); ?>
 		<?php echo $form->error($model,'survey_answer_ID'); ?>

@@ -17,16 +17,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'survey_ID'); ?>
-		<?php echo $form->textField($model,'survey_ID'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'survey_question_ID'); ?>
-		<?php echo $form->textField($model,'survey_question_ID'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'survey_answer_ID'); ?>
 		<?php echo $form->textField($model,'survey_answer_ID'); ?>
 	</div>
