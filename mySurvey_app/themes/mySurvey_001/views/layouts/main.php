@@ -22,9 +22,10 @@
         <div class="container" id="page">
 
                 <div id="header">
-                        <div class="content-area">			
+                        <div class="content-area">
+                        		<a href="<?php echo $this->createUrl('/survey')?>">			
                                 <div id="logo-container"><img id="headerLogo" src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/logo-white.png"></div>
-
+								</a>
 
                                 <div id="logout">
                                     <?php echo Yii::app()->user->name?><a href="<?php echo $this->createUrl('/logout')?>">Logout</a>
