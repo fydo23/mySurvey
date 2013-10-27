@@ -65,7 +65,6 @@ class QuestionController extends Controller
 		{
 			$model->attributes=$_POST['SurveyQuestion'];
                         $model->survey_ID = $survey_id;
-                        $model->type = 1;
                         $model->order_number = count(SurveyQuestion::model()->findAllByAttributes(array('survey_ID'=>$survey_id)));
 			if($model->validate() && $model->save())
 				$this->redirect(array('survey/update/' . $model->survey_ID));
