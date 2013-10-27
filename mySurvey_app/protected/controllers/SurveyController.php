@@ -148,7 +148,7 @@ class SurveyController extends Controller
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
-                $this->redirect('/survey');
+                $this->redirect(array('index'));
 	}
 
 	/**
