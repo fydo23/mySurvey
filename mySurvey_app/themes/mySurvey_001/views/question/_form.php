@@ -18,6 +18,12 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+	
+	<div class="row">
++		<?php echo $form->labelEx($model,'type'); ?>
++		<?php echo $form->dropDownList($model,'type', array(1=>'Short Answer', 2=>'Multiple Choice')); ?>
++		<?php echo $form->error($model,'type'); ?>
++	</div>
         
 	<div class="row">
 		<?php echo $form->labelEx($model,'text'); ?>
