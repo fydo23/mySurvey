@@ -86,19 +86,23 @@ class QuestionController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		if(isset($_POST['type'])){
+			$model->type=$_POST['type'];
+			$model->save();
+		}
 		if(isset($_POST['SurveyQuestion']))
 		{
 			$model->attributes=$_POST['SurveyQuestion'];
 			if($model->save())
 				$this->redirect(array('survey/update/' . $model->survey_ID));
 		}
-
 		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
-
+	public function actionUpdate2(){
+		echo 'success';
+	}
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
