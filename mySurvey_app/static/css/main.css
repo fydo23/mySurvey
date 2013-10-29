@@ -391,6 +391,7 @@ div.search-form
 
 .note {
 	color: #a5a5a5;
+	display: none;
 }
 
 #toolbar {
@@ -753,6 +754,15 @@ input[type="password"] {
 	padding-left: 382px;
 }
 
+#survey-form .error {
+	padding-left: 5px;
+	
+}
+
+.errorSummary {
+	display: none;
+}
+
 .error .arrow-left {
 	display: inline-block;
 	width: 0; 
@@ -767,6 +777,18 @@ input[type="password"] {
 	margin-top: 3px;
 }
 
+#survey-form .error .arrow-left {
+	margin-top: 0;
+}
+
+#survey-form .errorMessage {
+	margin-top: 0;
+	padding: 7px 15px;
+}
+
+#survey-form input[type="text"] {
+	float: left;
+}
 
 
 .error input[type="text"],
