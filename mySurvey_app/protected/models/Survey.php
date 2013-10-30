@@ -38,7 +38,7 @@ class Survey extends CActiveRecord
 			array('url, created, survey_creator_ID, title', 'required'),
 			array('survey_creator_ID, is_published', 'numerical', 'integerOnly'=>true),
 			array('url', 'length', 'max'=>80),
-			array('title', 'length', 'max'=>100),
+			array('title', 'length', 'min'=>6, 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, url, created, survey_creator_ID, is_published, title', 'safe', 'on'=>'search'),

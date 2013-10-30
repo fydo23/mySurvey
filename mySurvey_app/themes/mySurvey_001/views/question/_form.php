@@ -18,13 +18,7 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'order_number'); ?>
-		<?php echo $form->textField($model,'order_number'); ?>
-		<?php echo $form->error($model,'order_number'); ?>
-	</div>
-
+        
 	<div class="row">
 		<?php echo $form->labelEx($model,'text'); ?>
 		<?php echo $form->textField($model,'text',array('size'=>60,'maxlength'=>1000)); ?>
