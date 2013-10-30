@@ -5,8 +5,8 @@
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="language" content="en" />
 
-            <!-- blueprint CSS framework -->
 
+            <!--======== CSS FRAMEWORK ========-->
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/static/css/print.css" media="print" />
             <!--[if lt IE 8]>
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/static/css/ie.css" media="screen, projection" />
@@ -14,13 +14,19 @@
 
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/static/css/main.css" />
 
+
             <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     </head>
 
-    <body>
 
+	<!--======== LAYOUT MODEL FOR INTERIOR PAGES ========-->
+    <body>
+    
+    	<!--======== PAGE ========-->
         <div class="container" id="page">
 
+
+				<!--======== HEADER ========-->
                 <div id="header">
                         <div class="content-area">			
                                 <div id="logo-container"><img id="headerLogo" src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/logo-white.png"></div>
@@ -33,8 +39,12 @@
                         </div>
                 </div><!-- header -->
 
-
+				
+				<!--======== MENU + MAIN CONTENT AREA ========-->
                 <div class="content-area">
+                
+                
+                		<!--======== MENU ========-->
                         <div id="mainmenu">
                                 <?php $this->widget('zii.widgets.CMenu',array(
                                     'items'=>array(
@@ -45,18 +55,25 @@
                                 )); ?>
                         </div><!-- mainmenu -->
 
+
+				<!--======== BREADCRUMBS ========-->
                 <?php if(isset($this->breadcrumbs)):?>
                         <?php $this->widget('zii.widgets.CBreadcrumbs', array(
                                 'links'=>$this->breadcrumbs,
                         )); ?><!-- breadcrumbs -->
                 <?php endif?>
 
+
+				<!--======== CONTENT: Pulls in .php views from Site & Survey ========-->
                 <div id="content">
                     <?php echo $content; ?>
-                </div>
-            </div>          
+                </div><!-- content -->
+            
+            </div><!-- content-area -->        
 
 
+
+				<!--======== FOOTER ========-->
                 <div id="footer">
                         <p>Footer content tk...</p>
                 </div><!-- footer -->
