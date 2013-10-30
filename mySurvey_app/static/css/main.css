@@ -749,7 +749,7 @@ input[type="password"] {
 }
 
 
-.error {
+login .error, register .error{
 	padding-left: 382px;
 }
 

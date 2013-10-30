@@ -82,13 +82,12 @@ class SurveyController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model, True);
 
                 $survey_creator = SurveyCreator::model()->findByAttributes(
                         array('email'=> Yii::app()->user->id)
                 );
-
+                
                 $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
                 $questions_criteria = new CDbCriteria(array(
                     'condition'=>'survey_ID = ' . $model->id,
@@ -96,13 +95,7 @@ class SurveyController extends Controller
                 ));
                 $questions_dataProvider->setCriteria($questions_criteria);
                 
-                                
-		if(isset($_POST['Survey']))
-		{
-			$model->attributes=$_POST['Survey'];
-			if($model->save())
-				$this->redirect(array('index'));
-		}
+                  
 
 		$this->render('update',array(
 			'model'=>$model,
@@ -203,12 +196,15 @@ class SurveyController extends Controller
 	 * Performs the AJAX validation.
 	 * @param Survey $model the model to be validated
 	 */
-	protected function performAjaxValidation($model)
+	protected function performAjaxValidation($model, $save=False)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='survey-form')
 		{
 			echo CActiveForm::validate($model);
-			Yii::app()->end();
+                        if($save && !$model->hasErrors()){
+                            $model->save();
+                        }
+                        Yii::app()->end();
 		}
 	}
 }

@@ -68,8 +68,7 @@ $(function(){
     $(window).resize(function(){
             $('#top-half').css({'height':(($(window).height())-244)+'px'});    
     });
-
-
+    
     //DRAGGABLE CONTENT
     $('ul#sortable').sortable({
         items: '> li',
