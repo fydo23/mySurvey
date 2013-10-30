@@ -192,19 +192,4 @@ class SurveyController extends Controller
 		return $model;
 	}
 
-	/**
-	 * Performs the AJAX validation.
-	 * @param Survey $model the model to be validated
-	 */
-	protected function performAjaxValidation($model, $save=False)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='survey-form')
-		{
-			echo CActiveForm::validate($model);
-                        if($save && !$model->hasErrors()){
-                            $model->save();
-                        }
-                        Yii::app()->end();
-		}
-	}
 }

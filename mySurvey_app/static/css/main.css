@@ -791,19 +791,23 @@ login .error, register .error{
 	margin-top: 3px;
 }
 
-
+#survey-question-form .errorMessage,
 #survey-form .errorMessage {
 	padding: 7px 15px;
 }
 
-#survey-form .error .errorMessage, .error .arrow-left{
+#survey-question-form .error .errorMessage,
+#survey-form .error .errorMessage,
+.error .arrow-left{
         margin-top:6px;
 }
 
+#survey-question-form .success input,
 #survey-form .success input{
         border-color: green;
 }
 
+#survey-question-form input[type="text"],
 #survey-form input[type="text"] {
 	float: left;
         font-size: 23px;

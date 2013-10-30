@@ -15,4 +15,20 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+        
+	/**
+	 * Performs the AJAX validation.
+	 * @param Survey $model the model to be validated
+	 */
+	protected function performAjaxValidation($model, $save=False)
+	{
+		if(isset($_POST['ajax']) && $_POST['ajax']==='survey-form')
+		{
+			echo CActiveForm::validate($model);
+                        if($save && !$model->hasErrors()){
+                            $model->save();
+                        }
+                        Yii::app()->end();
+		}
+	}
 }
