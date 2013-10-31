@@ -15,9 +15,10 @@
 	$(function(){
 
 		$(window).on('click',function(e){
-			console.log($('.sortable .active').closest('li').find(e.target).andSelf());
-			if($('.sortable .active').closest('li').find(e.target).andSelf().filter(e.target).length){
-				$('a.edit.active').trigger('click');
+			//check if where we clicked has an parent that is active, or has an active class itself.
+			var clickedActiveQuestion = $(e.target).closest('.active').length || $(e.target).hasClass('active');
+			if(!clickedActiveQuestion){
+				$('.active a.edit').trigger('click');
 			}
 		});
 		
@@ -25,24 +26,39 @@
 			e.stopPropagation();//allows us to catch window click outside event.
 			e.preventDefault();//stops the link from following the url
 			//this is a hack to bi-pass browser security of immutable type attributes on inputs.
-			var oldTextInput = $(this).closest('li').find('input[name*=text]').clone();
-			if(!$(this).hasClass('active')){
-				$('a.edit.active').trigger('click');
-				$(this).addClass('active');
-				console.log('on');
+			var newTextInput = $(this).closest('li').find('input[name*=text]').clone();
+			if(!$(this).closest('li').hasClass('active')){
+				$('.active a.edit').trigger('click');
+				$(this).closest('li').addClass('active');
 				$(this).closest('li').find('.text').hide();
-				$(this).closest('li').find('input[type=hidden][name*=text]').replaceWith(oldTextInput.attr('type','text'));
+				$(this).closest('li').find('input[type=hidden][name*=text]').replaceWith(newTextInput.attr('type','text'));
 			}else{
-				console.log('off');
-				$(this).removeClass('active');
-				$(this).closest('li').find('.text').show();
-				$(this).closest('li').find('input[type=text][name*=text]').replaceWith(oldTextInput.attr('type','hidden'));
+				$(this).closest('li').removeClass('active');
+				var inputVal = $(this).closest('li').find('input[type=text][name*=text]').replaceWith(newTextInput.attr('type','hidden')).val();
+				console.log(inputVal);
+				$(this).closest('li').find('.text').html(inputVal).show();
 			}
 		}).on('click','a.delete',function(e){
 			e.preventDefault();//stops the link from following the url
 			var listItem = $(this).closest('li');
 			// delete new_sortables[listItem.data('sort-key')];
 			listItem.remove();
+		});
+
+		$('.add-sortable').on('click',function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			var target = $(this).data('target');
+			var newItem = $(target).find('.template').clone().removeClass('template');
+			var sort_key = new_sortables.counter;
+			// new_sortables[sort_key] = newItem.attr('data-sort-key', sort_key);
+			new_sortables.counter++;
+			newItem.find('input').removeAttr('disabled').each(function(idx,elem){
+				var tempName = $(elem).attr('name').replace('new','new_'+sort_key);
+				$(elem).attr('name', tempName);
+			});
+			$(target).append(newItem);
+			newItem.find('.edit').trigger('click');
 		});
 
 
@@ -59,21 +75,6 @@
 
 						});
 				}
-		});
-
-		$('.add-sortable').on('click',function(e){
-			e.preventDefault();
-			var target = $(this).data('target');
-			var newItem = $(target).find('.template').clone().removeClass('template');
-			var sort_key = new_sortables.counter;
-			// new_sortables[sort_key] = newItem.attr('data-sort-key', sort_key);
-			new_sortables.counter++;
-			newItem.find('input').removeAttr('disabled').each(function(idx,elem){
-				var tempName = $(elem).attr('name').replace('new','new_'+sort_key);
-				$(elem).attr('name', tempName);
-			});
-			$(target).append(newItem);
-			newItem.find('.edit').trigger('click');
 		});
 	});
 
