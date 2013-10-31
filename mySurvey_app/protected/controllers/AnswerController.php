@@ -110,10 +110,10 @@ class AnswerController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id, $survey_id)
+	public function actionDelete($id, $surveyQuestion_id)
 	{
 		$this->loadModel($id)->delete();
- 		$this->redirect('/question/update/'.$survey_id);
+ 		$this->redirect('/question/update/'.$surveyQuestion_id);
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		/*if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));*/

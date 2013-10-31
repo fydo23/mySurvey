@@ -21,7 +21,7 @@
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->dropDownList($model,'type', array(1=>'Short Answer', 2=>'Multiple Choice')); ?>
+		<?php echo $form->dropDownList($model,'type', array(1=>'Multiple Choice')); ?>
 		<?php echo $form->error($model,'type'); ?>
 	</div>
         
@@ -39,7 +39,7 @@
                    <li class="answer_summary" >
                        <input class="text" value="<?php echo $record->text ?>" name="SurveyAnswer[<?php echo $record->id;?>][text]"><br>
                        <input class="order_number" type="hidden" name="SurveyAnswer[<?php echo $record->id ?>][order_number]" value="<?php echo $record->order_number ?>"/>
-                       <a href="<?php echo Yii::app()->createUrl('answer/delete',array('id'=>$record->id,'survey_id'=>$model->survey_ID)); ?>">Delete</a>
+                       <a href="<?php echo Yii::app()->createUrl('answer/delete',array('id'=>$record->id,'surveyQuestion_id'=>$model->id)); ?>">Delete</a>
                    </li>
                 <?php } ?>   
             <?php } ?>
