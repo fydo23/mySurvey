@@ -37,7 +37,7 @@
             <?php if(isset($answer_dataProvider)) { ?>
                 <?php foreach($answer_dataProvider->getData() as $record) { ?>
                    <li class="answer_summary" >
-                       <input class="text" value=<?php echo $record->text ?> name="SurveyAnswer[<?php echo $record->id;?>][text]"><br>
+                       <input class="text" value="<?php echo $record->text ?>" name="SurveyAnswer[<?php echo $record->id;?>][text]"><br>
                        <input class="order_number" type="hidden" name="SurveyAnswer[<?php echo $record->id ?>][order_number]" value="<?php echo $record->order_number ?>"/>
                        <a href="<?php echo Yii::app()->createUrl('answer/delete',array('id'=>$record->id,'survey_id'=>$model->survey_ID)); ?>">Delete</a>
                    </li>
@@ -45,7 +45,7 @@
             <?php } ?>
         </ul>
         <div class="row buttons">
-            <?php echo CHtml::link('Add new answer',array('/answer/create/')); ?>
+            <?php echo CHtml::link('Add new answer',array('/answer/create/'.$model->id)); ?>
         </div>
     <?php } ?>
     </div>

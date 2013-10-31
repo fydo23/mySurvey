@@ -103,7 +103,6 @@ class QuestionController extends Controller
 					foreach ($answers as $idx => $answer) {
 						$answer->setAttribute('text',$_POST['SurveyAnswer'][$answer->id]['text']);
 						$answer->setAttribute('order_number',$_POST['SurveyAnswer'][$answer->id]['order_number']);
-						$answer->setAttribute('survey_answer_choice_letter',1);
 						$answer->save();
 					}
 				}

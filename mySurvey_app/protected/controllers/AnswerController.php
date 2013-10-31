@@ -60,7 +60,7 @@ class AnswerController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id)
 	{
 		$model=new SurveyAnswer;
 
@@ -70,8 +70,10 @@ class AnswerController extends Controller
 		if(isset($_POST['SurveyAnswer']))
 		{
 			$model->attributes=$_POST['SurveyAnswer'];
+			$model->survey_question_ID=$id;
+			$model->order_number=count(SurveyAnswer::model()->findAllByAttributes(array('survey_question_ID'=>$id)));
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect('/question/update/'.$id);
 		}
 
 		$this->render('create',array(
