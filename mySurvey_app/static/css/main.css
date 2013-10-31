@@ -479,9 +479,8 @@ p.placeholder {
 }
 
 
-    
 .question_summary{
-    height:10px;
+    min-height:10px;
     width:500px; 
     border:1px solid #5887A2;
     background:#A1DCE7;
@@ -494,6 +493,10 @@ p.placeholder {
 .question_summary a{
     float:right;
     margin-left: 10px;
+}
+
+.question_summary input[type=text]{
+	clear:both;
 }
 
 
@@ -717,6 +720,35 @@ p.placeholder {
 	padding-top: 35px;	
 }
 
+.rememberMe {
+	color: #fff;
+	padding-top: 15px;
+}
+
+.errorMessage {
+	text-align: left;
+	width: auto;
+	margin: 0 auto;
+	padding-bottom: 15px;
+	
+	background: #eed3d7;
+	color: #a21636;
+	float: left;
+	padding: 5px 15px;
+	margin-top: 3px;
+	
+	font-size: 12px;
+}
+
+
+login .error, 
+register .error{
+	padding-left: 382px;
+}
+
+
+/* DEFAULT INPUTS */
+
 input[type="submit"],
 input[type="button"] {
 	cursor: pointer;
@@ -746,33 +778,8 @@ input[type="password"] {
 	font-weight: normal;
 	
 	width: 204px;
-
 }
 
-.rememberMe {
-	color: #fff;
-	padding-top: 15px;
-}
-
-.errorMessage {
-	text-align: left;
-	width: auto;
-	margin: 0 auto;
-	padding-bottom: 15px;
-	
-	background: #eed3d7;
-	color: #a21636;
-	float: left;
-	padding: 5px 15px;
-	margin-top: 3px;
-	
-	font-size: 12px;
-}
-
-
-login .error, register .error{
-	padding-left: 382px;
-}
 .errorSummary {
 	display: none;
 }
@@ -791,27 +798,23 @@ login .error, register .error{
 	margin-top: 3px;
 }
 
-#survey-question-form .errorMessage,
-#survey-form .errorMessage {
+input.title{
+	float: left;
+    font-size: 23px;
+    width:530px;
+}
+
+input.title ~ .errorMessage {
 	padding: 7px 15px;
 }
 
-#survey-question-form .error .errorMessage,
-#survey-form .error .errorMessage,
-.error .arrow-left{
+.error input.title ~ .errorMessage,
+.error input.title ~ .arrow-left{
         margin-top:6px;
 }
 
-#survey-question-form .success input,
-#survey-form .success input{
+.success input{
         border-color: green;
-}
-
-#survey-question-form input[type="text"],
-#survey-form input[type="text"] {
-	float: left;
-        font-size: 23px;
-        width:530px;
 }
 
 .error input[type="text"],
@@ -905,11 +908,18 @@ login .error, register .error{
     -khtml-user-drag: element;
     -webkit-user-drag: element;
 }
-#sortable li{
+.sortable li{
     cursor: move;
 }
+
+.sortable .template{
+	display: none;
+}
+
 .dragging{
     border: 2px dashed;
     margin:-1px;
     background:#E4F5F8;
 }
+
+
