@@ -31,7 +31,7 @@
 		<?php echo $form->error($model,'text'); ?>
 	</div>
 	<?php if(CController::getAction()->getId()=='update'){ ?>
-	    <h4>Questions</h4>
+	    <h4>Choices</h4>
     <div>
         <ul id="sortable">
             <?php if(isset($answer_dataProvider)) { ?>
@@ -45,7 +45,7 @@
             <?php } ?>
         </ul>
         <div class="row buttons">
-            <?php echo CHtml::link('Add new answer',array('/answer/create/'.$model->id)); ?>
+            <?php echo CHtml::link('Add new choice',array('/answer/create/'.$model->id)); ?>
         </div>
     <?php } ?>
     </div>
