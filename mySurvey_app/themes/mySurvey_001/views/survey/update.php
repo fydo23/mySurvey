@@ -26,17 +26,16 @@
 			e.stopPropagation();//allows us to catch window click outside event.
 			e.preventDefault();//stops the link from following the url
 			//this is a hack to bi-pass browser security of immutable type attributes on inputs.
-			var newTextInput = $(this).closest('li').find('input[name*=text]').clone();
+			var newInput = $(this).closest('li').find('input[name*=text]').clone();
 			if(!$(this).closest('li').hasClass('active')){
 				$('.active a.edit').trigger('click');
 				$(this).closest('li').addClass('active');
 				$(this).closest('li').find('.text').hide();
-				$(this).closest('li').find('input[type=hidden][name*=text]').replaceWith(newTextInput.attr('type','text'));
+				$(this).closest('li').find('input[type=hidden][name*=text]').replaceWith(newInput.attr('type','text'));
 			}else{
 				$(this).closest('li').removeClass('active');
-				var inputVal = $(this).closest('li').find('input[type=text][name*=text]').replaceWith(newTextInput.attr('type','hidden')).val();
-				console.log(inputVal);
-				$(this).closest('li').find('.text').html(inputVal).show();
+				$(this).closest('li').find('input[type=text][name*=text]').replaceWith(newInput.attr('type','hidden'));
+				$(this).closest('li').find('.text').html(newInput.val()).show();
 			}
 		}).on('click','a.delete',function(e){
 			e.preventDefault();//stops the link from following the url
