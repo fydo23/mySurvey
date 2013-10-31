@@ -83,6 +83,13 @@ class QuestionController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		
+        $answer_dataProvider=new CActiveDataProvider('SurveyAnswer');
+		$answer_criteria = new CDbCriteria(array(
+			'condition'=>'survey_question_ID = ' . $model->id,
+			'order'=>'order_number'
+		));
+		$answer_dataProvider->setCriteria($answer_criteria);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -90,12 +97,22 @@ class QuestionController extends Controller
 		if(isset($_POST['SurveyQuestion']))
 		{
 			$model->attributes=$_POST['SurveyQuestion'];
-			if($model->save())
+			if($model->save()){
+				$answers=SurveyAnswer::model()->findAllByAttributes(array('survey_question_ID'=>$id));
+				if($answers){
+					foreach ($answers as $idx => $answer) {
+						$answer->setAttribute('text',$_POST['SurveyAnswer'][$answer->id]['text']);
+						$answer->setAttribute('order_number',$_POST['SurveyAnswer'][$answer->id]['order_number']);
+						$answer->setAttribute('survey_answer_choice_letter',1);
+						$answer->save();
+					}
+				}
 				$this->redirect(array('survey/update/' . $model->survey_ID));
+			}
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model, 'answer_dataProvider'=>$answer_dataProvider,
 		));
 	}
 
@@ -111,7 +128,6 @@ class QuestionController extends Controller
 
                 $this->redirect(array('survey/update/' . $model->survey_ID));
 	}
-
 	/**
 	 * Lists all models.
 	 */

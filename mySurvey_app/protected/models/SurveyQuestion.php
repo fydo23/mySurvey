@@ -66,7 +66,7 @@ class SurveyQuestion extends CActiveRecord
 			'survey_ID' => 'Survey',
 			'order_number' => 'Order Number',
 			'type' => 'Type',
-			'text' => 'Text',
+			'text' => 'Question',
 		);
 	}
 
