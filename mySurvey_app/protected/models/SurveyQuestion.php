@@ -17,6 +17,16 @@
  */
 class SurveyQuestion extends CActiveRecord
 {
+        //custome fields and defaults
+        public $status = "old";
+        public $template = "";
+        public $disabled = "";
+        public $types = array(
+            'Multiple Choice'=>0,
+            'Short Answer'=>1
+        );
+        public $id = 0;
+        
 	/**
 	 * @return string the associated database table name
 	 */
@@ -24,6 +34,20 @@ class SurveyQuestion extends CActiveRecord
 	{
 		return 'survey_question';
 	}
+        
+        public function afterConstruct() 
+        {
+            if($this->scenario == 'template'){
+                $this->status = "new";
+                $this->template = "template";
+                $this->disabled = "disabled";
+                $this->order_number = 0;        
+                $this->type = $this->types['Short Answer'];
+            }if($this->scenario == 'create'){
+                $this->status = "new";
+            }
+            return parent::afterConstruct();
+        }
 
 	/**
 	 * @return array validation rules for model attributes.

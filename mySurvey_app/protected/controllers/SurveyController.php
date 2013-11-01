@@ -81,27 +81,62 @@ class SurveyController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
-		$this->performAjaxValidation($model, True);
-
-                $survey_creator = SurveyCreator::model()->findByAttributes(
-                        array('email'=> Yii::app()->user->id)
-                );
+                $questions = array();
                 
-                $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
-                $questions_criteria = new CDbCriteria(array(
-                    'condition'=>'survey_ID = ' . $model->id,
-                    'order'=>'order_number'
+                $post_survey = filter_input(INPUT_POST, 'Survey');
+                if($post_survey){
+                    $model->attributes=$post_survey;
+                    if($model->validate()){
+                        $model->save();
+                    }
+                }
+                if(isset($_POST['SurveyQuestion']))
+                    $questions = $this->process_post_questions($id);
+                
+                if(!count($questions)){
+                    $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
+                    $questions_criteria = new CDbCriteria(array(
+                        'condition'=>'survey_ID = ' . $model->id,
+                        'order'=>'order_number'
+                    ));
+                    $questions_dataProvider->setCriteria($questions_criteria);
+                    $questions = $questions_dataProvider->getData();
+                    echo '<pre>';
+                    print_r($questions);
+                } 
+                $this->render('update',array(
+                    'model'=>$model,
+                    'questions'=>$questions,
                 ));
-                $questions_dataProvider->setCriteria($questions_criteria);
-                
-                  
-
-		$this->render('update',array(
-			'model'=>$model,
-                        'questions_dataProvider'=>$questions_dataProvider,
-		));
 	}
+        
+        /**
+         * This function processes the SurveyQuestions in $_POST by validating and attempting to save
+         * them.
+         * 
+         * @return array $questions | an array containing all the questions in the current post request.
+         */
+        private function process_post_questions($survey_id){
+            $questions = array();
+            echo '<pre>';
+            foreach($_POST['SurveyQuestion'] as $idx => $attributes){
+                $question = new SurveyQuestion('create');
+                if($attributes['status'] != "new"){
+                    $question = SurveyQuestion::model()->findByPk($_GET['id']);
+                }
+                print_r($attributes);
+                $question->attributes = $attributes;
+                $question->survey_ID = $survey_id;
+                $question->order_number = $idx;
+                if($question->validate()){
+                    $question->save();
+                }
+                $questions[$idx] = $question;
+            }
+            echo '</pre>';
+            ksort($questions);
+            return $questions;
+        }
         
 	/**
 	 * Publish a survey model.

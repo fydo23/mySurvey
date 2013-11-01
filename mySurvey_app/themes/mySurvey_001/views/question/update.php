@@ -1,25 +1,22 @@
 <?php
 /* @var $this SurveyQuestionController */
-/* @var $model SurveyQuestion */
+/* @var $model SurveyQuestion */ 
+
 ?>
 
-<h1>Update Question</h1>
-
-        <?php $form=$this->beginWidget('CActiveForm', array(
-                'id'=>'survey-question-form',
-                'focus'=>array($model, 'text'),
-                'enableAjaxValidation'=>true,
-                'clientOptions'=>array(
-                       'validateOnChange'=>true,
-                       'validateOnType'=>true,
-                )
-        )); ?>
-            <?php echo $form->errorSummary($model); ?>
-            <div class="row">
-                    <?php echo $form->textField($model,'text',array('size'=>60,'maxlength'=>100)); ?>
-                    <span class="arrow-left"></span><?php echo $form->error($model,'text',array('successCssClass','success')); ?>
-            </div>
-        <?php $this->endWidget(); ?>
-            
-
-<?php // $this->renderPartial('_form', array('model'=>$model)); ?>
+<li class="question_summary <?php echo $model->template; ?>"> 
+        <?php if ($model->hasErrors()) echo reset(reset($model->getErrors())); //gets the first error ?>
+        <br>
+        <span class="text"><?php echo $model->text ?></span>      
+        <input <?php echo $model->disabled; ?> type="hidden" name="SurveyQuestion[<?php echo $model->order_number?>][text]" value="<?php echo $model->text ?>"/> 
+        <br>
+        <?php // echo CHtml::activeRadioButtonList($model, 'type', array('Short Answer','Multiple Choice'));?>
+        <input <?php echo $model->disabled; ?> type="radio" name="SurveyQuestion[<?php echo $model->order_number?>][type]" value="0" <?php if($model->type==0) echo 'checked="checked"'; ?> />
+        <lable>Multiple Choice</lable>
+        <input <?php echo $model->disabled; ?> type="radio" name="SurveyQuestion[<?php echo $model->order_number?>][type]" value="1" <?php if($model->type==1) echo 'checked="checked"'; ?>/>
+        <lable>Short Answer</lable>
+        <input <?php echo $model->disabled; ?> type="hidden" name="SurveyQuestion[<?php echo $model->order_number?>][id]" value="<?php echo $model->id ?>"/>
+        <input <?php echo $model->disabled; ?> type="hidden" name="SurveyQuestion[<?php echo $model->order_number?>][status]" value="<?php echo $model->status ?>"/>
+        <a class="delete" href="#">Delete</a>
+        <a class="edit" href="#">Edit</a>
+</li>

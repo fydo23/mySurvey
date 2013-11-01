@@ -8,10 +8,7 @@
 <h1>Edit Survey:</h1>
 
 <script>
-	var new_sortables = {
-		counter: 0,
-	};
-
+    
 	$(function(){
 
 		$(window).on('click',function(e){
@@ -32,6 +29,7 @@
 				$(this).closest('li').addClass('active');
 				$(this).closest('li').find('.text').hide();
 				$(this).closest('li').find('input[type=hidden][name*=text]').replaceWith(newInput.attr('type','text'));
+                                newInput.focus();
 			}else{
 				$(this).closest('li').removeClass('active');
 				$(this).closest('li').find('input[type=text][name*=text]').replaceWith(newInput.attr('type','hidden'));
@@ -49,36 +47,41 @@
 			e.stopPropagation();
 			var target = $(this).data('target');
 			var newItem = $(target).find('.template').clone().removeClass('template');
-			var sort_key = new_sortables.counter;
-			// new_sortables[sort_key] = newItem.attr('data-sort-key', sort_key);
-			new_sortables.counter++;
-			newItem.find('input').removeAttr('disabled').each(function(idx,elem){
-				var tempName = $(elem).attr('name').replace('new','new_'+sort_key);
-				$(elem).attr('name', tempName);
-			});
+			newItem.find('input').removeAttr('disabled');
 			$(target).append(newItem);
+                        fix_sortable_input_names(target);
 			newItem.find('.edit').trigger('click');
 		});
 
 
 		//DRAGGABLE CONTENT
 		$('ul.sortable').sortable({
-				items: '> li',
-				start:function(event, ui){
-						$(ui.item).addClass('dragging');
-				},
-				stop:function(event, ui){
-						$(ui.item).removeClass('dragging');
-						$(ui.item).siblings().andSelf().each(function(idx,elem){
-								$(elem).find('input[name*=order_number]').val(idx);
-
-						});
-				}
+                        items: '> li',
+                        start:function(event, ui){
+                            $(ui.item).addClass('dragging');
+                        },
+                        stop:function(event, ui){      
+                            $(ui.item).removeClass('dragging');
+                            fix_sortable_input_names($(this).closest('.sortable'));
+                            $(ui.item).filter('input:checked').prop('checked', true);
+                        }
 		});
+                
+                function fix_sortable_input_names($sortable){
+                    $($sortable).find('li').each(function(newIndex,elem){
+                        $(elem).find('input').each(function($idx, input){
+                            var name = $(input).attr('name');
+                            //Ignore this trickery.. it's bad form.
+                            var prevIndex = name.split('[')[1].split(']')[0];
+                            var newName = name.replace(prevIndex,newIndex);
+                            $(input).attr('name',newName);
+                        });
+                    });
+                }
+                
 	});
 
 </script>
-
 
 <div class="form">
 
@@ -95,35 +98,20 @@
 			<?php echo $form->errorSummary($model); ?>
 			<div class="row buttons">
 				<?php echo CHtml::submitButton('Save'); ?>
+				<?php echo CHtml::link('Cancel', '/survey') ?>
 			</div>
-
 
 			<div class="row">
 				<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100, 'class'=>'title')); ?>
 				<span class="arrow-left"></span><?php echo $form->error($model,'title',array('successCssClass','success')); ?>
 			</div>
 			
-			
 			<h4>Questions</h4>
 			<ul id="questions" class="sortable">
-			   <li class="question_summary template">
-				   <span class="text"></span>
-				   <input disabled type="hidden" name="SurveyQuestion[new][text]" value=""/>
-				   <input disabled type="hidden" name="SurveyQuestion[new][order_number]" value=""/>
-				   <a class="delete" href="#">Delete</a>
-				   <a class="edit" href="#">Edit</a>
-			   </li>
-				<?php if(isset($questions_dataProvider)) { ?>
-					<?php foreach($questions_dataProvider->getData() as $record) { ?>
-					   <li class="question_summary" >
-						   	<span class="text"><?php echo $record->text ?></span>
-						   	<input type="hidden" name="SurveyQuestion[<?php echo $record->id ?>][text]" value="<?php echo $record->text ?>"/>
-						   	<input type="hidden" name="SurveyQuestion[<?php echo $record->id ?>][order_number]" value="<?php echo $record->order_number ?>"/>
-					   		<a class="delete" href="#">Delete</a>
-						   	<a class="edit" href="#">Edit</a>
-					   </li>
-					<?php } ?>   
-				<?php } ?>
+                            <?php echo $this->renderPartial('/question/update',array('model'=>new SurveyQuestion('template'))); ?>
+                            <?php foreach($questions as $record) { ?>
+                                <?php echo $this->renderPartial('/question/update',array('model'=>$record)); ?>
+                            <?php } ?>   
 			</ul>
 
 			<div class="row buttons">
