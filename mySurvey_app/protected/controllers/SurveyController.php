@@ -101,8 +101,6 @@ class SurveyController extends Controller
                     ));
                     $questions_dataProvider->setCriteria($questions_criteria);
                     $questions = $questions_dataProvider->getData();
-                    echo '<pre>';
-                    print_r($questions);
                 } 
                 $this->render('update',array(
                     'model'=>$model,
@@ -118,13 +116,11 @@ class SurveyController extends Controller
          */
         private function process_post_questions($survey_id){
             $questions = array();
-            echo '<pre>';
             foreach($_POST['SurveyQuestion'] as $idx => $attributes){
                 $question = new SurveyQuestion('create');
                 if($attributes['status'] != "new"){
-                    $question = SurveyQuestion::model()->findByPk($_GET['id']);
+                    $question = SurveyQuestion::model()->findByPk($attributes['id']);
                 }
-                print_r($attributes);
                 $question->attributes = $attributes;
                 $question->survey_ID = $survey_id;
                 $question->order_number = $idx;
@@ -133,7 +129,6 @@ class SurveyController extends Controller
                 }
                 $questions[$idx] = $question;
             }
-            echo '</pre>';
             ksort($questions);
             return $questions;
         }

@@ -11,8 +11,10 @@
     
 	$(function(){
 
+                /**
+                 * Deactivates actively editing questions when clicking outside the sortable element.
+                 */
 		$(window).on('click',function(e){
-			//check if where we clicked has an parent that is active, or has an active class itself.
 			var clickedActiveQuestion = $(e.target).closest('.active').length || $(e.target).hasClass('active');
 			if(!clickedActiveQuestion){
 				$('.active a.edit').trigger('click');
@@ -42,41 +44,56 @@
 			listItem.remove();
 		});
 
+                /**
+                 * Adds a sortable element by coping the hidden template at the head of the sortable. 
+                 */
 		$('.add-sortable').on('click',function(e){
-			e.preventDefault();
-			e.stopPropagation();
-			var target = $(this).data('target');
-			var newItem = $(target).find('.template').clone().removeClass('template');
+			e.preventDefault(); // don't follow links.
+			var sortable = $(this).data('target');
+			var newItem = $(sortable).find('.template').clone().removeClass('template');
 			newItem.find('input').removeAttr('disabled');
-			$(target).append(newItem);
-                        fix_sortable_input_names(target);
+			$(sortable).append(newItem);
+                        fix_sortable_input_names(sortable);
+                        
+                        // display/focus the new element's text field.
+			e.stopPropagation(); 
 			newItem.find('.edit').trigger('click');
 		});
 
 
-		//DRAGGABLE CONTENT
+		//DRAGGABLE 
 		$('ul.sortable').sortable({
                         items: '> li',
                         start:function(event, ui){
-                            $(ui.item).addClass('dragging');
+                                $(ui.item).addClass('dragging');
                         },
                         stop:function(event, ui){      
-                            $(ui.item).removeClass('dragging');
-                            fix_sortable_input_names($(this).closest('.sortable'));
-                            $(ui.item).filter('input:checked').prop('checked', true);
+                                $(ui.item).removeClass('dragging');
+                                fix_sortable_input_names($(this).closest('.sortable'));
                         }
 		});
                 
-                function fix_sortable_input_names($sortable){
-                    $($sortable).find('li').each(function(newIndex,elem){
-                        $(elem).find('input').each(function($idx, input){
-                            var name = $(input).attr('name');
-                            //Ignore this trickery.. it's bad form.
-                            var prevIndex = name.split('[')[1].split(']')[0];
-                            var newName = name.replace(prevIndex,newIndex);
-                            $(input).attr('name',newName);
+                /**
+                 * Propogate order_number into 'name' attribute. This function makes sure to
+                 * format the name attribute so that the resulting $_POST array contains a list
+                 * of sortable items with each index reflecting the element's order_number.
+                 * 
+                 * @param $sortable | the .sortable element being fixed
+                 */
+                function fix_sortable_input_names(sortable){
+                        var oldCheckedProps = $(sortable).find('input').clone();
+                        var count = 0;
+                        $(sortable).find('li').each(function(newIndex,elem){
+                                $(elem).find('input').each(function(idx, input){
+                                        var name = $(input).attr('name');
+                                        //Ignore this trickery.. it's bad form.
+                                        var prevIndex = name.split('[')[1].split(']')[0];
+                                        var newName = name.replace(prevIndex,newIndex);
+                                        var checked = $(oldCheckedProps[count++]).is(':checked');
+                                        $(input).attr('name',newName);
+                                        $(input).prop('checked',checked);
+                                });
                         });
-                    });
                 }
                 
 	});
@@ -85,39 +102,39 @@
 
 <div class="form">
 
-		<?php $form=$this->beginWidget('CActiveForm', array(
-				'id'=>'survey-form',
-				'focus'=>array($model, 'title'),
-				'enableAjaxValidation'=>true,
-				'clientOptions'=>array(
-					   'validateOnChange'=>true,
-					   'validateOnType'=>true,
-				)
-		)); ?>
-			
-			<?php echo $form->errorSummary($model); ?>
-			<div class="row buttons">
-				<?php echo CHtml::submitButton('Save'); ?>
-				<?php echo CHtml::link('Cancel', '/survey') ?>
-			</div>
+        <?php $form=$this->beginWidget('CActiveForm', array(
+                'id'=>'survey-form',
+                'focus'=>array($model, 'title'),
+                'enableAjaxValidation'=>true,
+                'clientOptions'=>array(
+                        'validateOnChange'=>true,
+                        'validateOnType'=>true,
+                )
+        )); ?>
 
-			<div class="row">
-				<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100, 'class'=>'title')); ?>
-				<span class="arrow-left"></span><?php echo $form->error($model,'title',array('successCssClass','success')); ?>
-			</div>
-			
-			<h4>Questions</h4>
-			<ul id="questions" class="sortable">
-                            <?php echo $this->renderPartial('/question/update',array('model'=>new SurveyQuestion('template'))); ?>
-                            <?php foreach($questions as $record) { ?>
-                                <?php echo $this->renderPartial('/question/update',array('model'=>$record)); ?>
-                            <?php } ?>   
-			</ul>
+                <?php echo $form->errorSummary($model); ?>
+                <div class="row buttons">
+                        <?php echo CHtml::submitButton('Save'); ?>
+                        <?php echo CHtml::link('Cancel', '/survey') ?>
+                </div>
 
-			<div class="row buttons">
-				<a class="add-sortable" data-target="#questions" href="#">Add new question'</a>
-			</div>
+                <div class="row">
+                        <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100, 'class'=>'title')); ?>
+                        <span class="arrow-left"></span><?php echo $form->error($model,'title',array('successCssClass','success')); ?>
+                </div>
 
-		<?php $this->endWidget(); ?>
+                <h4>Questions</h4>
+                <ul id="questions" class="sortable">
+                    <?php echo $this->renderPartial('/question/update',array('model'=>new SurveyQuestion('template'))); ?>
+                    <?php foreach($questions as $record) { ?>
+                        <?php echo $this->renderPartial('/question/update',array('model'=>$record)); ?>
+                    <?php } ?>   
+                </ul>
+
+                <div class="row buttons">
+                        <a class="add-sortable" data-target="#questions" href="#">Add new question'</a>
+                </div>
+
+        <?php $this->endWidget(); ?>
 			
 </div><!-- form -->

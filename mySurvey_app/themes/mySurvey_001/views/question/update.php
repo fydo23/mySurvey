@@ -5,7 +5,11 @@
 ?>
 
 <li class="question_summary <?php echo $model->template; ?>"> 
-        <?php if ($model->hasErrors()) echo reset(reset($model->getErrors())); //gets the first error ?>
+        <?php if($model->hasErrors()):?>
+            <div class="row error">
+                <?php if ($model->hasErrors()) echo reset(reset($model->getErrors())); //gets the first error ?>
+            </div>
+        <?php endif; ?>
         <br>
         <span class="text"><?php echo $model->text ?></span>      
         <input <?php echo $model->disabled; ?> type="hidden" name="SurveyQuestion[<?php echo $model->order_number?>][text]" value="<?php echo $model->text ?>"/> 
