@@ -6,14 +6,17 @@
 ?>
 
 <!--======== EDIT SURVEY ========-->
-<h1>Edit Survey: <?php echo $model->title; ?></h1>
+<h1>Survey Editor</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
 
+<div id="survey-url">
+	<h3>Survey URL:</h3> <p>surveyurl.example.com</p>
+</div>
 
 <!--======== FORM ========-->
-<div class="form">
-    <h4>Questions</h4>
+<div class="form questions">
+
     <div>
         <?php $form = $this->beginWidget('CActiveForm', array(
             'id'=>'question_order',
@@ -37,8 +40,8 @@
        
        
        <!--======== ADD NEW QUESTION ========-->
-        <div class="row buttons">
-            <?php echo CHtml::link('Add new question',array('/question/create/survey_id/' . $model->id)); ?>
+        <div class="add-question">
+            <?php echo CHtml::link('Add New Question',array('/question/create/survey_id/' . $model->id)); ?>
         </div>
         <?php $this->endWidget(); ?>
     </div>

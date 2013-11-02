@@ -22,15 +22,20 @@
             <?php echo $form->errorSummary($model); ?>
 
 
-            <div class="row">
-                    <?php echo $form->textField($model,'title',array('size'=>60,'placeholder'=>'Survey Title','maxlength'=>100)); ?>
-                    <span class="arrow-left"></span><?php echo $form->error($model,'title'); ?>
+            <div class="row survey-title-buttons">
+            		<div id="title-header">
+            			<h3>Survey Title:</h3>
+						<?php echo $form->textField($model,'title',array('size'=>60,'placeholder'=>'Survey Title','maxlength'=>100)); ?>
+						<span class="arrow-left"></span><?php echo $form->error($model,'title'); ?>
+					</div>
+					 <div class="buttons">
+						 <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+						 <input type="button" onclick="window.location='<?php echo Yii::app()->request->baseUrl; ?>/survey';" value="Cancel" />
+					</div> 
+            
+            
             </div>
-
-            <div class="row buttons">
-                    <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-                    <input type="button" onclick="window.location='<?php echo Yii::app()->request->baseUrl; ?>/survey';" value="Cancel" />
-            </div>   
+  
 
     <?php $this->endWidget(); ?>
 
