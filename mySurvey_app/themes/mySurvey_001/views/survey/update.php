@@ -20,7 +20,20 @@
 				$('.active a.edit').trigger('click');
 			}
 		});
+
+		//DRAGGABLE 
+		$('ul.sortable').sortable({
+                        items: '> li',
+                        start:function(event, ui){
+                                $(ui.item).addClass('dragging');
+                        },
+                        stop:function(event, ui){      
+                                $(ui.item).removeClass('dragging');
+                                fix_sortable_input_names($(this).closest('.sortable'));
+                        }
+		});
 		
+                
 		$('#questions').on('click','a.edit',function(e){
 			e.stopPropagation();//allows us to catch window click outside event.
 			e.preventDefault();//stops the link from following the url
@@ -40,8 +53,10 @@
 		}).on('click','a.delete',function(e){
 			e.preventDefault();//stops the link from following the url
 			var listItem = $(this).closest('li');
-			// delete new_sortables[listItem.data('sort-key')];
-			listItem.remove();
+			listItem.hide();
+                        $('#questions').append(listItem.detach());
+                        listItem.find('input[name*=status]').val('delete');
+                        fix_sortable_input_names('#questions');
 		});
 
                 /**
@@ -53,27 +68,23 @@
 			var newItem = $(sortable).find('.template').clone().removeClass('template');
 			newItem.find('input').removeAttr('disabled');
 			$(sortable).append(newItem);
+                        $($(sortable).find('li').get().reverse()).each(function(idx, elem){
+                            var delete_elem = $(elem).find('[value=delete]');
+                            if(delete_elem.length){
+                                delete_elem.before(newItem.detach());
+                            }else{
+                                return false;
+                            }
+                        });
                         fix_sortable_input_names(sortable);
                         
                         // display/focus the new element's text field.
 			e.stopPropagation(); 
 			newItem.find('.edit').trigger('click');
 		});
-
-
-		//DRAGGABLE 
-		$('ul.sortable').sortable({
-                        items: '> li',
-                        start:function(event, ui){
-                                $(ui.item).addClass('dragging');
-                        },
-                        stop:function(event, ui){      
-                                $(ui.item).removeClass('dragging');
-                                fix_sortable_input_names($(this).closest('.sortable'));
-                        }
-		});
                 
                 /**
+                 * Change the name of attribute to reflect model's new order_num
                  * Propogate order_number into 'name' attribute. This function makes sure to
                  * format the name attribute so that the resulting $_POST array contains a list
                  * of sortable items with each index reflecting the element's order_number.
@@ -81,21 +92,20 @@
                  * @param $sortable | the .sortable element being fixed
                  */
                 function fix_sortable_input_names(sortable){
-                        var oldCheckedProps = $(sortable).find('input').clone();
+                        var oldCheckedProps = $(sortable).find('li input').clone();
                         var count = 0;
-                        $(sortable).find('li').each(function(newIndex,elem){
-                                $(elem).find('input').each(function(idx, input){
-                                        var name = $(input).attr('name');
-                                        //Ignore this trickery.. it's bad form.
-                                        var prevIndex = name.split('[')[1].split(']')[0];
-                                        var newName = name.replace(prevIndex,newIndex);
+                        $(sortable).find('li').each(function(order_num,elem){
+                                $(elem).find('input').each(function(idx, input){ 
+                                        var old_name = $(input).attr('name');
+                                        var old_order_number = old_name.split('[')[1].split(']')[0];
+                                        var new_name = old_name.replace(old_order_number, order_num);
+                                        
+                                        $(input).attr('name',new_name);
                                         var checked = $(oldCheckedProps[count++]).is(':checked');
-                                        $(input).attr('name',newName);
                                         $(input).prop('checked',checked);
                                 });
                         });
                 }
-                
 	});
 
 </script>
@@ -124,10 +134,17 @@
                 </div>
 
                 <h4>Questions</h4>
+                <ul id="trash"><?php //deleted posts go here ?></ul>
                 <ul id="questions" class="sortable">
-                    <?php echo $this->renderPartial('/question/update',array('model'=>new SurveyQuestion('template'))); ?>
+                    <?php echo $this->renderPartial('/question/update',array(
+                            'model'=>new SurveyQuestion('template'),
+                            'form'=>$form
+                    )); ?>
                     <?php foreach($questions as $record) { ?>
-                        <?php echo $this->renderPartial('/question/update',array('model'=>$record)); ?>
+                            <?php echo $this->renderPartial('/question/update',array(
+                                    'model'=>$record,
+                                    'form'=>$form
+                            )); ?>
                     <?php } ?>   
                 </ul>
 

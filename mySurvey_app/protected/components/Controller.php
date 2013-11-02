@@ -18,16 +18,13 @@ class Controller extends CController
         
 	/**
 	 * Performs the AJAX validation.
-	 * @param Survey $model the model to be validated
+	 * @param mixed $models | the model to be validated, or array of models
 	 */
-	protected function performAjaxValidation($model, $save=False)
+	protected function performAjaxValidation($models)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='survey-form')
+		if(isset($_POST['ajax']))
 		{
-			echo CActiveForm::validate($model);
-                        if($save && !$model->hasErrors()){
-                            $model->save();
-                        }
+                        echo CActiveForm::validate($models);
                         Yii::app()->end();
 		}
 	}

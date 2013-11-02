@@ -83,15 +83,12 @@ class SurveyController extends Controller
 		$model=$this->loadModel($id);
                 $questions = array();
                 
-                $post_survey = filter_input(INPUT_POST, 'Survey');
-                if($post_survey){
-                    $model->attributes=$post_survey;
-                    if($model->validate()){
-                        $model->save();
-                    }
-                }
-                if(isset($_POST['SurveyQuestion']))
+                
+                if(isset($_POST['SurveyQuestion'])){
                     $questions = $this->process_post_questions($id);
+                }
+                //ajaxValidation halts execution before survey gets a change to validate.
+                $this->performAjaxValidation(array_merge($questions,array($model)));
                 
                 if(!count($questions)){
                     $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
@@ -102,6 +99,12 @@ class SurveyController extends Controller
                     $questions_dataProvider->setCriteria($questions_criteria);
                     $questions = $questions_dataProvider->getData();
                 } 
+                if(isset($_POST['Survey'])){
+                    $model->attributes=$_POST['Survey'];
+                    if($model->validate()){
+                        $model->save();
+                    }
+                }
                 $this->render('update',array(
                     'model'=>$model,
                     'questions'=>$questions,
@@ -118,14 +121,22 @@ class SurveyController extends Controller
             $questions = array();
             foreach($_POST['SurveyQuestion'] as $idx => $attributes){
                 $question = new SurveyQuestion('create');
-                if($attributes['status'] != "new"){
+                if(in_array($attributes['status'], array("old", "delete"))){
                     $question = SurveyQuestion::model()->findByPk($attributes['id']);
+                    if($attributes['status'] == "delete"){
+                        if($question){
+                            $question->delete();
+                        }
+                        continue;
+                    }
                 }
                 $question->attributes = $attributes;
                 $question->survey_ID = $survey_id;
                 $question->order_number = $idx;
                 if($question->validate()){
                     $question->save();
+                    $question->status = "old";
+                    $question->setScenario("");
                 }
                 $questions[$idx] = $question;
             }
@@ -195,16 +206,6 @@ class SurveyController extends Controller
 		));
                 
 	}
-        
-        public function actionReorderQuestions($survey_id){
-            $questions = SurveyQuestion::model()->findAllByAttributes(array('survey_ID'=>$survey_id));
-            if($questions){
-                foreach($questions as $idx => $question){
-                    $question->setAttribute('order_number', $_POST['SurveyQuestion'][$question->id]['order_number']);
-                    $question->save();
-                }
-            }
-        }
         
 
 	/**

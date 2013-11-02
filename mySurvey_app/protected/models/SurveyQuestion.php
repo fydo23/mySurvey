@@ -44,6 +44,7 @@ class SurveyQuestion extends CActiveRecord
                 $this->order_number = 0;        
                 $this->type = $this->types['Short Answer'];
             }if($this->scenario == 'create'){
+                $this->id = null;
                 $this->status = "new";
             }
             return parent::afterConstruct();
