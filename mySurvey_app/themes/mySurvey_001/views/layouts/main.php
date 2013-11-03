@@ -40,7 +40,7 @@
                                     'items'=>array(
                                             array('label'=>'Surveys', 'url'=>array('/survey')),
                                             array('label'=>'Reports', 'url'=>array('/reports')),
-                                            array('label'=>'Account Settings', 'url'=>array('/settings'))
+                                            array('label'=>'Account Settings', 'url'=>array('site/settings'))
                                     ),
                                 )); ?>
                         </div><!-- mainmenu -->
