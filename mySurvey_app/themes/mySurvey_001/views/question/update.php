@@ -6,23 +6,29 @@
  */
 
 ?>
-
-<li class="question_summary <?php echo $model->template; ?>"> 
+<li class="question_summary <?php echo $model->class; ?>"> 
         <div class="row">
-            <?php echo $form->error($model,'text',array('successCssClass','success')); ?>
-        </div>
-        <div class="row">
-                <span class="text"><?php echo $model->text ?></span>      
-                <input <?php echo $model->disabled; ?> type="hidden" name="SurveyQuestion[<?php echo $model->order_number?>][text]" value="<?php echo $model->text ?>"/> 
-                <br>
-                <?php // echo CHtml::activeRadioButtonList($model, 'type', array('Short Answer','Multiple Choice'));?>
-                <input <?php echo $model->disabled; ?> type="radio" name="SurveyQuestion[<?php echo $model->order_number?>][type]" value="0" <?php if($model->type==0) echo 'checked="checked"'; ?> />
-                <lable>Multiple Choice</lable>
-                <input <?php echo $model->disabled; ?> type="radio" name="SurveyQuestion[<?php echo $model->order_number?>][type]" value="1" <?php if($model->type==1) echo 'checked="checked"'; ?>/>
-                <lable>Short Answer</lable>
-                <input <?php echo $model->disabled; ?> type="hidden" name="SurveyQuestion[<?php echo $model->order_number?>][id]" value="<?php echo $model->id ?>"/>
-                <input <?php echo $model->disabled; ?> type="hidden" name="SurveyQuestion[<?php echo $model->order_number?>][status]" value="<?php echo $model->status ?>"/>
-                <a class="delete" href="#">Delete</a>
-                <a class="edit" href="#">Edit</a>
+            <?php echo CHtml::error($model, 'text',array('successCssClass','success'));?>
+            <span class="text"><?php echo $model->text ?></span>   
+            <?php 
+                echo CHtml::activeHiddenField($model, 'text', array(
+                    'name'=>$model->getNameForAttribute('text'), 
+                    'disabled'=>$model->disabled
+                ));
+                echo CHtml::activeDropDownList($model, 'type', $model->type_choices, array(
+                    'name'=>$model->getNameForAttribute('type'), 
+                    'disabled'=>$model->disabled,
+                ));
+                echo CHtml::activeHiddenField($model, 'id', array(
+                    'name'=>$model->getNameForAttribute('id'), 
+                    'disabled'=>$model->disabled
+                )); 
+                echo CHtml::activeHiddenField($model, 'delete', array(
+                    'name'=>$model->getNameForAttribute('delete'), 
+                    'disabled'=>$model->disabled
+                )); 
+            ?>
+            <a class="delete" href="#">Delete</a>
+            <a class="edit" href="#">Edit</a> 
         </div>
 </li>

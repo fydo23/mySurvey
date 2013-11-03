@@ -18,14 +18,11 @@
 class SurveyQuestion extends CActiveRecord
 {
         //custome fields and defaults
-        public $status = "old";
-        public $template = "";
-        public $disabled = "";
-        public $types = array(
-            'Multiple Choice'=>0,
-            'Short Answer'=>1
-        );
-        public $id = 0;
+        public $delete = False;
+        public $class = "";
+        public $disabled = False;
+        public $type_choices = array('Short Answer', 'Multiple Choice');
+        public $type = 0; //default = Short Answer.
         
 	/**
 	 * @return string the associated database table name
@@ -35,20 +32,36 @@ class SurveyQuestion extends CActiveRecord
 		return 'survey_question';
 	}
         
+        /**
+         * Event that is fired after the model is initialized.
+         * 
+         * @return parent::afterConstruct();
+         */
         public function afterConstruct() 
         {
             if($this->scenario == 'template'){
-                $this->status = "new";
-                $this->template = "template";
-                $this->disabled = "disabled";
-                $this->order_number = 0;        
-                $this->type = $this->types['Short Answer'];
-            }if($this->scenario == 'create'){
-                $this->id = null;
-                $this->status = "new";
+                $this->class = "template";
+                $this->disabled = True;
+                $this->order_number = 0;
             }
             return parent::afterConstruct();
         }
+        
+        public function afterSave() {
+            parent::afterSave();
+        }
+        
+        
+        /**
+         * 
+         * @param String $attribute | name of the attribute for the string
+         * @return String html name attribute for supplied name
+         */
+        public function getNameForAttribute($attribute){
+            return 'SurveyQuestion['.$this->order_number.']['.$attribute.']';
+        }
+        
+        
 
 	/**
 	 * @return array validation rules for model attributes.

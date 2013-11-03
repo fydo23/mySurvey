@@ -121,22 +121,19 @@ class SurveyController extends Controller
             $questions = array();
             foreach($_POST['SurveyQuestion'] as $idx => $attributes){
                 $question = new SurveyQuestion('create');
-                if(in_array($attributes['status'], array("old", "delete"))){
+                if($attributes['id']){
                     $question = SurveyQuestion::model()->findByPk($attributes['id']);
-                    if($attributes['status'] == "delete"){
-                        if($question){
-                            $question->delete();
-                        }
-                        continue;
-                    }
+                }
+                if($question->id && $attributes['delete']){
+                    //a fetched model needs to be deleted.
+                    $question->delete();
+                    continue; // stop further processing this question.
                 }
                 $question->attributes = $attributes;
                 $question->survey_ID = $survey_id;
                 $question->order_number = $idx;
                 if($question->validate()){
                     $question->save();
-                    $question->status = "old";
-                    $question->setScenario("");
                 }
                 $questions[$idx] = $question;
             }
