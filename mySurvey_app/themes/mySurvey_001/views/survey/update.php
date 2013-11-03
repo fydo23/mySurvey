@@ -45,7 +45,7 @@
 			//bi-pass browser security: clone to allow mutation of 'type' attribute.
 			var newInput = $(this).closest('li').find('input[name*=text]').clone();
                         var list_item = $(this).closest('li');
-			if(!$list_item.hasClass('active')){
+			if(!list_item.hasClass('active')){
                             //start edit funciton
 				$('.active a.edit').trigger('click');
 				list_item.addClass('active');
