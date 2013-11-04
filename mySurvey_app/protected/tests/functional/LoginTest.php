@@ -2,7 +2,7 @@
 /**
 * 
 */
-class ClassName extends PHPUnit_Extensions_Selenium2TestCase {
+class LoginTest extends PHPUnit_Extensions_Selenium2TestCase {
 	
 	private $url = "http://localhost/mySurvey/mySurvey_app";
 	private $email = "aaa@aaa.com";
