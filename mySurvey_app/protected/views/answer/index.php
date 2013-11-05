@@ -1,7 +1,6 @@
 <?php
 /* @var $this SurveyAnswerController */
 /* @var $dataProvider CActiveDataProvider */
-
 ?>
 
 <h1>Survey Answers</h1>

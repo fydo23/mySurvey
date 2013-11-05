@@ -45,22 +45,17 @@ class m131004_124818_database_update extends CDbMigration
 						'foreign key (survey_question_ID) references survey_question(id)',
 						'foreign key (survey_answer_ID) references survey_answer(id)',					
                 ));
-				return true;
 	}
 
 	public function down()
 	{
 		$this->dropTable('survey_response');
                 
-				
 		$this->dropTable('survey_answer');
                
-				
 		$this->dropTable('survey_question');
-               
 				
 		$this->dropTable('survey');
-                return true;
 	}
 
 	/*

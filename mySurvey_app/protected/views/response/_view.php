@@ -9,14 +9,6 @@
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('survey_ID')); ?>:</b>
-	<?php echo CHtml::encode($data->survey_ID); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('survey_question_ID')); ?>:</b>
-	<?php echo CHtml::encode($data->survey_question_ID); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('survey_answer_ID')); ?>:</b>
 	<?php echo CHtml::encode($data->survey_answer_ID); ?>
 	<br />
@@ -33,11 +25,9 @@
 	<?php echo CHtml::encode($data->survey_response_responder); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('survey_response_text')); ?>:</b>
 	<?php echo CHtml::encode($data->survey_response_text); ?>
 	<br />
 
-	*/ ?>
 
 </div>

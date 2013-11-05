@@ -1,29 +1,6 @@
 <?php
 /* @var $this SurveyQuestionController */
 /* @var $model SurveyQuestion */
-
-$this->breadcrumbs=array(
-	'Survey Questions'=>array('index'),
-	'Manage',
-);
-
-$this->menu=array(
-	array('label'=>'List SurveyQuestion', 'url'=>array('index')),
-	array('label'=>'Create SurveyQuestion', 'url'=>array('create')),
-);
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#survey-question-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 ?>
 
 <h1>Manage Survey Questions</h1>

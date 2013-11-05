@@ -20,23 +20,17 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'survey_question_ID'); ?>
-		<?php echo $form->textField($model,'survey_question_ID'); ?>
-		<?php echo $form->error($model,'survey_question_ID'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'survey_answer_choice_letter'); ?>
 		<?php echo $form->textField($model,'survey_answer_choice_letter',array('size'=>5,'maxlength'=>5)); ?>
 		<?php echo $form->error($model,'survey_answer_choice_letter'); ?>
 	</div>
-
+	
 	<div class="row">
-		<?php echo $form->labelEx($model,'survey_answer_response_time'); ?>
-		<?php echo $form->textField($model,'survey_answer_response_time'); ?>
-		<?php echo $form->error($model,'survey_answer_response_time'); ?>
+		<?php echo $form->labelEx($model,'text'); ?>
+		<?php echo $form->textField($model,'text'); ?>
+		<?php echo $form->error($model,'text'); ?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'survey_answer_next_link'); ?>
 		<?php echo $form->textField($model,'survey_answer_next_link',array('size'=>60,'maxlength'=>80)); ?>

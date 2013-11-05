@@ -1,29 +1,6 @@
 <?php
 /* @var $this SurveyResponseController */
 /* @var $model SurveyResponse */
-
-$this->breadcrumbs=array(
-	'Survey Responses'=>array('index'),
-	'Manage',
-);
-
-$this->menu=array(
-	array('label'=>'List SurveyResponse', 'url'=>array('index')),
-	array('label'=>'Create SurveyResponse', 'url'=>array('create')),
-);
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#survey-response-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 ?>
 
 <h1>Manage Survey Responses</h1>
@@ -46,15 +23,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-		'survey_ID',
-		'survey_question_ID',
 		'survey_answer_ID',
 		'survey_answer_choice_letter',
 		'survey_response_time',
-		/*
 		'survey_response_responder',
 		'survey_response_text',
-		*/
 		array(
 			'class'=>'CButtonColumn',
 		),
