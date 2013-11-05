@@ -81,34 +81,65 @@ class SurveyController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-                $survey_creator = SurveyCreator::model()->findByAttributes(
-                        array('email'=> Yii::app()->user->id)
-                );
-
-                $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
-                $questions_criteria = new CDbCriteria(array(
-                    'condition'=>'survey_ID = ' . $model->id,
-                    'order'=>'order_number'
-                ));
-                $questions_dataProvider->setCriteria($questions_criteria);
+                $questions = array();
                 
-                                
-		if(isset($_POST['Survey']))
-		{
-			$model->attributes=$_POST['Survey'];
-			if($model->save())
-				$this->redirect(array('index'));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-                        'questions_dataProvider'=>$questions_dataProvider,
-		));
+                
+                if(isset($_POST['SurveyQuestion'])){
+                    $questions = $this->process_post_questions($id);
+                }
+                //ajaxValidation halts execution before survey gets a change to validate.
+                $this->performAjaxValidation(array_merge($questions,array($model)));
+                
+                if(!count($questions)){
+                    $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
+                    $questions_criteria = new CDbCriteria(array(
+                        'condition'=>'survey_ID = ' . $model->id,
+                        'order'=>'order_number'
+                    ));
+                    $questions_dataProvider->setCriteria($questions_criteria);
+                    $questions = $questions_dataProvider->getData();
+                } 
+                if(isset($_POST['Survey'])){
+                    $model->attributes=$_POST['Survey'];
+                    if($model->validate()){
+                        $model->save();
+                    }
+                }
+                $this->render('update',array(
+                    'model'=>$model,
+                    'questions'=>$questions,
+                ));
 	}
+        
+        /**
+         * This function processes the SurveyQuestions in $_POST by validating and attempting to save
+         * them.
+         * 
+         * @return array $questions | an array containing all the questions in the current post request.
+         */
+        private function process_post_questions($survey_id){
+            $questions = array();
+            foreach($_POST['SurveyQuestion'] as $idx => $attributes){
+                $question = new SurveyQuestion('create');
+                if($attributes['id']){
+                    $question = SurveyQuestion::model()->findByPk($attributes['id']);
+                }
+                if($question->id && $attributes['delete']){
+                    //a fetched model needs to be deleted.
+                    $question->delete();
+                    continue; // stop further processing this question.
+                }
+                $question->attributes = $attributes;
+                $question->survey_ID = $survey_id;
+                $question->order_number = $idx;
+                if($question->validate()){
+                    $question->save();
+                }
+                $questions[$idx] = $question;
+            }
+            ksort($questions);
+            return $questions;
+        }
         
 	/**
 	 * Publish a survey model.
@@ -148,7 +179,7 @@ class SurveyController extends Controller
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
-                $this->redirect('/survey');
+                $this->redirect(array('index'));
 	}
 
 	/**
@@ -173,16 +204,6 @@ class SurveyController extends Controller
                 
 	}
         
-        public function actionReorderQuestions($survey_id){
-            $questions = SurveyQuestion::model()->findAllByAttributes(array('survey_ID'=>$survey_id));
-            if($questions){
-                foreach($questions as $idx => $question){
-                    $question->setAttribute('order_number', $_POST['SurveyQuestion'][$question->id]['order_number']);
-                    $question->save();
-                }
-            }
-        }
-        
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
@@ -199,16 +220,4 @@ class SurveyController extends Controller
 		return $model;
 	}
 
-	/**
-	 * Performs the AJAX validation.
-	 * @param Survey $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='survey-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
 }

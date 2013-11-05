@@ -15,4 +15,17 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+        
+	/**
+	 * Performs the AJAX validation.
+	 * @param mixed $models | the model to be validated, or array of models
+	 */
+	protected function performAjaxValidation($models)
+	{
+		if(isset($_POST['ajax']))
+		{
+                        echo CActiveForm::validate($models);
+                        Yii::app()->end();
+		}
+	}
 }

@@ -36,7 +36,7 @@ if (Yii::app()->user->id) {
         	<?php $form=$this->beginWidget('CActiveForm', array(
                     'action'=>Yii::app()->request->baseUrl . '/login',
                     'id'=>'login-form',
-                    'enableClientValidation'=>true,
+                    'enableAjaxValidation'=>true,
                     'clientOptions'=>array(
                             'validateOnSubmit'=>true,
                     ),
@@ -88,7 +88,7 @@ if (Yii::app()->user->id) {
        		<?php $form=$this->beginWidget('CActiveForm', array(
                     'action'=>Yii::app()->request->baseUrl . '/register',
                     'id'=>'register-form',
-                    'enableClientValidation'=>true,
+                    'enableAjaxValidation'=>true,
                     'clientOptions'=>array(
                             'validateOnSubmit'=>true,
                     ),

@@ -14,7 +14,13 @@
 
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/static/css/main.css" />
 
+<<<<<<< HEAD
 
+=======
+            <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <!--<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/static/js/jquery.min.js"></script>-->
+            
+>>>>>>> dev
             <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     </head>
 
@@ -80,9 +86,8 @@
                 </div><!-- footer -->
 
         </div><!-- page -->
-        
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <!--<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/static/js/jquery-ui.min.js"></script>-->
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/static/js/functions.js"></script>
         
     </body>

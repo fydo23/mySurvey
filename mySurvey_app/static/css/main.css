@@ -483,6 +483,29 @@ p.placeholder {
 	float: left;
 }
 
+
+.question_summary{
+    min-height:10px;
+    width:500px; 
+    border:1px solid #5887A2;
+    background:#A1DCE7;
+    padding: 8px 20px;
+    margin: 5px 0px;
+}
+.question_summary .order_number{
+    float: left;
+}
+.question_summary a{
+    float:right;
+    margin-left: 10px;
+}
+
+.question_summary input[type=text]{
+	clear:both;
+}
+
+
+
 #question-editor {
 	width: 510px;
 	float: left;
@@ -784,6 +807,35 @@ p.placeholder {
 	padding-top: 35px;	
 }
 
+.rememberMe {
+	color: #fff;
+	padding-top: 15px;
+}
+
+.errorMessage {
+	text-align: left;
+	width: auto;
+	margin: 0 auto;
+	padding-bottom: 15px;
+	
+	background: #eed3d7;
+	color: #a21636;
+	float: left;
+	padding: 5px 15px;
+	margin-top: 3px;
+	
+	font-size: 12px;
+}
+
+
+login .error, 
+register .error{
+	padding-left: 382px;
+}
+
+
+/* DEFAULT INPUTS */
+
 input[type="submit"],
 input[type="button"] {
 	cursor: pointer;
@@ -813,6 +865,7 @@ input[type="password"] {
 	font-weight: normal;
 	
 	width: 204px;
+<<<<<<< HEAD
 
 }
 
@@ -856,6 +909,8 @@ input[type="password"] {
 	padding: 0;
 	float: left;
 	
+=======
+>>>>>>> dev
 }
 
 .errorSummary {
@@ -876,19 +931,24 @@ input[type="password"] {
 	margin-top: 3px;
 }
 
-#survey-form .error .arrow-left {
-	margin-top: 0;
+input.title{
+	float: left;
+    font-size: 23px;
+    width:530px;
 }
 
-#survey-form .errorMessage {
-	margin-top: 0;
+input.title ~ .errorMessage {
 	padding: 7px 15px;
 }
 
-#survey-form input[type="text"] {
-	float: left;
+.error input.title ~ .errorMessage,
+.error input.title ~ .arrow-left{
+        margin-top:6px;
 }
 
+.success input{
+        border-color: green;
+}
 
 .error input[type="text"],
 .error input[type="password"] {
@@ -970,6 +1030,7 @@ input[type="password"] {
 
 
 
+<<<<<<< HEAD
 /* -------- Edit Survey: Draggable Question Boxes -------- */
 
 [draggable="true"]{
@@ -978,10 +1039,20 @@ input[type="password"] {
 	-webkit-user-select: none;
 	user-select: none;
         
+=======
+/*DRAGGABLES*/
+
+[draggable="true"]{
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+>>>>>>> dev
     /* Required to make elements draggable in old WebKit */
     -khtml-user-drag: element;
     -webkit-user-drag: element;
 }
+<<<<<<< HEAD
 
 .question_summary{
 	height:15px;
@@ -1004,13 +1075,28 @@ input[type="password"] {
 
 .dragging{
    	border: 2px dotted #6eb4cd;
+=======
+.sortable li{
+    cursor: move;
+}
+
+.sortable .template{
+	display: none;
+}
+
+.dragging{
+    border: 2px dashed;
+>>>>>>> dev
     margin:-1px;
     background:#E4F5F8;
 }
 
+<<<<<<< HEAD
 #sortable li a {
 	color: #005a82;
 	float:right;
     margin-left: 15px;
 }
+=======
+>>>>>>> dev
 
