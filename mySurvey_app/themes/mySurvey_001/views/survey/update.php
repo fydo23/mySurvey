@@ -75,7 +75,7 @@
         /**
          * Adds a sortable element by coping the hidden template at the head of the sortable. 
          */
-		$('.add-sortable').on('click',function(e){
+		$('form').on('click','.add-sortable',function(e){
             e.preventDefault(); // don't follow links.
 			var sortable = $(this).data('target');
 			var newItem = $(sortable).find('.template').first().clone().removeClass('template');
