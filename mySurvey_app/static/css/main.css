@@ -34,18 +34,22 @@ h4 {
 	clear: both;
 }
 
-.button,
-input[type="submit"],
-input[type="button"] {
+#home .buttons {
+	float: none;
+}
+
+#home .button,
+#home input[type="submit"],
+#home input[type="button"] {
 	width: 208px;
-	height: 18px;
+	height: auto;
 	display: inline-block;
 	text-decoration: none;
 	font-size: 14px;
 	text-align: center;
 	font-weight: normal;
 	padding: 15px 0;
-	margin: 0 5px;
+	margin: 20px 5px;
 	border-radius: 10px;
 	color: #fff;
 	border: 1px solid #1c74b3;
@@ -755,7 +759,7 @@ p.placeholder {
 
 #login-logout {
 	min-height: 300px;
-	padding-top: 50px;	
+	padding-top: 30px;	
 }
 
 #login-logout .button {
