@@ -5,7 +5,8 @@
 
 ?>
 
-<h1>Edit Survey:</h1>
+<!--======== EDIT SURVEY ========-->
+<h1>Survey Editor</h1>
 
 <script>
     
@@ -114,6 +115,10 @@
 	});
 
 </script>
+
+<div id="survey-url">
+    <h3>Survey URL:</h3> <p>surveyurl.example.com</p>
+</div>
 
 <div class="form">
 

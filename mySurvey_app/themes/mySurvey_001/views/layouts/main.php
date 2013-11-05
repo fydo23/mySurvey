@@ -5,8 +5,8 @@
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="language" content="en" />
 
-            <!-- blueprint CSS framework -->
 
+            <!--======== CSS FRAMEWORK ========-->
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/static/css/print.css" media="print" />
             <!--[if lt IE 8]>
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/static/css/ie.css" media="screen, projection" />
@@ -20,10 +20,15 @@
             <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     </head>
 
-    <body>
 
+	<!--======== LAYOUT MODEL FOR INTERIOR PAGES ========-->
+    <body>
+    
+    	<!--======== PAGE ========-->
         <div class="container" id="page">
 
+
+				<!--======== HEADER ========-->
                 <div id="header">
                         <div class="content-area">
                         		<a href="<?php echo $this->createUrl('/survey')?>">			
@@ -37,8 +42,12 @@
                         </div>
                 </div><!-- header -->
 
-
+				
+				<!--======== MENU + MAIN CONTENT AREA ========-->
                 <div class="content-area">
+                
+                
+                		<!--======== MENU ========-->
                         <div id="mainmenu">
                                 <?php $this->widget('zii.widgets.CMenu',array(
                                     'items'=>array(
@@ -49,18 +58,25 @@
                                 )); ?>
                         </div><!-- mainmenu -->
 
+
+				<!--======== BREADCRUMBS ========-->
                 <?php if(isset($this->breadcrumbs)):?>
                         <?php $this->widget('zii.widgets.CBreadcrumbs', array(
                                 'links'=>$this->breadcrumbs,
                         )); ?><!-- breadcrumbs -->
                 <?php endif?>
 
+
+				<!--======== CONTENT: Pulls in .php views from Site & Survey ========-->
                 <div id="content">
                     <?php echo $content; ?>
-                </div>
-            </div>          
+                </div><!-- content -->
+            
+            </div><!-- content-area -->        
 
 
+
+				<!--======== FOOTER ========-->
                 <div id="footer">
                         <p>Footer content tk...</p>
                 </div><!-- footer -->
@@ -68,7 +84,7 @@
         </div><!-- page -->
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <!--<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/static/js/jquery-ui.min.js"></script>-->
-	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/static/js/functions.js"></script>
+	   <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/static/js/functions.js"></script>
         
     </body>
 </html>

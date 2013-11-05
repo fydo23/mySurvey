@@ -9,6 +9,8 @@
  * @property string $survey_answer_choice_letter
  * @property string $survey_answer_response_time
  * @property string $survey_answer_next_link
+ * @property string $text
+ * @property integer $order_number
  *
  * The followings are the available model relations:
  * @property SurveyQuestion $surveyQuestion
@@ -32,14 +34,15 @@ class SurveyAnswer extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('survey_question_ID, survey_answer_choice_letter', 'required'),
-			array('survey_question_ID', 'numerical', 'integerOnly'=>true),
+			array('survey_question_ID, survey_answer_choice_letter, order_number, text', 'required'),
+			array('survey_question_ID, order_number', 'numerical', 'integerOnly'=>true),
 			array('survey_answer_choice_letter', 'length', 'max'=>5),
 			array('survey_answer_next_link', 'length', 'max'=>80),
+			array('text', 'length', 'max'=>1000),
 			array('survey_answer_response_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, survey_question_ID, survey_answer_choice_letter, survey_answer_response_time, survey_answer_next_link', 'safe', 'on'=>'search'),
+			array('id, survey_question_ID, survey_answer_choice_letter, survey_answer_response_time, survey_answer_next_link, text, order_number', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,6 +70,8 @@ class SurveyAnswer extends CActiveRecord
 			'survey_answer_choice_letter' => 'Survey Answer Choice Letter',
 			'survey_answer_response_time' => 'Survey Answer Response Time',
 			'survey_answer_next_link' => 'Survey Answer Next Link',
+			'text' => 'Text',
+			'order_number' => 'Order Number',
 		);
 	}
 
@@ -93,6 +98,8 @@ class SurveyAnswer extends CActiveRecord
 		$criteria->compare('survey_answer_choice_letter',$this->survey_answer_choice_letter,true);
 		$criteria->compare('survey_answer_response_time',$this->survey_answer_response_time,true);
 		$criteria->compare('survey_answer_next_link',$this->survey_answer_next_link,true);
+		$criteria->compare('text',$this->text,true);
+		$criteria->compare('order_number',$this->order_number);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

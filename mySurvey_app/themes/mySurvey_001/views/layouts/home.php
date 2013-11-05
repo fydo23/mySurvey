@@ -13,20 +13,25 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
+	<!--======== LAYOUT MODEL FOR HOMEPAGE ========-->
     <body>
-
+		
+		<!--======== PAGE ========-->
         <div class="container" id="page">
 
+				<!--======== HEADER ========-->
                 <div id="header">
                         <div class="makeCenter"><img id="appLogo" src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/logo-white.png"></div>
                 </div><!-- header -->
 
 
+				<!--======== CONTENT: Pulls in index.php ========-->
                 <div id="content">
                     <?php echo $content; ?>
-                </div>
+                </div><!-- content -->
 
 
+				<!--======== FOOTER ========-->
                 <div id="footer">
                         <p>Footer content tk...</p>
                 </div><!-- footer -->

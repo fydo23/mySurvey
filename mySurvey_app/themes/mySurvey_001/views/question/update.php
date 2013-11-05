@@ -6,6 +6,7 @@
  */
 
 ?>
+
 <li class="question_summary <?php echo $model->class; ?>"> 
         <div class="row">
             <?php echo CHtml::error($model, 'text',array('successCssClass','success'));?>

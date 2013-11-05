@@ -34,18 +34,23 @@ h4 {
 	clear: both;
 }
 
-.button,
-input[type="submit"],
-input[type="button"] {
+#home .buttons {
+	float: none;
+}
+
+#home .button,
+#home input[type="submit"],
+#home input[type="button"],
+.button {
 	width: 208px;
-	height: 18px;
+	height: auto;
 	display: inline-block;
 	text-decoration: none;
 	font-size: 14px;
 	text-align: center;
 	font-weight: normal;
 	padding: 15px 0;
-	margin: 0 5px;
+	margin: 20px 5px;
 	border-radius: 10px;
 	color: #fff;
 	border: 1px solid #1c74b3;
@@ -556,6 +561,88 @@ p.placeholder {
 	margin: 0 5px;
 }
 
+.survey-title-buttons h3 {
+	width: auto;
+	float: left;
+	margin: 0;
+	padding-right: 10px;
+	padding-top: 7px;
+}
+
+#title-header {
+	float: left;
+	color: #005a82;
+}
+
+.buttons {
+	float: right;
+	/*margin-left: 25px;*/
+}
+
+.buttons input[type="submit"], 
+.buttons input[type="button"],
+.add-question a {
+	background: #6eb4cd;
+	margin: 0 0 0 10px;
+	width: 100px;
+	height: auto;
+	
+	border-radius: 100px;
+	padding: 7px 10px;
+	color: #fff;
+	font-size: 13px;
+	
+	border: none;
+	filter: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	text-shadow: none;
+	-webkit-text-shadow: none;
+	-moz-text-shadow: none;
+}
+
+.add-question a {
+	padding: 10px 20px;
+	margin: 0;
+	border-radius: 11px;
+	text-decoration: none;
+}
+
+.buttons input[type="submit"]:hover, 
+.buttons input[type="button"]:hover,
+.add-question a:hover {
+	background: #0079af;
+}
+
+#survey-url {
+	clear: both;
+	padding-top: 15px;
+}
+
+#survey-url h3 {
+	width: auto;
+	float: left;
+	margin-top: 5px;
+	color: #005a82;
+}
+
+#survey-url p {
+	width: auto;
+	float: left;
+	margin-top: 5px;
+	font-size: 15px;
+	margin-left: 10px;
+	color: #666;
+}
+
+.form {
+	clear: both;
+}
+
+.questions {
+	padding-top: 10px;
+}
 
 
 /* PAGE TEMPLATE */
@@ -700,7 +787,7 @@ p.placeholder {
 
 #login-logout {
 	min-height: 300px;
-	padding-top: 50px;	
+	padding-top: 30px;	
 }
 
 #login-logout .button {
@@ -778,6 +865,48 @@ input[type="password"] {
 	font-weight: normal;
 	
 	width: 204px;
+}
+
+.rememberMe {
+	color: #fff;
+	padding-top: 15px;
+}
+
+.errorMessage {
+	text-align: left;
+	width: auto;
+	margin: 0 auto;
+	padding-bottom: 15px;
+	
+	background: #eed3d7;
+	color: #a21636;
+	float: left;
+	padding: 5px 15px;
+	margin-top: 3px;
+	
+	font-size: 12px;
+}
+
+
+.error {
+	padding-left: 382px;
+}
+
+#survey-form .error {
+	padding-left: 5px;
+}
+
+
+#survey-question-form .error {
+	padding-left: 0;
+	
+}
+
+#survey-question-form .error label {
+	padding-top: 10px;
+	padding: 0;
+	float: left;
+	
 }
 
 .errorSummary {
@@ -860,7 +989,7 @@ input.title ~ .errorMessage {
 }
 
 .text {
-	width: 45%;
+	width: 75%;
 	float: left;
 	position: relative;
 }
@@ -897,8 +1026,9 @@ input.title ~ .errorMessage {
 
 
 
-/*DRAGGABLES*/
+/* -------- Edit Survey: Draggable Question Boxes -------- */
 
+/*DRAGGABLES*/
 [draggable="true"]{
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -908,18 +1038,36 @@ input.title ~ .errorMessage {
     -khtml-user-drag: element;
     -webkit-user-drag: element;
 }
-.sortable li{
-    cursor: move;
+
+.question_summary{
+	height:15px;
+	/*width:500px;*/
+	/*border:1px solid #5887A2;*/
+	background:#c8e2ea;
+    padding: 8px 20px;
+	margin: 5px 0px 10px;
 }
 
+#sortable li{
+    cursor: move;
+}
 .sortable .template{
 	display: none;
 }
 
+.question_summary .order_number{
+    float: left;
+}
+
 .dragging{
-    border: 2px dashed;
+   	border: 2px dotted #6eb4cd;
     margin:-1px;
     background:#E4F5F8;
 }
 
+#sortable li a {
+	color: #005a82;
+	float:right;
+    margin-left: 15px;
+}
 

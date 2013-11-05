@@ -3,7 +3,7 @@
 /* @var $model Survey */
 ?>
 
-
+<!--======== CREATE SURVEY ========-->
 <h1>Create Survey</h1>
 
 <div class="form">
