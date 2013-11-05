@@ -5,10 +5,8 @@
  * @var $form CActiveForm
  */
 
-<<<<<<< HEAD
-<?php $this->renderPartial('_form', array('model'=>$model,'answer_dataProvider'=>$answer_dataProvider)); ?>
-=======
 ?>
+
 <li class="question_summary <?php echo $model->class; ?>"> 
         <div class="row">
             <?php echo CHtml::error($model, 'text',array('successCssClass','success'));?>
@@ -35,4 +33,3 @@
             <a class="edit" href="#">Edit</a> 
         </div>
 </li>
->>>>>>> dev

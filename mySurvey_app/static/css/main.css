@@ -865,8 +865,6 @@ input[type="password"] {
 	font-weight: normal;
 	
 	width: 204px;
-<<<<<<< HEAD
-
 }
 
 .rememberMe {
@@ -909,8 +907,6 @@ input[type="password"] {
 	padding: 0;
 	float: left;
 	
-=======
->>>>>>> dev
 }
 
 .errorSummary {
@@ -1030,29 +1026,18 @@ input.title ~ .errorMessage {
 
 
 
-<<<<<<< HEAD
 /* -------- Edit Survey: Draggable Question Boxes -------- */
 
-[draggable="true"]{
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
-        
-=======
 /*DRAGGABLES*/
-
 [draggable="true"]{
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
     user-select: none;
->>>>>>> dev
     /* Required to make elements draggable in old WebKit */
     -khtml-user-drag: element;
     -webkit-user-drag: element;
 }
-<<<<<<< HEAD
 
 .question_summary{
 	height:15px;
@@ -1066,37 +1051,23 @@ input.title ~ .errorMessage {
 #sortable li{
     cursor: move;
 }
+.sortable .template{
+	display: none;
+}
 
 .question_summary .order_number{
     float: left;
 }
 
-
-
 .dragging{
    	border: 2px dotted #6eb4cd;
-=======
-.sortable li{
-    cursor: move;
-}
-
-.sortable .template{
-	display: none;
-}
-
-.dragging{
-    border: 2px dashed;
->>>>>>> dev
     margin:-1px;
     background:#E4F5F8;
 }
 
-<<<<<<< HEAD
 #sortable li a {
 	color: #005a82;
 	float:right;
     margin-left: 15px;
 }
-=======
->>>>>>> dev
 
