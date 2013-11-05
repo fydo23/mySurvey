@@ -47,7 +47,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 		'survey_question_ID',
-		'survey_answer_choice_letter',
+		'choice_letter',
 		'survey_answer_response_time',
 		'survey_answer_next_link',
 		array(

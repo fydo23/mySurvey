@@ -22,7 +22,7 @@ class SurveyController extends Controller
 	{
 		return array(
 			array('deny', 
-                            'users'=>array('?'),
+                'users'=>array('?'),
 			),
 		);
 	}
@@ -91,13 +91,11 @@ class SurveyController extends Controller
                 $this->performAjaxValidation(array_merge($questions,array($model)));
                 
                 if(!count($questions)){
-                    $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
                     $questions_criteria = new CDbCriteria(array(
                         'condition'=>'survey_ID = ' . $model->id,
                         'order'=>'order_number'
                     ));
-                    $questions_dataProvider->setCriteria($questions_criteria);
-                    $questions = $questions_dataProvider->getData();
+                    $questions = SurveyQuestion::model()->findAll($questions_criteria);
                 } 
                 if(isset($_POST['Survey'])){
                     $model->attributes=$_POST['Survey'];
@@ -121,12 +119,16 @@ class SurveyController extends Controller
             $questions = array();
             foreach($_POST['SurveyQuestion'] as $idx => $attributes){
                 $question = new SurveyQuestion('create');
-                if($attributes['id']){
-                    $question = SurveyQuestion::model()->findByPk($attributes['id']);
+                //if $attributes id is set, try to set question 
+                if($attributes['id'] && !$question = SurveyQuestion::model()->findByPk($attributes['id'])){
+                	//provided an id that doesn't exist. skip this question
+                	continue;
                 }
-                if($question->id && $attributes['delete']){
-                    //a fetched model needs to be deleted.
-                    $question->delete();
+                if($attributes['delete']){
+                	if($question->id){
+                		//requesting to delete an existing model.
+                    	$question->delete();
+                	}
                     continue; // stop further processing this question.
                 }
                 $question->attributes = $attributes;
@@ -136,6 +138,9 @@ class SurveyController extends Controller
                     $question->save();
                 }
                 $questions[$idx] = $question;
+                echo '<pre>';
+                print_r($question);
+                echo '</pre>';
             }
             ksort($questions);
             return $questions;

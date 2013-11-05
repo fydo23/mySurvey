@@ -82,6 +82,7 @@ input[type="button"]:hover {
 
 .form ul li a {
 	color: #6cb3cc;
+	padding: 10px 2px;
 }
 
 .form ul {
@@ -102,6 +103,20 @@ a {
 
 a:hover {
 	text-decoration: none;
+}
+
+.row {
+	clear: both;
+}
+
+/*adds clearfix property*/
+.row:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
 }
 
 
@@ -490,18 +505,35 @@ p.placeholder {
     border:1px solid #5887A2;
     background:#A1DCE7;
     padding: 8px 20px;
-    margin: 5px 0px;
+	margin: 5px 0px 10px;
 }
-.question_summary .order_number{
-    float: left;
+.question_summary input[type=text]{
+	clear:both;
+}
+
+.question_summary select{
+	display:none;
+}
+.question_summary .details{
+	width: 360px;
+	display:inline-block;
+}
+.question_summary .text{
+	float:none;
+	padding-top: 14px;
+}
+.question_summary .buttons{
+	width:120px;
+	display:inline-block;
+	float:none;
 }
 .question_summary a{
     float:right;
     margin-left: 10px;
 }
-
-.question_summary input[type=text]{
-	clear:both;
+.answer_summary{
+	background-color:white; 
+	border-bottom:1px solid #aaa;
 }
 
 
@@ -952,10 +984,6 @@ input.title ~ .errorMessage {
 	float: left;
 }
 
-.row {
-	clear: both;
-}
-
 
 
 
@@ -989,10 +1017,16 @@ input.title ~ .errorMessage {
 }
 
 .text {
-	width: 75%;
 	float: left;
 	position: relative;
+	padding: 9px 6px 11px;
+	font-family: "Open Sans", Helvetica, sans-serif;
+	font-size: 13px;
+	color: #444;
+	font-weight: normal;
+	width: 204px;
 }
+
 .image {
 	position: relative;
 	float: right;
@@ -1039,15 +1073,6 @@ input.title ~ .errorMessage {
     -webkit-user-drag: element;
 }
 
-.question_summary{
-	height:15px;
-	/*width:500px;*/
-	/*border:1px solid #5887A2;*/
-	background:#c8e2ea;
-    padding: 8px 20px;
-	margin: 5px 0px 10px;
-}
-
 #sortable li{
     cursor: move;
 }
@@ -1055,8 +1080,8 @@ input.title ~ .errorMessage {
 	display: none;
 }
 
-.question_summary .order_number{
-    float: left;
+.sortable [data-show-on-edit=true]{
+	display:none;
 }
 
 .dragging{

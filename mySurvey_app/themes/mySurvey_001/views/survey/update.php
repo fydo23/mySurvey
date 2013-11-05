@@ -9,6 +9,7 @@
 <h1>Survey Editor</h1>
 
 <script>
+
     
 	$(function(){
 
@@ -25,7 +26,7 @@
 		/**
          * Handels the draggable items enabled by jquery-ui.
          */
-		$('ul.sortable').sortable({
+		$('.sortable').sortable({
             items: '> li',
             start:function(event, ui){
                 $(ui.item).addClass('dragging');
@@ -40,38 +41,35 @@
          * Event handler for editing a list item. Triggered by clicking the edit link.
          * This function toggles the text editing of quesitons.
          */
-		$('#questions').on('click','a.edit',function(e){
+		$('.sortable').on('click','a.edit',function(e){
 			e.stopPropagation();//allows us to catch window click outside event.
 			e.preventDefault();//stops the link from following the url
-			//bi-pass browser security: clone to allow mutation of 'type' attribute.
-			var newInput = $(this).closest('li').find('input[name*=text]').clone();
-            var list_item = $(this).closest('li');
-			if(!list_item.hasClass('active')){
-                //start edit funciton
+            var editable = $(this).closest('[data-editable]');
+			if(!editable.hasClass('active')){
+                //close other editors.
 				$('.active a.edit').trigger('click');
-				list_item.addClass('active');
-				list_item.find('.text').hide();
-				list_item.find('input[type=hidden][name*=text]').replaceWith(newInput.attr('type','text')).focus();
+				editable.addClass('active');
+				editable.find('.text').hide();
+                editable.find('[data-show-on-edit]').show().first().focus();
 			}else{
                 //stop editing function.
-				list_item.removeClass('active');
-				list_item.find('input[type=text][name*=text]').replaceWith(newInput.attr('type','hidden'));
-				list_item.find('.text').html(newInput.val()).show();
+				editable.removeClass('active');
+                editable.find('[data-show-on-edit]').hide();
+				editable.find('.text').html(editable.find('input[name*=text]').val()).show();
 			}
-		})
+		});
                 
         /**
          * This event handles the deletion of list items. It hides the item
          * apends it after the .trash item.
          */
-        $('#questions').on('click','a.delete',function(e){
+        $('.sortable').on('click','a.delete',function(e){
     		e.preventDefault();//stops the link from following the url
     		var listItem = $(this).closest('li');
-    		listItem.hide();
+    		listItem.hide().attr('data-deleted',"True").find('input[name*=delete]').val("True");
             //move deleted items after trash item to allows the preservation of order_num.
-            $('#questions .trash').after(listItem.detach());
-            listItem.find('input[name*=delete]').val('True');
-            fix_sortable_input_names('#questions');
+            listItem.siblings('.trash').after(listItem.detach());
+            fix_sortable_input_names(listItem.closest('.sortable'));
 		});
 
         /**
@@ -80,16 +78,15 @@
 		$('.add-sortable').on('click',function(e){
             e.preventDefault(); // don't follow links.
 			var sortable = $(this).data('target');
-			var newItem = $(sortable).find('.template').clone().removeClass('template');
+			var newItem = $(sortable).find('.template').first().clone().removeClass('template');
 			newItem.find('input, select').removeAttr('disabled');
-			$(sortable).find('.trash').before(newItem);
-                        
+			$(sortable).find('.trash').last().before(newItem);
             //add the new element before the delete selements that are stored at the end of the list
             fix_sortable_input_names(sortable);
             
             // display/focus the new element's text field.
 			e.stopPropagation(); 
-			newItem.find('.edit').trigger('click');
+			newItem.find('.edit:first').trigger('click');
 		});
                 
         /**
@@ -103,11 +100,12 @@
          */
         function fix_sortable_input_names(sortable){
             //renames item inputs to reflect order
-            $(sortable).find('li:not(.template, .trash)').each(function(order_num,list_item){
-                $(list_item).find('input,select').each(function(idx, input){ 
+            var nesting = $(sortable).parents('.sortable').length;
+            $(sortable).find('li:not(.template, .trash, [data-deleted])').each(function(order_num,list_item){
+                $(list_item).find('input, select, .sortable').each(function(idx, input){ 
                     var old_name = $(input).attr('name');
-                    var old_order_number = old_name.split('[')[1].split(']')[0];
-                    var new_name = old_name.replace(old_order_number, order_num);
+                    //construct new name based on how nested this sortble item is.
+                    var new_name = old_name.split('[').slice(0,nesting + 1).join('[') + "[" + order_num + "]" + old_name.split(']').slice(nesting + 1).join(']');
                     $(input).attr('name',new_name);
                 });
             });
@@ -145,15 +143,14 @@
 
                 <h4>Questions</h4>
                 <ul id="questions" class="sortable">
-                    <?php echo $this->renderPartial('/question/update',array(
-                            'model'=>new SurveyQuestion('template'),
-                            'form'=>$form
+                    <?php echo $this->renderPartial('/question/_form',array(
+                            'question'=>new SurveyQuestion('template')
                     )); ?>
                     <?php foreach($questions as $record) { ?>
-                            <?php echo $this->renderPartial('/question/update',array(
-                                    'model'=>$record,
-                                    'form'=>$form
-                            )); ?>
+                            <?php echo $this->renderPartial('/question/_form',array(
+                                    'question'=>$record
+                            )); 
+                            ?>
                     <?php } ?>  
                     <li class="trash"><?php //trash goes after this list item. ?></li>
                 </ul>

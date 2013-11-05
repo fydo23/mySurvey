@@ -1,72 +1,56 @@
 <?php
-/* @var $this SurveyQuestionController */
-/* @var $model SurveyQuestion */
-/* @var $form CActiveForm */
+/**
+ * @var $this SurveyController
+ * @var $question SurveyQuestion 
+ */
+
 ?>
-<div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'survey-question-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-	
-	<div class="row">
-	    <?php if(CController::getAction()->getId()=='create'){ ?>
-			<?php echo $form->labelEx($model,'type'); ?>
-			<?php echo $form->dropDownList($model,'type', array(0=>'Simple Text', 1=>'Multiple Choice')); ?>
-			<?php echo $form->error($model,'type'); ?>
-		<?php } ?>
-		<?php if(CController::getAction()->getId()=='update'){ ?>
-			<?php echo $form->label($model,'type'); ?>
-			<?php if($model->type == 0){echo '&nbsp&nbspSimple text';} ?>
-			<?php if($model->type == 1){echo '&nbsp&nbspMultiple choice';} ?>
-			<?php echo $form->error($model,'type'); ?>
-		<?php } ?>
-	</div>
-        
-	<div class="row">
-		<?php echo $form->labelEx($model,'text'); ?>
-		<?php echo $form->textField($model,'text',array('size'=>60,'maxlength'=>1000)); ?>
-		<?php echo $form->error($model,'text'); ?>
-	</div>
-	<?php if((CController::getAction()->getId()=='update') && ($model->type == 1)){ ?>
-	
-    <div id="choice">
-    	<h4>Choices</h4>
-        <ul id="sortable">
-            <?php if(isset($answer_dataProvider)) { ?>
-                <?php foreach($answer_dataProvider->getData() as $record) { ?>
-                   <li class="answer_summary" >
-                   		<label class="label"><?php echo $record->getAttributeLabel('text') ?>:</label>
-                       <span> <?php echo $record->text ?></span><br>
-                       <label class="label"><?php echo $record->getAttributeLabel('survey_answer_choice_letter') ?>:</label>
-                       <span><?php echo $record->survey_answer_choice_letter ?></span><br>
-                       <label class="label"><?php echo $record->getAttributeLabel('survey_answer_next_link') ?>:</label>
-                       <span><?php echo $record->survey_answer_next_link ?></span><br>
-                       <input class="order_number" type="hidden" name="SurveyAnswer[<?php echo $record->id ?>][order_number]" value="<?php echo $record->order_number ?>"/>
-                       <a href="<?php echo Yii::app()->createUrl('answer/update',array('id'=>$record->id,'surveyQuestion_id'=>$model->id)); ?>">Edit</a>
-                       <a href="<?php echo Yii::app()->createUrl('answer/delete',array('id'=>$record->id,'surveyQuestion_id'=>$model->id)); ?>">Delete</a>
-                   </li>
-                <?php } ?>   
-            <?php } ?>
-        </ul>
-        <div class="row buttons">
-            <?php echo CHtml::link('Add new choice',array('/answer/create/'.$model->id)); ?>
+<li class="question_summary <?php echo $question->class; ?>"> 
+        <div class="row clearfix" data-editable="true">
+            <div class="details">
+                <?php echo CHtml::error($question, 'text',array('successCssClass','success'));?>
+                <span class="text"><?php echo $question->text ?></span>  
+                <?php 
+                    echo CHtml::activeTextField($question, 'text', array(
+                        'name'=>$question->getNameForAttribute('text'), 
+                        'disabled'=>$question->disabled,
+                        'data-show-on-edit'=>'true'
+                    ));
+                    echo CHtml::activeDropDownList($question, 'type', $question->type_choices, array(
+                        'name'=>$question->getNameForAttribute('type'), 
+                        'disabled'=>$question->disabled,
+                        'data-show-on-edit'=>'true'
+                    ));
+                    echo CHtml::activeHiddenField($question, 'id', array(
+                        'name'=>$question->getNameForAttribute('id'), 
+                        'disabled'=>$question->disabled
+                    )); 
+                    echo CHtml::activeHiddenField($question, 'delete', array(
+                        'name'=>$question->getNameForAttribute('delete'), 
+                        'disabled'=>$question->disabled
+                    )); 
+                ?>
+            </div>
+            <div class="buttons">
+                <a class="delete" href="#">Delete</a>
+                <a class="edit" href="#">Edit</a> 
+            </div>
         </div>
-    <?php } ?>
-    </div>
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
+        <div class="row">
+            <ul id="answers_<?php echo $question->answersUniqueId; ?>" class="sortable" name="<?php echo $question->getNameForAttribute('id'); ?>">
+                <?php $this->renderPartial('/answer/_form',array(
+                    'answer'=>new SurveyAnswer('template')
+                )); ?>
+                <?php foreach($question->answers as $idx => $answer) {?>
+                    <?php $this->renderPartial('/answer/_form',array(
+                        'answer'=>$answer
+                    )); ?>
+                <?php }?>
+                <li class="trash"><?php //trash goes after this list item. ?></li>
+            </ul>
+            <div class="row buttons">
+                    <a class="add-sortable" data-target="#answers_<?php echo $question->answersUniqueId; ?>" href="#">Add new answer'</a>
+            </div>
+        </div>
+</li>
