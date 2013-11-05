@@ -45,8 +45,14 @@
             <?php if(isset($answer_dataProvider)) { ?>
                 <?php foreach($answer_dataProvider->getData() as $record) { ?>
                    <li class="answer_summary" >
-                       <input class="text" value="<?php echo $record->text ?>" name="SurveyAnswer[<?php echo $record->id;?>][text]"><br>
+                   		<label class="label"><?php echo $record->getAttributeLabel('text') ?>:</label>
+                       <span> <?php echo $record->text ?></span><br>
+                       <label class="label"><?php echo $record->getAttributeLabel('survey_answer_choice_letter') ?>:</label>
+                       <span><?php echo $record->survey_answer_choice_letter ?></span><br>
+                       <label class="label"><?php echo $record->getAttributeLabel('survey_answer_next_link') ?>:</label>
+                       <span><?php echo $record->survey_answer_next_link ?></span><br>
                        <input class="order_number" type="hidden" name="SurveyAnswer[<?php echo $record->id ?>][order_number]" value="<?php echo $record->order_number ?>"/>
+                       <a href="<?php echo Yii::app()->createUrl('answer/update',array('id'=>$record->id,'surveyQuestion_id'=>$model->id)); ?>">Edit</a>
                        <a href="<?php echo Yii::app()->createUrl('answer/delete',array('id'=>$record->id,'surveyQuestion_id'=>$model->id)); ?>">Delete</a>
                    </li>
                 <?php } ?>   

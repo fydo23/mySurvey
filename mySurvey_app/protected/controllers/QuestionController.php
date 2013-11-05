@@ -100,12 +100,12 @@ class QuestionController extends Controller
 			if($model->save()){
 				$answers=SurveyAnswer::model()->findAllByAttributes(array('survey_question_ID'=>$id));
 				if($answers){
-					foreach ($answers as $idx => $answer) {
-						$answer->setAttribute('text',$_POST['SurveyAnswer'][$answer->id]['text']);
+					foreach ($answers as $answer) {
 						$answer->setAttribute('order_number',$_POST['SurveyAnswer'][$answer->id]['order_number']);
 						$answer->save();
 					}
 				}
+				
 				$this->redirect(array('survey/update/' . $model->survey_ID));
 			}
 		}
@@ -122,6 +122,12 @@ class QuestionController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		//delete answers related to theis question first
+		$answers=SurveyAnswer::model()->findAllByAttributes(array('survey_question_ID'=>$id));
+		foreach ($answers as $answer){
+			$answer->delete();
+		}
+		//delete question
 		$model = $this->loadModel($id);
                 $model->delete();
 
