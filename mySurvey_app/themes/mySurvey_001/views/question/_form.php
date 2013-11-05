@@ -22,20 +22,20 @@
 	    <?php if(CController::getAction()->getId()=='create'){ ?>
 			<?php echo $form->labelEx($model,'type'); ?>
 			<?php echo $form->dropDownList($model,'type', array(1=>'Simple Text', 2=>'Multiple Choice')); ?>
-			<?php echo $form->error($model,'type'); ?>
+			<span class="arrow-left"></span><?php echo $form->error($model,'type'); ?>
 		<?php } ?>
 		<?php if(CController::getAction()->getId()=='update'){ ?>
 			<?php echo $form->label($model,'type'); ?>
 			<?php if($model->type == 1){echo '&nbsp&nbspSimple text';} ?>
 			<?php if($model->type == 2){echo '&nbsp&nbspMultiple choice';} ?>
-			<?php echo $form->error($model,'type'); ?>
+			<span class="arrow-left"></span><?php echo $form->error($model,'type'); ?>
 		<?php } ?>
 	</div>
         
 	<div class="row">
-		<?php echo $form->labelEx($model,'text'); ?>
-		<?php echo $form->textField($model,'text',array('size'=>60,'maxlength'=>1000)); ?>
-		<?php echo $form->error($model,'text'); ?>
+		
+		<?php echo $form->textField($model,'text',array('size'=>60,'maxlength'=>1000, 'placeholder'=>'Enter Question Text')); ?>
+		<span class="arrow-left"></span><?php echo $form->error($model,'text'); ?>
 	</div>
 	<?php if((CController::getAction()->getId()=='update') && ($model->type == 2)){ ?>
 	

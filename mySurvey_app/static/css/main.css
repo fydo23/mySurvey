@@ -40,7 +40,8 @@ h4 {
 
 #home .button,
 #home input[type="submit"],
-#home input[type="button"] {
+#home input[type="button"],
+.button {
 	width: 208px;
 	height: auto;
 	display: inline-block;
@@ -842,6 +843,18 @@ input[type="password"] {
 
 #survey-form .error {
 	padding-left: 5px;
+}
+
+
+#survey-question-form .error {
+	padding-left: 0;
+	
+}
+
+#survey-question-form .error label {
+	padding-top: 10px;
+	padding: 0;
+	float: left;
 	
 }
 
