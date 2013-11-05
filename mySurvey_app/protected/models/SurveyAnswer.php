@@ -34,8 +34,8 @@ class SurveyAnswer extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('survey_ID, survey_question_ID, survey_answer_choice_letter', 'required'),
-			array('survey_ID, survey_question_ID', 'numerical', 'integerOnly'=>true),
+			array('survey_question_ID, survey_answer_choice_letter', 'required'),
+			array('survey_question_ID', 'numerical', 'integerOnly'=>true),
 			array('survey_answer_choice_letter', 'length', 'max'=>5),
 			array('survey_answer_next_link', 'length', 'max'=>80),
 			array('survey_answer_response_time', 'safe'),
