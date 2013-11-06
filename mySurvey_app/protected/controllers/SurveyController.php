@@ -116,35 +116,49 @@ class SurveyController extends Controller
          * @return array $questions | an array containing all the questions in the current post request.
          */
         private function process_post_questions($survey_id){
-            $questions = array();
-            foreach($_POST['SurveyQuestion'] as $idx => $attributes){
-                echo '<pre>';
-                print_r($_POST);
-                echo '</pre>'; 
-                // die();
-                $question = new SurveyQuestion('create');
-                //if $attributes id is set, try to set question 
-                if($attributes['id'] && !$question = SurveyQuestion::model()->findByPk($attributes['id'])){
-                	//provided an id that doesn't exist. skip this question
-                	continue;
-                }
-                if($attributes['delete']){
-                	if($question->id){
-                		//requesting to delete an existing model.
-                    	$question->delete();
-                	}
-                    continue; // stop further processing this question.
-                }
-                $question->attributes = $attributes;
-                $question->survey_ID = $survey_id;
-                $question->order_number = $idx;
-                if($question->validate()){
-                    $question->save();
-                }
-                $questions[$idx] = $question;
+            foreach($_POST['SurveyQuestion'] as $q_idx => $attributes){
+        		$attributes['survey_ID'] = $survey_id;
+        		$attributes['order_number'] = $q_idx;
+            	if($question = $this->create_save_or_delete('SurveyQuestion', $attributes)){
+                	$questions[$q_idx] = $question;
+	                if(isset($attributes['SurveyAnswer'])){
+	                	foreach($attributes['SurveyAnswer'] as $a_idx => $answer_attributes){
+	                		$answer_attributes['survey_question_ID'] = $question->id;
+	                		$answer_attributes['order_number'] = $a_idx;
+	                		if($answer = $this->create_save_or_delete('SurveyAnswer', $answer_attributes)){
+		                		if($answer->hasErrors()){
+									echo '<pre>';
+		                			print_r($answer->errors);
+									echo '</pre>';
+		                		}
+	                		}
+	                	}
+	                }
+            	}
             }
             ksort($questions);
             return $questions;
+        }
+
+        private function create_save_or_delete($model_name, $attributes){
+				$model = new $model_name('create');
+                //if $attributes id is set, try to set model 
+                if($attributes['id'] && !$model = $model_name::model()->findByPk($attributes['id'])){
+                	//provided an id that doesn't exist. skip this question
+                	return false;
+                }
+                if($attributes['delete']){
+                	if($model->id){
+                		//requesting to delete an existing model.
+                    	$model->delete();
+                	}
+                	return false;
+                }
+                $model->attributes = $attributes;
+                if($model->validate()){
+                    $model->save();
+                }
+            	return $model;
         }
         
 	/**

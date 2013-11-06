@@ -55,7 +55,7 @@ class SurveyAnswer extends CActiveRecord
         
     public function afterFind()
     {	
-    	$this->survey_question_order = $this->surveyQuestion->order_number;
+    	$this->survey_question_order = $this->question->order_number;
         return parent::afterFind();
     }
     
@@ -76,7 +76,7 @@ class SurveyAnswer extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('survey_question_ID, choice_letter, order_number, text', 'required'),
+			array('survey_question_ID, order_number, text', 'required'),
 			array('survey_question_ID, order_number', 'numerical', 'integerOnly'=>true),
 			array('choice_letter', 'length', 'max'=>5),
 			array('survey_answer_next_link', 'length', 'max'=>80),

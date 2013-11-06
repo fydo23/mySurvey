@@ -107,20 +107,34 @@
          *      sortable1[sortable1_indexes][sortable2][sortable2_indexes][[...][...]etc...]['attributes']
          * (ie. expected name attributers are: SurveyQuestion[1][SurveyAnswer][2][choice_letter]['text'])
          * 
-         * @param $sortable | the .sortable element being fixed
          */
-        function fix_sortable_input_names(sortable){
+        function fix_sortable_input_names(){
             //nesting will keep track where we need to break the array to rename the proper index.
             //if zero parent sortables, change first [#], if 1 parent sortable, change third [#]
-            var nesting = 2 * ($(sortable).parents('.sortable').length) + 1;
-            $(sortable).children('li:not(.template, .trash, [data-deleted])').each(function(order_num,list_item){
-                $(list_item).find('input, select, .sortable').each(function(idx, input){ 
-                    var parent_sortables = ($(list_item).parents('.sortable').length) - 1
-                    var old_name = $(input).attr('name');
-                    //construct new name based on how nested this sortble item is.
-                    var new_name = old_name.split('[').slice(0,nesting).join('[') + "[" + order_num + "]" + old_name.split(']').slice(nesting).join(']');
-                    $(input).attr('name',new_name);
-                });
+
+            $('#questions').find('li:not(.template, .trash)').find('input, select').each(function(idx, input){ 
+
+                //get the old name
+                var old_name = $(input).attr('name');
+
+                //fix top level order number...
+                var farthest_li = $(input).parents('.sortable li').last();
+                var top_order = farthest_li.siblings().andSelf().not('.trash, .template').index( farthest_li ); 
+                top_fixed = old_name;
+                if(top_order > -1){
+                    var top_fixed = old_name.split('[').slice(0,1) + "[" + top_order + "]" + old_name.split(']').slice(1).join(']');
+                }
+
+                //fix sub-sortable specific order number. 
+                var nearest_li = $(input).parents('.sortable li').first();
+                var bottom_order = nearest_li.siblings().andSelf().not('.trash, .template').index( nearest_li ); 
+                new_name = top_fixed;
+                if(bottom_order > -1){
+                    var nesting = 2 * ($(input).parents('.sortable').length) - 1;  
+                    var new_name = top_fixed.split('[').slice(0,nesting).join('[') + "[" + bottom_order + "]" + top_fixed.split(']').slice(nesting).join(']');
+                    console.log(old_name, new_name);
+                }
+                $(input).attr('name',new_name);
             });
         }
 

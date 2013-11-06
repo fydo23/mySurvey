@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="row">
-            <ul id="answers_<?php echo $question->answersUniqueId; ?>" class="sortable" name="<?php echo $question->getNameForAttribute('id'); ?>">
+            <ul id="answers_<?php echo $question->answersUniqueId; ?>" class="sortable">
                 <?php $this->renderPartial('/answer/_form',array(
                     'answer'=>new SurveyAnswer('template')
                 )); ?>
