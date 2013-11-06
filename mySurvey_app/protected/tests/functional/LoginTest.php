@@ -38,9 +38,9 @@ class LoginTest extends PHPUnit_Framework_TestCase {
 			// try to submit the form
 			$form->submit();
 			sleep(1);
-			// if successfully loged in, check if the account is correct
+			// check if the login account in survey page is correct 
 			$loginAccount = $web_driver->findElement(WebDriverBy::id("logout"))->getText();
-			$this->assertContains ( $this->email, $loginAccount );
+			$this->assertContains( $this->email, $loginAccount );
 			
 		} catch (Exception $e) {
 			// if login failed, check if the error message shows up
