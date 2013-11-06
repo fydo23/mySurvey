@@ -65,7 +65,7 @@ class SurveyAnswer extends CActiveRecord
      * @return String html name attribute for supplied name
      */
     public function getNameForAttribute($attribute){
-        return 'SurveyQuestion['.$this->survey_question_order.']SurveyAnswer['.$this->order_number.']['.$attribute.']';
+        return 'SurveyQuestion['.$this->survey_question_order.'][SurveyAnswer]['.$this->order_number.']['.$attribute.']';
     }
 
 	/**

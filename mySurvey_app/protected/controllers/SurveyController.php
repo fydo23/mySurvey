@@ -118,6 +118,10 @@ class SurveyController extends Controller
         private function process_post_questions($survey_id){
             $questions = array();
             foreach($_POST['SurveyQuestion'] as $idx => $attributes){
+                echo '<pre>';
+                print_r($_POST);
+                echo '</pre>'; 
+                // die();
                 $question = new SurveyQuestion('create');
                 //if $attributes id is set, try to set question 
                 if($attributes['id'] && !$question = SurveyQuestion::model()->findByPk($attributes['id'])){
@@ -138,9 +142,6 @@ class SurveyController extends Controller
                     $question->save();
                 }
                 $questions[$idx] = $question;
-                echo '<pre>';
-                print_r($question);
-                echo '</pre>';
             }
             ksort($questions);
             return $questions;

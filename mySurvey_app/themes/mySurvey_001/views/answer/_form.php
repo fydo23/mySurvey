@@ -9,8 +9,8 @@
 	<div class="row clearfix" data-editable="true">
         <div class="details">
 		    <?php echo CHtml::error($answer, 'text',array('successCssClass','success'));?>
-		    <span class="text"><?php echo $answer->text ?></span>   
-		    <span class="choice_letter"><?php echo $answer->choice_letter ?></span>
+		    <span data-hide-on-edit="true" class="text"><?php echo $answer->text ?></span>   
+		    <span data-hide-on-edit="true" class="choice_letter"><?php echo $answer->choice_letter ?></span>
 		    <?php 
 		        echo CHtml::activeTextField($answer, 'text', array(
 		            'name'=>$answer->getNameForAttribute('text'), 

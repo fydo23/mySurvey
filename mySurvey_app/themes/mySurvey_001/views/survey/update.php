@@ -59,7 +59,6 @@
                     if($(elem).is('select')){
                         html = $(elem).find('option[value='+$(elem).val()+']').text();
                     }
-                    console.log(html);
                     editable.find($(elem).attr('data-source')).html(html);
                 });
                 editable.find('[data-hide-on-edit]').show();
@@ -104,16 +103,22 @@
          * of sortable items with each index reflecting the element's order_number. This
          * function should be called whenever an update is made to the sortable list.
          * 
+         * The expected name schem should be:
+         *      sortable1[sortable1_indexes][sortable2][sortable2_indexes][[...][...]etc...]['attributes']
+         * (ie. expected name attributers are: SurveyQuestion[1][SurveyAnswer][2][choice_letter]['text'])
+         * 
          * @param $sortable | the .sortable element being fixed
          */
         function fix_sortable_input_names(sortable){
-            //renames item inputs to reflect order
-            var nesting = $(sortable).parents('.sortable').length;
-            $(sortable).find('li:not(.template, .trash, [data-deleted])').each(function(order_num,list_item){
+            //nesting will keep track where we need to break the array to rename the proper index.
+            //if zero parent sortables, change first [#], if 1 parent sortable, change third [#]
+            var nesting = 2 * ($(sortable).parents('.sortable').length) + 1;
+            $(sortable).children('li:not(.template, .trash, [data-deleted])').each(function(order_num,list_item){
                 $(list_item).find('input, select, .sortable').each(function(idx, input){ 
+                    var parent_sortables = ($(list_item).parents('.sortable').length) - 1
                     var old_name = $(input).attr('name');
                     //construct new name based on how nested this sortble item is.
-                    var new_name = old_name.split('[').slice(0,nesting + 1).join('[') + "[" + order_num + "]" + old_name.split(']').slice(nesting + 1).join(']');
+                    var new_name = old_name.split('[').slice(0,nesting).join('[') + "[" + order_num + "]" + old_name.split(']').slice(nesting).join(']');
                     $(input).attr('name',new_name);
                 });
             });
