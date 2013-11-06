@@ -1,7 +1,7 @@
 <?php
 class SignUpTest extends PHPUnit_Extensions_Selenium2TestCase {
 	
-	private $url = "http://localhost/mySurvey/mySurvey_app";
+	private $url = "http://localhost/";
 	private $email;
 	private $password;
 	private $firstName = "Test-FirstName";

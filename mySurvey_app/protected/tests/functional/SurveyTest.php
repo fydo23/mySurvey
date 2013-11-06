@@ -5,7 +5,7 @@ require __DIR__ . '/../php-webdriver/__init__.php';
 class SurveyTest extends PHPUnit_Framework_TestCase {
 	
 	// change this url according to your local machine
-	private $url = "http://localhost/mySurvey/mySurvey_app/";
+	private $url = "http://localhost/";
 	// default selenium server setting
 	private $host = "http://localhost:4444/wd/hub";
 	private $capability = array(WebDriverCapabilityType::BROWSER_NAME => 'firefox');
