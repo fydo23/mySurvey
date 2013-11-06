@@ -1,21 +1,35 @@
 <?php
-/* @var $this SurveyQuestionController */
-/* @var $model SurveyQuestion */
+/**
+ * @var $this SurveyQuestionController
+ * @var $model SurveyQuestion 
+ * @var $form CActiveForm
+ */
 
-$this->breadcrumbs=array(
-	'Surveys'=>array('survey/index'),
-	$model->survey_ID=>array('survey/update/' . $model->survey_ID),
-	'Update',
-);
-
-$this->menu=array(
-	array('label'=>'List SurveyQuestion', 'url'=>array('index')),
-	array('label'=>'Create SurveyQuestion', 'url'=>array('create')),
-	array('label'=>'View SurveyQuestion', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage SurveyQuestion', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Update SurveyQuestion <?php echo $model->id; ?></h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<li class="question_summary <?php echo $model->class; ?>"> 
+        <div class="row">
+            <?php echo CHtml::error($model, 'text',array('successCssClass','success'));?>
+            <div id="question-text"><span class="text"><?php echo $model->text ?></span> </div>  
+            <?php 
+                echo CHtml::activeHiddenField($model, 'text', array(
+                    'name'=>$model->getNameForAttribute('text'), 
+                    'disabled'=>$model->disabled
+                ));
+                echo CHtml::activeDropDownList($model, 'type', $model->type_choices, array(
+                    'name'=>$model->getNameForAttribute('type'), 
+                    'disabled'=>$model->disabled,
+                ));
+                echo CHtml::activeHiddenField($model, 'id', array(
+                    'name'=>$model->getNameForAttribute('id'), 
+                    'disabled'=>$model->disabled
+                )); 
+                echo CHtml::activeHiddenField($model, 'delete', array(
+                    'name'=>$model->getNameForAttribute('delete'), 
+                    'disabled'=>$model->disabled
+                )); 
+            ?>
+            <a class="delete" href="#">Delete</a>
+            <a class="edit" href="#">Edit</a> 
+        </div>
+</li>

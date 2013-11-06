@@ -34,18 +34,23 @@ h4 {
 	clear: both;
 }
 
-.button,
-input[type="submit"],
-input[type="button"] {
+#home .buttons {
+	float: none;
+}
+
+#home .button,
+#home input[type="submit"],
+#home input[type="button"],
+.button {
 	width: 208px;
-	height: 18px;
+	height: auto;
 	display: inline-block;
 	text-decoration: none;
 	font-size: 14px;
 	text-align: center;
 	font-weight: normal;
 	padding: 15px 0;
-	margin: 0 5px;
+	margin: 20px 5px;
 	border-radius: 10px;
 	color: #fff;
 	border: 1px solid #1c74b3;
@@ -134,7 +139,7 @@ a:hover {
 
 #mainmenu
 {
-	width: 20%;
+	width: 19%;
 	position: relative;
 	float: left;
 	margin-top: 20px;
@@ -391,6 +396,7 @@ div.search-form
 
 .note {
 	color: #a5a5a5;
+	display: none;
 }
 
 #toolbar {
@@ -477,6 +483,88 @@ p.placeholder {
 	float: left;
 }
 
+#question-text {
+	display: inline-block;
+	width: 475px;
+	margin-right: 22px;
+}
+
+.question_summary{
+    min-height:30px;
+    width:auto; 
+    border:1px solid #5887A2;
+    background: #c8e2ea;
+	padding: 8px 20px;
+	margin: 5px 0px 10px;
+}
+
+.question_summary .text {
+	width: 475px;
+	display: block;
+	margin-right: 25px;
+}
+
+.question_summary .order_number{
+    float: left;
+}
+.question_summary a{
+    float:right;
+    margin-left: 10px;
+}
+
+.question_summary input[type=text]{
+	clear:both;
+	width: 475px;
+	margin-right: 15px;
+}
+
+#add-new-question {
+	float: left;
+	margin-bottom: 70px;
+}
+
+#survey-form #add-new-question a {
+	
+	
+	
+	width: 208px;
+	height: auto;
+	display: inline-block;
+	text-decoration: none;
+	font-size: 14px;
+	text-align: center;
+	font-weight: normal;
+	padding: 15px 0;
+	margin: 20px 5px;
+	margin-left: 0;
+	border-radius: 10px;
+	color: #fff;
+	border: 1px solid #1c74b3;
+	border-top-color: #2c8ed1;
+	border-bottom-color: #0d5b97;
+	background: #2181cf;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#2181cf");
+	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#2181cf));
+	background: -moz-linear-gradient(top, #37a3eb, #2181cf);
+	-moz-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	-webkit-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+	-webkit-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+	-moz-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+}
+
+#survey-form #add-new-question a:hover {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#1e73b9");
+	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#1e73b9));
+	background: -moz-linear-gradient(top, #37a3eb, #1e73b9);
+}
+
+#questions {
+	padding-bottom: 0;
+}
+
+
 #question-editor {
 	width: 510px;
 	float: left;
@@ -532,6 +620,125 @@ p.placeholder {
 	margin: 0 5px;
 }
 
+.survey-title-buttons h3 {
+	width: auto;
+	float: left;
+	margin: 0;
+	padding-right: 10px;
+	padding-top: 7px;
+}
+
+#title-header {
+	float: left;
+	color: #005a82;
+}
+
+.buttons {
+	float: right;
+	/*margin-left: 25px;*/
+}
+
+#create-survey-form .buttons {
+	float: left;
+	margin-top: 25px;
+}
+
+#create-survey-form .errorMessage {
+	padding: 7px 15px;
+}
+
+#create-survey-form label.error {
+	float: left;
+	padding-top: 8px;
+	padding-right: 7px;
+	padding-left: 0;
+}
+
+#save-cancel {
+	margin-top: -60px;
+	padding-bottom: 45px;
+}
+
+
+
+.buttons input[type="submit"], 
+.buttons input[type="button"],
+.add-question a,
+#survey-form .buttons a {
+	background: #6eb4cd;
+	margin: 0 0 0 10px;
+	width: 100px;
+	height: auto;
+	
+	border-radius: 100px;
+	padding: 7px 10px;
+	color: #fff;
+	font-size: 13px;
+	
+	border: none;
+	filter: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	text-shadow: none;
+	-webkit-text-shadow: none;
+	-moz-text-shadow: none;
+}
+
+#survey-form .buttons a {
+	font-weight: normal;
+	text-decoration: none;
+	padding: 7px 28px;
+}
+
+.add-question a {
+	padding: 10px 20px;
+	margin: 0;
+	border-radius: 11px;
+	text-decoration: none;
+}
+
+#question-title {
+	margin-top: 70px;
+	text-transform: uppercase;
+	color: #005a82;
+	font-size: 14px;
+}
+
+.buttons input[type="submit"]:hover, 
+.buttons input[type="button"]:hover,
+.add-question a:hover {
+	background: #0079af;
+}
+
+#survey-url {
+	clear: both;
+	padding-top: 10px;
+}
+
+#survey-url h3 {
+	width: auto;
+	float: left;
+	margin-top: 5px;
+	color: #005a82;
+}
+
+#survey-url p {
+	width: auto;
+	float: left;
+	margin-top: 5px;
+	font-size: 15px;
+	margin-left: 10px;
+	color: #666;
+}
+
+.form {
+	clear: both;
+}
+
+.questions {
+	padding-top: 10px;
+}
 
 
 /* PAGE TEMPLATE */
@@ -676,7 +883,7 @@ p.placeholder {
 
 #login-logout {
 	min-height: 300px;
-	padding-top: 50px;	
+	padding-top: 30px;	
 }
 
 #login-logout .button {
@@ -695,6 +902,35 @@ p.placeholder {
 #register {
 	padding-top: 35px;	
 }
+
+.rememberMe {
+	color: #fff;
+	padding-top: 15px;
+}
+
+.errorMessage {
+	text-align: left;
+	width: auto;
+	margin: 0 auto;
+	padding-bottom: 15px;
+	
+	background: #eed3d7;
+	color: #a21636;
+	float: left;
+	padding: 5px 15px;
+	margin-top: 3px;
+	
+	font-size: 12px;
+}
+
+
+login .error, 
+register .error{
+	padding-left: 382px;
+}
+
+
+/* DEFAULT INPUTS */
 
 input[type="submit"],
 input[type="button"] {
@@ -725,7 +961,6 @@ input[type="password"] {
 	font-weight: normal;
 	
 	width: 204px;
-
 }
 
 .rememberMe {
@@ -753,6 +988,27 @@ input[type="password"] {
 	padding-left: 382px;
 }
 
+#survey-form .error {
+	padding-left: 5px;
+}
+
+
+#survey-question-form .error {
+	padding-left: 0;
+	
+}
+
+#survey-question-form .error label {
+	padding-top: 10px;
+	padding: 0;
+	float: left;
+	
+}
+
+.errorSummary {
+	display: none;
+}
+
 .error .arrow-left {
 	display: inline-block;
 	width: 0; 
@@ -767,7 +1023,24 @@ input[type="password"] {
 	margin-top: 3px;
 }
 
+input.title{
+	float: left;
+    font-size: 23px;
+    width:530px;
+}
 
+input.title ~ .errorMessage {
+	padding: 7px 15px;
+}
+
+.error input.title ~ .errorMessage,
+.error input.title ~ .arrow-left{
+        margin-top:6px;
+}
+
+.success input{
+        border-color: green;
+}
 
 .error input[type="text"],
 .error input[type="password"] {
@@ -812,7 +1085,7 @@ input[type="password"] {
 }
 
 .text {
-	width: 45%;
+	width: 75%;
 	float: left;
 	position: relative;
 }
@@ -848,4 +1121,41 @@ input[type="password"] {
 }
 
 
+
+/* -------- Edit Survey: Draggable Question Boxes -------- */
+
+/*DRAGGABLES*/
+[draggable="true"]{
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+}
+
+
+#sortable li{
+    cursor: move;
+}
+.sortable .template{
+	display: none;
+}
+
+.question_summary .order_number{
+    float: left;
+}
+
+.dragging{
+   	border: 2px dotted #6eb4cd;
+    margin:-1px;
+    background:#E4F5F8;
+}
+
+#sortable li a {
+	color: #005a82;
+	float:right;
+    margin-left: 15px;
+}
 

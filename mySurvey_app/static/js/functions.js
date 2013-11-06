@@ -6,71 +6,67 @@
 */
 
 
-$(document).ready(function(){
+$(function(){
 
 
-   
-   
-   //-------------------- Default Hompage with Login & Register Buttons --------------------//
-   
-   $('#login').hide();
-   $('#register').hide();
-   if($('#register,#login').filter('[data-visible="True"]').show().length){
-       $('#login-logout').hide();
-   }    
-   
-   $('.errorMessage:visible').closest('.row').addClass('error');
+	 
+	 
+	 //-------------------- Default Hompage with Login & Register Buttons --------------------//
+	 
+	 $('#login').hide();
+	 $('#register').hide();
+	 if($('#register,#login').filter('[data-visible="True"]').show().length){
+			 $('#login-logout').hide();
+	 }    
+	 
+	 $('.errorMessage:visible').closest('.row').addClass('error');
 
 
-   //-------------------- Show/Hide Login --------------------//
-   $('#sign-in').click(function(){
-   		
-   		$('#login-logout').hide();
-   		$('#login').show();
-   		$('#register').hide();
-   		
-   });
-   
-   
-   $('#sign-in-btn').click(function(){
-   		
-   		$('#login-logout').hide();
-   		$('#login').show();
-   		$('#register').hide();
-   		
-   });
-   
-   
-   
-   //-------------------- Show/Hide Registration --------------------// 
-   $('#register-btn').click(function(){
-   		
-   		$('#login-logout').hide();
-   		$('#login').hide();
-   		$('#register').show();
-   		
-   });
-   
-   $('#register-link').click(function(){
-   		
-   		$('#login-logout').hide();
-   		$('#login').hide();
-   		$('#register').show();
-   		
-   });
+	 //-------------------- Show/Hide Login --------------------//
+	 $('#sign-in').click(function(){
+			
+			$('#login-logout').hide();
+			$('#login').show();
+			$('#register').hide();
+			
+	 });
+	 
+	 
+	$('#sign-in-btn').click(function(){
+			
+			$('#login-logout').hide();
+			$('#login').show();
+			$('#register').hide();
+			
+		});
+	 
+	 
+	 
+		//-------------------- Show/Hide Registration --------------------//
+		$('#register-btn').click(function(){
+			
+			$('#login-logout').hide();
+			$('#login').hide();
+			$('#register').show();
+			
+		});
+	 
+		$('#register-link').click(function(){
+			
+			$('#login-logout').hide();
+			$('#login').hide();
+			$('#register').show();
+			
+		});
 
 
 
-   //-------------- Top Half Content Height = Window Size --------------//
+	//-------------- Top Half Content Height = Window Size --------------//
 
-   $(function(){
-	   $('#top-half').css({'height': (($(window).height())-244)+'px'});
-   
-	   $(window).resize(function(){
-		   $('#top-half').css({'height':(($(window).height())-244)+'px'});    
-	   });
-   
-   });
+		$('#top-half').css({'height': (($(window).height())-244)+'px'});
 
+		$(window).resize(function(){
+			$('#top-half').css({'height':(($(window).height())-244)+'px'});
+		});
 
 });

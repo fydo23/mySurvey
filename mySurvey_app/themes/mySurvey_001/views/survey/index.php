@@ -2,15 +2,19 @@
     $this->pageTitle=Yii::app()->name;
 ?>
 
+<!--======== SURVEY LANDING PAGE ========-->
 <div class="page-name">
 	<h1>Surveys</h1>
 </div>
 
+
+<!--======== CREATE NEW SURVEY ========-->
 <div id="new">
     <a href="<?php echo $this->createUrl('/survey/create')?>" class="button">Create New Survey</a>
 </div>
 
 
+<!--======== PUBLISHIED SURVEYS ========-->
 <div id="published">
 	<h2>Published</h2>
 
@@ -27,6 +31,8 @@
 	</ul>
 </div>
 
+
+<!--======== UNPUBLISHED SURVEYS ========-->
 <div id="unpublished">
 	<h2>Unpublished</h2>
 
