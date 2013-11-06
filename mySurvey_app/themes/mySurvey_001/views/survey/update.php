@@ -49,13 +49,20 @@
                 //close other editors.
 				$('.active a.edit').trigger('click');
 				editable.addClass('active');
-				editable.find('.text').hide();
+                editable.find('[data-hide-on-edit]').hide();
                 editable.find('[data-show-on-edit]').show().first().focus();
 			}else{
                 //stop editing function.
 				editable.removeClass('active');
-                editable.find('[data-show-on-edit]').hide();
-				editable.find('.text').html(editable.find('input[name*=text]').val()).show();
+                editable.find('[data-show-on-edit]').hide().each(function(idx,elem){
+                    var html = $(elem).val();
+                    if($(elem).is('select')){
+                        html = $(elem).find('option[value='+$(elem).val()+']').text();
+                    }
+                    console.log(html);
+                    editable.find($(elem).attr('data-source')).html(html);
+                });
+                editable.find('[data-hide-on-edit]').show();
 			}
 		});
                 
@@ -83,6 +90,7 @@
 			$(sortable).find('.trash').last().before(newItem);
             //add the new element before the delete selements that are stored at the end of the list
             fix_sortable_input_names(sortable);
+            fix_sub_sortable_target(newItem);
             
             // display/focus the new element's text field.
 			e.stopPropagation(); 
@@ -109,6 +117,27 @@
                     $(input).attr('name',new_name);
                 });
             });
+        }
+
+        /**
+         * This function fixes the repeated sortable id and add-sortable data-target inherited from 
+         * the generating template. This funtion generates a new unique sortable id for the add-sortable 
+         * button to have work again.
+         * 
+         * @param  $(.sortable li) sortable_item
+         * @return null
+         */
+        function fix_sub_sortable_target(sortable_item){
+            var addSortablebutton = sortable_item.find('.add-sortable[data-target]');
+            var old_target = addSortablebutton.data('target');
+            //if a sub-sortable exists..
+            if(addSortablebutton.length){
+                //define the new target id.
+                var new_target = old_target.split('_').slice(0,1) +'_'+Math.floor(Math.random() * 1000000000);
+                //set the target and respective id to match.
+                addSortablebutton.data('target',new_target);
+                sortable_item.attr('id',new_target.substr(1));
+            }
         }
 	});
 

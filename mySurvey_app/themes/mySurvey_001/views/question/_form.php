@@ -10,17 +10,20 @@
         <div class="row clearfix" data-editable="true">
             <div class="details">
                 <?php echo CHtml::error($question, 'text',array('successCssClass','success'));?>
-                <span class="text"><?php echo $question->text ?></span>  
+                <span data-hide-on-edit="true" class="text"><?php echo $question->text ?></span>  
+                <span data-hide-on-edit="true" class="type"><?php echo $question->type_choices[$question->type]; ?></span>  
                 <?php 
                     echo CHtml::activeTextField($question, 'text', array(
                         'name'=>$question->getNameForAttribute('text'), 
                         'disabled'=>$question->disabled,
-                        'data-show-on-edit'=>'true'
+                        'data-show-on-edit'=>'true',
+                        'data-source'=>'.text'
                     ));
                     echo CHtml::activeDropDownList($question, 'type', $question->type_choices, array(
                         'name'=>$question->getNameForAttribute('type'), 
                         'disabled'=>$question->disabled,
-                        'data-show-on-edit'=>'true'
+                        'data-show-on-edit'=>'true',
+                        'data-source'=>'.type'
                     ));
                     echo CHtml::activeHiddenField($question, 'id', array(
                         'name'=>$question->getNameForAttribute('id'), 
