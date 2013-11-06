@@ -9,7 +9,6 @@
 <h1>Survey Editor</h1>
 
 <script>
-
     
 	$(function(){
 
@@ -22,6 +21,8 @@
 				$('.active a.edit').trigger('click');
 			}
 		});
+
+
 
 		/**
          * Handels the draggable items enabled by jquery-ui.
@@ -37,6 +38,8 @@
             }
 		});
 		
+
+
         /**
          * Event handler for editing a list item. Triggered by clicking the edit link.
          * This function toggles the text editing of quesitons.
@@ -64,7 +67,9 @@
                 editable.find('[data-hide-on-edit]').show();
 			}
 		});
-                
+          
+
+
         /**
          * This event handles the deletion of list items. It hides the item
          * apends it after the .trash item.
@@ -78,6 +83,8 @@
             fix_sortable_input_names(listItem.closest('.sortable'));
 		});
 
+
+
         /**
          * Adds a sortable element by coping the hidden template at the head of the sortable. 
          */
@@ -87,6 +94,7 @@
 			var newItem = $(sortable).find('.template').first().clone().removeClass('template');
 			newItem.find('input, select').removeAttr('disabled');
 			$(sortable).find('.trash').last().before(newItem);
+            
             //add the new element before the delete selements that are stored at the end of the list
             fix_sortable_input_names(sortable);
             fix_sub_sortable_target(newItem);
@@ -95,13 +103,15 @@
 			e.stopPropagation(); 
 			newItem.find('.edit:first').trigger('click');
 		});
-                
+          
+
+
         /**
-         * Change the name of attribute to reflect model's new order_num
-         * Propogate order_number into 'name' attribute. This function makes sure to
-         * format the name attribute to make the resulting $_POST array contains a list
-         * of sortable items with each index reflecting the element's order_number. This
-         * function should be called whenever an update is made to the sortable list.
+         * Change the name of attribute to reflect survey new order_number which are
+         * Propogated into 'name' attribute. This function makes sure to format the 
+         * name attribute to make the resulting $_POST array contains a list of sortable 
+         * items with each index reflecting the element's order_number and respective parent 
+         * model. This function should be called whenever a sort update is made to the list.
          * 
          * The expected name schem should be:
          *      sortable1[sortable1_indexes][sortable2][sortable2_indexes][[...][...]etc...]['attributes']
@@ -109,11 +119,7 @@
          * 
          */
         function fix_sortable_input_names(){
-            //nesting will keep track where we need to break the array to rename the proper index.
-            //if zero parent sortables, change first [#], if 1 parent sortable, change third [#]
-
             $('#questions').find('li:not(.template, .trash)').find('input, select').each(function(idx, input){ 
-
                 //get the old name
                 var old_name = $(input).attr('name');
 
@@ -137,6 +143,8 @@
                 $(input).attr('name',new_name);
             });
         }
+
+
 
         /**
          * This function fixes the repeated sortable id and add-sortable data-target inherited from 
@@ -177,7 +185,6 @@
                         'validateOnType'=>true,
                 )
         )); ?>
-
                 <?php echo $form->errorSummary($model); ?>
                 <div class="row buttons">
                         <?php echo CHtml::submitButton('Save'); ?>
@@ -198,7 +205,7 @@
                             <?php echo $this->renderPartial('/question/_form',array(
                                     'question'=>$record
                             )); 
-                            ?>
+                    ?>
                     <?php } ?>  
                     <li class="trash"><?php //trash goes after this list item. ?></li>
                 </ul>
@@ -206,7 +213,5 @@
                 <div class="row buttons">
                         <a class="add-sortable" data-target="#questions" href="#">Add new question'</a>
                 </div>
-
         <?php $this->endWidget(); ?>
-			
 </div><!-- form -->
