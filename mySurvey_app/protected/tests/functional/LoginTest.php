@@ -1,44 +1,52 @@
-<?
-/**
-* 
-*/
-class LoginTest extends PHPUnit_Extensions_Selenium2TestCase {
+<?php
+
+require __DIR__ . '/../php-webdriver/__init__.php';
+
+class LoginTest extends PHPUnit_Framework_TestCase {
 	
-	private $url = "http://localhost/mySurvey/mySurvey_app";
-	private $email = "aaa@aaa.com";
-	private $password = "12341234";
-	
-	protected function setUp() {
-		// configure selenium server (depends on your machine)
-		$this->setHost ( "localhost" );
-		$this->setBrowser ( "firefox" );
-		$this->setPort ( 4444 );
-		$this->setBrowserUrl ( $this->url );
-	}
+	private $url = "http://localhost/mySurvey/mySurvey_app/";
+	private $email;
+	private $password;
+	private $host = "http://localhost:4444/wd/hub";
+	private $capability = array(WebDriverCapabilityType::BROWSER_NAME => 'firefox');
 	
 	public function testLogin() {
-		$this->url ( "index.php" );
-		$this->clickOnElement ( "sign-in" );
+		global $argv, $argc;
 		
-		// retrieve form information
-		$form = $this->byId ( "login-form" );
-		$action = $form->attribute ( "action" );
-		$this->assertContains ( "login", $action );
+		$this->assertEquals(4, $argc);
 		
-		// create a new account and wait for 1 second to load the page
-		$this->byId ( "LoginForm_email" )->value ( $this->email );
-		$this->byId ( "LoginForm_password" )->value ( $this->password );
-		$form->submit ();
-		sleep ( 1 );
+		$this->email = $argv[2];
+		$this->password = $argv[3];		
+		$web_driver = new RemoteWebDriver($this->host, $this->capability);
+		$web_driver->get($this->url)->findElement(WebDriverBy::id("sign-in"))->click();
 		
-		// after login, check if the login account shows up
-		$loginAccount = $this->byId ( "logout" )->text ();
-		$this->assertContains ( $this->email, $loginAccount );
+		echo "\n[INFO] Current URL: " . $web_driver->getCurrentURL() . "\n";
 		
-		// finally we logout the user
-		$this->byLinkText("Logout")->click();
-		$this->assertTrue($this->byId("login-logout")->displayed());
+		$form = $web_driver->findElement(WebDriverBy::id("login-form"));
+		$this->assertNotNull($form);
+		$form->findElement(WebDriverBy::id("LoginForm_email"))->sendKeys($this->email);
+		$form->findElement(WebDriverBy::id("LoginForm_password"))->sendKeys($this->password);
+		
+		try {
+			$form->submit();
+			sleep(1);
+			
+			$loginAccount = $web_driver->findElement(WebDriverBy::id("logout"))->getText();
+			$this->assertContains ( $this->email, $loginAccount );
+			
+		} catch (Exception $e) {
+			// check if the error message shows up
+			$this->assertTrue($web_driver->findElement(WebDriverBy::id("LoginForm_password_em_"))->isDisplayed());
+			echo "[ERROR] Incorrect password\n";
+			$web_driver->quit();
+			return;
+		}
+		
+		echo "[INFO] Current URL: " . $web_driver->getCurrentURL() . "\n";
+		
+		$web_driver->findElement(WebDriverBy::linkText("Logout"))->click();
+		$this->assertTrue( $web_driver->findElement(WebDriverBy::id("login-logout"))->isDisplayed() );
+		$web_driver->quit();
 	}
 }
-
 ?>

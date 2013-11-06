@@ -2,8 +2,8 @@
 class SignUpTest extends PHPUnit_Extensions_Selenium2TestCase {
 	
 	private $url = "http://localhost/mySurvey/mySurvey_app";
-	private $email = "aaa@aaa.com";
-	private $password = "12341234";
+	private $email;
+	private $password;
 	private $firstName = "Test-FirstName";
 	private $lastName = "Test-LastName";
 	
@@ -36,6 +36,12 @@ class SignUpTest extends PHPUnit_Extensions_Selenium2TestCase {
 	}
 	
 	public function testRegister() {
+		global $argv, $argc;
+		
+		$this->assertEquals(4, $argc);
+		
+		$this->email = $argv[2];
+		$this->password = $argv[3];
 		$this->url ( "index.php" );
 		$this->clickOnElement ( "register-link" );
 		
@@ -62,8 +68,7 @@ class SignUpTest extends PHPUnit_Extensions_Selenium2TestCase {
 			
 		} catch (Exception $e) {
 			sleep(1);
-			// check if the error message shows up
-			$this->assertTrue($this->byId("SurveyCreator_email_em_")->displayed());
+			echo "\n[ERROR] Incorrect signup information\n";
 			return;
 		} 
 		
