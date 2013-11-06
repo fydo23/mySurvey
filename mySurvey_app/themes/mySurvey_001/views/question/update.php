@@ -10,7 +10,7 @@
 <li class="question_summary <?php echo $model->class; ?>"> 
         <div class="row">
             <?php echo CHtml::error($model, 'text',array('successCssClass','success'));?>
-            <span class="text"><?php echo $model->text ?></span>   
+            <div id="question-text"><span class="text"><?php echo $model->text ?></span> </div>  
             <?php 
                 echo CHtml::activeHiddenField($model, 'text', array(
                     'name'=>$model->getNameForAttribute('text'), 

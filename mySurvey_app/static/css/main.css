@@ -483,15 +483,27 @@ p.placeholder {
 	float: left;
 }
 
+#question-text {
+	display: inline-block;
+	width: 475px;
+	margin-right: 22px;
+}
 
 .question_summary{
-    min-height:10px;
-    width:500px; 
+    min-height:30px;
+    width:auto; 
     border:1px solid #5887A2;
-    background:#A1DCE7;
-    padding: 8px 20px;
-    margin: 5px 0px;
+    background: #c8e2ea;
+	padding: 8px 20px;
+	margin: 5px 0px 10px;
 }
+
+.question_summary .text {
+	width: 475px;
+	display: block;
+	margin-right: 25px;
+}
+
 .question_summary .order_number{
     float: left;
 }
@@ -502,8 +514,55 @@ p.placeholder {
 
 .question_summary input[type=text]{
 	clear:both;
+	width: 475px;
+	margin-right: 15px;
 }
 
+#add-new-question {
+	float: left;
+	margin-bottom: 70px;
+}
+
+#survey-form #add-new-question a {
+	
+	
+	
+	width: 208px;
+	height: auto;
+	display: inline-block;
+	text-decoration: none;
+	font-size: 14px;
+	text-align: center;
+	font-weight: normal;
+	padding: 15px 0;
+	margin: 20px 5px;
+	margin-left: 0;
+	border-radius: 10px;
+	color: #fff;
+	border: 1px solid #1c74b3;
+	border-top-color: #2c8ed1;
+	border-bottom-color: #0d5b97;
+	background: #2181cf;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#2181cf");
+	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#2181cf));
+	background: -moz-linear-gradient(top, #37a3eb, #2181cf);
+	-moz-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	-webkit-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+	-webkit-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+	-moz-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+}
+
+#survey-form #add-new-question a:hover {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#1e73b9");
+	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#1e73b9));
+	background: -moz-linear-gradient(top, #37a3eb, #1e73b9);
+}
+
+#questions {
+	padding-bottom: 0;
+}
 
 
 #question-editor {
@@ -579,9 +638,33 @@ p.placeholder {
 	/*margin-left: 25px;*/
 }
 
+#create-survey-form .buttons {
+	float: left;
+	margin-top: 25px;
+}
+
+#create-survey-form .errorMessage {
+	padding: 7px 15px;
+}
+
+#create-survey-form label.error {
+	float: left;
+	padding-top: 8px;
+	padding-right: 7px;
+	padding-left: 0;
+}
+
+#save-cancel {
+	margin-top: -60px;
+	padding-bottom: 45px;
+}
+
+
+
 .buttons input[type="submit"], 
 .buttons input[type="button"],
-.add-question a {
+.add-question a,
+#survey-form .buttons a {
 	background: #6eb4cd;
 	margin: 0 0 0 10px;
 	width: 100px;
@@ -602,11 +685,24 @@ p.placeholder {
 	-moz-text-shadow: none;
 }
 
+#survey-form .buttons a {
+	font-weight: normal;
+	text-decoration: none;
+	padding: 7px 28px;
+}
+
 .add-question a {
 	padding: 10px 20px;
 	margin: 0;
 	border-radius: 11px;
 	text-decoration: none;
+}
+
+#question-title {
+	margin-top: 70px;
+	text-transform: uppercase;
+	color: #005a82;
+	font-size: 14px;
 }
 
 .buttons input[type="submit"]:hover, 
@@ -617,7 +713,7 @@ p.placeholder {
 
 #survey-url {
 	clear: both;
-	padding-top: 15px;
+	padding-top: 10px;
 }
 
 #survey-url h3 {
@@ -1039,14 +1135,6 @@ input.title ~ .errorMessage {
     -webkit-user-drag: element;
 }
 
-.question_summary{
-	height:15px;
-	/*width:500px;*/
-	/*border:1px solid #5887A2;*/
-	background:#c8e2ea;
-    padding: 8px 20px;
-	margin: 5px 0px 10px;
-}
 
 #sortable li{
     cursor: move;

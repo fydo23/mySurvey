@@ -116,9 +116,7 @@
 
 </script>
 
-<div id="survey-url">
-    <h3>Survey URL:</h3> <p>surveyurl.example.com</p>
-</div>
+
 
 <div class="form">
 
@@ -133,7 +131,7 @@
         )); ?>
 
                 <?php echo $form->errorSummary($model); ?>
-                <div class="row buttons">
+                <div class="row buttons" id="save-cancel">
                         <?php echo CHtml::submitButton('Save'); ?>
                         <?php echo CHtml::link('Cancel', '/survey') ?>
                 </div>
@@ -142,8 +140,14 @@
                         <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100, 'class'=>'title')); ?>
                         <span class="arrow-left"></span><?php echo $form->error($model,'title',array('successCssClass','success')); ?>
                 </div>
+                
+                
+                
+                <div id="survey-url">
+					<h3>Survey URL:</h3> <p>surveyurl.example.com</p>
+				</div>
 
-                <h4>Questions</h4>
+                <h4 id="question-title">Questions</h4>
                 <ul id="questions" class="sortable">
                     <?php echo $this->renderPartial('/question/update',array(
                             'model'=>new SurveyQuestion('template'),
@@ -158,8 +162,8 @@
                     <li class="trash"><?php //trash goes after this list item. ?></li>
                 </ul>
 
-                <div class="row buttons">
-                        <a class="add-sortable" data-target="#questions" href="#">Add new question'</a>
+                <div class="row buttons" id="add-new-question">
+                        <a class="add-sortable" data-target="#questions" href="#">Add New Question</a>
                 </div>
 
         <?php $this->endWidget(); ?>

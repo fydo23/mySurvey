@@ -6,7 +6,7 @@
 <!--======== CREATE SURVEY ========-->
 <h1>Create Survey</h1>
 
-<div class="form">
+<div class="form" id="create-survey-form">
 
     <?php $form=$this->beginWidget('CActiveForm', array(
             'id'=>'survey-form',
@@ -20,7 +20,7 @@
             <div class="row">
                     <?php echo $form->labelEx($model,'title'); ?>
                     <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100)); ?>
-                    <?php echo $form->error($model,'title'); ?>
+                    <span class="arrow-left"></span><?php echo $form->error($model,'title'); ?>
             </div>
 
             <div class="row buttons">
