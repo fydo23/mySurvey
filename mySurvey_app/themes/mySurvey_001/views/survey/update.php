@@ -195,7 +195,6 @@
 
 </script>
 
-
 <div class="content-width">
 <div class="form">
 
@@ -223,7 +222,8 @@
                 
                 
                 <div id="survey-url">
-					<h3>Survey URL:</h3> <p>surveyurl.example.com</p>
+                    <?php $url = Yii::app()->request->baseUrl."/survey/take/".$model->url; ?>
+					<h3>Survey URL:</h3> <p><?php echo $url; ?></p>
 				</div>
 
                 <h4 id="question-title">Questions</h4>
