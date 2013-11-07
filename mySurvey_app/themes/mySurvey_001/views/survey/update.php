@@ -103,7 +103,29 @@
 			e.stopPropagation(); 
 			newItem.find('.edit:first').trigger('click');
 		});
+
+
+
+        $('#questions').on('change', '[name*=type]',function(){
+            //delete all previous answers.
+            var old_answers = $(this).closest('li').find('.sortable li:not(.template) .delete').trigger('click');
+            console.log($(this).val());
+            switch($(this).val()){
+                case '1': //mutliple choice:
+                    //show add more answers button.
+                    $(this).closest('li').find('.add-sortable').show();
+                    console.log('mult-C');
+                    break;
+                default: //short answer
+                    //click add new answer button, then hide it.
+                    $(this).closest('li').find('.add-sortable').trigger('click').hide();
+                    console.log('shortA',$('this').closest('li').find('.add-sortable'));
+                    break;
+            }
+        });
           
+
+
 
 
         /**
@@ -138,7 +160,6 @@
                 if(bottom_order > -1){
                     var nesting = 2 * ($(input).parents('.sortable').length) - 1;  
                     var new_name = top_fixed.split('[').slice(0,nesting).join('[') + "[" + bottom_order + "]" + top_fixed.split(']').slice(nesting).join(']');
-                    console.log(old_name, new_name);
                 }
                 $(input).attr('name',new_name);
             });

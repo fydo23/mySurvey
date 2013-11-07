@@ -22,7 +22,7 @@ class SurveyQuestion extends CActiveRecord
     public $class = "";
     public $disabled = False;
     public $type_choices = array('Short Answer', 'Multiple Choice');
-    public $type = 0; //default = Short Answer.
+    public $type = 1; //default = Short Answer.
     public $answersUniqueId = 0;
     
 	/**

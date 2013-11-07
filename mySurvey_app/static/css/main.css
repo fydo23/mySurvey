@@ -531,6 +531,9 @@ p.placeholder {
     float:right;
     margin-left: 10px;
 }
+.question_summary .type_0{
+	display:none;
+}
 .answer_summary{
 	background-color:white; 
 	border-bottom:1px solid #aaa;
