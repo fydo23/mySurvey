@@ -9,30 +9,35 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/static/css/main.css" />
 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
+	<!--======== LAYOUT MODEL FOR HOMEPAGE ========-->
     <body>
-
+		
+		<!--======== PAGE ========-->
         <div class="container" id="page">
 
+				<!--======== HEADER ========-->
                 <div id="header">
                         <div class="makeCenter"><img id="appLogo" src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/logo-white.png"></div>
                 </div><!-- header -->
 
 
+				<!--======== CONTENT: Pulls in index.php ========-->
                 <div id="content">
                     <?php echo $content; ?>
-                </div>
+                </div><!-- content -->
 
 
+				<!--======== FOOTER ========-->
                 <div id="footer">
                         <p>Footer content tk...</p>
                 </div><!-- footer -->
 
         </div><!-- page -->
         
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/static/js/functions.js"></script>
         

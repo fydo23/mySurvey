@@ -2,15 +2,27 @@
     $this->pageTitle=Yii::app()->name;
 ?>
 
-<div class="page-name">
-	<h1>Surveys</h1>
+<!--======== SURVEY LANDING PAGE ========-->
+<div class="stripe">
+	<div class="page-name">
+		<h1>Surveys</h1>
+		<p class="intro-text">To get started, create a new survey. Or, manage your existing surveys below. </p>
+		
+		<div id="new">
+    		<a href="<?php echo $this->createUrl('/survey/create')?>" class="button">Create New Survey</a>
+		</div>
+	
+	</div>
+	
+	
+
 </div>
 
-<div id="new">
-    <a href="<?php echo $this->createUrl('/survey/create')?>" class="button">Create New Survey</a>
-</div>
+<!--======== CREATE NEW SURVEY ========-->
 
 
+<div class="content-width">
+<!--======== PUBLISHIED SURVEYS ========-->
 <div id="published">
 	<h2>Published</h2>
 
@@ -27,6 +39,8 @@
 	</ul>
 </div>
 
+
+<!--======== UNPUBLISHED SURVEYS ========-->
 <div id="unpublished">
 	<h2>Unpublished</h2>
 
@@ -42,4 +56,6 @@
 		</li>
 		<?php } ?>
 	</ul>
+</div>
+
 </div>

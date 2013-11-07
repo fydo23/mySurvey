@@ -17,23 +17,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'survey_ID'); ?>
-		<?php echo $form->textField($model,'survey_ID'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'survey_question_ID'); ?>
-		<?php echo $form->textField($model,'survey_question_ID'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'survey_answer_ID'); ?>
 		<?php echo $form->textField($model,'survey_answer_ID'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'survey_answer_choice_letter'); ?>
-		<?php echo $form->textField($model,'survey_answer_choice_letter',array('size'=>5,'maxlength'=>5)); ?>
+		<?php echo $form->label($model,'choice_letter'); ?>
+		<?php echo $form->textField($model,'choice_letter',array('size'=>5,'maxlength'=>5)); ?>
 	</div>
 
 	<div class="row">

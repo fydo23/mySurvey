@@ -22,7 +22,7 @@ class SurveyController extends Controller
 	{
 		return array(
 			array('deny', 
-                            'users'=>array('?'),
+                'users'=>array('?'),
 			),
 		);
 	}
@@ -81,34 +81,87 @@ class SurveyController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-                $survey_creator = SurveyCreator::model()->findByAttributes(
-                        array('email'=> Yii::app()->user->id)
-                );
-
-                $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
-                $questions_criteria = new CDbCriteria(array(
-                    'condition'=>'survey_ID = ' . $model->id,
-                    'order'=>'order_number'
-                ));
-                $questions_dataProvider->setCriteria($questions_criteria);
+                $questions = array();
                 
-                                
-		if(isset($_POST['Survey']))
-		{
-			$model->attributes=$_POST['Survey'];
-			if($model->save())
-				$this->redirect(array('index'));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-                        'questions_dataProvider'=>$questions_dataProvider,
-		));
+                
+                if(isset($_POST['SurveyQuestion'])){
+                    $questions = $this->process_post_questions($id);
+                }
+                //ajaxValidation halts execution before survey gets a change to validate.
+                $this->performAjaxValidation(array_merge($questions,array($model)));
+                
+                if(!count($questions)){
+                    $questions_criteria = new CDbCriteria(array(
+                        'condition'=>'survey_ID = ' . $model->id,
+                        'order'=>'order_number'
+                    ));
+                    $questions = SurveyQuestion::model()->findAll($questions_criteria);
+                } 
+                if(isset($_POST['Survey'])){
+                    $model->attributes=$_POST['Survey'];
+                    if($model->validate()){
+                        $model->save();
+                    }
+                }
+                $this->render('update',array(
+                    'model'=>$model,
+                    'questions'=>$questions,
+                ));
 	}
+        
+        /**
+         * This function processes the SurveyQuestions in $_POST by validating and attempting to save
+         * them.
+         * 
+         * @return array $questions | an array containing all the questions in the current post request.
+         */
+        private function process_post_questions($survey_id){
+            foreach($_POST['SurveyQuestion'] as $q_idx => $attributes){
+        		$attributes['survey_ID'] = $survey_id;
+        		$attributes['order_number'] = $q_idx;
+            	if($question = $this->create_save_or_delete('SurveyQuestion', $attributes)){
+                	$questions[$q_idx] = $question;
+	                if(isset($attributes['SurveyAnswer'])){
+	                	foreach($attributes['SurveyAnswer'] as $a_idx => $answer_attributes){
+	                		$answer_attributes['survey_question_ID'] = $question->id;
+	                		$answer_attributes['order_number'] = $a_idx;
+	                		$this->create_save_or_delete('SurveyAnswer', $answer_attributes);
+	                	}
+	                	if(count($question->answers)>1 && $question->type == 0){
+	                		//if short answer, delete all but the first question
+	                		for($idx = 1; $idx<count($question->answers); $idx++){ 
+	                			$question->answers[$idx]->delete();
+	                		}
+	                		//refresh the model to have the proper number of relations.
+	                		$question->refresh(); 
+	                	}
+	                }
+            	}
+            }
+            ksort($questions);
+            return $questions;
+        }
+
+        private function create_save_or_delete($model_name, $attributes){
+				$model = new $model_name('create');
+                //if $attributes id is set, try to set model 
+                if($attributes['id'] && !$model = $model_name::model()->findByPk($attributes['id'])){
+                	//provided an id that doesn't exist. skip this question
+                	return false;
+                }
+                if($attributes['delete']){
+                	if($model->id){
+                		//requesting to delete an existing model.
+                    	$model->delete();
+                	}
+                	return false;
+                }
+                $model->attributes = $attributes;
+                if($model->validate()){
+                    $model->save();
+                }
+            	return $model;
+        }
         
 	/**
 	 * Publish a survey model.
@@ -148,7 +201,7 @@ class SurveyController extends Controller
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
-                $this->redirect('/survey');
+                $this->redirect(array('index'));
 	}
 
 	/**
@@ -173,16 +226,6 @@ class SurveyController extends Controller
                 
 	}
         
-        public function actionReorderQuestions($survey_id){
-            $questions = SurveyQuestion::model()->findAllByAttributes(array('survey_ID'=>$survey_id));
-            if($questions){
-                foreach($questions as $idx => $question){
-                    $question->setAttribute('order_number', $_POST['SurveyQuestion'][$question->id]['order_number']);
-                    $question->save();
-                }
-            }
-        }
-        
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
@@ -199,16 +242,4 @@ class SurveyController extends Controller
 		return $model;
 	}
 
-	/**
-	 * Performs the AJAX validation.
-	 * @param Survey $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='survey-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
 }

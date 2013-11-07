@@ -175,4 +175,29 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	/**
+	 * Show form to update the current users information
+	 */
+	public function actionSettings(){
+		$survey_creator = SurveyCreator::model()->findByAttributes(
+                        array('email'=> Yii::app()->user->id)
+                );
+		if(isset($_POST['SurveyCreator'])){
+			if($survey_creator->password!=sha1($_POST['SurveyCreator']['password'])){
+				$survey_creator->addError('password','Invalid password');
+			}
+			else{
+				$survey_creator->attributes=$_POST['SurveyCreator'];
+				if($survey_creator->save()){
+					$this->redirect(Yii::app()->homeUrl);
+				}
+			}
+		}
+		$survey_creator->setScenario('update');
+		$survey_creator->password='';
+		$this->render('settings',array(
+			'model'=>$survey_creator,
+		));
+	}
 }

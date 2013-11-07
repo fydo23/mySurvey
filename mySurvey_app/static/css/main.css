@@ -5,13 +5,15 @@
 	Fall 2013
 */
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
 
 body
 {
 	margin: 0;
 	padding: 0;
 	color: #555;
-	font-family: 'Open Sans', Helvetica, sans-serif;
+	font-family: Helvetica, 'Open Sans', sans-serif;
 	font-size: 13px;
 	font-weight: normal;
 	background: #222;
@@ -24,28 +26,129 @@ body
 
 
 
+
 h1 {
 	font-weight: 200;
-	font-size: 40px;
+	font-size: 52px;
 	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.intro-text {
+	/*font-family: 'Arvo';*/
+	font-weight: 700;
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 0;
+	line-height: 21px;
+}
+
+.intro-text span {
+	background: #00b1c1;
+	padding: 9px 16px;
+	color: #fff;
+	border-radius: 100px;
+	margin-right: 5px;
+	font-family: 'Arvo', sans-serif;
+	font-size: 19px;
+
+}
+
+.intro-text span.two {
+	margin-left: 25px;
+	/*background: #cfcfcf;*/
+}
+
+.instructions {
+	padding-top: 10px;
+}
+
+#create-survey-form {
+	margin-top: 50px;
+	text-align: center;
+}
+
+#create-survey-form label,
+#survey-form label,
+#survey-url h3 {
+	margin-right: 5px;
+	font-family: 'Arvo', sans-serif;
+	font-weight: 700;
+	color: #000;
+	margin-left: -10px;
+}
+
+#survey-form label,
+#survey-url h3 {
+	font-size: 16px;
+	margin-left: 0;
+}
+
+.error #survey-form label {
+	float: left;
+	padding-top: 15px;
+}
+
+#survey-url h3 {
+	width: auto;
+	display: inline-block;
+	float: left;
+	padding-bottom: 25px;
+}
+
+/*#survey-url h3 {
+	width: auto;
+	float: left;
+	margin-top: 5px;
+	color: #005a82;
+}*/
+
+span.required {
+	display: none;
+}
+
+#create-survey-form input[type="text"] {
+	width: 400px;
+}
+
+#create-survey-form #survey-form input[type="text"].error {
+	padding: 5px;
+}
+
+#create-survey-form #survey-form label.error {
+	padding-left: 260px;
+	padding-top: 10px;
 }
 
 h4 {
 	clear: both;
 }
 
+.content-width {
+	width: 980px;
+	margin: 0 auto;
+}
+
+#home .buttons {
+	float: none;
+}
+
+#home .button,
+#home input[type="submit"],
+#home input[type="button"],
+.buttons input[type="submit"], 
+.buttons input[type="button"],
 .button,
-input[type="submit"],
-input[type="button"] {
+#survey-form #save-cancel a {
 	width: 208px;
-	height: 18px;
+	height: auto;
 	display: inline-block;
 	text-decoration: none;
 	font-size: 14px;
 	text-align: center;
 	font-weight: normal;
 	padding: 15px 0;
-	margin: 0 5px;
+	margin: 20px 5px;
 	border-radius: 10px;
 	color: #fff;
 	border: 1px solid #1c74b3;
@@ -65,10 +168,14 @@ input[type="button"] {
 
 .button:hover,
 input[type="submit"]:hover,
-input[type="button"]:hover {
+input[type="button"]:hover,
+.buttons input[type="submit"]:hover, 
+.buttons input[type="button"]:hover,
+#survey-form #save-cancel a:hover {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#1e73b9");
 	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#1e73b9));
 	background: -moz-linear-gradient(top, #37a3eb, #1e73b9);
+	border-radius: 20px;
 }
 
 .breadcrumbs {
@@ -77,6 +184,7 @@ input[type="button"]:hover {
 
 .form ul li a {
 	color: #6cb3cc;
+	padding: 10px 2px;
 }
 
 .form ul {
@@ -97,6 +205,43 @@ a {
 
 a:hover {
 	text-decoration: none;
+}
+
+.row {
+	clear: both;
+}
+
+#account-settings {
+	padding-top: 40px;
+}
+
+#account-settings .errorMessage {
+	padding: 7px 15px;
+}
+
+#account-settings .errorSummary {
+	display: none;
+}
+
+#account-settings .row {
+	margin: 0 auto;
+	width: 980px;
+	text-align: center;
+}
+
+#account-settings .buttons {
+	padding-top: 25px;
+	padding-bottom: 50px;
+}
+
+/*adds clearfix property*/
+.row:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
 }
 
 
@@ -122,6 +267,20 @@ a:hover {
 	min-height: 60px;
 }
 
+
+.stripe {
+	position: relative;
+	background: 
+	transparent;
+	width: 100%;
+	/*height: 520px !important;*/
+	text-align: center;
+	background-image: url(../img/bg_white_stripe.png);
+	-webkit-box-shadow: inset 0px -8px 8px 0px rgba(0, 0, 0, .1);
+	box-shadow: inset 0px -8px 8px 0px rgba(0, 0, 0, .1);
+	height: 240px;
+}
+
 #footer p {
 	color: #fff;
 }
@@ -134,22 +293,35 @@ a:hover {
 
 #mainmenu
 {
-	width: 20%;
+	/*width: 19%;
 	position: relative;
 	float: left;
-	margin-top: 20px;
+	padding-top: 10px;*/
+	
+
+	height: 46px;
+	text-align: center;
+	background-image: url(../img/bg_nav.png);
+	background-repeat: repeat-x;
+	background-color: #f2f2f0;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
 }
 
 #mainmenu ul
 {
-	padding:6px 20px 5px 20px;
-	margin:0px;
+	/*padding:6px 20px 5px 20px;*/
+	margin: 0;
+	padding: 0;
 }
 
 #mainmenu ul li
 {
-	display: block;
-	padding: 10px 0;
+	display: inline-block;
+	width: 322px;
+	padding: 0;
+	margin-right: -5px;
+	
 }
 
 #mainmenu ul li a
@@ -159,15 +331,51 @@ a:hover {
 	font-size:12px;
 	font-weight:bold;
 	text-decoration:none;
-	padding:5px 8px;
+	/*padding:5px 8px;*/
+	
+
+	/*, url(../img/dialogues.png)*/
+	background-image: url(../img/divider.png);
+	padding-left: 12px;
+	background-position: left top;
+	
+	padding-right: 12px;
+	background-repeat: no-repeat;
+	height: 30px;
+	padding-top: 16px;
+	color: #323527;
+	text-shadow: 1px 1px 2px rgba(246, 245, 246, 1);
+	color: #323527;
+	text-decoration: none;
+	display: block;
+
+}
+
+#mainmenu ul li:last-child a {
+	background-image: url(../img/divider.png), url(../img/divider.png);
+	background-position: left top, top right;
+	background-repeat: no-repeat, no-repeat;
 }
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
-	color: #6399cd;
+	/*color: #6399cd;
 	background-color:#EFF4FA;
-	text-decoration:none;
+	text-decoration:none;*/
+	
+	color: #000;
+	text-decoration: none;
 }
+
+
+#mainmenu li:hover, #mainmenu li:focus {
+	-moz-box-shadow: inset 0px 0px 16px 16px rgba(0, 0, 0, .1);
+	-webkit-box-shadow: inset 0px 0px 16px 16px rgba(0, 0, 0, .1);
+	box-shadow: inset 0px 0px 16px 16px rgba(0, 0, 0, .1);
+}
+
+
+
 
 div.flash-error, div.flash-notice, div.flash-success
 {
@@ -322,16 +530,22 @@ div.search-form
 /* SURVEYS -- VIEW ALL */
 
 #new {
-	padding-left: 13px;
+	/*padding-left: 13px;*/
 }
 
 #published,
 #unpublished {
-	background: #f1f1f1;
+	/*background: #f1f1f1;
 	padding: 20px;
+	border: 2px solid #c8e2ea;*/
 	margin-left: 20px;
 	margin-top: 40px;
-	border: 2px solid #c8e2ea;
+	
+}
+
+#published {
+	padding-bottom: 20px;
+	border-bottom: 3px dotted #666;
 }
 
 #unpublished {
@@ -340,12 +554,11 @@ div.search-form
 
 #published h2,
 #unpublished h2 {
-	/*text-transform: uppercase;*/
-	font-size: 13px;
+	font-size: 18px;
 	margin: 0 0 15px;
-	color: #666;
-	/*background: #e3e3e3;
-	padding: 10px 15px;*/
+	color: #68aac2;
+	text-transform: uppercase;
+	font-weight: 200;
 }
 
 #published p,
@@ -362,28 +575,31 @@ div.search-form
 }
 
 .survey-lists li {
-	background: #6eb4cd;
+	background: #f1f1f1;
 	padding: 10px 15px;
 	list-style: none;
-	color: #fff;
-	text-transform: uppercase;
 	font-weight: 700;
 	margin-bottom: 7px;
+	border: 2px solid #c8e2ea;
+	font-size: 15px;
+	font-family: 'Arvo';
+	color: #000;
 }
 
 .survey-lists li a {
 	float: right;
-	padding-left: 10px;
+	padding-left: 15px;
 	text-decoration: none;
-	font-size: 12px;
+	font-size: 13px;
 	text-transform: none;
 	font-weight: 400;
-	color: #F0F8FF;
+	color: #0079af;
+	font-family: Helvetica, sans-serif;
 }
 
 .survey-lists li a:hover {
 	text-decoration: underline;
-	color: #fff;
+	color: #00b1c1;
 }
 
 
@@ -391,6 +607,7 @@ div.search-form
 
 .note {
 	color: #a5a5a5;
+	display: none;
 }
 
 #toolbar {
@@ -477,6 +694,92 @@ p.placeholder {
 	float: left;
 }
 
+#question-text {
+	display: inline-block;
+	width: 475px;
+	margin-right: 22px;
+}
+
+.question_summary{
+    min-height:30px;
+    width:auto; 
+    border:1px solid #5887A2;
+    background: #c8e2ea;
+	padding: 10px;
+	margin: 5px 0px 10px;
+}
+
+.question_summary .text {
+	width: 475px;
+	display: block;
+	margin-right: 25px;
+}
+
+.question_summary .order_number{
+    float: left;
+}
+.question_summary a{
+    float:right;
+    margin-left: 10px;
+}
+.question_summary .hide{
+	display:none;
+}
+
+
+.question_summary input[type=text]{
+	clear:both;
+	width: 475px;
+	margin-right: 15px;
+}
+#add-new-question {
+	float: left;
+	margin-bottom: 70px;
+	margin-top: 15px;
+}
+
+#survey-form #add-new-question a {
+	
+	
+	
+	width: 208px;
+	height: auto;
+	display: inline-block;
+	text-decoration: none;
+	font-size: 14px;
+	text-align: center;
+	font-weight: normal;
+	padding: 15px 0;
+	margin: 20px 5px;
+	margin-left: 0;
+	border-radius: 10px;
+	color: #fff;
+	border: 1px solid #1c74b3;
+	border-top-color: #2c8ed1;
+	border-bottom-color: #0d5b97;
+	background: #2181cf;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#2181cf");
+	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#2181cf));
+	background: -moz-linear-gradient(top, #37a3eb, #2181cf);
+	-moz-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	-webkit-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+	text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+	-webkit-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+	-moz-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+}
+
+#survey-form #add-new-question a:hover {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#1e73b9");
+	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#1e73b9));
+	background: -moz-linear-gradient(top, #37a3eb, #1e73b9);
+}
+
+#questions {
+	padding-bottom: 0;
+}
+
+
 #question-editor {
 	width: 510px;
 	float: left;
@@ -532,6 +835,135 @@ p.placeholder {
 	margin: 0 5px;
 }
 
+.survey-title-buttons h3 {
+	width: auto;
+	float: left;
+	margin: 0;
+	padding-right: 10px;
+	padding-top: 7px;
+}
+
+#title-header {
+	float: left;
+	color: #005a82;
+}
+
+.buttons {
+	float: right;
+	/*margin-left: 25px;*/
+}
+
+#create-survey-form .buttons {
+	float: left;
+	margin: 25px auto 50px;
+	width: 980px;
+}
+
+#create-survey-form .errorMessage {
+	padding: 7px 15px;
+}
+
+#create-survey-form label.error {
+	float: left;
+	padding-top: 8px;
+	padding-right: 7px;
+	padding-left: 0;
+}
+
+#save-cancel {
+	/*margin-top: -60px;
+	padding-bottom: 45px;*/
+	
+	z-index: 1;
+	margin-top: -110px;
+	position: relative;
+	float: left;
+	width: 980px;
+	margin-left: 275px;
+	margin-bottom: 70px;
+}
+
+
+
+
+.add-question a,
+#survey-form .buttons a {
+	background: #6eb4cd;
+	margin: 0 0 0 10px;
+	width: 100px;
+	height: auto;
+	
+	border-radius: 100px;
+	padding: 7px 10px;
+	color: #fff;
+	font-size: 13px;
+	
+	border: none;
+	filter: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	text-shadow: none;
+	-webkit-text-shadow: none;
+	-moz-text-shadow: none;
+}
+
+#survey-form .buttons a {
+	font-weight: normal;
+	text-decoration: none;
+	padding: 7px 28px;
+}
+
+.add-question a {
+	padding: 10px 20px;
+	margin: 0;
+	border-radius: 11px;
+	text-decoration: none;
+}
+
+#question-title {
+	/*margin-top: 70px;
+	text-transform: uppercase;
+	color: #005a82;
+	font-size: 14px;*/
+	
+	font-size: 18px;
+	margin: 0 0 15px;
+	color: #68aac2;
+	text-transform: uppercase;
+	font-weight: 200;
+	padding-top: 50px;
+	border-top: 2px dotted #666;
+}
+
+
+.add-question a:hover {
+	background: #0079af;
+}
+
+#survey-url {
+	clear: both;
+	padding-top: 10px;
+}
+
+
+
+#survey-url p {
+	width: auto;
+	float: left;
+	margin-top: 16px;
+	font-size: 15px;
+	margin-left: 5px;
+	color: #666;
+}
+
+.form {
+	clear: both;
+}
+
+.questions {
+	padding-top: 10px;
+}
 
 
 /* PAGE TEMPLATE */
@@ -558,27 +990,38 @@ p.placeholder {
 	float: left;
 }
 
-.content-area {
+#header .content-area {
 	width: 980px;
 	margin: 0 auto;
 	clear: both;
 	min-height: 500px;
 }
 
+.content-area {
+	
+}
+
 .content-area #content {
 	/*border-left: 1px solid #e3e3e3;*/
-	padding-left: 30px;
-	margin-top: 20px;
+	padding-left: 0;
+	margin-top: 0;
+	width: 100%;
 }
 
 .page-name {
 	padding-left: 15px;
+	width: 980px;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 20px;
 }
 
 .page-name h1 {
 	font-weight: 200;
-	font-size: 40px;
-	margin-top: 10px;
+	font-size: 45px;
+	margin-top: 8px;
+	margin-bottom: 30px;
+	color: #005a82;
 }
 
 #logout {
@@ -676,7 +1119,7 @@ p.placeholder {
 
 #login-logout {
 	min-height: 300px;
-	padding-top: 50px;	
+	padding-top: 30px;	
 }
 
 #login-logout .button {
@@ -695,6 +1138,35 @@ p.placeholder {
 #register {
 	padding-top: 35px;	
 }
+
+.rememberMe {
+	color: #fff;
+	padding-top: 15px;
+}
+
+.errorMessage {
+	text-align: left;
+	width: auto;
+	margin: 0 auto;
+	padding-bottom: 15px;
+	
+	background: #eed3d7;
+	color: #a21636;
+	float: left;
+	padding: 5px 15px;
+	margin-top: 3px;
+	
+	font-size: 12px;
+}
+
+
+login .error, 
+register .error{
+	padding-left: 382px;
+}
+
+
+/* DEFAULT INPUTS */
 
 input[type="submit"],
 input[type="button"] {
@@ -725,7 +1197,6 @@ input[type="password"] {
 	font-weight: normal;
 	
 	width: 204px;
-
 }
 
 .rememberMe {
@@ -742,7 +1213,7 @@ input[type="password"] {
 	background: #eed3d7;
 	color: #a21636;
 	float: left;
-	padding: 5px 15px;
+	padding: 7px 15px;
 	margin-top: 3px;
 	
 	font-size: 12px;
@@ -751,6 +1222,27 @@ input[type="password"] {
 
 .error {
 	padding-left: 382px;
+}
+
+#survey-form .error {
+	padding-left: 0;
+}
+
+
+#survey-question-form .error {
+	padding-left: 0;
+	
+}
+
+#survey-question-form .error label {
+	padding-top: 10px;
+	padding: 0;
+	float: left;
+	
+}
+
+.errorSummary {
+	display: none;
 }
 
 .error .arrow-left {
@@ -767,7 +1259,24 @@ input[type="password"] {
 	margin-top: 3px;
 }
 
+input.title{
+	/*float: left;*/
+    font-size: 23px;
+    width:530px;
+}
 
+input.title ~ .errorMessage {
+	padding: 7px 15px;
+}
+
+.error input.title ~ .errorMessage,
+.error input.title ~ .arrow-left{
+        margin-top:6px;
+}
+
+.success input{
+     /*border-color: green;*/
+}
 
 .error input[type="text"],
 .error input[type="password"] {
@@ -775,12 +1284,70 @@ input[type="password"] {
 	float: left;
 }
 
-.row {
-	clear: both;
+.add-new-answer {
+	float: left;
+	margin: 20px 0;
 }
 
+#survey-form .add-new-answer a {
+	background: #fff;
+	color: #00b1c1;
+	font-weight: 700;
+	width: auto;
+}
 
+#survey-form .add-new-answer a:hover {
+	background: #00b1c1;
+	color: #fff;
+}
 
+.answers {
+	margin-top: 10px;
+	background: #fff;
+	padding: 5px;
+}
+
+.question-text {
+	background: #eee;
+	min-height: 53px;
+	padding: 5px;
+	margin-bottom: 20px;
+}
+
+.question-text .type {
+	margin-top: 9px;
+	display: inline-block;
+}
+
+.question-text .buttons,
+.answers .buttons {
+	display: inline-block;
+}
+
+#survey-form .question-text .buttons a,
+#survey-form .answers .buttons a {
+	padding: 7px 13px;
+	width: auto;
+	margin-top: 10px;
+	margin-right: 10px;
+	text-align: center;
+}
+
+#survey-form .answers .buttons a {
+	margin-top: 5px;
+}
+
+#survey-form .answers .buttons a.delete {
+	width: 94px;
+}
+
+#survey-form .answers .buttons a.edit {
+	width: 80px;
+}
+
+ui_sortable_placeholder {
+	display: none;
+}
 
 
 /* -------- Homepage: Learn More -------- */
@@ -812,10 +1379,16 @@ input[type="password"] {
 }
 
 .text {
-	width: 45%;
 	float: left;
 	position: relative;
+	padding: 9px 6px 11px;
+	font-family: "Open Sans", Helvetica, sans-serif;
+	font-size: 13px;
+	color: #444;
+	font-weight: normal;
+	width: 204px;
 }
+
 .image {
 	position: relative;
 	float: right;
@@ -848,4 +1421,40 @@ input[type="password"] {
 }
 
 
+
+/* -------- Edit Survey: Draggable Question Boxes -------- */
+
+/*DRAGGABLES*/
+[draggable="true"]{
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+}
+
+#sortable li{
+    cursor: move;
+}
+.sortable .template{
+	display: none;
+}
+
+.sortable [data-show-on-edit=true]{
+	display:none;
+}
+
+.dragging{
+   	border: 2px dotted #6eb4cd;
+    margin:-1px;
+    background:#E4F5F8;
+}
+
+#sortable li a {
+	color: #005a82;
+	float:right;
+    margin-left: 15px;
+}
 

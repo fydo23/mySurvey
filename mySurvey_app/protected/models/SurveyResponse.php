@@ -8,7 +8,7 @@
  * @property integer $survey_ID
  * @property integer $survey_question_ID
  * @property integer $survey_answer_ID
- * @property string $survey_answer_choice_letter
+ * @property string $choice_letter
  * @property string $survey_response_time
  * @property string $survey_response_responder
  * @property string $survey_response_text
@@ -38,12 +38,12 @@ class SurveyResponse extends CActiveRecord
 		return array(
 			array('survey_ID, survey_question_ID, survey_answer_ID', 'required'),
 			array('survey_ID, survey_question_ID, survey_answer_ID', 'numerical', 'integerOnly'=>true),
-			array('survey_answer_choice_letter', 'length', 'max'=>5),
+			array('choice_letter', 'length', 'max'=>5),
 			array('survey_response_responder', 'length', 'max'=>45),
 			array('survey_response_time, survey_response_text', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, survey_ID, survey_question_ID, survey_answer_ID, survey_answer_choice_letter, survey_response_time, survey_response_responder, survey_response_text', 'safe', 'on'=>'search'),
+			array('id, survey_ID, survey_question_ID, survey_answer_ID, choice_letter, survey_response_time, survey_response_responder, survey_response_text', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,8 +56,8 @@ class SurveyResponse extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'survey' => array(self::BELONGS_TO, 'Survey', 'survey_ID'),
-			'surveyQuestion' => array(self::BELONGS_TO, 'SurveyQuestion', 'survey_question_ID'),
-			'surveyAnswer' => array(self::BELONGS_TO, 'SurveyAnswer', 'survey_answer_ID'),
+			'question' => array(self::BELONGS_TO, 'SurveyQuestion', 'survey_question_ID'),
+			'answer' => array(self::BELONGS_TO, 'SurveyAnswer', 'survey_answer_ID'),
 		);
 	}
 
@@ -71,7 +71,7 @@ class SurveyResponse extends CActiveRecord
 			'survey_ID' => 'Survey',
 			'survey_question_ID' => 'Survey Question',
 			'survey_answer_ID' => 'Survey Answer',
-			'survey_answer_choice_letter' => 'Survey Answer Choice Letter',
+			'choice_letter' => 'Survey Answer Choice Letter',
 			'survey_response_time' => 'Survey Response Time',
 			'survey_response_responder' => 'Survey Response Responder',
 			'survey_response_text' => 'Survey Response Text',
@@ -100,7 +100,7 @@ class SurveyResponse extends CActiveRecord
 		$criteria->compare('survey_ID',$this->survey_ID);
 		$criteria->compare('survey_question_ID',$this->survey_question_ID);
 		$criteria->compare('survey_answer_ID',$this->survey_answer_ID);
-		$criteria->compare('survey_answer_choice_letter',$this->survey_answer_choice_letter,true);
+		$criteria->compare('choice_letter',$this->choice_letter,true);
 		$criteria->compare('survey_response_time',$this->survey_response_time,true);
 		$criteria->compare('survey_response_responder',$this->survey_response_responder,true);
 		$criteria->compare('survey_response_text',$this->survey_response_text,true);

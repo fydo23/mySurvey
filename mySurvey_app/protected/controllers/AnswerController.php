@@ -14,8 +14,8 @@ class AnswerController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'accessControl', // perform access control for CRUD operations
+			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -60,7 +60,7 @@ class AnswerController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id)
 	{
 		$model=new SurveyAnswer;
 
@@ -70,8 +70,10 @@ class AnswerController extends Controller
 		if(isset($_POST['SurveyAnswer']))
 		{
 			$model->attributes=$_POST['SurveyAnswer'];
+			$model->survey_question_ID=$id;
+			$model->order_number=count(SurveyAnswer::model()->findAllByAttributes(array('survey_question_ID'=>$id)));
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect('/question/update/'.$id);
 		}
 
 		$this->render('create',array(
@@ -95,7 +97,7 @@ class AnswerController extends Controller
 		{
 			$model->attributes=$_POST['SurveyAnswer'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('question/update/'.$model->survey_question_ID));
 		}
 
 		$this->render('update',array(
@@ -108,13 +110,13 @@ class AnswerController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	public function actionDelete($id, $surveyQuestion_id)
 	{
 		$this->loadModel($id)->delete();
-
+ 		$this->redirect('/question/update/'.$surveyQuestion_id);
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		/*if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));*/
 	}
 
 	/**

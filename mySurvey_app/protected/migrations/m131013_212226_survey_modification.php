@@ -14,7 +14,6 @@ class m131013_212226_survey_modification extends CDbMigration
                 $this->renameColumn('survey', 'survey_date_time_created', 'created');
                 $this->renameColumn('survey', 'survey_URL', 'url');
                 
-                return true;
 	}
 
 	public function down()
@@ -29,7 +28,6 @@ class m131013_212226_survey_modification extends CDbMigration
                 $this->addColumn('survey', 'survey_publish_status', 'varchar(1)');
                 $this->addColumn('survey', 'survey_publish_date_time', 'datetime');
 
-		return true;
 	}
 
 	/*

@@ -65,7 +65,6 @@ class QuestionController extends Controller
 		{
 			$model->attributes=$_POST['SurveyQuestion'];
                         $model->survey_ID = $survey_id;
-                        $model->type = 1;
                         $model->order_number = count(SurveyQuestion::model()->findAllByAttributes(array('survey_ID'=>$survey_id)));
 			if($model->validate() && $model->save())
 				$this->redirect(array('survey/update/' . $model->survey_ID));
@@ -84,19 +83,35 @@ class QuestionController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		
+        $answer_dataProvider=new CActiveDataProvider('SurveyAnswer');
+		$answer_criteria = new CDbCriteria(array(
+			'condition'=>'survey_question_ID = ' . $model->id,
+			'order'=>'order_number'
+		));
+		$answer_dataProvider->setCriteria($answer_criteria);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model, true);
 
 		if(isset($_POST['SurveyQuestion']))
 		{
 			$model->attributes=$_POST['SurveyQuestion'];
-			if($model->save())
+			if($model->save()){
+				$answers=SurveyAnswer::model()->findAllByAttributes(array('survey_question_ID'=>$id));
+				if($answers){
+					foreach ($answers as $answer) {
+						$answer->setAttribute('order_number',$_POST['SurveyAnswer'][$answer->id]['order_number']);
+						$answer->save();
+					}
+				}
+				
 				$this->redirect(array('survey/update/' . $model->survey_ID));
+			}
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model, 'answer_dataProvider'=>$answer_dataProvider,
 		));
 	}
 
@@ -107,12 +122,17 @@ class QuestionController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		//delete answers related to theis question first
+		$answers=SurveyAnswer::model()->findAllByAttributes(array('survey_question_ID'=>$id));
+		foreach ($answers as $answer){
+			$answer->delete();
+		}
+		//delete question
 		$model = $this->loadModel($id);
                 $model->delete();
 
                 $this->redirect(array('survey/update/' . $model->survey_ID));
 	}
-
 	/**
 	 * Lists all models.
 	 */
@@ -152,18 +172,5 @@ class QuestionController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
-	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param SurveyQuestion $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='survey-question-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
 	}
 }
