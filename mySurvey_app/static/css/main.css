@@ -705,7 +705,7 @@ p.placeholder {
     width:auto; 
     border:1px solid #5887A2;
     background: #c8e2ea;
-	padding: 8px 20px;
+	padding: 10px;
 	margin: 5px 0px 10px;
 }
 
@@ -735,6 +735,7 @@ p.placeholder {
 #add-new-question {
 	float: left;
 	margin-bottom: 70px;
+	margin-top: 15px;
 }
 
 #survey-form #add-new-question a {
@@ -1283,8 +1284,70 @@ input.title ~ .errorMessage {
 	float: left;
 }
 
+.add-new-answer {
+	float: left;
+	margin: 20px 0;
+}
 
+#survey-form .add-new-answer a {
+	background: #fff;
+	color: #00b1c1;
+	font-weight: 700;
+	width: auto;
+}
 
+#survey-form .add-new-answer a:hover {
+	background: #00b1c1;
+	color: #fff;
+}
+
+.answers {
+	margin-top: 10px;
+	background: #fff;
+	padding: 5px;
+}
+
+.question-text {
+	background: #eee;
+	min-height: 53px;
+	padding: 5px;
+	margin-bottom: 20px;
+}
+
+.question-text .type {
+	margin-top: 9px;
+	display: inline-block;
+}
+
+.question-text .buttons,
+.answers .buttons {
+	display: inline-block;
+}
+
+#survey-form .question-text .buttons a,
+#survey-form .answers .buttons a {
+	padding: 7px 13px;
+	width: auto;
+	margin-top: 10px;
+	margin-right: 10px;
+	text-align: center;
+}
+
+#survey-form .answers .buttons a {
+	margin-top: 5px;
+}
+
+#survey-form .answers .buttons a.delete {
+	width: 94px;
+}
+
+#survey-form .answers .buttons a.edit {
+	width: 80px;
+}
+
+ui_sortable_placeholder {
+	display: none;
+}
 
 
 /* -------- Homepage: Learn More -------- */
@@ -1372,10 +1435,6 @@ input.title ~ .errorMessage {
     -webkit-user-drag: element;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 #sortable li{
     cursor: move;
 }
