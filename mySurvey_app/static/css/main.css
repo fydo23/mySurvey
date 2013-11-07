@@ -35,13 +35,97 @@ h1 {
 }
 
 .intro-text {
-	font-family: 'Arvo';
+	/*font-family: 'Arvo';*/
 	font-weight: 700;
-	font-size: 17px;
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 0;
+}
+
+.intro-text span {
+	background: #00b1c1;
+	padding: 9px 16px;
+	color: #fff;
+	border-radius: 100px;
+	margin-right: 5px;
+	font-family: 'Arvo', sans-serif;
+	font-size: 19px;
+
+}
+
+.intro-text span.two {
+	margin-left: 25px;
+	/*background: #cfcfcf;*/
+}
+
+.instructions {
+	padding-top: 10px;
+}
+
+#create-survey-form {
+	margin-top: 50px;
+	text-align: center;
+}
+
+#create-survey-form label,
+#survey-form label,
+#survey-url h3 {
+	margin-right: 5px;
+	font-family: 'Arvo', sans-serif;
+	font-weight: 700;
+	color: #000;
+	margin-left: -10px;
+}
+
+#survey-form label,
+#survey-url h3 {
+	font-size: 16px;
+	margin-left: 0;
+}
+
+.error #survey-form label {
+	float: left;
+	padding-top: 15px;
+}
+
+#survey-url h3 {
+	width: auto;
+	display: inline-block;
+	float: left;
+	padding-bottom: 25px;
+}
+
+/*#survey-url h3 {
+	width: auto;
+	float: left;
+	margin-top: 5px;
+	color: #005a82;
+}*/
+
+span.required {
+	display: none;
+}
+
+#create-survey-form input[type="text"] {
+	width: 400px;
+}
+
+#create-survey-form #survey-form input[type="text"].error {
+	padding: 5px;
+}
+
+#create-survey-form #survey-form label.error {
+	padding-left: 260px;
+	padding-top: 10px;
 }
 
 h4 {
 	clear: both;
+}
+
+.content-width {
+	width: 980px;
+	margin: 0 auto;
 }
 
 #home .buttons {
@@ -51,7 +135,10 @@ h4 {
 #home .button,
 #home input[type="submit"],
 #home input[type="button"],
-.button {
+.buttons input[type="submit"], 
+.buttons input[type="button"],
+.button,
+#survey-form #save-cancel a {
 	width: 208px;
 	height: auto;
 	display: inline-block;
@@ -80,10 +167,14 @@ h4 {
 
 .button:hover,
 input[type="submit"]:hover,
-input[type="button"]:hover {
+input[type="button"]:hover,
+.buttons input[type="submit"]:hover, 
+.buttons input[type="button"]:hover,
+#survey-form #save-cancel a:hover {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#1e73b9");
 	background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#1e73b9));
 	background: -moz-linear-gradient(top, #37a3eb, #1e73b9);
+	border-radius: 20px;
 }
 
 .breadcrumbs {
@@ -163,7 +254,7 @@ a:hover {
 	background-image: url(../img/bg_white_stripe.png);
 	-webkit-box-shadow: inset 0px -8px 8px 0px rgba(0, 0, 0, .1);
 	box-shadow: inset 0px -8px 8px 0px rgba(0, 0, 0, .1);
-	height: 200px;
+	height: 240px;
 }
 
 #footer p {
@@ -415,16 +506,22 @@ div.search-form
 /* SURVEYS -- VIEW ALL */
 
 #new {
-	padding-left: 13px;
+	/*padding-left: 13px;*/
 }
 
 #published,
 #unpublished {
-	background: #f1f1f1;
+	/*background: #f1f1f1;
 	padding: 20px;
+	border: 2px solid #c8e2ea;*/
 	margin-left: 20px;
 	margin-top: 40px;
-	border: 2px solid #c8e2ea;
+	
+}
+
+#published {
+	padding-bottom: 20px;
+	border-bottom: 3px dotted #666;
 }
 
 #unpublished {
@@ -433,12 +530,11 @@ div.search-form
 
 #published h2,
 #unpublished h2 {
-	/*text-transform: uppercase;*/
-	font-size: 13px;
+	font-size: 18px;
 	margin: 0 0 15px;
-	color: #666;
-	/*background: #e3e3e3;
-	padding: 10px 15px;*/
+	color: #68aac2;
+	text-transform: uppercase;
+	font-weight: 200;
 }
 
 #published p,
@@ -455,28 +551,31 @@ div.search-form
 }
 
 .survey-lists li {
-	background: #6eb4cd;
+	background: #f1f1f1;
 	padding: 10px 15px;
 	list-style: none;
-	color: #fff;
-	text-transform: uppercase;
 	font-weight: 700;
 	margin-bottom: 7px;
+	border: 2px solid #c8e2ea;
+	font-size: 15px;
+	font-family: 'Arvo';
+	color: #000;
 }
 
 .survey-lists li a {
 	float: right;
-	padding-left: 10px;
+	padding-left: 15px;
 	text-decoration: none;
-	font-size: 12px;
+	font-size: 13px;
 	text-transform: none;
 	font-weight: 400;
-	color: #F0F8FF;
+	color: #0079af;
+	font-family: Helvetica, sans-serif;
 }
 
 .survey-lists li a:hover {
 	text-decoration: underline;
-	color: #fff;
+	color: #00b1c1;
 }
 
 
@@ -731,7 +830,8 @@ p.placeholder {
 
 #create-survey-form .buttons {
 	float: left;
-	margin-top: 25px;
+	margin: 25px auto 50px;
+	width: 980px;
 }
 
 #create-survey-form .errorMessage {
@@ -746,14 +846,21 @@ p.placeholder {
 }
 
 #save-cancel {
-	margin-top: -60px;
-	padding-bottom: 45px;
+	/*margin-top: -60px;
+	padding-bottom: 45px;*/
+	
+	z-index: 1;
+	margin-top: -110px;
+	position: relative;
+	float: left;
+	width: 980px;
+	margin-left: 275px;
+	margin-bottom: 70px;
 }
 
 
 
-.buttons input[type="submit"], 
-.buttons input[type="button"],
+
 .add-question a,
 #survey-form .buttons a {
 	background: #6eb4cd;
@@ -790,14 +897,21 @@ p.placeholder {
 }
 
 #question-title {
-	margin-top: 70px;
+	/*margin-top: 70px;
 	text-transform: uppercase;
 	color: #005a82;
-	font-size: 14px;
+	font-size: 14px;*/
+	
+	font-size: 18px;
+	margin: 0 0 15px;
+	color: #68aac2;
+	text-transform: uppercase;
+	font-weight: 200;
+	padding-top: 50px;
+	border-top: 2px dotted #666;
 }
 
-.buttons input[type="submit"]:hover, 
-.buttons input[type="button"]:hover,
+
 .add-question a:hover {
 	background: #0079af;
 }
@@ -807,19 +921,14 @@ p.placeholder {
 	padding-top: 10px;
 }
 
-#survey-url h3 {
-	width: auto;
-	float: left;
-	margin-top: 5px;
-	color: #005a82;
-}
+
 
 #survey-url p {
 	width: auto;
 	float: left;
-	margin-top: 5px;
+	margin-top: 16px;
 	font-size: 15px;
-	margin-left: 10px;
+	margin-left: 5px;
 	color: #666;
 }
 
@@ -878,14 +987,16 @@ p.placeholder {
 	padding-left: 15px;
 	width: 980px;
 	margin: 0 auto;
-	text-align: left;
+	text-align: center;
 	padding-top: 20px;
 }
 
 .page-name h1 {
 	font-weight: 200;
-	font-size: 40px;
-	margin-top: 10px;
+	font-size: 45px;
+	margin-top: 8px;
+	margin-bottom: 30px;
+	color: #005a82;
 }
 
 #logout {
@@ -1089,7 +1200,7 @@ input[type="password"] {
 }
 
 #survey-form .error {
-	padding-left: 5px;
+	padding-left: 0;
 }
 
 
@@ -1124,7 +1235,7 @@ input[type="password"] {
 }
 
 input.title{
-	float: left;
+	/*float: left;*/
     font-size: 23px;
     width:530px;
 }

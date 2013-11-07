@@ -6,7 +6,12 @@
 ?>
 
 <!--======== EDIT SURVEY ========-->
-<h1>Survey Editor</h1>
+<div class="stripe">
+	<div class="page-name">
+		<h1>Survey Editor</h1>
+		<p class="intro-text">Edit your survey fields including Survey Title, Questions &amp; Answers.</p>
+	</div>
+</div>
 
 <script>
 
@@ -191,7 +196,7 @@
 </script>
 
 
-
+<div class="content-width">
 <div class="form">
 
         <?php $form=$this->beginWidget('CActiveForm', array(
@@ -205,11 +210,12 @@
         )); ?>
                 <?php echo $form->errorSummary($model); ?>
                 <div class="row buttons" id="save-cancel">
-                        <?php echo CHtml::submitButton('Save'); ?>
-                        <?php echo CHtml::link('Cancel', '/survey') ?>
+                        <?php echo CHtml::submitButton('Save Changes'); ?>
+                        <?php echo CHtml::link('Back to all Surveys', '/survey') ?>
                 </div>
 
                 <div class="row">
+                	<?php echo $form->labelEx($model,'title'); ?>
                         <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100, 'class'=>'title')); ?>
                         <span class="arrow-left"></span><?php echo $form->error($model,'title',array('successCssClass','success')); ?>
                 </div>
@@ -239,3 +245,4 @@
                 </div>
         <?php $this->endWidget(); ?>
 </div><!-- form -->
+</div>

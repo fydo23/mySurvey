@@ -6,7 +6,7 @@
 <div class="stripe">
 	<div class="page-name">
 		<h1>Surveys</h1>
-		<p class="intro-text">With MySurvey, you can easily create a new survey, edit an existing survey or delete a survey. </p>
+		<p class="intro-text">To get started, create a new survey. Or, manage your existing surveys below. </p>
 		
 		<div id="new">
     		<a href="<?php echo $this->createUrl('/survey/create')?>" class="button">Create New Survey</a>
@@ -21,7 +21,7 @@
 <!--======== CREATE NEW SURVEY ========-->
 
 
-
+<div class="content-width">
 <!--======== PUBLISHIED SURVEYS ========-->
 <div id="published">
 	<h2>Published</h2>
@@ -56,4 +56,6 @@
 		</li>
 		<?php } ?>
 	</ul>
+</div>
+
 </div>
