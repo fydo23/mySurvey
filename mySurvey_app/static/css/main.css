@@ -40,6 +40,7 @@ h1 {
 	font-size: 14px;
 	color: #666;
 	margin-bottom: 0;
+	line-height: 21px;
 }
 
 .intro-text span {
@@ -208,6 +209,29 @@ a:hover {
 
 .row {
 	clear: both;
+}
+
+#account-settings {
+	padding-top: 40px;
+}
+
+#account-settings .errorMessage {
+	padding: 7px 15px;
+}
+
+#account-settings .errorSummary {
+	display: none;
+}
+
+#account-settings .row {
+	margin: 0 auto;
+	width: 980px;
+	text-align: center;
+}
+
+#account-settings .buttons {
+	padding-top: 25px;
+	padding-bottom: 50px;
 }
 
 /*adds clearfix property*/
@@ -1250,7 +1274,7 @@ input.title ~ .errorMessage {
 }
 
 .success input{
-        border-color: green;
+     /*border-color: green;*/
 }
 
 .error input[type="text"],
