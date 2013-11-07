@@ -125,13 +125,7 @@ class SurveyController extends Controller
 	                	foreach($attributes['SurveyAnswer'] as $a_idx => $answer_attributes){
 	                		$answer_attributes['survey_question_ID'] = $question->id;
 	                		$answer_attributes['order_number'] = $a_idx;
-	                		if($answer = $this->create_save_or_delete('SurveyAnswer', $answer_attributes)){
-		                		if($answer->hasErrors()){
-									echo '<pre>';
-		                			print_r($answer->errors);
-									echo '</pre>';
-		                		}
-	                		}
+	                		$this->create_save_or_delete('SurveyAnswer', $answer_attributes);
 	                	}
 	                }
             	}
