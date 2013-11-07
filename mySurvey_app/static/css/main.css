@@ -6,6 +6,7 @@
 */
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
 
 body
 {
@@ -28,8 +29,15 @@ body
 
 h1 {
 	font-weight: 200;
-	font-size: 40px;
+	font-size: 52px;
 	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.intro-text {
+	font-family: 'Arvo';
+	font-weight: 700;
+	font-size: 17px;
 }
 
 h4 {
