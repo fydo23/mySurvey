@@ -46,7 +46,7 @@
 			//set the attributes with dummy data
 			$surveyAnswers->setAttributes(array(
 				'survey_question_ID'=>$surveyQuestion->id,
-				'survey_answer_choice_letter'=>'test',
+				'choice_letter'=>'test',
 				'survey_answer_response_time'=>new CDbExpression('NOW()'),
 				'survey_answer_next_link'=>'test'
 			));
@@ -56,7 +56,7 @@
 			$surveyResponse = new SurveyResponse;
 			$surveyResponse -> setAttributes(array(
 				'survey_answer_ID' => $surveyAnswers->id,
-				'survey_answer_choice_letter' => 'Test',
+				'choice_letter' => 'Test',
 				'survey_response_time' => NULL,
 				'survey_response_responder' => 'TestUser',
 				'survey_response_text' => NULL
@@ -87,6 +87,7 @@
 			//========Update survey response time========
 			//Check the existing table for 'survey_ID' and 'survey_question_ID'
 			$surveyResponse = new SurveyResponse;
+<<<<<<< HEAD
 			$surveyResponse = $surveyResponse::model()->findByAttributes(array('survey_answer_ID'=> $surveyAnswer->id,'survey_response_responder'=> 'TestUser'));
                         
                         
@@ -115,6 +116,12 @@
                         //assert the update is successfull
 			$this->assertTrue($surveyResponse->save()); 
 
+=======
+			$surveyResponse = $surveyResponse::model()->findByAttributes(array('choice_letter'=> 'Test','survey_response_responder'=> 'TestUser'));
+			$surveyResponse -> survey_response_time = new CDbExpression('NOW()');
+			$this->assertTrue($surveyResponse->save());
+			$this->assertNotNull($surveyResponse::model()->findByAttributes(array('choice_letter'=>$surveyResponse->choice_letter,'survey_response_responder'=>$surveyResponse->survey_response_responder)));
+>>>>>>> design
 		}
 		
 		public function testDelete(){
@@ -125,9 +132,15 @@
 			$surveyAnswers = new SurveyAnswer;
 			$surveyResponse = new SurveyResponse;
 			
+<<<<<<< HEAD
 			$this->assertSame($surveyResponse::model()->deleteAllByAttributes(array('survey_answer_choice_letter'=>'Test')),1);
 			$this->assertSame($surveyAnswers::model()->deleteAllByAttributes(array('survey_answer_choice_letter'=>'test')),1);
 			$this->assertSame($surveyQuestion::model()->deleteAllByAttributes(array('text'=>'test')),1);
+=======
+			$this->assertSame($surveyResponse::model()->deleteAllByAttributes(array('survey_response_responder'=>'TestUser')),1);
+			$this->assertSame($surveyAnswers::model()->deleteAllByAttributes(array('choice_letter'=>'test')),1);
+			$this->assertSame($surveyQuestion::model()->deleteAllByAttributes(array('survey_question_default_next_link'=>'test')),1);
+>>>>>>> design
 			$this->assertSame($survey::model()->deleteAllByAttributes(array('url'=>'testURL')),1);
 			$this->assertSame($surveyCreator::model()->deleteAllByAttributes(array('email'=>'testCase@example.com')),1);
 		}

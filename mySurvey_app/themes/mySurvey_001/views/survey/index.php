@@ -3,17 +3,25 @@
 ?>
 
 <!--======== SURVEY LANDING PAGE ========-->
-<div class="page-name">
-	<h1>Surveys</h1>
-</div>
+<div class="stripe">
+	<div class="page-name">
+		<h1>Surveys</h1>
+		<p class="intro-text">To get started, create a new survey. Or, manage your existing surveys below. </p>
+		
+		<div id="new">
+    		<a href="<?php echo $this->createUrl('/survey/create')?>" class="button">Create New Survey</a>
+		</div>
+	
+	</div>
+	
+	
 
+</div>
 
 <!--======== CREATE NEW SURVEY ========-->
-<div id="new">
-    <a href="<?php echo $this->createUrl('/survey/create')?>" class="button">Create New Survey</a>
-</div>
 
 
+<div class="content-width">
 <!--======== PUBLISHIED SURVEYS ========-->
 <div id="published">
 	<h2>Published</h2>
@@ -48,4 +56,6 @@
 		</li>
 		<?php } ?>
 	</ul>
+</div>
+
 </div>

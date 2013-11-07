@@ -22,7 +22,7 @@ class SurveyController extends Controller
 	{
 		return array(
 			array('deny', 
-                            'users'=>array('?'),
+                'users'=>array('?'),
 			),
 		);
 	}
@@ -91,13 +91,11 @@ class SurveyController extends Controller
                 $this->performAjaxValidation(array_merge($questions,array($model)));
                 
                 if(!count($questions)){
-                    $questions_dataProvider=new CActiveDataProvider('SurveyQuestion');
                     $questions_criteria = new CDbCriteria(array(
                         'condition'=>'survey_ID = ' . $model->id,
                         'order'=>'order_number'
                     ));
-                    $questions_dataProvider->setCriteria($questions_criteria);
-                    $questions = $questions_dataProvider->getData();
+                    $questions = SurveyQuestion::model()->findAll($questions_criteria);
                 } 
                 if(isset($_POST['Survey'])){
                     $model->attributes=$_POST['Survey'];
@@ -118,27 +116,51 @@ class SurveyController extends Controller
          * @return array $questions | an array containing all the questions in the current post request.
          */
         private function process_post_questions($survey_id){
-            $questions = array();
-            foreach($_POST['SurveyQuestion'] as $idx => $attributes){
-                $question = new SurveyQuestion('create');
-                if($attributes['id']){
-                    $question = SurveyQuestion::model()->findByPk($attributes['id']);
-                }
-                if($question->id && $attributes['delete']){
-                    //a fetched model needs to be deleted.
-                    $question->delete();
-                    continue; // stop further processing this question.
-                }
-                $question->attributes = $attributes;
-                $question->survey_ID = $survey_id;
-                $question->order_number = $idx;
-                if($question->validate()){
-                    $question->save();
-                }
-                $questions[$idx] = $question;
+            foreach($_POST['SurveyQuestion'] as $q_idx => $attributes){
+        		$attributes['survey_ID'] = $survey_id;
+        		$attributes['order_number'] = $q_idx;
+            	if($question = $this->create_save_or_delete('SurveyQuestion', $attributes)){
+                	$questions[$q_idx] = $question;
+	                if(isset($attributes['SurveyAnswer'])){
+	                	foreach($attributes['SurveyAnswer'] as $a_idx => $answer_attributes){
+	                		$answer_attributes['survey_question_ID'] = $question->id;
+	                		$answer_attributes['order_number'] = $a_idx;
+	                		$this->create_save_or_delete('SurveyAnswer', $answer_attributes);
+	                	}
+	                	if(count($question->answers)>1 && $question->type == 0){
+	                		//if short answer, delete all but the first question
+	                		for($idx = 1; $idx<count($question->answers); $idx++){ 
+	                			$question->answers[$idx]->delete();
+	                		}
+	                		//refresh the model to have the proper number of relations.
+	                		$question->refresh(); 
+	                	}
+	                }
+            	}
             }
             ksort($questions);
             return $questions;
+        }
+
+        private function create_save_or_delete($model_name, $attributes){
+				$model = new $model_name('create');
+                //if $attributes id is set, try to set model 
+                if($attributes['id'] && !$model = $model_name::model()->findByPk($attributes['id'])){
+                	//provided an id that doesn't exist. skip this question
+                	return false;
+                }
+                if($attributes['delete']){
+                	if($model->id){
+                		//requesting to delete an existing model.
+                    	$model->delete();
+                	}
+                	return false;
+                }
+                $model->attributes = $attributes;
+                if($model->validate()){
+                    $model->save();
+                }
+            	return $model;
         }
         
 	/**
