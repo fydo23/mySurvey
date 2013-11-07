@@ -40,7 +40,6 @@ class Survey extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('url, created, survey_creator_ID, title', 'required'),
-			array('url','unique'),
 			array('survey_creator_ID, is_published', 'numerical', 'integerOnly'=>true),
 			array('url', 'length', 'max'=>80),
 			array('title', 'length', 'min'=>6, 'tooShort'=>'Title is too short.'),
