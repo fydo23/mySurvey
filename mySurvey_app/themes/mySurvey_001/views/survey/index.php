@@ -3,15 +3,20 @@
 ?>
 
 <!--======== SURVEY LANDING PAGE ========-->
-<div class="page-name">
-	<h1>Surveys</h1>
-</div>
+<div class="stripe">
+	<div class="page-name">
+		<h1>Surveys</h1>
+		<p>With MySurvey, you can easily create a new survey, edit an existing survey or delete a survey. </p>
+	</div>
+	
+	<div id="new">
+    	<a href="<?php echo $this->createUrl('/survey/create')?>" class="button">Create New Survey</a>
+	</div>
 
+</div>
 
 <!--======== CREATE NEW SURVEY ========-->
-<div id="new">
-    <a href="<?php echo $this->createUrl('/survey/create')?>" class="button">Create New Survey</a>
-</div>
+
 
 
 <!--======== PUBLISHIED SURVEYS ========-->

@@ -5,13 +5,14 @@
 	Fall 2013
 */
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 body
 {
 	margin: 0;
 	padding: 0;
 	color: #555;
-	font-family: 'Open Sans', Helvetica, sans-serif;
+	font-family: Helvetica, 'Open Sans', sans-serif;
 	font-size: 13px;
 	font-weight: normal;
 	background: #222;
@@ -122,14 +123,14 @@ a:hover {
 	padding: 15px;
 	font-size: 12px;
 	text-align: center;
-	/*background: #222;*/
+	background: #222;
 	color: #fff;
 	clear: both;
 	min-height: 60px;
 }
 
 
-#footer {
+.stripe {
 	position: relative;
 	background: 
 	transparent;
@@ -139,6 +140,7 @@ a:hover {
 	background-image: url(../img/bg_white_stripe.png);
 	-webkit-box-shadow: inset 0px -8px 8px 0px rgba(0, 0, 0, .1);
 	box-shadow: inset 0px -8px 8px 0px rgba(0, 0, 0, .1);
+	height: 200px;
 }
 
 #footer p {
@@ -178,8 +180,9 @@ a:hover {
 #mainmenu ul li
 {
 	display: inline-block;
-	width: 300px;
+	width: 322px;
 	padding: 0;
+	margin-right: -5px;
 	
 }
 
@@ -193,10 +196,10 @@ a:hover {
 	/*padding:5px 8px;*/
 	
 
-	background-image: url(../img/divider.png)/*, url(../img/dialogues.png)*/;
-	padding-left: 30px;
-	background-position: left top, 9px 15px;
-	background-repeat: no-repeat, no-repeat, no-repeat;
+	/*, url(../img/dialogues.png)*/
+	background-image: url(../img/divider.png);
+	padding-left: 12px;
+	background-position: left top;
 	
 	padding-right: 12px;
 	background-repeat: no-repeat;
@@ -208,6 +211,12 @@ a:hover {
 	text-decoration: none;
 	display: block;
 
+}
+
+#mainmenu ul li:last-child a {
+	background-image: url(../img/divider.png), url(../img/divider.png);
+	background-position: left top, top right;
+	background-repeat: no-repeat, no-repeat;
 }
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a
@@ -834,12 +843,17 @@ p.placeholder {
 
 .content-area #content {
 	/*border-left: 1px solid #e3e3e3;*/
-	padding-left: 30px;
-	margin-top: 20px;
+	padding-left: 0;
+	margin-top: 0;
+	width: 100%;
 }
 
 .page-name {
 	padding-left: 15px;
+	width: 980px;
+	margin: 0 auto;
+	text-align: left;
+	padding-top: 20px;
 }
 
 .page-name h1 {
