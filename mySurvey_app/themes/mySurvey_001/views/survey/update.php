@@ -9,8 +9,12 @@
 <h1>Survey Editor</h1>
 
 <script>
-    
+
 	$(function(){
+
+        /*Initialize the sortables.*/
+        do_sortables();
+
 
         /**
          * Deactivates actively editing questions when clicking outside the sortable element.
@@ -20,22 +24,6 @@
 			if(!clickedActiveQuestion){
 				$('.active a.edit').trigger('click');
 			}
-		});
-
-
-
-		/**
-         * Handels the draggable items enabled by jquery-ui.
-         */
-		$('.sortable').sortable({
-            items: '> li',
-            start:function(event, ui){
-                $(ui.item).addClass('dragging');
-            },
-            stop:function(event, ui){      
-                $(ui.item).removeClass('dragging');
-                fix_sortable_input_names();
-            }
 		});
 		
 
@@ -108,6 +96,9 @@
 
             //hide the add-sortable button if type is SA.
             $(this).filter('[data-parent-type=0]').hide();
+
+            //add sortable functionality to the newly added item.
+            do_sortables();
 		});
 
 
@@ -119,7 +110,21 @@
         });
           
 
-
+        /**
+         * Handels the draggable items enabled by jquery-ui.
+         */
+        function do_sortables(){
+            $('.sortable').sortable({
+                items: '> li',
+                start:function(event, ui){
+                    $(ui.item).addClass('dragging');
+                },
+                stop:function(event, ui){      
+                    $(ui.item).removeClass('dragging');
+                    fix_sortable_input_names();
+                }
+            });
+        };
 
 
         /**
