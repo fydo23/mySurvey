@@ -88,9 +88,16 @@ class SurveyTest extends PHPUnit_Framework_TestCase {
 		echo "\n[INFO] Published test survey";
 		sleep(1);
 		
-		
-// 		
-// 		sleep(1);
+		$web_driver->findElement ( WebDriverBy::linkText ( "Account Settings" ) )->click();
+		$accountSettingForm = $web_driver->findElement(WebDriverBy::id("account-settings"));
+		$accountSettingForm->findElement(WebDriverBy::id("SurveyCreator_first_name"))->sendKeys("My First Name");
+		$accountSettingForm->findElement(WebDriverBy::id("SurveyCreator_last_name"))->sendKeys("My Last Name");
+		$accountSettingForm->findElement(WebDriverBy::id("SurveyCreator_password"))->sendKeys("12341234");
+		$accountSettingForm->findElement(WebDriverBy::id("SurveyCreator_new_password"))->sendKeys("testtest");
+		$accountSettingForm->findElement(WebDriverBy::id("SurveyCreator_new_password_repeat"))->sendKeys("testtest");
+		$accountSettingForm->submit();
+		sleep(1);
+		echo "\n[INFO] Updated user information";
 // 		
 // 		$web_driver->findElement(WebDriverBy::id("SurveyQuestion_0_SurveyAnswer_0_text"))->sendKeys("test answer 2");
 // 		$web_driver->findElement ( WebDriverBy::linkText ( "Add new question" ) )->click ();
