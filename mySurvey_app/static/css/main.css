@@ -591,13 +591,16 @@ p.placeholder {
     float:right;
     margin-left: 10px;
 }
+.question_summary .hide{
+	display:none;
+}
+
 
 .question_summary input[type=text]{
 	clear:both;
 	width: 475px;
 	margin-right: 15px;
 }
-
 #add-new-question {
 	float: left;
 	margin-bottom: 70px;
