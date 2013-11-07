@@ -531,7 +531,7 @@ p.placeholder {
     float:right;
     margin-left: 10px;
 }
-.question_summary .type_0{
+.question_summary .hide{
 	display:none;
 }
 .answer_summary{
