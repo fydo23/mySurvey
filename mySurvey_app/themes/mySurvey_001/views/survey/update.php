@@ -34,7 +34,7 @@
             },
             stop:function(event, ui){      
                 $(ui.item).removeClass('dragging');
-                fix_sortable_input_names($(this).closest('.sortable'));
+                fix_sortable_input_names();
             }
 		});
 		
@@ -76,11 +76,14 @@
          */
         $('.sortable').on('click','a.delete',function(e){
     		e.preventDefault();//stops the link from following the url
+            e.stopPropagation();
     		var listItem = $(this).closest('li');
     		listItem.hide().attr('data-deleted',"True").find('input[name*=delete]').val("True");
             //move deleted items after trash item to allows the preservation of order_num.
             listItem.siblings('.trash').after(listItem.detach());
-            fix_sortable_input_names(listItem.closest('.sortable'));
+            fix_sortable_input_names();
+            var sortable_id = listItem.closest('.sortable').attr('id');
+            $('[data-target=#'+sortable_id+']').show();
 		});
 
 
@@ -96,12 +99,15 @@
 			$(sortable).find('.trash').last().before(newItem);
             
             //add the new element before the delete selements that are stored at the end of the list
-            fix_sortable_input_names(sortable);
+            fix_sortable_input_names();
             fix_sub_sortable_target(newItem);
             
             // display/focus the new element's text field.
 			e.stopPropagation(); 
 			newItem.find('.edit:first').trigger('click');
+
+            //hide the add-sortable button if type is SA.
+            $(this).filter('[data-parent-type=0]').hide();
 		});
 
 
@@ -109,19 +115,7 @@
         $('#questions').on('change', '[name*=type]',function(){
             //delete all previous answers.
             var old_answers = $(this).closest('li').find('.sortable li:not(.template) .delete').trigger('click');
-            console.log($(this).val());
-            switch($(this).val()){
-                case '1': //mutliple choice:
-                    //show add more answers button.
-                    $(this).closest('li').find('.add-sortable').show();
-                    console.log('mult-C');
-                    break;
-                default: //short answer
-                    //click add new answer button, then hide it.
-                    $(this).closest('li').find('.add-sortable').trigger('click').hide();
-                    console.log('shortA',$('this').closest('li').find('.add-sortable'));
-                    break;
-            }
+            $(this).closest('li').find('.add-sortable').attr('data-parent-type',$(this).val());
         });
           
 

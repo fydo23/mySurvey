@@ -53,7 +53,7 @@
                 <li class="trash"><?php //trash goes after this list item. ?></li>
             </ul>
             <div class="row buttons">
-                    <a class="add-sortable <?php if($question->type == 0 && count($question->answers)>0){echo "hide";} ?>" data-target="#answers_<?php echo $question->answersUniqueId; ?>" href="#">Add new answer'</a>
+                    <a class="add-sortable <?php if($question->type == 0 && count($question->answers)>0){echo "hide";} ?>" data-parent-type="<?php echo $question->type; ?>" data-target="#answers_<?php echo $question->answersUniqueId; ?>" href="#">Add new answer'</a>
             </div>
         </div>
 </li>
