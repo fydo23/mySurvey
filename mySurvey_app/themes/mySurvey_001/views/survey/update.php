@@ -6,11 +6,20 @@
 ?>
 
 <!--======== EDIT SURVEY ========-->
-<h1>Survey Editor</h1>
+<div class="stripe">
+	<div class="page-name">
+		<h1>Survey Editor</h1>
+		<p class="intro-text">Edit your survey fields including Survey Title, Questions &amp; Answers.</p>
+	</div>
+</div>
 
 <script>
-    
+
 	$(function(){
+
+        /*Initialize the sortables.*/
+        do_sortables();
+
 
         /**
          * Deactivates actively editing questions when clicking outside the sortable element.
@@ -20,22 +29,6 @@
 			if(!clickedActiveQuestion){
 				$('.active a.edit').trigger('click');
 			}
-		});
-
-
-
-		/**
-         * Handels the draggable items enabled by jquery-ui.
-         */
-		$('.sortable').sortable({
-            items: '> li',
-            start:function(event, ui){
-                $(ui.item).addClass('dragging');
-            },
-            stop:function(event, ui){      
-                $(ui.item).removeClass('dragging');
-                fix_sortable_input_names();
-            }
 		});
 		
 
@@ -108,6 +101,9 @@
 
             //hide the add-sortable button if type is SA.
             $(this).filter('[data-parent-type=0]').hide();
+
+            //add sortable functionality to the newly added item.
+            do_sortables();
 		});
 
 
@@ -119,7 +115,21 @@
         });
           
 
-
+        /**
+         * Handels the draggable items enabled by jquery-ui.
+         */
+        function do_sortables(){
+            $('.sortable').sortable({
+                items: '> li',
+                start:function(event, ui){
+                    $(ui.item).addClass('dragging');
+                },
+                stop:function(event, ui){      
+                    $(ui.item).removeClass('dragging');
+                    fix_sortable_input_names();
+                }
+            });
+        };
 
 
         /**
@@ -185,10 +195,8 @@
 
 </script>
 
-<div id="survey-url">
-    <h3>Survey URL:</h3> <p>surveyurl.example.com</p>
-</div>
 
+<div class="content-width">
 <div class="form">
 
         <?php $form=$this->beginWidget('CActiveForm', array(
@@ -201,17 +209,24 @@
                 )
         )); ?>
                 <?php echo $form->errorSummary($model); ?>
-                <div class="row buttons">
-                        <?php echo CHtml::submitButton('Save'); ?>
-                        <?php echo CHtml::link('Cancel', '/survey') ?>
+                <div class="row buttons" id="save-cancel">
+                        <?php echo CHtml::submitButton('Save Changes'); ?>
+                        <?php echo CHtml::link('Back to all Surveys', '/survey') ?>
                 </div>
 
                 <div class="row">
+                	<?php echo $form->labelEx($model,'title'); ?>
                         <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100, 'class'=>'title')); ?>
                         <span class="arrow-left"></span><?php echo $form->error($model,'title',array('successCssClass','success')); ?>
                 </div>
+                
+                
+                
+                <div id="survey-url">
+					<h3>Survey URL:</h3> <p>surveyurl.example.com</p>
+				</div>
 
-                <h4>Questions</h4>
+                <h4 id="question-title">Questions</h4>
                 <ul id="questions" class="sortable">
                     <?php echo $this->renderPartial('/question/_form',array(
                             'question'=>new SurveyQuestion('template')
@@ -225,8 +240,9 @@
                     <li class="trash"><?php //trash goes after this list item. ?></li>
                 </ul>
 
-                <div class="row buttons">
-                        <a class="add-sortable" data-target="#questions" href="#">Add new question'</a>
+                <div class="row buttons" id="add-new-question">
+                        <a class="add-sortable" data-target="#questions" href="#">Add New Question</a>
                 </div>
         <?php $this->endWidget(); ?>
 </div><!-- form -->
+</div>

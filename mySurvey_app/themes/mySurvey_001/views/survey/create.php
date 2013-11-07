@@ -4,9 +4,15 @@
 ?>
 
 <!--======== CREATE SURVEY ========-->
-<h1>Create Survey</h1>
+<div class="stripe">
+	<div class="page-name">
+		<h1>Create Survey</h1>
+		<p class="intro-text instructions"><span>1</span> Enter the title of the survey below. <span class="two">2</span> Use the Survey Editor to add questions.</p>
+	</div>
+</div>
 
-<div class="form">
+<div class="content-width">
+<div class="form" id="create-survey-form">
 
     <?php $form=$this->beginWidget('CActiveForm', array(
             'id'=>'survey-form',
@@ -20,7 +26,7 @@
             <div class="row">
                     <?php echo $form->labelEx($model,'title'); ?>
                     <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100)); ?>
-                    <?php echo $form->error($model,'title'); ?>
+                    <span class="arrow-left"></span><?php echo $form->error($model,'title'); ?>
             </div>
 
             <div class="row buttons">
@@ -31,3 +37,4 @@
     <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+</div>

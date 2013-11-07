@@ -18,6 +18,8 @@ class SurveyCreator extends Model
 {
         //used for registration.
         public $password_repeat;
+        public $new_password;
+        public $new_password_repeat;
         
 	/**
 	 * @return string the associated database table name
@@ -45,6 +47,8 @@ class SurveyCreator extends Model
                         array('email', 'unique','on'=>'register'), 
                         array('password_repeat', 'compare', 'compareAttribute'=>'password', 'on'=>'register', 'message'=>'Password must be repeated exactly.'),
                         array('password_repeat', 'required', 'on'=>'register'),
+                        array('new_password', 'length', 'min' => 8, 'allowEmpty'=> true, 'tooShort'=>'{attribute} is too short ({min} characters min.).'),
+                        array('new_password_repeat', 'compare', 'compareAttribute'=>'new_password', 'on'=>'update', 'message'=>'Password must be repeated exactly.'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, email, password, first_name, last_name, level', 'safe', 'on'=>'search'),
@@ -57,6 +61,14 @@ class SurveyCreator extends Model
                 case 'register':
                     $this->password = sha1($this->password);
                     break;
+                case 'update':
+                	if($this->new_password!=null){
+                		$this->password= sha1($this->new_password);
+                	}
+                	else{
+                		$this->password = sha1($this->password);
+                	}
+                	break;
             }
             return true;
         }
@@ -86,6 +98,8 @@ class SurveyCreator extends Model
 			'first_name' => 'First Name',
 			'last_name' => 'Last Name',
 			'level' => 'Level',
+			'new_password' => 'New Password',
+			'new_password_repeat' => 'Repeat New Password',
 		);
 	}
 

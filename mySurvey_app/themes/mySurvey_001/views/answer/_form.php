@@ -6,7 +6,7 @@
 ?>
 
 <li class="answer_summary <?php echo $answer->class; ?>"> 
-	<div class="row clearfix" data-editable="true">
+	<div class="row answers clearfix" data-editable="true">
         <div class="details">
 		    <?php echo CHtml::error($answer, 'text',array('successCssClass','success'));?>
 		    <span data-hide-on-edit="true" class="text"><?php echo $answer->text ?></span>   
@@ -33,10 +33,11 @@
 		            'disabled'=>$answer->disabled
 		        )); 
 		    ?>
-		</div>
-	    <div class="buttons">
-		    <a class="delete" href="#">Delete</a>
-		    <a class="edit" href="#">Edit</a>
-	    </div> 
+		
+			<div class="buttons">
+		    	<a class="delete" href="#">Delete Answer</a>
+				<a class="edit" href="#">Edit Answer</a>
+			</div> 
+	    </div>
 	</div>
 </li>

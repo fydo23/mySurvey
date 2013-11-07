@@ -7,7 +7,7 @@
 ?>
 
 <li class="question_summary <?php echo $question->class; ?>"> 
-        <div class="row clearfix" data-editable="true">
+        <div class="row question-text clearfix" data-editable="true">
             <div class="details">
                 <?php echo CHtml::error($question, 'text',array('successCssClass','success'));?>
                 <span data-hide-on-edit="true" class="text"><?php echo $question->text ?></span>  
@@ -34,10 +34,11 @@
                         'disabled'=>$question->disabled
                     )); 
                 ?>
-            </div>
-            <div class="buttons">
-                <a class="delete" href="#">Delete</a>
-                <a class="edit" href="#">Edit</a> 
+            
+				<div class="buttons">
+                	<a class="delete" href="#">Delete Question</a>
+					<a class="edit" href="#">Edit Question</a> 
+				</div>
             </div>
         </div>
         <div class="row">
@@ -52,8 +53,8 @@
                 <?php }?>
                 <li class="trash"><?php //trash goes after this list item. ?></li>
             </ul>
-            <div class="row buttons">
-                    <a class="add-sortable <?php if($question->type == 0 && count($question->answers)>0){echo "hide";} ?>" data-parent-type="<?php echo $question->type; ?>" data-target="#answers_<?php echo $question->answersUniqueId; ?>" href="#">Add new answer'</a>
+            <div class="row buttons add-new-answer">
+                    <a class="add-sortable <?php if($question->type == 0 && count($question->answers)>0){echo "hide";} ?>" data-parent-type="<?php echo $question->type; ?>" data-target="#answers_<?php echo $question->answersUniqueId; ?>" href="#">Add New Answer</a>
             </div>
         </div>
 </li>
