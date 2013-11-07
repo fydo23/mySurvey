@@ -44,28 +44,22 @@ class SurveyController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Survey;
+		$model=new Survey('create');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-                $survey_creator = SurveyCreator::model()->findByAttributes(
-                        array('email'=> Yii::app()->user->id)
-                );
-                    
-                //we need to remove url from the survey model
-                $model->url = '/survey/take/id' ;
-                $model->survey_creator_ID = $survey_creator->id;
-                $model->is_published = 0;
-                $model->created = new CDbExpression('NOW()');
 		if(isset($_POST['Survey']))
 		{
 			$model->attributes=$_POST['Survey'];
 			if($model->save())
 				$this->redirect(array(
-                                    'update',
-                                    'id'=>$model->id
-                                ));
+                    'update',
+                    'id'=>$model->id
+                ));
+			else{
+				print_r($model->getErrors());
+			}
 		}
 
 		$this->render('create',array(
