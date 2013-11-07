@@ -84,6 +84,7 @@ input[type="button"]:hover {
 
 .form ul li a {
 	color: #6cb3cc;
+	padding: 10px 2px;
 }
 
 .form ul {
@@ -104,6 +105,20 @@ a {
 
 a:hover {
 	text-decoration: none;
+}
+
+.row {
+	clear: both;
+}
+
+/*adds clearfix property*/
+.row:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
 }
 
 
@@ -1122,10 +1137,6 @@ input.title ~ .errorMessage {
 	float: left;
 }
 
-.row {
-	clear: both;
-}
-
 
 
 
@@ -1159,10 +1170,16 @@ input.title ~ .errorMessage {
 }
 
 .text {
-	width: 75%;
 	float: left;
 	position: relative;
+	padding: 9px 6px 11px;
+	font-family: "Open Sans", Helvetica, sans-serif;
+	font-size: 13px;
+	color: #444;
+	font-weight: normal;
+	width: 204px;
 }
+
 .image {
 	position: relative;
 	float: right;
@@ -1209,7 +1226,10 @@ input.title ~ .errorMessage {
     -webkit-user-drag: element;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 #sortable li{
     cursor: move;
 }
@@ -1217,8 +1237,8 @@ input.title ~ .errorMessage {
 	display: none;
 }
 
-.question_summary .order_number{
-    float: left;
+.sortable [data-show-on-edit=true]{
+	display:none;
 }
 
 .dragging{

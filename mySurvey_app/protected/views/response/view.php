@@ -10,7 +10,7 @@
 	'attributes'=>array(
 		'id',
 		'survey_answer_ID',
-		'survey_answer_choice_letter',
+		'choice_letter',
 		'survey_response_time',
 		'survey_response_responder',
 		'survey_response_text',

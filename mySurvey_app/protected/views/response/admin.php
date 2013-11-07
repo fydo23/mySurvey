@@ -24,7 +24,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 		'survey_answer_ID',
-		'survey_answer_choice_letter',
+		'choice_letter',
 		'survey_response_time',
 		'survey_response_responder',
 		'survey_response_text',

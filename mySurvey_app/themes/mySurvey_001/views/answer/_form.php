@@ -1,46 +1,42 @@
 <?php
-/* @var $this SurveyAnswerController */
-/* @var $model SurveyAnswer */
-/* @var $form CActiveForm */
+/**
+ * @var $this SurveyController
+ * @var $question SurveyQuestion 
+ */
 ?>
 
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'survey-answer-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'survey_answer_choice_letter'); ?>
-		<?php echo $form->textField($model,'survey_answer_choice_letter',array('size'=>5,'maxlength'=>5)); ?>
-		<?php echo $form->error($model,'survey_answer_choice_letter'); ?>
+<li class="answer_summary <?php echo $answer->class; ?>"> 
+	<div class="row clearfix" data-editable="true">
+        <div class="details">
+		    <?php echo CHtml::error($answer, 'text',array('successCssClass','success'));?>
+		    <span data-hide-on-edit="true" class="text"><?php echo $answer->text ?></span>   
+		    <span data-hide-on-edit="true" class="choice_letter"><?php echo $answer->choice_letter ?></span>
+		    <?php 
+		        echo CHtml::activeTextField($answer, 'text', array(
+		            'name'=>$answer->getNameForAttribute('text'), 
+		            'disabled'=>$answer->disabled,
+		            'data-show-on-edit'=>'true',
+		            'data-source'=>'.text'
+		        ));
+		        echo CHtml::activeHiddenField($answer, 'choice_letter', array(
+		            'name'=>$answer->getNameForAttribute('choice_letter'), 
+		            'disabled'=>$answer->disabled,
+		            'data-show-on-edit'=>'true',
+		            'data-source'=>'.choice_letter'
+		        ));
+		        echo CHtml::activeHiddenField($answer, 'id', array(
+		            'name'=>$answer->getNameForAttribute('id'), 
+		            'disabled'=>$answer->disabled
+		        )); 
+		        echo CHtml::activeHiddenField($answer, 'delete', array(
+		            'name'=>$answer->getNameForAttribute('delete'), 
+		            'disabled'=>$answer->disabled
+		        )); 
+		    ?>
+		</div>
+	    <div class="buttons">
+		    <a class="delete" href="#">Delete</a>
+		    <a class="edit" href="#">Edit</a>
+	    </div> 
 	</div>
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'text'); ?>
-		<?php echo $form->textField($model,'text'); ?>
-		<?php echo $form->error($model,'text'); ?>
-	</div>
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'survey_answer_next_link'); ?>
-		<?php echo $form->textField($model,'survey_answer_next_link',array('size'=>60,'maxlength'=>80)); ?>
-		<?php echo $form->error($model,'survey_answer_next_link'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
+</li>
