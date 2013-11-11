@@ -110,6 +110,7 @@ class SurveyController extends Controller
          * @return array $questions | an array containing all the questions in the current post request.
          */
         private function process_post_questions($survey_id){
+        	$questions = array();
             foreach($_POST['SurveyQuestion'] as $q_idx => $attributes){
         		$attributes['survey_ID'] = $survey_id;
         		$attributes['order_number'] = $q_idx;
@@ -132,7 +133,7 @@ class SurveyController extends Controller
 	                }
             	}
             }
-            ksort($questions);
+        	ksort($questions);
             return $questions;
         }
 

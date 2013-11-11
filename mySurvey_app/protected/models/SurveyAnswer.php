@@ -20,6 +20,7 @@ class SurveyAnswer extends CActiveRecord
 {
     //custome fields and defaults
     public $class = "";
+    public $delete_button_class = "";
     public $disabled = False;
     public $delete = False;
     public $survey_question_order = 0;
@@ -56,6 +57,8 @@ class SurveyAnswer extends CActiveRecord
     public function afterFind()
     {	
     	$this->survey_question_order = $this->question->order_number;
+        if(in_array($this->question->type, array(0,1)))
+        	$this->delete_button_class = "hide";
         return parent::afterFind();
     }
     

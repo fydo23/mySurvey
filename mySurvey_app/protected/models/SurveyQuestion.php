@@ -21,8 +21,8 @@ class SurveyQuestion extends CActiveRecord
     public $delete = False;
     public $class = "";
     public $disabled = False;
-    public $type_choices = array('Short Answer', 'Multiple Choice');
-    public $type = 1; //default = Short Answer.
+    public $type_choices = array('Short Answer', 'True/False', 'Multiple Choice', 'Multiple Select');
+    public $type = 2; //default = Multiple Choice.
     public $answersUniqueId = 0;
     
 	/**
