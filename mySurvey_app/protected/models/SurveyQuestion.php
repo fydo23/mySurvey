@@ -20,6 +20,7 @@ class SurveyQuestion extends CActiveRecord
     //custome fields and defaults
     public $delete = False;
     public $class = "";
+    public $add_answer_button_class= "";
     public $disabled = False;
     public $type_choices = array('Short Answer', 'True/False', 'Multiple Choice', 'Multiple Select');
     public $type = 2; //default = Multiple Choice.
@@ -55,6 +56,9 @@ class SurveyQuestion extends CActiveRecord
      */
     public function afterFind(){
         $this->answersUniqueId = rand();
+        if($this->type<2){
+        	$this->add_answer_button_class = "hide";
+        } 
         return parent::afterFind();
     }
     
