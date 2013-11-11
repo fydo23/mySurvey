@@ -199,7 +199,17 @@ class SurveyController extends Controller
 	}
 	
 	public function actionTake($hash){
-		$this->render('take',array('hash'=>$hash));
+		$surveyID=Survey::model()->findByAttributes(array('url'=>$hash))->id;
+		$question_dataProvider=new CActiveDataProvider('SurveyQuestion');
+		$question_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'survey_ID='.$surveyID,'order'=>'order_number')));
+		$answer_array=array();
+		foreach ($question_dataProvider->getData() as $question){
+			$answer_array[$question->id]=SurveyAnswer::model()->findAllByAttributes(array('survey_question_ID'=>$question->id),array('order'=>'order_number'));
+		}
+		$this->render('take',array(
+			'question_dataProvider'=>$question_dataProvider,
+			'answer_array'=>$answer_array,
+		));
 	}
 
 	/**
