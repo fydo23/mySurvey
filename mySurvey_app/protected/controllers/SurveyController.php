@@ -197,6 +197,10 @@ class SurveyController extends Controller
 		$this->loadModel($id)->delete();
                 $this->redirect(array('index'));
 	}
+	
+	public function actionTake($hash){
+		$this->render('take',array('hash'=>$hash));
+	}
 
 	/**
 	 * Lists all models.

@@ -1,0 +1,1 @@
+<h1>hash=<?php echo $hash; ?></h1>
