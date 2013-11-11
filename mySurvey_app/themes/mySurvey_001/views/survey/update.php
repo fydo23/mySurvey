@@ -150,28 +150,33 @@
 
 
         /**
-         * Adds a sortable element by coping the hidden template at the head of the sortable. 
+         * Adds a sortable element by coping the hidden template at the head of the sortable.
+         * (Delegates function call to 'add' strategy. It then updates the naem attributes
+         * of all form elements.
          */
-		$('form').on('click','.add-sortable', function(e){
-            e.preventDefault(); 
-            e.stopPropagation(); 
+		$('form').on('click','.add-sortable', function(event){
+            event.preventDefault(); 
+            event.stopPropagation(); 
 
             //add sortable functionality to the newly added item.
             do_sortables();
 
             //let the strategy pattern handle the non-default actions.
-            if($(e.target).data('model') == 'question'){
-                strategy.question.add(e);
+            if($(event.target).data('model') == 'question'){
+                strategy.question.add(event);
             }else{
-                var questionType = $(e.target).closest('li').find('[name*=type]').val();
-                strategy.answer[questionType].add(e);
+                var questionType = $(event.target).closest('li').find('[name*=type]').val();
+                strategy.answer[questionType].add(event);
             }
             //add the new element before the delete selements that are stored at the end of the list
             fix_sortable_input_names();
 		});
 
 
-
+        /**
+         * OnChange event of a any input named type, deletes all existing sub_sortable elemnts.
+         * Delegates the function call to the appropriate change strategy. 
+         */
         $('#questions').on('change', '[name*=type]',function(event){
             var question = $(this).closest('li');
             //delete all previous answers.

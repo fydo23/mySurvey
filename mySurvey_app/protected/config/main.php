@@ -35,19 +35,21 @@ $shared_config = array(
                         'showScriptName'=>false,
                         'caseSensitive'=>false,
                         'rules'=>array(
-                                //gii specific rules.
-                                'gii'=>'gii',
-                                'gii/<controller:\w+>'=>'gii/<controller>',
-                                'gii/<controller:\w+>/<action:\w+>'=>'gii/<controller>/<action>',
-                                //site specific rules.
-                                '/'=>'site/index',
-                                '<action:(login|logout|register|home)>'=>'site/<action>',
-                                '<page:(reports|settings)>'=>'site/view/page/<page>',
-                                 //any single word url handleded as controlle
-                                '<controller:\w+>'=>'<controller>/index', //view all
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view', //view one
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>', //specific model/action
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>', //general model/action
+	                        //gii specific rules.
+	                        'gii'=>'gii',
+	                        'gii/<controller:\w+>'=>'gii/<controller>',
+	                        'gii/<controller:\w+>/<action:\w+>'=>'gii/<controller>/<action>',
+
+	                        //site specific rules.
+	                        '/'=>'site/index',
+	                        '<action:(login|logout|register|home)>'=>'site/<action>',
+	                        '<page:(reports|settings)>'=>'site/view/page/<page>',
+
+	                         //any single word url handleded as controlle
+							'<controller:\w+>'=>'<controller>/index', //view all
+							'<controller:\w+>/<id:\d+>'=>'<controller>/view', //view one
+							'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>', //specific-model/action
+							'<controller:\w+>/<action:\w+>'=>'<controller>/<action>', //general-model/action
 			),
 		),
 		'db'=>array(

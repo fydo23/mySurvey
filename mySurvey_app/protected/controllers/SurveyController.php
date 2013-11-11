@@ -166,11 +166,10 @@ class SurveyController extends Controller
 	public function actionPublish($id)
 	{
 		$model=$this->loadModel($id);
+        $model->is_published = 1;
+        $model->save();
 
-                $model->is_published = 1;
-                $model->save();
-
-                $this->redirect(array('index'));
+        $this->redirect(array('index'));
 	}       
  
 	/**
