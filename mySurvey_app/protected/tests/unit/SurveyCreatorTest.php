@@ -24,6 +24,44 @@ class SurveyCreatorTest extends CDbTestCase{
 		//load the user data from db
 		$surveyCreator=new SurveyCreator();
 		$surveyCreator=$surveyCreator::model()->findByAttributes(array('email'=>'testCase@example.com','password'=>sha1('testpswd')));
+                
+                //change the email
+		$surveyCreator->email='testCase';
+		//assert the update is unsuccess
+		$this->assertFalse($surveyCreator->save());
+ 
+                //change the email
+		$surveyCreator->email='';
+		//assert the update is unsuccess
+		$this->assertFalse($surveyCreator->save());
+
+                //change the email
+		$surveyCreator->email= null;
+		//assert the update is unsuccess
+		$this->assertFalse($surveyCreator->save());
+                
+                //change the email
+		$surveyCreator->id = null;
+		//assert the update is unsuccess
+		$this->assertFalse($surveyCreator->save());
+
+                //change the email
+		$surveyCreator->id = 'test';
+		//assert the update is unsuccess
+		$this->assertFalse($surveyCreator->save());
+                
+                //change the password
+		$surveyCreator->password = null;
+		//assert the update is unsuccess
+		$this->assertFalse($surveyCreator->save());
+                
+                //change the password
+		$surveyCreator->password = 'fds';
+		//assert the update is unsuccess
+		$this->assertFalse($surveyCreator->save());                
+                //rollback the password
+                $surveyCreator->password = sha1('testpswd');
+
 		//change the email
 		$surveyCreator->email='testCase2@example.com';
 		//assert the update is success and can be retrieved
