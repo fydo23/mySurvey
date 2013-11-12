@@ -25,7 +25,7 @@
                     var sortable = $(event.target).data('target');
                     var newItem = $(sortable).find('.template').first().clone().removeClass('template');
                     newItem.find('input, select').removeAttr('disabled');
-                    $(sortable).find('.trash').last().before(newItem);
+                    $(sortable).find('>.trash').before(newItem);
 
                     // display/focus the new element's text field.
                     newItem.find('.edit:first').trigger('click');
