@@ -35,7 +35,7 @@
 		    ?>
 		
 			<div class="buttons">
-		    	<a class="delete" href="#">Delete Answer</a>
+		    	<a class="delete <?php echo $answer->delete_button_class; ?>" href="#">Delete Answer</a>
 				<a class="edit" href="#">Edit Answer</a>
 			</div> 
 	    </div>

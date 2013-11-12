@@ -54,7 +54,7 @@
                 <li class="trash"><?php //trash goes after this list item. ?></li>
             </ul>
             <div class="row buttons add-new-answer">
-                    <a class="add-sortable <?php if($question->type == 0 && count($question->answers)>0){echo "hide";} ?>" data-parent-type="<?php echo $question->type; ?>" data-target="#answers_<?php echo $question->answersUniqueId; ?>" href="#">Add New Answer</a>
+                    <a class="add-sortable <?php echo $question->add_answer_button_class; ?>" data-model="answer" data-target="#answers_<?php echo $question->answersUniqueId; ?>" href="#">Add New Answer</a>
             </div>
         </div>
 </li>
