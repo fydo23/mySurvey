@@ -1,14 +1,8 @@
-<div class="stripe">
-	<div class="page-name">
-		<h1>Take Survey</h1>
-		<p class="intro-text">some text here.</p>
-	</div>
-</div>
-<?php 
+<?php Yii::app()->controller->layout = 'home'; 
 	foreach($question_dataProvider->getData() as $question){
-		echo '<h1>'.$question->text.'</h1></br>';
+		echo '<h1>'.$question->text.' type:'.$question->type.'</h1></br>';
 		foreach ($answer_array[$question->id] as $answer){
-			echo '<h2>'.$answer->text.'</h2></br>';
+			echo '<h2> text:'.$answer->text.'</h2></br>';
 		}
 	}
 ?>

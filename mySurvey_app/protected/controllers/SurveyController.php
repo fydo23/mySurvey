@@ -21,9 +21,13 @@ class SurveyController extends Controller
 	public function accessRules()
 	{
 		return array(
+			array('allow',
+				'actions'=>array('take'),
+				'users'=>array('*')
+			),
 			array('deny', 
                 'users'=>array('?'),
-			),
+			)
 		);
 	}
 
@@ -197,7 +201,10 @@ class SurveyController extends Controller
 		$this->loadModel($id)->delete();
                 $this->redirect(array('index'));
 	}
-	
+	/**
+	 * Shows the take survey page identified by the hash value
+	 * @param string $hash
+	 */
 	public function actionTake($hash){
 		$surveyID=Survey::model()->findByAttributes(array('url'=>$hash))->id;
 		$question_dataProvider=new CActiveDataProvider('SurveyQuestion');
