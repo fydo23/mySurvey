@@ -1,7 +1,7 @@
 <?php
 /* @var $this SurveyController */
 /* @var $model Survey */
-/* @var $questions_dataProvider CActiveDataProvider*/
+/* @var $questions Array<SurveyQuestion> */
 
 ?>
 
@@ -17,6 +17,10 @@
 
 	$(function(){
 
+        /**
+         * These are various strategies to take when adding sortable questions and sub-sortable answers.
+         * @type {Object}
+         */
         var strategy = {
             question: {
                 //question
