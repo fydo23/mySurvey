@@ -44,7 +44,6 @@
                         newItem.removeClass('template').find('input, select').removeAttr('disabled');
                         $(sortable).find('.trash').last().before(newItem.hide());
                         return newItem;
-                        console.log('shortAnswer add');
                     },
                     change:function(event){
                         //add blank answer, 
