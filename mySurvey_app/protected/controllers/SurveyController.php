@@ -206,14 +206,23 @@ class SurveyController extends Controller
 	 * @param string $hash
 	 */
 	public function actionTake($hash){
-		$surveyID=Survey::model()->findByAttributes(array('url'=>$hash))->id;
+		$model=Survey::model()->findByAttributes(array('url'=>$hash));
+		if($model == null || $model->is_published == 0){
+			$message = "This Survey has been temporarily removed";
+			if($model == null)
+				$message = "This survey has been removed";
+			$this->render('noSurvey',array('message'=>$message));
+			return;
+		}
+		
 		$question_dataProvider=new CActiveDataProvider('SurveyQuestion');
-		$question_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'survey_ID='.$surveyID,'order'=>'order_number')));
+		$question_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'survey_ID='.$model->id,'order'=>'order_number')));
 		$answer_array=array();
 		foreach ($question_dataProvider->getData() as $question){
 			$answer_array[$question->id]=SurveyAnswer::model()->findAllByAttributes(array('survey_question_ID'=>$question->id),array('order'=>'order_number'));
 		}
 		$this->render('take',array(
+			'title'=>$model->title,
 			'question_dataProvider'=>$question_dataProvider,
 			'answer_array'=>$answer_array,
 		));
