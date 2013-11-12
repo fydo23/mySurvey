@@ -1,0 +1,1544 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class DocsModel</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class DocsModel</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">DocsModel represents the documentation for the application AND the Yii framework.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Qiang Xue &lt;<a href="mailto:qiang.xue@gmail.com">qiang.xue@gmail.com</a>&gt;</li>
+				<li><span class="field">version:</span> $Id: DocsModel.php 2854 2011-01-14 11:38:43Z mdomba $</li>
+				<li><span class="field">since:</span> 1.0</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_protected---commands---docs---DocsModel.php.html">/protected/commands/docs/DocsModel.php</a> (line <span class="field">9</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																								<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$classes" title="details" class="var-name">$classes</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$packages" title="details" class="var-name">$packages</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$views" title="details" class="var-name">$views</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																																																																																																																																																																						
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#build" title="details" class="method-name">build</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$sourceFiles</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$viewFiles</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#check" title="details" class="method-name">check</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$sourceFiles</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#checkSource" title="details" class="method-name">checkSource</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$sourceFile</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#findClasses" title="details" class="method-name">findClasses</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$sourceFiles</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#findTargets" title="details" class="method-name">findTargets</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#findViews" title="details" class="method-name">findViews</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$sourceFiles</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getClassFiles" title="details" class="method-name">getClassFiles</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$basePath</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getDocAuthors" title="details" class="method-name">getDocAuthors</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getDocProperties" title="details" class="method-name">getDocProperties</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getDocUses" title="details" class="method-name">getDocUses</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getMethodUrl" title="details" class="method-name">getMethodUrl</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getTypeUrl" title="details" class="method-name">getTypeUrl</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$type</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#isEventMethod" title="details" class="method-name">isEventMethod</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#isPropertyMethod" title="details" class="method-name">isPropertyMethod</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#isValidPath" title="details" class="method-name">isValidPath</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$path</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processClass" title="details" class="method-name">processClass</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processClasses" title="details" class="method-name">processClasses</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processCode" title="details" class="method-name">processCode</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$matches</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processComment" title="details" class="method-name">processComment</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$doc</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processComponentEvent" title="details" class="method-name">processComponentEvent</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processComponentEvents" title="details" class="method-name">processComponentEvents</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processComponentProperties" title="details" class="method-name">processComponentProperties</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processComponentProperty" title="details" class="method-name">processComponentProperty</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processDescription" title="details" class="method-name">processDescription</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$text</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processInclude" title="details" class="method-name">processInclude</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$matches</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processLink" title="details" class="method-name">processLink</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$matches</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processMethod" title="details" class="method-name">processMethod</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processMethods" title="details" class="method-name">processMethods</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processProperties" title="details" class="method-name">processProperties</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processProperty" title="details" class="method-name">processProperty</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$property</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processTags" title="details" class="method-name">processTags</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processView" title="details" class="method-name">processView</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$filename</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$source</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processViews" title="details" class="method-name">processViews</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#resolveInternalUrl" title="details" class="method-name">resolveInternalUrl</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$url</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#tagParam" title="details" class="method-name">tagParam</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#tagProperty" title="details" class="method-name">tagProperty</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#tagReturn" title="details" class="method-name">tagReturn</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#tagSee" title="details" class="method-name">tagSee</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#tagVar" title="details" class="method-name">tagVar</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			
+<a name="var$classes" id="$classes"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$classes</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">11</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$packages" id="$packages"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$packages</span>
+						(line <span class="line-number">13</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$views" id="$views"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$views</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">12</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodbuild" id="build"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">build</span> (line <span class="line-number">17</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			build
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$sourceFiles</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$viewFiles</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$sourceFiles</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$viewFiles</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcheck" id="check"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">check</span> (line <span class="line-number">743</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			check
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$sourceFiles</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$sourceFiles</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcheckSource" id="checkSource"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">checkSource</span> (line <span class="line-number">760</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			checkSource
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$sourceFile</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$sourceFile</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodfindClasses" id="findClasses"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">findClasses</span> (line <span class="line-number">27</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			findClasses
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$sourceFiles</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$sourceFiles</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodfindTargets" id="findTargets"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">findTargets</span> (line <span class="line-number">699</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			findTargets
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodfindViews" id="findViews"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">findViews</span> (line <span class="line-number">44</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			findViews
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$sourceFiles</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$sourceFiles</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetClassFiles" id="getClassFiles"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getClassFiles</span> (line <span class="line-number">665</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getClassFiles
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$basePath</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$basePath</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDocAuthors" id="getDocAuthors"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getDocAuthors</span> (line <span class="line-number">466</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getDocAuthors
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$comment</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDocProperties" id="getDocProperties"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getDocProperties</span> (line <span class="line-number">413</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getDocProperties
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDocUses" id="getDocUses"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getDocUses</span> (line <span class="line-number">444</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getDocUses
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$comment</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetMethodUrl" id="getMethodUrl"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getMethodUrl</span> (line <span class="line-number">244</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getMethodUrl
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$method</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetTypeUrl" id="getTypeUrl"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getTypeUrl</span> (line <span class="line-number">358</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getTypeUrl
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$type</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$type</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisEventMethod" id="isEventMethod"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">isEventMethod</span> (line <span class="line-number">657</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			isEventMethod
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$method</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisPropertyMethod" id="isPropertyMethod"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">isPropertyMethod</span> (line <span class="line-number">648</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			isPropertyMethod
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$method</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisValidPath" id="isValidPath"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">isValidPath</span> (line <span class="line-number">686</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			isValidPath
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$path</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$path</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessClass" id="processClass"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">processClass</span> (line <span class="line-number">131</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processClass
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessClasses" id="processClasses"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">processClasses</span> (line <span class="line-number">103</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processClasses
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodprocessCode" id="processCode"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">processCode</span> (line <span class="line-number">220</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processCode
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$matches</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$matches</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessComment" id="processComment"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">processComment</span> (line <span class="line-number">189</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processComment
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$doc</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$doc</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$comment</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessComponentEvent" id="processComponentEvent"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">processComponentEvent</span> (line <span class="line-number">524</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processComponentEvent
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$method</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessComponentEvents" id="processComponentEvents"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">processComponentEvents</span> (line <span class="line-number">510</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processComponentEvents
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessComponentProperties" id="processComponentProperties"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">processComponentProperties</span> (line <span class="line-number">477</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processComponentProperties
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessComponentProperty" id="processComponentProperty"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">processComponentProperty</span> (line <span class="line-number">491</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processComponentProperty
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$method</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessDescription" id="processDescription"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">processDescription</span> (line <span class="line-number">209</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processDescription
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$text</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$text</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessInclude" id="processInclude"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">processInclude</span> (line <span class="line-number">270</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processInclude
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$matches</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$matches</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessLink" id="processLink"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">processLink</span> (line <span class="line-number">258</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processLink
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$matches</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$matches</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessMethod" id="processMethod"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">processMethod</span> (line <span class="line-number">311</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processMethod
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$method</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$method</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessMethods" id="processMethods"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">processMethods</span> (line <span class="line-number">296</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processMethods
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessProperties" id="processProperties"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">processProperties</span> (line <span class="line-number">373</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processProperties
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessProperty" id="processProperty"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">processProperty</span> (line <span class="line-number">393</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processProperty
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$class</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$property</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$class</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$property</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessTags" id="processTags"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">processTags</span> (line <span class="line-number">280</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processTags
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$object</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$comment</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessView" id="processView"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">processView</span> (line <span class="line-number">66</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processView
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$filename</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$source</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$filename</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$source</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessViews" id="processViews"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">processViews</span> (line <span class="line-number">53</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processViews
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodresolveInternalUrl" id="resolveInternalUrl"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">resolveInternalUrl</span> (line <span class="line-number">226</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			resolveInternalUrl
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$url</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$url</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtagParam" id="tagParam"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">tagParam</span> (line <span class="line-number">537</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			tagParam
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$object</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$comment</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtagProperty" id="tagProperty"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">tagProperty</span> (line <span class="line-number">623</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			tagProperty
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$object</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$comment</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtagReturn" id="tagReturn"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">tagReturn</span> (line <span class="line-number">566</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			tagReturn
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$object</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$comment</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtagSee" id="tagSee"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">tagSee</span> (line <span class="line-number">640</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			tagSee
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$object</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$comment</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtagVar" id="tagVar"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">tagVar</span> (line <span class="line-number">605</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			tagVar
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$object</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$comment</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$object</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$comment</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Wed, 13 Nov 2013 00:02:21 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</p>
+	</div></body>
+</html>
