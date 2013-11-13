@@ -4,17 +4,26 @@
  * This is the model class for table "survey_answer".
  *
  * The followings are the available columns in table 'survey_answer':
- * @property integer $id
- * @property integer $survey_question_ID
- * @property string $choice_letter
- * @property string $survey_answer_response_time
- * @property string $survey_answer_next_link
- * @property string $text
- * @property integer $order_number
+ * 
+ *  integer $id
+ * 
+ *  integer $survey_question_ID
+ * 
+ *  string $choice_letter
+ * 
+ *  string $survey_answer_response_time
+ * 
+ *  string $survey_answer_next_link
+ * 
+ *  string $text
+ * 
+ *  integer $order_number
  *
  * The followings are the available model relations:
- * @property SurveyQuestion $surveyQuestion
- * @property SurveyResponse[] $surveyResponses
+ * 
+ *  SurveyQuestion $surveyQuestion
+ * 
+ *  SurveyResponse[] $surveyResponses
  */
 class SurveyAnswer extends Model
 {

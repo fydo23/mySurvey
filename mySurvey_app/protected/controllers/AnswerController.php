@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Controller class for Answer model.
+ */
 class AnswerController extends Controller
 {
 	/**

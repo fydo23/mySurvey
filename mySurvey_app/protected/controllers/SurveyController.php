@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Controller class for Survey model.
+ */
 class SurveyController extends Controller
 {
 

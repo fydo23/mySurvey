@@ -4,18 +4,28 @@
  * This is the model class for table "survey".
  *
  * The followings are the available columns in table 'survey':
- * @property integer $id
- * @property string $url
- * @property string $created
- * @property integer $survey_creator_ID
- * @property integer $is_published
- * @property string $title
+ * 
+ *  integer $id
+ * 
+ *  string $url
+ * 
+ *  string $created
+ * 
+ *  integer $survey_creator_ID
+ * 
+ *  integer $is_published
+ * 
+ *  string $title
  *
  * The followings are the available model relations:
- * @property SurveyCreator $surveyCreator
- * @property SurveyAnswer[] $surveyAnswers
- * @property SurveyQuestion[] $surveyQuestions
- * @property SurveyResponse[] $surveyResponses
+ * 
+ *  SurveyCreator $surveyCreator
+ * 
+ *  SurveyAnswer[] $surveyAnswers
+ * 
+ *  SurveyQuestion[] $surveyQuestions
+ * 
+ *  SurveyResponse[] $surveyResponses
  */
 class Survey extends Model
 {

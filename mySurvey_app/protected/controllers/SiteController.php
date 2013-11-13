@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Default controller class. It will handle request to the homepage level.
+ */
 class SiteController extends Controller
 {
 

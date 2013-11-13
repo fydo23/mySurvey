@@ -4,16 +4,24 @@
  * This is the model class for table "survey_question".
  *
  * The followings are the available columns in table 'survey_question':
- * @property integer $id
- * @property integer $survey_ID
- * @property integer $order_number
- * @property integer $type
- * @property string $text
+ * 
+ *  integer $id
+ * 
+ *  integer $survey_ID
+ * 
+ *  integer $order_number
+ * 
+ *  integer $type
+ * 
+ *  string $text
  *
  * The followings are the available model relations:
- * @property SurveyAnswer[] $surveyAnswers
- * @property Survey $survey
- * @property SurveyResponse[] $surveyResponses
+ * 
+ *  SurveyAnswer[] $surveyAnswers
+ * 
+ *  Survey $survey
+ * 
+ *  SurveyResponse[] $surveyResponses
  */
 class SurveyQuestion extends Model
 {
