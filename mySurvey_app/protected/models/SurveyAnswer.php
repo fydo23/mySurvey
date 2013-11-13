@@ -16,7 +16,7 @@
  * @property SurveyQuestion $surveyQuestion
  * @property SurveyResponse[] $surveyResponses
  */
-class SurveyAnswer extends CActiveRecord
+class SurveyAnswer extends Model
 {
     //custome fields and defaults
     public $class = "";

@@ -18,7 +18,7 @@
  * @property SurveyQuestion $surveyQuestion
  * @property SurveyAnswer $surveyAnswer
  */
-class SurveyResponse extends CActiveRecord
+class SurveyResponse extends Model
 {
 	/**
 	 * @return string the associated database table name

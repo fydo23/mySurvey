@@ -15,7 +15,7 @@
  * @property Survey $survey
  * @property SurveyResponse[] $surveyResponses
  */
-class SurveyQuestion extends CActiveRecord
+class SurveyQuestion extends Model
 {
     //custome fields and defaults
     public $delete = False;
