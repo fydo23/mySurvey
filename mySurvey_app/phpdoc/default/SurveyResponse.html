@@ -9,7 +9,10 @@
 		</head>
 		<body>
 			<div class="page-body">			
-<h2 class="class-name">Class SurveyResponse</h2>
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> SurveyResponse</h2>
 
 <a name="sec-description"></a>
 <div class="info-box">
@@ -22,18 +25,17 @@
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">This is the model class for table &quot;survey_response&quot;.</p>
-<p class="description"><p>The followings are the available columns in table 'survey_response':</p></p>
-	<ul class="tags">
-				<li><span class="field">property:</span> string $survey_response_text: The followings are the available model relations:</li>
-			</ul>
+<p class="description"><p>The followings are the available columns in table 'survey_response':</p><p>integer $id</p><p>integer $survey_ID</p><p>integer $survey_question_ID</p><p>integer $survey_answer_ID</p><p>string $choice_letter</p><p>string $survey_response_time</p><p>string $survey_response_responder</p><p>string $survey_response_text</p><p>The followings are the available model relations:</p><p>Survey $survey</p><p>SurveyQuestion $surveyQuestion</p><p>SurveyAnswer $surveyAnswer</p></p>
 		<p class="notes">
-			Located in <a class="field" href="_protected---models---SurveyResponse.php.html">/protected/models/SurveyResponse.php</a> (line <span class="field">21</span>)
+			Located in <a class="field" href="_protected---models---SurveyResponse.php.html">/protected/models/SurveyResponse.php</a> (line <span class="field">32</span>)
 		</p>
 		
 				
 		<pre>CActiveRecord
    |
-   --SurveyResponse</pre>
+   --<a href="../default/Model.html">Model</a>
+      |
+      --SurveyResponse</pre>
 	
 			</div>
 </div>
@@ -50,38 +52,38 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																		
-				<div class="method-definition">
-					static 						<span class="method-result"><a href="../default/SurveyResponse.html">SurveyResponse</a></span>
+																				<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result"><a href="../default/SurveyResponse.html">SurveyResponse</a></span>
 										<a href="#model" title="details" class="method-name">model</a>
 											([<span class="var-type">string</span>&nbsp;<span class="var-name">$className</span> = <span class="var-default">__CLASS__</span>])
 									</div>
-																																																		
-				<div class="method-definition">
+																																																				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">array</span>
 										<a href="#attributeLabels" title="details" class="method-name">attributeLabels</a>
 										()
 									</div>
-																						
-				<div class="method-definition">
+																								<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">array</span>
 										<a href="#relations" title="details" class="method-name">relations</a>
 										()
 									</div>
-														
-				<div class="method-definition">
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">array</span>
 										<a href="#rules" title="details" class="method-name">rules</a>
 										()
 									</div>
-														
-				<div class="method-definition">
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">CActiveDataProvider</span>
 										<a href="#search" title="details" class="method-name">search</a>
 										()
 									</div>
-														
-				<div class="method-definition">
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
 										<a href="#tableName" title="details" class="method-name">tableName</a>
 										()
@@ -96,16 +98,17 @@
 		<div class="info-box-title">Methods</div>
 		<div class="nav-bar">
 			<a href="#sec-description">Description</a> |
-																<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
 						
 		</div>
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
 <a name="methodmodel" id="model"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">static model</span> (line <span class="line-number">121</span>)
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static model</span> (line <span class="line-number">132</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -117,7 +120,7 @@
 			</ul>
 	
 	<div class="method-signature">
-		static <span class="method-result"><a href="../default/SurveyResponse.html">SurveyResponse</a></span>
+		<span class="method-result"><a href="../default/SurveyResponse.html">SurveyResponse</a></span>
 		<span class="method-name">
 			model
 		</span>
@@ -133,10 +136,11 @@
 			
 	</div>
 <a name="methodattributeLabels" id="attributeLabels"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">attributeLabels</span> (line <span class="line-number">69</span>)
+		<img src="../media/images/Method.png" />
+		<span class="method-title">attributeLabels</span> (line <span class="line-number">80</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -157,10 +161,11 @@
 			
 	</div>
 <a name="methodrelations" id="relations"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">relations</span> (line <span class="line-number">55</span>)
+		<img src="../media/images/Method.png" />
+		<span class="method-title">relations</span> (line <span class="line-number">66</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -181,10 +186,11 @@
 			
 	</div>
 <a name="methodrules" id="rules"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">rules</span> (line <span class="line-number">34</span>)
+		<img src="../media/images/Method.png" />
+		<span class="method-title">rules</span> (line <span class="line-number">45</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -205,10 +211,11 @@
 			
 	</div>
 <a name="methodsearch" id="search"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">search</span> (line <span class="line-number">95</span>)
+		<img src="../media/images/Method.png" />
+		<span class="method-title">search</span> (line <span class="line-number">106</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -231,10 +238,11 @@
 			
 	</div>
 <a name="methodtableName" id="tableName"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">tableName</span> (line <span class="line-number">26</span>)
+		<img src="../media/images/Method.png" />
+		<span class="method-title">tableName</span> (line <span class="line-number">37</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -258,9 +266,9 @@
 		</div>
 	</div>
 
-
+	
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 13 Nov 2013 00:02:24 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Wed, 13 Nov 2013 21:47:36 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>
