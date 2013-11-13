@@ -287,7 +287,7 @@
                 <?php echo $form->errorSummary($model); ?>
                 <div class="row buttons" id="save-cancel">
                         <?php echo CHtml::submitButton('Save Changes'); ?>
-                        <?php echo CHtml::link('Back to all Surveys', '/survey') ?>
+                        <?php echo CHtml::link('Back to all Surveys', Yii::app()->request->baseUrl.'/survey') ?>
                 </div>
 
                 <div class="row">
