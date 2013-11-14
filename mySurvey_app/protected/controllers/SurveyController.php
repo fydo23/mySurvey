@@ -215,17 +215,15 @@ class SurveyController extends Controller
 			return;
 		}
 		
-		$question_dataProvider=new CActiveDataProvider('SurveyQuestion');
-		$question_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'survey_ID='.$model->id,'order'=>'order_number')));
-		$answer_array=array();
-		foreach ($question_dataProvider->getData() as $question){
-			$answer_array[$question->id]=SurveyAnswer::model()->findAllByAttributes(array('survey_question_ID'=>$question->id),array('order'=>'order_number'));
-		}
+		$questions_criteria = new CDbCriteria(array(
+                        'condition'=>'survey_ID = ' . $model->id,
+                        'order'=>'order_number'
+                         ));
+        $questions = SurveyQuestion::model()->findAll($questions_criteria);
 		$this->render('take',array(
-			'title'=>$model->title,
-			'question_dataProvider'=>$question_dataProvider,
-			'answer_array'=>$answer_array,
-		));
+                    'title'=>$model->title,
+                    'questions'=>$questions,
+                ));
 	}
 
 	/**
