@@ -206,6 +206,12 @@ class SurveyController extends Controller
 	 * @param string $hash
 	 */
 	public function actionTake($hash){
+		if(isset($_POST['SurveyResponse'])){
+			foreach ($_POST['SurveyResponse'] as $response){
+				//$response->survey_answer_ID=;
+			}
+			$this->redirect('http://www.google.com');
+		}
 		$model=Survey::model()->findByAttributes(array('url'=>$hash));
 		if($model == null || $model->is_published == 0){
 			$message = "This Survey has been temporarily removed";
