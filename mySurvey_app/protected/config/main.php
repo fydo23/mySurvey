@@ -48,7 +48,6 @@ $shared_config = array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view', //view one
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>', //specific model/action
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>', //general model/action
-				'<controller:\w+>/<action:\w+>/<hash:\w+>'=>'<controller>/<action>', //specific model/action
 			),
 		),
 		'db'=>array(
