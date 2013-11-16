@@ -114,6 +114,7 @@ class SurveyController extends Controller
          * @return array $questions | an array containing all the questions in the current post request.
          */
         private function process_post_questions($survey_id){
+        	$questions = array();
             foreach($_POST['SurveyQuestion'] as $q_idx => $attributes){
         		$attributes['survey_ID'] = $survey_id;
         		$attributes['order_number'] = $q_idx;
@@ -136,7 +137,7 @@ class SurveyController extends Controller
 	                }
             	}
             }
-            ksort($questions);
+        	ksort($questions);
             return $questions;
         }
 
@@ -169,11 +170,10 @@ class SurveyController extends Controller
 	public function actionPublish($id)
 	{
 		$model=$this->loadModel($id);
+        $model->is_published = 1;
+        $model->save();
 
-                $model->is_published = 1;
-                $model->save();
-
-                $this->redirect(array('index'));
+        $this->redirect(array('index'));
 	}       
  
 	/**

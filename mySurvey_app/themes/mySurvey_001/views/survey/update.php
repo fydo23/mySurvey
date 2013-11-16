@@ -17,6 +17,73 @@
 
 	$(function(){
 
+        var strategy = {
+            question: {
+                //question
+                add:function(event){
+                    //add question, focus first input
+                    var sortable = $(event.target).data('target');
+                    var newItem = $(sortable).find('.template').first().clone().removeClass('template');
+                    newItem.find('input, select').removeAttr('disabled');
+                    $(sortable).find('>.trash').before(newItem);
+
+                    // display/focus the new element's text field.
+                    newItem.find('.edit:first').trigger('click');
+
+                    //fix the input post order
+                    fix_sub_sortable_target(newItem);
+                }
+            },
+            answer:{
+                0:{//short answer
+                    add:function(event){
+                        //add answer, don't focus
+                        //add question, return question
+                        var sortable = $(event.target).closest('li').find('.sortable');
+                        var newItem = sortable.find('.template').first().clone();
+                        newItem.removeClass('template').find('input, select').removeAttr('disabled');
+                        $(sortable).find('.trash').last().before(newItem.hide());
+                        return newItem;
+                    },
+                    change:function(event){
+                        //add blank answer, 
+                        this.add(event);
+                        //hide add-sortable button
+                        $(event.target).closest('li').find('.add-sortable').hide();
+                    }
+                },
+                1:{//true false
+                    add:function(event){
+                        //add question, don't focus
+                        var sortable = $(event.target).closest('li').find('.sortable');
+                        var newItem = sortable.find('.template').first().clone();
+                        newItem.removeClass('template').find('input, select').removeAttr('disabled');
+                        newItem.find('.delete').hide();
+                        $(sortable).find('.trash').last().before(newItem);
+                        return newItem;
+                    },
+                    change:function(event){
+                        //add two answers, focus first;
+                        this.add(event).find('.edit').trigger('click');
+                        this.add(event);
+                        //hide add sortable button
+                        $(event.target).closest('li').find('.add-sortable').hide();
+                        //hide add-sortable button
+                    }
+                },
+                2:{//multiple choice
+                    add:function(event){
+                        strategy.question.add(event);
+                    },
+                    change:function(event){
+                        $(event.target).find('.add-sortable').show();
+                    }
+                }
+            }
+       }
+       //mutiple slect behaves the same as mutlple choice;
+       strategy.answer[3] = strategy.answer[2]; 
+
         /*Initialize the sortables.*/
         do_sortables();
 
@@ -82,36 +149,42 @@
 
 
         /**
-         * Adds a sortable element by coping the hidden template at the head of the sortable. 
+         * Adds a sortable element by coping the hidden template at the head of the sortable.
+         * (Delegates function call to 'add' strategy. It then updates the naem attributes
+         * of all form elements.
          */
-		$('form').on('click','.add-sortable',function(e){
-            e.preventDefault(); // don't follow links.
-			var sortable = $(this).data('target');
-			var newItem = $(sortable).find('.template').first().clone().removeClass('template');
-			newItem.find('input, select').removeAttr('disabled');
-			$(sortable).find('.trash').last().before(newItem);
-            
-            //add the new element before the delete selements that are stored at the end of the list
-            fix_sortable_input_names();
-            fix_sub_sortable_target(newItem);
-            
-            // display/focus the new element's text field.
-			e.stopPropagation(); 
-			newItem.find('.edit:first').trigger('click');
-
-            //hide the add-sortable button if type is SA.
-            $(this).filter('[data-parent-type=0]').hide();
+		$('form').on('click','.add-sortable', function(event){
+            event.preventDefault(); 
+            event.stopPropagation(); 
 
             //add sortable functionality to the newly added item.
             do_sortables();
+
+            //let the strategy pattern handle the non-default actions.
+            if($(event.target).data('model') == 'question'){
+                strategy.question.add(event);
+            }else{
+                var questionType = $(event.target).closest('li').find('[name*=type]').val();
+                strategy.answer[questionType].add(event);
+            }
+            //add the new element before the delete selements that are stored at the end of the list
+            fix_sortable_input_names();
 		});
 
 
-
-        $('#questions').on('change', '[name*=type]',function(){
+        /**
+         * OnChange event of a any input named type, deletes all existing sub_sortable elemnts.
+         * Delegates the function call to the appropriate change strategy. 
+         */
+        $('#questions').on('change', '[name*=type]',function(event){
+            var question = $(this).closest('li');
             //delete all previous answers.
-            var old_answers = $(this).closest('li').find('.sortable li:not(.template) .delete').trigger('click');
-            $(this).closest('li').find('.add-sortable').attr('data-parent-type',$(this).val());
+            question.find('.sortable li:not(.template) .delete').trigger('click');
+            //update add-sortable button.
+            question.find('.add-sortable').attr('data-parent-type',$(this).val());
+            strategy.answer[$(this).val()].change(event);
+            //add the new element before the delete selements that are stored at the end of the list
+            fix_sortable_input_names();
         });
           
 
@@ -241,7 +314,7 @@
                 </ul>
 
                 <div class="row buttons" id="add-new-question">
-                        <a class="add-sortable" data-target="#questions" href="#">Add New Question</a>
+                        <a class="add-sortable" data-model="question" data-target="#questions" href="#">Add New Question</a>
                 </div>
         <?php $this->endWidget(); ?>
 </div><!-- form -->
