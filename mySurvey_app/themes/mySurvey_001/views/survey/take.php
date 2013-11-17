@@ -29,10 +29,7 @@
 	}?>
 	<div class="row buttons">
 	<?php 
-	$userID = null;
-	if(!Yii::app()->user->isGuest)
-		$userID = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->getId()))->id;
-	if($model->survey_creator_ID != $userID)
+	if($notCreator)
 		echo CHtml::submitButton('Submit');
 	else
 		echo CHtml::link('Back to Edit Survey', '/survey/update/'. $model->id);

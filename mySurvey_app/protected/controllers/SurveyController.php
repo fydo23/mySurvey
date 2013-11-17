@@ -207,10 +207,18 @@ class SurveyController extends Controller
 	 */
 	public function actionTake($hash){
 		if(isset($_POST['SurveyResponse'])){
-			$hash = $this->generate_unique_responder_id();
+		
+			//set a cookie indicating that survey has been taken
+			$cookie = new CHttpCookie($hash.'_taken', true);
+			$days = 60;  //number of days for the cookie to expire
+			$cookie->expire = time()+60*60*24*$days; 
+			Yii::app()->request->cookies[$hash.'_taken'] = $cookie;
+			
+			//generate unique id for this submission
+			$takerId = $this->generate_unique_responder_id();
 			foreach ($_POST['SurveyResponse'] as $i=>$response){
 				$surveyResponse=new SurveyResponse;
-				$surveyResponse->survey_response_responder=$hash;
+				$surveyResponse->survey_response_responder=$takerId;
 				if($response['survey_question_type']==0){
 					$surveyResponse->survey_answer_ID=$response['survey_answer_id'];
 					$surveyResponse->survey_response_text=$response['survey_response_text'];
@@ -225,19 +233,32 @@ class SurveyController extends Controller
 						$surveyResponse->survey_answer_ID=$choice;
 						$surveyResponse->save();
 						$surveyResponse=new SurveyResponse;	
-						$surveyResponse->survey_response_responder=$hash;
+						$surveyResponse->survey_response_responder=$takerId;
 					}
 				}
 			}
 			$this->redirect('/thankyou');
 		}
+		
+		
 		$model=Survey::model()->findByAttributes(array('url'=>$hash));
-		if($model == null || ($model->is_published == 0 && Yii::app()->user->isGuest)){
+		$notCreator = true;  
+		//if the user is not a guest and the creator of this survey
+		if(!Yii::app()->user->isGuest && ($model->survey_creator_ID == SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->getId()))->id))
+			$notCreator = false;
+		//redirect if the survey is deleted or unpubished, provided user is not the creator
+		if($model == null || ($model->is_published == 0 && $notCreator)){
 			$message = "This Survey has been temporarily removed";
 			if($model == null)
 				$message = "This survey has been removed";
 			$this->render('noSurvey',array('message'=>$message));
 			return;
+		}
+		
+		//get the cookie value
+		$cookieValue = Yii::app()->request->cookies->contains($hash.'_taken') ? Yii::app()->request->cookies[$hash.'_taken']->value : '';
+		if($cookieValue == true && $notCreator){
+			$this->redirect('/thankyou');
 		}
 		
 		$questions_criteria = new CDbCriteria(array(
@@ -248,6 +269,7 @@ class SurveyController extends Controller
 		$this->render('take',array(
                     'model'=>$model,
                     'questions'=>$questions,
+                    'notCreator'=>$notCreator,
                 ));
 	}
 	
