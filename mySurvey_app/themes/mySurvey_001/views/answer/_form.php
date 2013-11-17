@@ -18,12 +18,6 @@
 		            'data-show-on-edit'=>'true',
 		            'data-source'=>'.text'
 		        ));
-		        echo CHtml::activeHiddenField($answer, 'choice_letter', array(
-		            'name'=>$answer->getNameForAttribute('choice_letter'), 
-		            'disabled'=>$answer->disabled,
-		            'data-show-on-edit'=>'true',
-		            'data-source'=>'.choice_letter'
-		        ));
 		        echo CHtml::activeHiddenField($answer, 'id', array(
 		            'name'=>$answer->getNameForAttribute('id'), 
 		            'disabled'=>$answer->disabled
