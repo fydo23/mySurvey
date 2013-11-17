@@ -65,8 +65,12 @@
                     },
                     change:function(event){
                         //add two answers, focus first;
-                        this.add(event).find('.edit').trigger('click');
-                        this.add(event);
+                        var true_answer = this.add(event);
+                        true_answer.find('input[type=text]').val('True');
+                        true_answer.find('.text').html('True');
+                        var false_answer = this.add(event);
+                        false_answer.find('input[type=text]').val('False');
+                        false_answer.find('.text').html('False');
                         //hide add sortable button
                         $(event.target).closest('li').find('.add-sortable').hide();
                         //hide add-sortable button
@@ -295,7 +299,7 @@
                 
                 <div id="survey-url">
                     <?php $url = Yii::app()->request->baseUrl."/survey/take/".$model->url; ?>
-					<h3>Survey URL:</h3> <p><?php echo $url; ?></p>
+					<h3>Survey URL:</h3> <a href="<?php echo yii::app()->baseUrl . $url; ?>"><?php echo $url; ?></a>
 				</div>
 
                 <h4 id="question-title">Questions</h4>

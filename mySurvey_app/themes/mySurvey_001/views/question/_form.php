@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="row">
-            <ul id="answers_<?php echo $question->answersUniqueId; ?>" class="sortable">
+            <ul id="answers_<?php echo $question->get_hash_num(); ?>" class="sortable">
                 <?php $this->renderPartial('/answer/_form',array(
                     'answer'=>new SurveyAnswer('template')
                 )); ?>
@@ -54,7 +54,7 @@
                 <li class="trash"><?php //trash goes after this list item. ?></li>
             </ul>
             <div class="row buttons add-new-answer">
-                    <a class="add-sortable <?php echo $question->get_add_answer_button_class(); ?>" data-model="answer" data-target="#answers_<?php echo $question->answersUniqueId; ?>" href="#">Add New Answer</a>
+                    <a class="add-sortable <?php echo $question->get_add_answer_button_class(); ?>" data-model="answer" data-target="#answers_<?php echo $question->get_hash_num(); ?>" href="#">Add New Answer</a>
             </div>
         </div>
 </li>

@@ -23,7 +23,9 @@ class SurveyQuestion extends CActiveRecord
     public $disabled = False;
     public $type_choices = array('Short Answer', 'True/False', 'Multiple Choice', 'Multiple Select');
     public $type = 2; //default = Multiple Choice.
-    public $answersUniqueId = 0;
+
+    //get_unique_id is a getter generator this...
+    private $hash_num = 0;
     
 	/**
 	 * @return string the associated database table name
@@ -47,13 +49,23 @@ class SurveyQuestion extends CActiveRecord
      */
     public function afterConstruct() 
     {
-        $this->answersUniqueId = rand();
         if($this->scenario == 'template'){
             $this->class = "template";
             $this->disabled = True;
             $this->order_number = 0;
         }
         return parent::afterConstruct();
+    }
+
+    /**
+     * This function generates and returns a unique number for this model.
+     * @return int hash_num
+     */
+    public function get_hash_num(){
+    	if($this->hash_num == 0){
+    		$this->hash_num = rand();
+    	}
+    	return $this->hash_num;
     }
     
     
