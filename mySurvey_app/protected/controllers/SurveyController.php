@@ -232,7 +232,7 @@ class SurveyController extends Controller
 			$this->redirect('/thankyou');
 		}
 		$model=Survey::model()->findByAttributes(array('url'=>$hash));
-		if($model == null || $model->is_published == 0){
+		if($model == null || ($model->is_published == 0 && Yii::app()->user->isGuest)){
 			$message = "This Survey has been temporarily removed";
 			if($model == null)
 				$message = "This survey has been removed";

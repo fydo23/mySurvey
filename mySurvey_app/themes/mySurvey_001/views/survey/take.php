@@ -34,6 +34,8 @@
 		$userID = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->getId()))->id;
 	if($model->survey_creator_ID != $userID)
 		echo CHtml::submitButton('Submit');
+	else
+		echo CHtml::link('Back to Edit Survey', '/survey/update/'. $model->id);
 	$this->endWidget();
 	?>
 	</div>
