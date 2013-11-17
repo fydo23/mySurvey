@@ -1,5 +1,5 @@
 <?php Yii::app()->controller->layout = 'takeLayout'; 
-	echo '<h1>'.$title.'</h1></br></br>';
+	echo '<h1>'.$model->title.'</h1></br></br>';
 	$questionNum = 0;
 	$responseModels=array(); ?>
 	<div class="form">
@@ -28,7 +28,13 @@
                      ));
 	}?>
 	<div class="row buttons">
-	<?php echo CHtml::submitButton('Submit');
-	$this->endWidget();?>
+	<?php 
+	$userID = null;
+	if(!Yii::app()->user->isGuest)
+		$userID = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->getId()))->id;
+	if($model->survey_creator_ID != $userID)
+		echo CHtml::submitButton('Submit');
+	$this->endWidget();
+	?>
 	</div>
 </div><!-- end form -->

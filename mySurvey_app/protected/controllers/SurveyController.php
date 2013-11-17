@@ -226,7 +226,7 @@ class SurveyController extends Controller
 					}
 				}
 			}
-			$this->redirect('/thankyou');
+			$this->redirect('/thankYou');
 		}
 		$model=Survey::model()->findByAttributes(array('url'=>$hash));
 		if($model == null || $model->is_published == 0){
@@ -243,7 +243,7 @@ class SurveyController extends Controller
                          ));
         $questions = SurveyQuestion::model()->findAll($questions_criteria);
 		$this->render('take',array(
-                    'title'=>$model->title,
+                    'model'=>$model,
                     'questions'=>$questions,
                 ));
 	}
