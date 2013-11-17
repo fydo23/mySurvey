@@ -206,7 +206,9 @@ class SurveyController extends Controller
 	 * @param string $hash
 	 */
 	public function actionTake($hash){
-		if(isset($_POST['SurveyResponse'])){
+		//get the cookie value
+		$cookieValue = Yii::app()->request->cookies->contains($hash.'_taken') ? Yii::app()->request->cookies[$hash.'_taken']->value : '';
+		if(isset($_POST['SurveyResponse']) && $cookieValue != true){
 		
 			//set a cookie indicating that survey has been taken
 			$cookie = new CHttpCookie($hash.'_taken', true);
@@ -255,8 +257,7 @@ class SurveyController extends Controller
 			return;
 		}
 		
-		//get the cookie value
-		$cookieValue = Yii::app()->request->cookies->contains($hash.'_taken') ? Yii::app()->request->cookies[$hash.'_taken']->value : '';
+		
 		if($cookieValue == true && $notCreator){
 			$this->redirect('/thankyou');
 		}
