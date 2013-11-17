@@ -957,6 +957,11 @@ p.placeholder {
 	color: #666;
 }
 
+#survey-url p:hover {
+	text-decoration: underline;
+	color: #00b1c1;
+}
+
 .form {
 	clear: both;
 }
