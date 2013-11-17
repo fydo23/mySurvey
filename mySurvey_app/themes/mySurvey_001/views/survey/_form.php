@@ -15,13 +15,10 @@
 	
 	<div class="row">
 		<?php
-		echo CHtml::hiddenField('SurveyResponse['.$question->id.']survey_question_type',$question->type);
+		echo CHtml::hiddenField('SurveyResponse['.$question->id.'][survey_question_type]',$question->type);
 		if($question->type==0){ 
 				echo $form->labelEx($model,'['.$question->id.']survey_response_text').'</br>';
-				foreach($question->answers as $i=>$answer){
-					echo 'i='.$i.' answer id='.$answer->id;
-				}
-//				echo CHtml::hiddenField('SurveyResponse['.$question->id.']survey_answer_id',$temp->id);
+				echo CHtml::hiddenField('SurveyResponse['.$question->id.'][survey_answer_id]',$question->answers[0]->id);
 				echo $form->textField($model,'['.$question->id.']survey_response_text').'</br>';
 				echo $form->error($model,'['.$question->id.']survey_response_text').'</br>';
 		}

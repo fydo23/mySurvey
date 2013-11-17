@@ -209,9 +209,25 @@ class SurveyController extends Controller
 		if(isset($_POST['SurveyResponse'])){
 			foreach ($_POST['SurveyResponse'] as $i=>$response){
 				$surveyResponse=new SurveyResponse;
-				//$surveyResponse->survey_answer_id=;
+				if($response['survey_question_type']==0){
+					$surveyResponse->survey_answer_ID=$response['survey_answer_id'];
+					$surveyResponse->survey_response_text=$response['survey_response_text'];
+					$surveyResponse->save();
+				}
+				else if($response['survey_question_type']==1||$response['survey_question_type']==2){
+					$surveyResponse->survey_answer_ID=$response['survey_response_text'];
+					$surveyResponse->save();
+				}
+				else if($response['survey_question_type']==3){
+					foreach($response['survey_response_text'] as $choice){
+						$surveyResponse->survey_answer_ID=$choice;
+						$surveyResponse->survey_response_text=$choice;
+						$surveyResponse->save();
+						$surveyResponse=new SurveyResponse;	
+					}
+				}
 			}
-			$this->redirect('http://www.google.com');
+			$this->redirect('/thankyou');
 		}
 		$model=Survey::model()->findByAttributes(array('url'=>$hash));
 		if($model == null || $model->is_published == 0){

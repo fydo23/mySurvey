@@ -37,12 +37,12 @@ class SurveyResponse extends CActiveRecord
 			array('survey_answer_ID', 'required', 'on'=>'save'),
 			array('survey_response_text', 'required', 'on'=>'template','message'=>'All reponses are required.'),
 			array('survey_answer_ID', 'numerical', 'integerOnly'=>true),
-			array('choice_letter', 'length', 'max'=>5),
+			//array('choice_letter', 'length', 'max'=>5),
 			array('survey_response_responder', 'length', 'max'=>45),
 			array('survey_response_time, survey_response_text', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, survey_ID, survey_question_ID, survey_answer_ID, choice_letter, survey_response_time, survey_response_responder, survey_response_text', 'safe', 'on'=>'search'),
+			array('id, survey_ID, survey_question_ID, survey_answer_ID, survey_response_time, survey_response_responder, survey_response_text', 'safe', 'on'=>'search'),
 		);
 	}
 
