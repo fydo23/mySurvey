@@ -122,14 +122,6 @@ class SurveyController extends Controller
 	                		$answer_attributes['order_number'] = $a_idx;
 	                		$this->create_save_or_delete('SurveyAnswer', $answer_attributes);
 	                	}
-	                	if(count($question->answers)>1 && $question->type == 0){
-	                		//if short answer, delete all but the first question
-	                		for($idx = 1; $idx<count($question->answers); $idx++){ 
-	                			$question->answers[$idx]->delete();
-	                		}
-	                		//refresh the model to have the proper number of relations.
-	                		$question->refresh(); 
-	                	}
 	                }
             	}
             }
