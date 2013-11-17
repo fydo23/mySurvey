@@ -207,8 +207,10 @@ class SurveyController extends Controller
 	 */
 	public function actionTake($hash){
 		if(isset($_POST['SurveyResponse'])){
+			$hash = $this->generate_unique_responder_id();
 			foreach ($_POST['SurveyResponse'] as $i=>$response){
 				$surveyResponse=new SurveyResponse;
+				$surveyResponse->survey_response_responder=$hash;
 				if($response['survey_question_type']==0){
 					$surveyResponse->survey_answer_ID=$response['survey_answer_id'];
 					$surveyResponse->survey_response_text=$response['survey_response_text'];
@@ -223,10 +225,11 @@ class SurveyController extends Controller
 						$surveyResponse->survey_answer_ID=$choice;
 						$surveyResponse->save();
 						$surveyResponse=new SurveyResponse;	
+						$surveyResponse->survey_response_responder=$hash;
 					}
 				}
 			}
-			$this->redirect('/thankYou');
+			$this->redirect('/thankyou');
 		}
 		$model=Survey::model()->findByAttributes(array('url'=>$hash));
 		if($model == null || $model->is_published == 0){
@@ -247,6 +250,22 @@ class SurveyController extends Controller
                     'questions'=>$questions,
                 ));
 	}
+	
+		/**
+		 * generates a unique id for every survey taken
+		 */
+		private function generate_unique_responder_id($length = 6){
+			$valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+			$result = "";
+			for($result_length = 0; $result_length < $length; $result_length++){
+				$result .= substr($valid_chars, rand(0, strlen($valid_chars)-1), 1);
+			}
+			if($conflict_responses = SurveyResponse::model()->findByAttributes(array('survey_response_responder'=>$result))){
+				//recursivly call ensures that at some point we get a unique id that is never found..
+				$result = generate_unique_responder_id($length);
+			}
+			return $result;
+		}
 
 	/**
 	 * Lists all models.
