@@ -35,7 +35,7 @@ class SurveyResponse extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('survey_answer_ID', 'required', 'on'=>'save'),
-			array('survey_response_text', 'required', 'message'=>'All questions are required.'),
+			array('survey_response_text', 'required', 'on'=>'template','message'=>'All reponses are required.'),
 			array('survey_answer_ID', 'numerical', 'integerOnly'=>true),
 			array('choice_letter', 'length', 'max'=>5),
 			array('survey_response_responder', 'length', 'max'=>45),

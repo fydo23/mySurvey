@@ -18,12 +18,11 @@
 )); ?>
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 	<?php
-	foreach($questions as $i => $question){
+	foreach($questions as $i=>$question){
 		echo '<h2>'.++$questionNum.'. '.$question->text.'</h2></br>';
 			$responseModels[$i]=new SurveyResponse('template');
             $this->renderPartial('/survey/_form',array(
                         'model'=>$responseModels[$i],
-            			'arrayNum'=>$i,
                         'question'=>$question,
             			'form'=>$form,
                      ));

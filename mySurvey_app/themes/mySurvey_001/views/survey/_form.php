@@ -15,31 +15,35 @@
 	
 	<div class="row">
 		<?php
+		echo CHtml::hiddenField('SurveyResponse['.$question->id.']survey_question_type',$question->type);
 		if($question->type==0){ 
-				echo $form->labelEx($model,'['.$arrayNum.']survey_response_text').'</br>';
-				echo $form->textField($model,'['.$arrayNum.']survey_response_text').'</br>';
-				echo $form->error($model,'['.$arrayNum.']survey_response_text').'</br>';
+				echo $form->labelEx($model,'['.$question->id.']survey_response_text').'</br>';
+				foreach($question->answers as $i=>$answer){
+					echo 'i='.$i.' answer id='.$answer->id;
+				}
+//				echo CHtml::hiddenField('SurveyResponse['.$question->id.']survey_answer_id',$temp->id);
+				echo $form->textField($model,'['.$question->id.']survey_response_text').'</br>';
+				echo $form->error($model,'['.$question->id.']survey_response_text').'</br>';
 		}
 		else if($question->type==1||$question->type==2){
 			$radioArray=array();
-			foreach ($question->answers as $i=>$answer){
-				$radioArray[$i]=$answer->text;
+			foreach ($question->answers as $answer){
+				$radioArray[$answer->id]=$answer->text;
 			}
-			echo $form->labelEx($model,'['.$arrayNum.']survey_response_text').'</br>';
-			echo $form->radioButtonList($model,'['.$arrayNum.']survey_response_text',$radioArray).'</br>';				
-			echo $form->error($model,'['.$arrayNum.']survey_response_text').'</br>';
+			echo $form->labelEx($model,'['.$question->id.']survey_response_text').'</br>';
+			echo $form->radioButtonList($model,'['.$question->id.']survey_response_text',$radioArray).'</br>';				
+			echo $form->error($model,'['.$question->id.']survey_response_text').'</br>';
 		}
 		else if($question->type==3){
 			$checkArray=array();
-			foreach ($question->answers as $i=>$answer){
-				$checkArray[$i]=$answer->text;
+			foreach ($question->answers as $answer){
+				$checkArray[$answer->id]=$answer->text;
 			}
-			echo $form->labelEx($model,'['.$arrayNum.']survey_response_text').'</br>';
-			echo $form->checkBoxList($model,'['.$arrayNum.']survey_response_text',$checkArray).'</br>';				
-			echo $form->error($model,'['.$arrayNum.']survey_response_text').'</br>';
+			echo $form->labelEx($model,'['.$question->id.']survey_response_text').'</br>';
+			echo $form->checkBoxList($model,'['.$question->id.']survey_response_text',$checkArray).'</br>';				
+			echo $form->error($model,'['.$question->id.']survey_response_text').'</br>';
 		}
 		else{
 			echo 'Unknown question type!!</br>';
-		}
-		?>
+		}?>
 	</div>

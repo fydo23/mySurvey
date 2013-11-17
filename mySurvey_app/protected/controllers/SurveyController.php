@@ -207,8 +207,9 @@ class SurveyController extends Controller
 	 */
 	public function actionTake($hash){
 		if(isset($_POST['SurveyResponse'])){
-			foreach ($_POST['SurveyResponse'] as $response){
-				//$response->survey_answer_ID=;
+			foreach ($_POST['SurveyResponse'] as $i=>$response){
+				$surveyResponse=new SurveyResponse;
+				//$surveyResponse->survey_answer_id=;
 			}
 			$this->redirect('http://www.google.com');
 		}
