@@ -22,7 +22,8 @@
                 //question
                 add:function(event){
                     //add question, focus first input
-                    var sortable = $(event.target).data('target');
+                    var sortable = $(event.target).attr('data-target');
+
                     var newItem = $(sortable).find('.template').first().clone().removeClass('template');
                     newItem.find('input, select').removeAttr('disabled');
                     $(sortable).find('>.trash').before(newItem);
@@ -153,7 +154,7 @@
          * (Delegates function call to 'add' strategy. It then updates the naem attributes
          * of all form elements.
          */
-		$('form').on('click','.add-sortable', function(event){
+		$('form').on('click',':not(.template) .add-sortable', function(event){
             event.preventDefault(); 
             event.stopPropagation(); 
 
@@ -254,14 +255,14 @@
          */
         function fix_sub_sortable_target(sortable_item){
             var addSortablebutton = sortable_item.find('.add-sortable[data-target]');
-            var old_target = addSortablebutton.data('target');
+            var old_target = addSortablebutton.attr('data-target');
             //if a sub-sortable exists..
             if(addSortablebutton.length){
                 //define the new target id.
                 var new_target = old_target.split('_').slice(0,1) +'_'+Math.floor(Math.random() * 1000000000);
                 //set the target and respective id to match.
-                addSortablebutton.data('target',new_target);
-                sortable_item.attr('id',new_target.substr(1));
+                addSortablebutton.attr('data-target',new_target);
+                sortable_item.find(old_target).attr('id',new_target.substr(1));
             }
         }
 	});
@@ -291,8 +292,6 @@
                         <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100, 'class'=>'title')); ?>
                         <span class="arrow-left"></span><?php echo $form->error($model,'title',array('successCssClass','success')); ?>
                 </div>
-                
-                
                 
                 <div id="survey-url">
                     <?php $url = Yii::app()->request->baseUrl."/survey/take/".$model->url; ?>
