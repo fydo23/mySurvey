@@ -221,7 +221,6 @@ class SurveyController extends Controller
 				else if($response['survey_question_type']==3){
 					foreach($response['survey_response_text'] as $choice){
 						$surveyResponse->survey_answer_ID=$choice;
-						$surveyResponse->survey_response_text=$choice;
 						$surveyResponse->save();
 						$surveyResponse=new SurveyResponse;	
 					}
