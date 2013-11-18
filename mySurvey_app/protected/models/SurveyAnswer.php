@@ -18,11 +18,15 @@
 class SurveyAnswer extends CActiveRecord
 {
     //custome fields and defaults
-    public $class = "";
     public $delete_button_class = "";
     public $disabled = False;
     public $delete = False;
     public $survey_question_order = 0;
+
+
+    // use get_class() to access this attribute
+    private $class = "";
+
 
 	/**
 	 * @return string the associated database table name
@@ -40,11 +44,21 @@ class SurveyAnswer extends CActiveRecord
     public function afterConstruct() 
     {
         if($this->scenario == 'template'){
-            $this->class = "template";
             $this->disabled = True;
             $this->order_number = 0;
         }
         return parent::afterConstruct();
+    }
+
+    public function get_class(){
+    	$this->class = "";
+        if($this->scenario == 'template'){
+            $this->class .= "template";
+    	}
+    	else if($this->question->type == SurveyQuestion::$SHORT_ANSWER_TYPE ){
+    		$this->class .= "hide";
+    	}
+    	return $this->class;
     }
 
     public function afterSave()

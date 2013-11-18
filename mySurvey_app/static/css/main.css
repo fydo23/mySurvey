@@ -701,7 +701,6 @@ p.placeholder {
 }
 
 .question_summary{
-    min-height:30px;
     width:auto; 
     border:1px solid #5887A2;
     background: #c8e2ea;
