@@ -9,7 +9,12 @@ $(function(){
                 var sortable = $(event.target).attr('data-target');
 
                 var newItem = $(sortable).find('.template').first().clone().removeClass('template');
-                newItem.find('input, select').removeAttr('disabled');
+
+                //enable all non-template input/select
+                newItem.find('input, select').filter(function(){
+                    return !$(this).closest('.template').length;
+                }).removeAttr('disabled');
+
                 $(sortable).find('>.trash').before(newItem);
 
                 // display/focus the new element's text field.
