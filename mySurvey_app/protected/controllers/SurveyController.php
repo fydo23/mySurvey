@@ -200,14 +200,15 @@ class SurveyController extends Controller
 	 */
 	public function actionTake($hash){
 		//get the cookie value
-		$cookieValue = Yii::app()->request->cookies->contains($hash.'_taken') ? Yii::app()->request->cookies[$hash.'_taken']->value : '';
+		$model=Survey::model()->findByAttributes(array('url'=>$hash));
+		$cookieValue = Yii::app()->request->cookies->contains($model->id.'_taken') ? Yii::app()->request->cookies[$model->id.'_taken']->value : '';
 		if(isset($_POST['SurveyResponse']) && $cookieValue != true){
 		
 			//set a cookie indicating that survey has been taken
-			$cookie = new CHttpCookie($hash.'_taken', true);
+			$cookie = new CHttpCookie($model->id.'_taken', true);
 			$years = 3;  //number of days for the cookie to expire
 			$cookie->expire = time()+60*60*24*365*$years; 
-			Yii::app()->request->cookies[$hash.'_taken'] = $cookie;
+			Yii::app()->request->cookies[$model->id.'_taken'] = $cookie;
 			
 			//generate unique id for this submission
 			$takerId = $this->generate_unique_responder_id();
@@ -236,7 +237,6 @@ class SurveyController extends Controller
 		}
 		
 		
-		$model=Survey::model()->findByAttributes(array('url'=>$hash));
 		$notCreator = true;  
 		//if the user is not a guest and the creator of this survey
 		if(!Yii::app()->user->isGuest && ($model->survey_creator_ID == SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->getId()))->id))
