@@ -19,7 +19,7 @@
 		if($question->type==0){ 
 				
 				echo CHtml::hiddenField('SurveyResponse['.$question->id.'][survey_answer_id]',$question->answers[0]->id);
-				echo $form->textField($model,'['.$question->id.']survey_response_text').'</br>';
+				echo $form->textArea($model,'['.$question->id.']survey_response_text').'</br>';
 				echo $form->error($model,'['.$question->id.']survey_response_text').'</br>';
 		}
 		else if($question->type==1||$question->type==2){
