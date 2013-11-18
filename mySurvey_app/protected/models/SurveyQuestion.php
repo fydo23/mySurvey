@@ -20,11 +20,12 @@ class SurveyQuestion extends CActiveRecord
     //custome fields and defaults
     public $delete = False;
     public $class = "";
-    public $add_answer_button_class= "";
     public $disabled = False;
     public $type_choices = array('Short Answer', 'True/False', 'Multiple Choice', 'Multiple Select');
     public $type = 2; //default = Multiple Choice.
-    public $answersUniqueId = 0;
+
+    //get_unique_id is a getter generator this...
+    private $hash_num = 0;
     
 	/**
 	 * @return string the associated database table name
@@ -32,6 +33,13 @@ class SurveyQuestion extends CActiveRecord
 	public function tableName()
 	{
 		return 'survey_question';
+	}
+
+	public function get_add_answer_button_class(){
+		$is_short_answer = $this->type == 0;
+		$is_true_false_with_two_answers = $this->type == 1 && count($this->answers) > 1;
+		if($is_short_answer || $is_true_false_with_two_answers) return "hide";
+    	return "";
 	}
     
     /**
@@ -41,7 +49,6 @@ class SurveyQuestion extends CActiveRecord
      */
     public function afterConstruct() 
     {
-        $this->answersUniqueId = rand();
         if($this->scenario == 'template'){
             $this->class = "template";
             $this->disabled = True;
@@ -51,15 +58,14 @@ class SurveyQuestion extends CActiveRecord
     }
 
     /**
-     * Called after the model is fetched frmo the DB.
-     * @return parent::afterFind();
+     * This function generates and returns a unique number for this model.
+     * @return int hash_num
      */
-    public function afterFind(){
-        $this->answersUniqueId = rand();
-        if($this->type<2){
-        	$this->add_answer_button_class = "hide";
-        } 
-        return parent::afterFind();
+    public function get_hash_num(){
+    	if($this->hash_num == 0){
+    		$this->hash_num = rand();
+    	}
+    	return $this->hash_num;
     }
     
     

@@ -79,32 +79,32 @@ class SurveyController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-                $questions = array();
-                
-                
-                if(isset($_POST['SurveyQuestion'])){
-                    $questions = $this->process_post_questions($id);
-                }
-                //ajaxValidation halts execution before survey gets a change to validate.
-                $this->performAjaxValidation(array_merge($questions,array($model)));
-                
-                if(!count($questions)){
-                    $questions_criteria = new CDbCriteria(array(
-                        'condition'=>'survey_ID = ' . $model->id,
-                        'order'=>'order_number'
-                    ));
-                    $questions = SurveyQuestion::model()->findAll($questions_criteria);
-                } 
-                if(isset($_POST['Survey'])){
-                    $model->attributes=$_POST['Survey'];
-                    if($model->validate()){
-                        $model->save();
-                    }
-                }
-                $this->render('update',array(
-                    'model'=>$model,
-                    'questions'=>$questions,
-                ));
+        $questions = array();
+        
+        
+        if(isset($_POST['SurveyQuestion'])){
+            $questions = $this->process_post_questions($id);
+        }
+        //ajaxValidation halts execution before survey gets a change to validate.
+        $this->performAjaxValidation(array_merge($questions,array($model)));
+        
+        if(!count($questions)){
+            $questions_criteria = new CDbCriteria(array(
+                'condition'=>'survey_ID = ' . $model->id,
+                'order'=>'order_number'
+            ));
+            $questions = SurveyQuestion::model()->findAll($questions_criteria);
+        } 
+        if(isset($_POST['Survey'])){
+            $model->attributes=$_POST['Survey'];
+            if($model->validate()){
+                $model->save();
+            }
+        }
+        $this->render('update',array(
+            'model'=>$model,
+            'questions'=>$questions,
+        ));
 	}
         
         /**
@@ -126,14 +126,7 @@ class SurveyController extends Controller
 	                		$answer_attributes['order_number'] = $a_idx;
 	                		$this->create_save_or_delete('SurveyAnswer', $answer_attributes);
 	                	}
-	                	if(count($question->answers)>1 && $question->type == 0){
-	                		//if short answer, delete all but the first question
-	                		for($idx = 1; $idx<count($question->answers); $idx++){ 
-	                			$question->answers[$idx]->delete();
-	                		}
-	                		//refresh the model to have the proper number of relations.
-	                		$question->refresh(); 
-	                	}
+	                	$question->refresh(); 
 	                }
             	}
             }
@@ -144,7 +137,7 @@ class SurveyController extends Controller
         private function create_save_or_delete($model_name, $attributes){
 				$model = new $model_name('create');
                 //if $attributes id is set, try to set model 
-                if($attributes['id'] && !$model = $model_name::model()->findByPk($attributes['id'])){
+                if($attributes['id'] && !($model = $model_name::model()->findByPk($attributes['id'])) ){
                 	//provided an id that doesn't exist. skip this question
                 	return false;
                 }
