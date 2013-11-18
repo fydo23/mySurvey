@@ -18,9 +18,6 @@
 		            'data-show-on-edit'=>'true',
 		            'data-source'=>'.text'
 		        ));
-                echo '<br/>disabled:'.$answer->disabled;
-                echo '<br/>class:'.$answer->get_class();
-                echo '<br/>scenario:'.$answer->scenario;
 		        echo CHtml::activeHiddenField($answer, 'id', array(
 		            'name'=>$answer->getNameForAttribute('id'), 
 		            'disabled'=>$answer->disabled
