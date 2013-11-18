@@ -187,7 +187,7 @@ $(function(){
      */
     function do_sortables(){
         $('.sortable').sortable({
-            items: '> li',
+            items: '> li:not(.trash, [data-deleted], .template)',
             start:function(event, ui){
                 $(ui.item).addClass('dragging');
             },
