@@ -203,4 +203,11 @@ class SiteController extends Controller
 			'model'=>$survey_creator,
 		));
 	}
+	
+	/**
+	* Show report page
+	*/
+	public function actionReports(){
+		$this->render('pages/reports',array());
+	}
 }
