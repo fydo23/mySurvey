@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Default controller class. It will handle request to the homepage level.
+ */
 class SiteController extends Controller
 {
 
@@ -175,13 +178,12 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
 	/**
 	 * Show form to update the current users information
 	 */
 	public function actionSettings(){
-		$survey_creator = SurveyCreator::model()->findByAttributes(
-                        array('email'=> Yii::app()->user->id)
-                );
+		$survey_creator = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->id));
 		if(isset($_POST['SurveyCreator'])){
 			if($survey_creator->password!=sha1($_POST['SurveyCreator']['password'])){
 				$survey_creator->addError('password','Invalid password');
@@ -193,10 +195,15 @@ class SiteController extends Controller
 				}
 			}
 		}
-		$survey_creator->scenario='update';
+		$survey_creator->setScenario('update');
 		$survey_creator->password='';
-		$this->render('pages/settings',array(
-			'model'=>$survey_creator,
-		));
+		$this->render('pages/settings',array('model'=>$survey_creator));
+	}
+	
+	/**
+	 * Show current user's survey report
+	 */
+	public function actionReports(){
+		$this->render('pages/reports',array());
 	}
 }
