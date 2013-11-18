@@ -206,7 +206,7 @@ class SurveyController extends Controller
 		
 			//set a cookie indicating that survey has been taken
 			$cookie = new CHttpCookie($model->id.'_taken', true);
-			$years = 3;  //number of days for the cookie to expire
+			$years = 3;  //number of years for the cookie to expire
 			$cookie->expire = time()+60*60*24*365*$years; 
 			Yii::app()->request->cookies[$model->id.'_taken'] = $cookie;
 			
