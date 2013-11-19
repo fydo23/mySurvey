@@ -31,13 +31,7 @@
 				<!--======== HEADER ========-->
                 <div id="header">
                         <div class="content-area">
-                        		<a href="<?php echo $this->createUrl('/survey')?>">			
                                 <div id="logo-container"><img id="headerLogo" src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/logo-white.png"></div>
-								</a>
-
-                                <div id="logout">
-                                    <?php echo Yii::app()->user->name?><a href="<?php echo $this->createUrl('/logout')?>">Logout</a>
-                                </div><!-- logout -->
 
                         </div>
                 </div><!-- header -->
@@ -48,16 +42,7 @@
                 
                 
                 		<!--======== MENU ========-->
-                        <div id="mainmenu">
-                                <?php $this->widget('zii.widgets.CMenu',array(
-                                    'items'=>array(
-                                            array('label'=>'Surveys', 'url'=>array('/survey')),
-                                            array('label'=>'Reports', 'url'=>array('/reports')),
-                                            array('label'=>'Account Settings', 'url'=>array('site/settings'))
-                                    ),
-                                )); ?>
-                        </div><!-- mainmenu -->
-
+                        
 
 				<!--======== BREADCRUMBS ========-->
                 <?php if(isset($this->breadcrumbs)):?>

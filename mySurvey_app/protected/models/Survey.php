@@ -19,6 +19,10 @@
  */
 class Survey extends CActiveRecord
 {
+
+	//constant defaults
+	public $is_published = 0;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -43,6 +47,36 @@ class Survey extends CActiveRecord
 			// @todo Please remove those attributes that should not be searched.
 			array('id, url, created, survey_creator_ID, is_published, title', 'safe', 'on'=>'search'),
 		);
+	}
+
+	private function generate_unique_url($length = 6){
+		$valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+		$result = "";
+		for($result_length = 0; $result_length < $length; $result_length++){
+			$result .= substr($valid_chars, rand(0, strlen($valid_chars)-1), 1);
+		}
+		if($conflict_survey = Survey::model()->findByAttributes(array('url'=>$result))){
+			//recursivly call ensures that at some point we get a unique id that is never found..
+			$result = generate_unique_url($length);
+		}
+		return $result;
+	}
+
+	/** 
+	 * Before we validate/save this model, make sure to set the defalts.
+	 * @return boolean if validation can proceed.
+	 */
+	public function beforeValidate(){
+		if($this->scenario == "create"){
+		    $survey_creator = SurveyCreator::model()->findByAttributes(
+		            array('email'=> Yii::app()->user->id)
+		    );
+		    //we need to remove url from the survey model
+		    $this->survey_creator_ID = $survey_creator->id;
+		    $this->created = new CDbExpression('NOW()');
+			$this->url = $this->generate_unique_url();
+		}
+		return true;
 	}
 
 	/**

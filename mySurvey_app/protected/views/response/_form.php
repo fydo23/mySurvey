@@ -19,18 +19,24 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+	
 	<div class="row">
-		<?php echo $form->labelEx($model,'survey_answer_ID'); ?>
-		<?php echo $form->textField($model,'survey_answer_ID'); ?>
-		<?php echo $form->error($model,'survey_answer_ID'); ?>
+		<?php echo $form->textField($model,'survey_response_text'); ?>
+		<?php echo $form->error($model,'survey_response_text'); ?>
+	</div>
+	
+	<div class="row">
+		<?php 
+		foreach($answers as $answer){
+		
+		echo $form->radioButtonList($model,'survey_answer_ID',array($answer->id=>$answer->text)); 
+		echo '</br>';
+		}?>
+	
+
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'choice_letter'); ?>
-		<?php echo $form->textField($model,'choice_letter',array('size'=>5,'maxlength'=>5)); ?>
-		<?php echo $form->error($model,'choice_letter'); ?>
-	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'survey_response_time'); ?>
 		<?php echo $form->textField($model,'survey_response_time'); ?>

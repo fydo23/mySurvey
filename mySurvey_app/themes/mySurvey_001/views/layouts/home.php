@@ -33,7 +33,7 @@
 
 				<!--======== FOOTER ========-->
                 <div id="footer">
-                        <p>Footer content tk...</p>
+                        <p><?php echo YiiBase::powered(); ?></p>
                 </div><!-- footer -->
 
         </div><!-- page -->

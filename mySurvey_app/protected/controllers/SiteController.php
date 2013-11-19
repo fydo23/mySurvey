@@ -22,7 +22,7 @@ class SiteController extends Controller
 	{
 		return array(
                         array('allow',
-                                'actions'=>array('index', 'register', 'login'),
+                                'actions'=>array('index', 'register', 'login', 'view'),
                                 'users'=>array('?'),
                         ),
 			array('deny',
@@ -175,6 +175,7 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
 	/**
 	 * Show form to update the current users information
 	 */
@@ -193,9 +194,9 @@ class SiteController extends Controller
 				}
 			}
 		}
-		$survey_creator->scenario='update';
+		$survey_creator->setScenario('update');
 		$survey_creator->password='';
-		$this->render('pages/settings',array(
+		$this->render('settings',array(
 			'model'=>$survey_creator,
 		));
 	}

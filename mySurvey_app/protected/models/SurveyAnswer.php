@@ -6,7 +6,6 @@
  * The followings are the available columns in table 'survey_answer':
  * @property integer $id
  * @property integer $survey_question_ID
- * @property string $choice_letter
  * @property string $survey_answer_response_time
  * @property string $survey_answer_next_link
  * @property string $text
@@ -19,10 +18,15 @@
 class SurveyAnswer extends CActiveRecord
 {
     //custome fields and defaults
-    public $class = "";
+    public $delete_button_class = "";
     public $disabled = False;
     public $delete = False;
     public $survey_question_order = 0;
+
+
+    // use get_class() to access this attribute
+    private $class = "";
+
 
 	/**
 	 * @return string the associated database table name
@@ -40,11 +44,21 @@ class SurveyAnswer extends CActiveRecord
     public function afterConstruct() 
     {
         if($this->scenario == 'template'){
-            $this->class = "template";
             $this->disabled = True;
             $this->order_number = 0;
         }
         return parent::afterConstruct();
+    }
+
+    public function get_class(){
+    	$this->class = "";
+        if($this->scenario == 'template'){
+            $this->class .= "template";
+    	}
+    	else if($this->question->type == SurveyQuestion::$SHORT_ANSWER_TYPE ){
+    		$this->class .= "hide";
+    	}
+    	return $this->class;
     }
 
     public function afterSave()
@@ -56,6 +70,8 @@ class SurveyAnswer extends CActiveRecord
     public function afterFind()
     {	
     	$this->survey_question_order = $this->question->order_number;
+        if(in_array($this->question->type, array(0,1)))
+        	$this->delete_button_class = "hide";
         return parent::afterFind();
     }
     
@@ -76,15 +92,14 @@ class SurveyAnswer extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('survey_question_ID, order_number, text', 'required'),
+			array('survey_question_ID, order_number', 'required'),
 			array('survey_question_ID, order_number', 'numerical', 'integerOnly'=>true),
-			array('choice_letter', 'length', 'max'=>5),
 			array('survey_answer_next_link', 'length', 'max'=>80),
 			array('text', 'length', 'max'=>1000),
 			array('survey_answer_response_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, survey_question_ID, choice_letter, survey_answer_response_time, survey_answer_next_link, text, order_number', 'safe', 'on'=>'search'),
+			array('id, survey_question_ID, survey_answer_response_time, survey_answer_next_link, text, order_number', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -109,7 +124,6 @@ class SurveyAnswer extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'survey_question_ID' => 'Survey Question',
-			'choice_letter' => 'Survey Answer Choice Letter',
 			'survey_answer_response_time' => 'Survey Answer Response Time',
 			'survey_answer_next_link' => 'Survey Answer Next Link',
 			'text' => 'Text',
@@ -137,7 +151,6 @@ class SurveyAnswer extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('survey_question_ID',$this->survey_question_ID);
-		$criteria->compare('choice_letter',$this->choice_letter,true);
 		$criteria->compare('survey_answer_response_time',$this->survey_answer_response_time,true);
 		$criteria->compare('survey_answer_next_link',$this->survey_answer_next_link,true);
 		$criteria->compare('text',$this->text,true);
