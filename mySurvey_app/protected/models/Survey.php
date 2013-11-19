@@ -49,7 +49,12 @@ class Survey extends CActiveRecord
 		);
 	}
 
-	private function generate_unique_url($length = 6){
+        /**
+	 * Generates a unique random string for the survey url.
+	 * @param the length of the random string
+	 * @return unique random string
+	*/   
+	public function generate_unique_url($length = 6){
 		$valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 		$result = "";
 		for($result_length = 0; $result_length < $length; $result_length++){

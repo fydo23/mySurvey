@@ -182,6 +182,7 @@ class SurveyController extends Controller
 		$model=$this->loadModel($id);
 
                 $model->is_published = 0;
+                $model->url = $model->generate_unique_url();
                 $model->save();
 
                 $this->redirect(array('index'));
@@ -326,5 +327,4 @@ class SurveyController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-
 }
