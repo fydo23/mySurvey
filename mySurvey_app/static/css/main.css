@@ -152,8 +152,10 @@ div.search-form {padding: 10px; margin: 10px 0; background: #eee;}
 /*************************************/
 #survey-form label, #survey-url h3 {margin-right: 5px; font-family: 'Arvo', sans-serif; font-weight: 700; color: #000; margin-left: -10px;}
 #survey-form label, #survey-url h3 {font-size: 16px; margin-left: 0;}
-#survey-url {clear: both; padding-top: 10px;}
-#survey-url h3 {width: auto; display: inline-block; float: left; padding-bottom: 25px;}
+#survey-url {clear: both; padding-top: 20px;}
+#survey-url h3 {width: auto; display: inline-block; float: left; padding-bottom: 25px; margin-top: 0;}
+#survey-url a {color: #2c8ed1; text-decoration: underline; font-size: 15px; padding-left: 5px;}
+#survey-url a:hover {text-decoration: none;}
 #survey-url p {width: auto; float: left; margin-top: 16px; font-size: 15px; margin-left: 5px; color: #666;}
 input.title{font-size: 23px; width:530px;}
 
@@ -308,6 +310,19 @@ input.title ~ .errorMessage {padding: 7px 15px;}
 
 
 
+
+/*** TAKE SURVEY VIEW ***/
+/*************************************/
+.take-survey-view .content-area {width: 980px; margin: 0 auto;}
+.take-survey-view h1 {text-align: center; font-size: 45px; padding-top: 20px;}
+.take-survey-view h2 {margin-bottom: 5px; margin-top: 30px;}
+.take-survey-view textarea {width: 60%; min-height: 70px; height: auto;}
+
+
+
+/*** SUCCESSFULLY SUBMITTED MESSAGE ***/
+/*************************************/
+#success {text-align: center;}
 
 
 /*** FOOTER ***/

@@ -25,23 +25,17 @@
     <body>
     
     	<!--======== PAGE ========-->
-        <div class="container" id="page">
+        <div class="container take-survey-view" id="page">
 
-
-				<!--======== HEADER ========-->
-                <div id="header">
-                        <div class="content-area">
-                                <div id="logo-container"><img id="headerLogo" src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/logo-white.png"></div>
-
-                        </div>
-                </div><!-- header -->
 
 				
-				<!--======== MENU + MAIN CONTENT AREA ========-->
-                <div class="content-area">
+
+				
+			<!--======== MENU + MAIN CONTENT AREA ========-->
+            <div class="content-area">
                 
                 
-                		<!--======== MENU ========-->
+                		
                         
 
 				<!--======== BREADCRUMBS ========-->
@@ -63,7 +57,7 @@
 
 				<!--======== FOOTER ========-->
                 <div id="footer">
-                        <p><?php echo YiiBase::powered(); ?></p>
+                        <p>Powered by MySurvey</p>
                 </div><!-- footer -->
 
         </div><!-- page -->
