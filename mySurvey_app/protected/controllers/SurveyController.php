@@ -233,7 +233,7 @@ class SurveyController extends Controller
 					}
 				}
 			}
-			$this->redirect('/thankyou');
+			$this->redirect('/successfulSubmit');
 		}
 		
 		
