@@ -255,7 +255,7 @@ class SurveyController extends Controller
 		
 		
 		if($cookieValue == true && $notCreator){
-			$this->redirect('/thankyou');
+			$this->redirect('/successfulSubmit');
 		}
 		
 		$questions_criteria = new CDbCriteria(array(
