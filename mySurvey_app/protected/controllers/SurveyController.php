@@ -79,32 +79,35 @@ class SurveyController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-        $questions = array();
-        
-        
-        if(isset($_POST['SurveyQuestion'])){
-            $questions = $this->process_post_questions($id);
-        }
-        //ajaxValidation halts execution before survey gets a change to validate.
-        $this->performAjaxValidation(array_merge($questions,array($model)));
-        
-        if(!count($questions)){
-            $questions_criteria = new CDbCriteria(array(
-                'condition'=>'survey_ID = ' . $model->id,
-                'order'=>'order_number'
-            ));
-            $questions = SurveyQuestion::model()->findAll($questions_criteria);
-        } 
-        if(isset($_POST['Survey'])){
-            $model->attributes=$_POST['Survey'];
-            if($model->validate()){
-                $model->save();
-            }
-        }
-        $this->render('update',array(
-            'model'=>$model,
-            'questions'=>$questions,
-        ));
+                $questions = array();
+                
+                //if the survey is published redirect to list of surveys
+                if($model->is_published)
+                    $this->redirect(Yii::app()->request->baseUrl.'/survey');
+                
+                if(isset($_POST['SurveyQuestion'])){
+                    $questions = $this->process_post_questions($id);
+                }
+                //ajaxValidation halts execution before survey gets a change to validate.
+                $this->performAjaxValidation(array_merge($questions,array($model)));
+
+                if(!count($questions)){
+                    $questions_criteria = new CDbCriteria(array(
+                        'condition'=>'survey_ID = ' . $model->id,
+                        'order'=>'order_number'
+                    ));
+                    $questions = SurveyQuestion::model()->findAll($questions_criteria);
+                } 
+                if(isset($_POST['Survey'])){
+                    $model->attributes=$_POST['Survey'];
+                    if($model->validate()){
+                        $model->save();
+                    }
+                }
+                $this->render('update',array(
+                    'model'=>$model,
+                    'questions'=>$questions,
+                ));
 	}
         
         /**

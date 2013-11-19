@@ -46,8 +46,6 @@
         	<?php echo $record->title ?>
 			<a class="delete-confirm" href="<?php echo Yii::app()->request->baseUrl . '/survey/delete/' . $record->id; ?>">Delete</a>
 			<a href="<?php echo Yii::app()->request->baseUrl . '/survey/unpublish/' . $record->id; ?>">Unpublish</a>
-			<a href="<?php echo Yii::app()->request->baseUrl . '/survey/update/' . $record->id; ?>">Edit</a>
-                
 		</li>
 		<?php } ?>
 	</ul>
