@@ -238,7 +238,7 @@ class SurveyController extends Controller
 					}
 				}
 			}
-			$this->redirect('/successfulSubmit');
+			$this->redirect(Yii::app()->request->baseUrl.'/successfulSubmit');
 		}
 		
 		
