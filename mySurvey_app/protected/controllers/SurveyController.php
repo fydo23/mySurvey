@@ -201,6 +201,11 @@ class SurveyController extends Controller
 	public function actionTake($hash){
 		//get the cookie value
 		$model=Survey::model()->findByAttributes(array('url'=>$hash));
+		if($model == null){
+			$message = "This Survey has been removed";
+			$this->render('noSurvey',array('message'=>$message));
+			return;
+		}
 		$cookieValue = Yii::app()->request->cookies->contains($model->id.'_taken') ? Yii::app()->request->cookies[$model->id.'_taken']->value : '';
 		if(isset($_POST['SurveyResponse']) && $cookieValue != true){
 		
@@ -242,10 +247,8 @@ class SurveyController extends Controller
 		if(!Yii::app()->user->isGuest && ($model->survey_creator_ID == SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->getId()))->id))
 			$notCreator = false;
 		//redirect if the survey is deleted or unpubished, provided user is not the creator
-		if($model == null || ($model->is_published == 0 && $notCreator)){
+		if($model->is_published == 0 && $notCreator){
 			$message = "This Survey has been temporarily removed";
-			if($model == null)
-				$message = "This survey has been removed";
 			$this->render('noSurvey',array('message'=>$message));
 			return;
 		}
