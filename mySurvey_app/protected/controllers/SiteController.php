@@ -183,9 +183,7 @@ class SiteController extends Controller
 	 * Show form to update the current users information
 	 */
 	public function actionSettings(){
-		$survey_creator = SurveyCreator::model()->findByAttributes(
-                        array('email'=> Yii::app()->user->id)
-                );
+		$survey_creator = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->id));
 		if(isset($_POST['SurveyCreator'])){
 			if($survey_creator->password!=sha1($_POST['SurveyCreator']['password'])){
 				$survey_creator->addError('password','Invalid password');
@@ -199,15 +197,24 @@ class SiteController extends Controller
 		}
 		$survey_creator->setScenario('update');
 		$survey_creator->password='';
-		$this->render('settings',array(
-			'model'=>$survey_creator,
-		));
+		$this->render('settings',array('model'=>$survey_creator));
 	}
 	
 	/**
-	* Show report page
-	*/
+	 * Show current user's survey report
+	 */
 	public function actionReports(){
-		$this->render('pages/reports',array());
+	    $survey_creator = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->id));
+	    $userId = $survey_creator->id;
+	    
+	    $criteria = new CDbCriteria();
+	    $criteria->select = array('title', 'id', 'survey_creator_ID');
+	    $criteria->condition = 'survey_creator_ID=:survey_creator_ID';
+	    $criteria->params = array(':survey_creator_ID' => $userId);
+	    
+	    $surveys = Survey::model()->findAll($criteria);
+	    $rowCount = count($surveys);
+	    
+		$this->render('reports',array('surveys'=>$surveys, 'rowCount'=>$rowCount));
 	}
 }
