@@ -7,77 +7,73 @@
     	     This form submits selected value to the current page -->
      	<form method="POST" action=""> 
 		  <select name="selectReport" style="width:200px" onChange="this.form.submit()">
- 		      <option value="0" <?php echo (isset($_POST['selectReport']) && ($_POST['selectReport'] == 0) ? "selected='selected'" : ""); ?>>Overall Data</option> 
- 		      <option value="1" <?php echo (isset($_POST['selectReport']) && ($_POST['selectReport'] == 1) ? "selected='selected'" : ""); ?>>Chart-1</option> 
-		      <option value="2" <?php echo (isset($_POST['selectReport']) && ($_POST['selectReport'] == 2) ? "selected='selected'" : ""); ?>>Chart-2</option> 
- 		      <option value="3" <?php echo (isset($_POST['selectReport']) && ($_POST['selectReport'] == 3) ? "selected='selected'" : ""); ?>>Chart-3</option> 
+		      <option value="overall" <?php echo (isset($_POST['selectReport']) && ($_POST['selectReport'] == "overall") ? " selected='selected'" : ""); ?>>Overall Data</option>
+ 		      <?php foreach ($surveys as $survey) { ?>
+ 		          <option value=<?php echo $survey->id; ?> <?php echo (isset($_POST['selectReport']) && ($_POST['selectReport'] == $survey->id) ? " selected='selected'" : ""); ?>>
+ 		             <?php echo $survey->title ?>
+ 		          </option>
+    	      <?php }?>
+	      
 	      </select>  
-	    </form> 
-    	
+	    </form>
 	</div>
 </div>
 <div class="content-width">
 	</br>
 	<?php
-
+        
     	if (!isset($_POST['selectReport'])) {
     	    $_POST['selectReport'] = 0;
     	} 
-	       
-    	// Show the selected report 
-    	switch ($_POST['selectReport']) {
-    		case 0:
-    		    /**
-    		     * Combination chart
-    		     */
-    		    $this->Widget('ext.highcharts.HighchartsWidget', array(
-    		            'scripts' => array('highcharts-more', 'modules/exporting'),
-    		            'options'=>array(
-    		                    'chart' => array(),
-    		                    'title' => array('text' => 'Statistical data'),
-    		                    'xAxis' => array('categories' => array('Design', 'xAxis', 'some', 'value', 'here')),
-    		                    'yAxis' => array('title' => array('text' => 'yAxis value')),
-    		                    'tooltip' => array(
-            		                    'formatter' => "js:function() {
+	    
+    	/**
+    	 * Combination chart
+    	 */
+    	$this->Widget('ext.highcharts.HighchartsWidget', array(
+    	        'scripts' => array('highcharts-more', 'modules/exporting'),
+    	        'options'=>array(
+    	                'chart' => array(),
+    	                'title' => array('text' => 'Statistical data'),
+    	                'xAxis' => array('categories' => array('Design', 'xAxis', 'some', 'value', 'here')),
+    	                'yAxis' => array('title' => array('text' => 'yAxis value')),
+    	                'tooltip' => array(
+    	                        'formatter' => "js:function() {
             		                        var s;
-            		                        if (this.point.name) { 
+            		                        if (this.point.name) {
             		                            s = ''+ this.point.name +': '+ this.y +' value here';
             		                        } else {
             		                            s = ''+ this.x  +': '+ this.y;
             		                        }
             		                        return s;
             		                    }"),
-            		            'labels' => array('items' => array(
-            		                    	         'html' => 'Small Pie Chart',
-            		                    	         'style' => array(
-                        		                          'left' => '40px',
-                        		                    	  'top' => '8px',
-                        		                    	  'color' => 'black')
-            		                              )),
-    		                    'series' => array(
-    		                            array('type' => 'column', 'name' => 'Survey-1', 'data' => array(3, 2, 1, 3, 4)),
-    		                            array('type' => 'column', 'name' => 'Survey-2', 'data' => array(2, 3, 5, 7, 6)),
-    		                            array('type' => 'column', 'name' => 'Survey-3', 'data' => array(4, 3, 3, 9, 0)),
-    		                            array('type' => 'spline', 'name' => 'Average', 'data' => array(3, 2.67, 3, 6.33, 3.33), 
-    		                                      'marker' => array('lineWidth'=> 2, 'lineColor'=> 'Highcharts.getOptions().colors[3]', 'fillColor' => 'white')
-    		                            ),
-    		                            array('type' => 'pie', 
-    		                                  'name' => 'Total', 
-    		                                  'data' => array(
-    		                                      array('name' => 'Survey-1', 'y' => 13, 'color' => 'Highcharts.getOptions().colors[0]'),
-    		                                      array('name' => 'Survey-2', 'y' => 23, 'color' => 'Highcharts.getOptions().colors[1]'),
-    		                                      array('name' => 'Survey-3', 'y' => 19, 'color' => 'Highcharts.getOptions().colors[2]')
-    		                                      ),
-    		                                  'center' => array(100,80),
-    		                                  'size' => 100,
-    		                                  'showInLegend' => false,
-    		                                  'dataLabels' => array('enabled' => false)
-    		                            )
-    		                      )
-    		            )
-    		    ));
-    		    break;
-    		case 1:
+    	            		    'labels' => array('items' => array(
+    	            		    'html' => 'Small Pie Chart',
+    	            		    'style' => array(
+    	            		              'left' => '40px',
+    	            		              'top' => '8px',
+    	            		              'color' => 'black')
+    	                       )),
+    	               'series' => array(
+                    	           array('type' => 'column', 'name' => 'Survey-1', 'data' => array(3, 2, 1, 3, 4)),
+                    	           array('type' => 'column', 'name' => 'Survey-2', 'data' => array(2, 3, 5, 7, 6)),
+                    	           array('type' => 'column', 'name' => 'Survey-3', 'data' => array(4, 3, 3, 9, 0)),
+                    	           array('type' => 'spline', 'name' => 'Average', 'data' => array(3, 2.67, 3, 6.33, 3.33),
+                    	           'marker' => array('lineWidth'=> 2, 'lineColor'=> 'Highcharts.getOptions().colors[3]', 'fillColor' => 'white')
+                	               ),
+    	                           array('type' => 'pie', 'name' => 'Total', 'data' => array(
+    	                               array('name' => 'Survey-1', 'y' => 13, 'color' => 'Highcharts.getOptions().colors[0]'),
+    	                               array('name' => 'Survey-2', 'y' => 23, 'color' => 'Highcharts.getOptions().colors[1]'),
+    	                               array('name' => 'Survey-3', 'y' => 19, 'color' => 'Highcharts.getOptions().colors[2]')
+    	                           ),
+            	                   'center' => array(100,80),
+            	                   'size' => 100,
+            	                   'showInLegend' => false,
+            	                   'dataLabels' => array('enabled' => false)
+    	                           )
+    	                       )
+                    )
+    	       ));
+
     		    /**
     		     * Pie chart
     		     */
@@ -122,8 +118,8 @@
     		                    ),
     		            )
     		    ));
-    		    break;
-    		case 2:
+    		    
+    		    
     		    /**
     		     * Basic column
     		     */
@@ -155,8 +151,8 @@
     		                              'data' => array(0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 5)))
     		            )
     		    ));
-    		    break;
-    		case 3:
+    		    
+    		    
     		    /**
     		     * Column with labels
     		     */
@@ -206,8 +202,6 @@
     		                                'name' => 'aaa@aaa.com\'s surveys', 'data' => array(0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 5)))
     		            )
     		    ));
-    		  break;
-    	   }
 	?>
-</br>
+	
 </div>
