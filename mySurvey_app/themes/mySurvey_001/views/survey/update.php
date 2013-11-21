@@ -273,8 +273,9 @@
 </script>
 
 <div class="content-width">
-<div class="form">
-
+    <div class="form">
+        <?php Yii::app()->getClientScript()->registerScriptFile(Yii::app()->baseUrl.'/static/js/survey_update.js', CClientScript::POS_END); ?>
+        
         <?php $form=$this->beginWidget('CActiveForm', array(
                 'id'=>'survey-form',
                 'focus'=>array($model, 'title'),
@@ -286,32 +287,30 @@
         )); ?>
                 <?php echo $form->errorSummary($model); ?>
                 <div class="row buttons" id="save-cancel">
-                        <?php echo CHtml::submitButton('Save Changes'); ?>
-                        <?php echo CHtml::link('Back to all Surveys', Yii::app()->request->baseUrl.'/survey') ?>
+                    <?php echo CHtml::submitButton('Save Changes'); ?>
+                    <?php echo CHtml::link('Back to all Surveys', Yii::app()->request->baseUrl.'/survey') ?>
                 </div>
 
                 <div class="row">
                 	<?php echo $form->labelEx($model,'title'); ?>
-                        <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100, 'class'=>'title')); ?>
-                        <span class="arrow-left"></span><?php echo $form->error($model,'title',array('successCssClass','success')); ?>
+                    <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100, 'class'=>'title')); ?>
+                    <span class="arrow-left"></span><?php echo $form->error($model,'title',array('successCssClass','success')); ?>
                 </div>
-                
-                
                 
                 <div id="survey-url">
                     <?php $url = Yii::app()->request->baseUrl."/survey/take/".$model->url; ?>
-					<h3>Survey URL:</h3> <p><?php echo $url; ?></p>
+					<h3>Survey URL:</h3><a href="<?php echo $url; ?>"><?php echo $url; ?></a>
 				</div>
 
                 <h4 id="question-title">Questions</h4>
                 <ul id="questions" class="sortable">
                     <?php echo $this->renderPartial('/question/_form',array(
-                            'question'=>new SurveyQuestion('template')
+                        'question'=>new SurveyQuestion('template')
                     )); ?>
                     <?php foreach($questions as $record) { ?>
-                            <?php echo $this->renderPartial('/question/_form',array(
-                                    'question'=>$record
-                            )); 
+                        <?php echo $this->renderPartial('/question/_form',array(
+                            'question'=>$record
+                        )); 
                     ?>
                     <?php } ?>  
                     <li class="trash"><?php //trash goes after this list item. ?></li>
@@ -321,5 +320,5 @@
                         <a class="add-sortable" data-model="question" data-target="#questions" href="#">Add New Question</a>
                 </div>
         <?php $this->endWidget(); ?>
-</div><!-- form -->
+    </div><!-- form -->
 </div>

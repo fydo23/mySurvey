@@ -24,9 +24,13 @@ class SurveyController extends Controller
 	public function accessRules()
 	{
 		return array(
+			array('allow',
+				'actions'=>array('take'),
+				'users'=>array('*')
+			),
 			array('deny', 
                 'users'=>array('?'),
-			),
+			)
 		);
 	}
 
@@ -80,13 +84,16 @@ class SurveyController extends Controller
 		$model=$this->loadModel($id);
                 $questions = array();
                 
+                //if the survey is published redirect to list of surveys
+                if($model->is_published)
+                    $this->redirect(Yii::app()->request->baseUrl.'/survey');
                 
                 if(isset($_POST['SurveyQuestion'])){
                     $questions = $this->process_post_questions($id);
                 }
                 //ajaxValidation halts execution before survey gets a change to validate.
                 $this->performAjaxValidation(array_merge($questions,array($model)));
-                
+
                 if(!count($questions)){
                     $questions_criteria = new CDbCriteria(array(
                         'condition'=>'survey_ID = ' . $model->id,
@@ -125,14 +132,7 @@ class SurveyController extends Controller
 	                		$answer_attributes['order_number'] = $a_idx;
 	                		$this->create_save_or_delete('SurveyAnswer', $answer_attributes);
 	                	}
-	                	if(count($question->answers)>1 && $question->type == 0){
-	                		//if short answer, delete all but the first question
-	                		for($idx = 1; $idx<count($question->answers); $idx++){ 
-	                			$question->answers[$idx]->delete();
-	                		}
-	                		//refresh the model to have the proper number of relations.
-	                		$question->refresh(); 
-	                	}
+	                	$question->refresh(); 
 	                }
             	}
             }
@@ -143,7 +143,7 @@ class SurveyController extends Controller
         private function create_save_or_delete($model_name, $attributes){
 				$model = new $model_name('create');
                 //if $attributes id is set, try to set model 
-                if($attributes['id'] && !$model = $model_name::model()->findByPk($attributes['id'])){
+                if($attributes['id'] && !($model = $model_name::model()->findByPk($attributes['id'])) ){
                 	//provided an id that doesn't exist. skip this question
                 	return false;
                 }
@@ -185,6 +185,7 @@ class SurveyController extends Controller
 		$model=$this->loadModel($id);
 
                 $model->is_published = 0;
+                $model->url = $model->generate_unique_url();
                 $model->save();
 
                 $this->redirect(array('index'));
@@ -200,6 +201,97 @@ class SurveyController extends Controller
 		$this->loadModel($id)->delete();
                 $this->redirect(array('index'));
 	}
+	/**
+	 * Shows the take survey page identified by the hash value
+	 * @param string $hash
+	 */
+	public function actionTake($hash){
+		//get the cookie value
+		$model=Survey::model()->findByAttributes(array('url'=>$hash));
+		if($model == null){
+			$message = "This Survey has been removed";
+			$this->render('noSurvey',array('message'=>$message));
+			return;
+		}
+		$cookieValue = Yii::app()->request->cookies->contains($model->id.'_taken') ? Yii::app()->request->cookies[$model->id.'_taken']->value : '';
+		if(isset($_POST['SurveyResponse']) && $cookieValue != true){
+		
+			//set a cookie indicating that survey has been taken
+			$cookie = new CHttpCookie($model->id.'_taken', true);
+			$years = 3;  //number of years for the cookie to expire
+			$cookie->expire = time()+60*60*24*365*$years; 
+			Yii::app()->request->cookies[$model->id.'_taken'] = $cookie;
+			
+			//generate unique id for this submission
+			$takerId = $this->generate_unique_responder_id();
+			foreach ($_POST['SurveyResponse'] as $i=>$response){
+				$surveyResponse=new SurveyResponse;
+				$surveyResponse->survey_response_responder=$takerId;
+				if($response['survey_question_type']==0){
+					$surveyResponse->survey_answer_ID=$response['survey_answer_id'];
+					$surveyResponse->survey_response_text=$response['survey_response_text'];
+					$surveyResponse->save();
+				}
+				else if($response['survey_question_type']==1||$response['survey_question_type']==2){
+					$surveyResponse->survey_answer_ID=$response['survey_response_text'];
+					$surveyResponse->save();
+				}
+				else if($response['survey_question_type']==3){
+					foreach($response['survey_response_text'] as $choice){
+						$surveyResponse->survey_answer_ID=$choice;
+						$surveyResponse->save();
+						$surveyResponse=new SurveyResponse;	
+						$surveyResponse->survey_response_responder=$takerId;
+					}
+				}
+			}
+			$this->redirect(Yii::app()->request->baseUrl.'/successfulSubmit');
+		}
+		
+		
+		$notCreator = true;  
+		//if the user is not a guest and the creator of this survey
+		if(!Yii::app()->user->isGuest && ($model->survey_creator_ID == SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->getId()))->id))
+			$notCreator = false;
+		//redirect if the survey is deleted or unpubished, provided user is not the creator
+		if($model->is_published == 0 && $notCreator){
+			$message = "This Survey has been temporarily removed";
+			$this->render('noSurvey',array('message'=>$message));
+			return;
+		}
+		
+		
+		if($cookieValue == true && $notCreator){
+			$this->redirect('/successfulSubmit');
+		}
+		
+		$questions_criteria = new CDbCriteria(array(
+                        'condition'=>'survey_ID = ' . $model->id,
+                        'order'=>'order_number'
+                         ));
+        $questions = SurveyQuestion::model()->findAll($questions_criteria);
+		$this->render('take',array(
+                    'model'=>$model,
+                    'questions'=>$questions,
+                    'notCreator'=>$notCreator,
+                ));
+	}
+	
+		/**
+		 * generates a unique id for every survey taken
+		 */
+		private function generate_unique_responder_id($length = 6){
+			$valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+			$result = "";
+			for($result_length = 0; $result_length < $length; $result_length++){
+				$result .= substr($valid_chars, rand(0, strlen($valid_chars)-1), 1);
+			}
+			if($conflict_responses = SurveyResponse::model()->findByAttributes(array('survey_response_responder'=>$result))){
+				//recursivly call ensures that at some point we get a unique id that is never found..
+				$result = generate_unique_responder_id($length);
+			}
+			return $result;
+		}
 
 	/**
 	 * Lists all models.
@@ -238,5 +330,4 @@ class SurveyController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-
 }

@@ -25,7 +25,7 @@ class SiteController extends Controller
 	{
 		return array(
                         array('allow',
-                                'actions'=>array('index', 'register', 'login'),
+                                'actions'=>array('index', 'register', 'login', 'view'),
                                 'users'=>array('?'),
                         ),
 			array('deny',

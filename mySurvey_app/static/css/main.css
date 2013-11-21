@@ -11,7 +11,6 @@
 @import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
 
 
-
 /*** BASE STYLES ***/
 /************************/
 body {margin: 0; padding: 0; color: #555; font-family: Helvetica, sans-serif;font-size: 13px;font-weight: normal;background: #222;}
@@ -32,10 +31,12 @@ span.required {display: none;}
 .form {clear: both;}
 
 
+
 /* Logo */
 #logo {padding: 10px 20px; font-size: 200%;}
 #logo-container {width: 300px; float: left;}
 #headerLogo {width: 225px; padding-top: 4px;}
+
 
 
 /* Logout */
@@ -43,6 +44,7 @@ span.required {display: none;}
 #logout ul {list-style-type: none;}
 #logout a {background: #005a82; color: #fff; text-decoration: none; padding: 8px 20px; font-size: 12px; border-radius: 10px; font-weight: 700; border: 2px solid #c8e2ea;margin-left: 15px;}
 #logout a:hover {background: #0079af;}
+
 
 
 /* Typography */
@@ -60,7 +62,6 @@ a:hover {text-decoration: none;}
 
 input[type="submit"], input[type="button"] {cursor: pointer; padding-bottom: 30px; margin-top: 25px; margin-bottom: 15px;}
 input[type="text"], input[type="password"] {-webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; -moz-box-shadow: 0 0 0 #000,inset 0px 3px 3px #eee; -webkit-box-shadow: 0 0 0 #000,inset 0px 3px 3px #eee; box-shadow: 0 0 0 #000,inset 0px 3px 3px #eee; border: 1px solid #6eb4cd; padding: 5px; margin-bottom: 5px; font-family: Helvetica, sans-serif; font-size: 13px; color: #444; font-weight: normal; width: 204px;}
-
 
 
 
@@ -151,8 +152,10 @@ div.search-form {padding: 10px; margin: 10px 0; background: #eee;}
 /*************************************/
 #survey-form label, #survey-url h3 {margin-right: 5px; font-family: 'Arvo', sans-serif; font-weight: 700; color: #000; margin-left: -10px;}
 #survey-form label, #survey-url h3 {font-size: 16px; margin-left: 0;}
-#survey-url {clear: both; padding-top: 10px;}
-#survey-url h3 {width: auto; display: inline-block; float: left; padding-bottom: 25px;}
+#survey-url {clear: both; padding-top: 20px;}
+#survey-url h3 {width: auto; display: inline-block; float: left; padding-bottom: 25px; margin-top: 0;}
+#survey-url a {color: #2c8ed1; text-decoration: underline; font-size: 15px; padding-left: 5px;}
+#survey-url a:hover {text-decoration: none;}
 #survey-url p {width: auto; float: left; margin-top: 16px; font-size: 15px; margin-left: 5px; color: #666;}
 input.title{font-size: 23px; width:530px;}
 
@@ -307,6 +310,19 @@ input.title ~ .errorMessage {padding: 7px 15px;}
 
 
 
+
+/*** TAKE SURVEY VIEW ***/
+/*************************************/
+.take-survey-view .content-area {width: 980px; margin: 0 auto;}
+.take-survey-view h1 {text-align: center; font-size: 45px; padding-top: 20px;}
+.take-survey-view h2 {margin-bottom: 5px; margin-top: 30px;}
+.take-survey-view textarea {width: 60%; min-height: 70px; height: auto;}
+
+
+
+/*** SUCCESSFULLY SUBMITTED MESSAGE ***/
+/*************************************/
+#success {text-align: center;}
 
 
 /*** FOOTER ***/
