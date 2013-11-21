@@ -1,3 +1,3 @@
 <?php Yii::app()->controller->layout = 'takeLayout'; 
-	echo '<h2>'.$message.'</h2>';
+	echo '<div class="min"><h2 class="oops">'.$message.'</h2></div>';
 ?>
