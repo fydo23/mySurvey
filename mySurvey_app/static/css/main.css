@@ -256,7 +256,7 @@ login .error, register .error {padding-left: 382px;}
 input.title ~ .errorMessage {padding: 7px 15px;}
 .error input.title ~ .errorMessage, .error input.title ~ .arrow-left {margin-top:6px;}
 .error input[type="text"], .error input[type="password"] {border: 1px solid #a73a35; float: left;}
-
+.take-survey-view .error {padding-left: 0;}
 
 
 
@@ -319,12 +319,13 @@ input.title ~ .errorMessage {padding: 7px 15px;}
 .take-survey-view textarea {width: 60%; min-height: 70px; height: auto;}
 .min {min-height: 400px;text-align: center;background: url(../img/Alert.png) no-repeat 230px 0;}
 h2.oops {color: #2c95b5;margin-top: 80px;}
-
+.take-survey-view .buttons {float: none; text-align: center; margin: 50px 0;}
 
 
 /*** SUCCESSFULLY SUBMITTED MESSAGE ***/
 /*************************************/
-#success {text-align: center;}
+#success {text-align: center;min-height: 150px;}
+#success h1 {text-transform: none;}
 
 
 /*** FOOTER ***/
