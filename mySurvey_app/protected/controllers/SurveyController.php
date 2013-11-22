@@ -209,7 +209,7 @@ class SurveyController extends Controller
 		//get the cookie value
 		$model=Survey::model()->findByAttributes(array('url'=>$hash));
 		if($model == null){
-			$message = "This Survey has been removed";
+			$message = "Oops! Bad links happen to good people. <br>This survey is no longer available.";
 			$this->render('noSurvey',array('message'=>$message));
 			return;
 		}
@@ -255,7 +255,7 @@ class SurveyController extends Controller
 			$notCreator = false;
 		//redirect if the survey is deleted or unpubished, provided user is not the creator
 		if($model->is_published == 0 && $notCreator){
-			$message = "This Survey has been temporarily removed";
+			$message = "Oops! Bad links happen to good people. <br>This survey is no longer available.";
 			$this->render('noSurvey',array('message'=>$message));
 			return;
 		}
