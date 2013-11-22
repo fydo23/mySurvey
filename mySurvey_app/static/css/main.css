@@ -264,7 +264,7 @@ input.title ~ .errorMessage {padding: 7px 15px;}
 /*************************************/
 #home #page {background: url(../img/hp-background.jpg) no-repeat 50% 0 fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; width: 100%; left: 0;}
 #home #header {margin: 0 auto; padding: 0; width: 980px; height: auto; background: transparent;}
-#home #content {padding: 40px; width: 980px; margin: 0 auto; text-align: center; float: none;}
+#home #content {padding: 0px; width: 100%; margin: 0; text-align: center; float: none;}
 #home h1 {font-family: Helvetica, sans-serif; text-transform: uppercase; font-size: 20px; color: #fff; font-weight: 700;}
 #home p {font-size: 15px; font-weight: lighter; width: 46%; margin: 0 auto; line-height: 22px; color: #d5f1f9;}
 #home .buttons {float: none;}
@@ -276,18 +276,18 @@ input.title ~ .errorMessage {padding: 7px 15px;}
 #login-logout {min-height: 300px; padding-top: 30px;	}
 #login-logout .button {margin-bottom: 15px;}
 #sign-in:hover {text-decoration: none;}
-#top-half {padding-bottom: 50px;}
+#top-half {padding-bottom: 50px;width: 980px;margin: 0 auto;}
 #login, #register {padding-top: 35px;	}
 .rememberMe {color: #fff; padding-top: 15px;}
 
 
 /* Learn More */
-#learn-more {border-bottom: 2px dotted #666; position: absolute; bottom: 30px; width: 980px;}
+#learn-more {position: absolute; bottom: 30px; width: 980px;}
 #learn-more p {margin-bottom: 15px;}
-#about {text-align: left; padding-left: 25px;}
-#about h1 {padding-top: 95px; font-weight: lighter; font-size: 30px;}
-#about p {margin: 0; width: 100%;}
-.text {float: left; position: relative; padding: 9px 6px 11px; font-family: Helvetica, sans-serif; font-size: 13px; color: #444; font-weight: normal; width: 204px;}
+#about {text-align: left; padding-left: 25px;background: #d5f1f9;}
+#about h1 {padding-top: 95px; font-weight: lighter; font-size: 30px; text-transform: none; color:#005a82;}
+#about p {margin: 0; width: 100%; color: #222;}
+.text {float: left; position: relative; padding: 9px 6px 11px; font-family: Helvetica, sans-serif; font-size: 13px; color: #444; font-weight: normal; width: 350px;}
 .image {position: relative; float: right;}
 .image img {padding-top: 50px;}
 #feature-1, #feature-2 {clear: both; padding-top: 50px;}
@@ -295,6 +295,8 @@ input.title ~ .errorMessage {padding: 7px 15px;}
 #feature-1 .text {float: right;}
 #feature-2 img {margin-bottom: 80px;}
 #signup-button {clear: both; padding: 65px 0 50px;}
+#home .center-content {width: 980px; margin: 0 auto;}
+.center-content:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} /*adds clearfix property*/
 
 
 

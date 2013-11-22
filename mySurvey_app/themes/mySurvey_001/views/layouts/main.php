@@ -78,7 +78,7 @@
 
 				<!--======== FOOTER ========-->
                 <div id="footer">
-                        <p><a href="#">About MySurvey</a> | <a href="contact.php">Contact Us</a></p>
+                        <p><a href="contact.php">Contact Us</a></p>
                 </div><!-- footer -->
 
         </div><!-- page -->
