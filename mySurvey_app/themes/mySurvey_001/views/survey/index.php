@@ -3,6 +3,9 @@
 ?>
 
 <!--======== SURVEY LANDING PAGE ========-->
+
+
+<!--======== CREATE NEW SURVEY ========-->
 <div class="stripe">
 	<div class="page-name">
 		<h1>Surveys</h1>
@@ -18,29 +21,6 @@
 
 </div>
 
-<!--======== CREATE NEW SURVEY ========-->
-
-<script>
-
-	$(function(){
-		$('.delete-confirm').on('click', function(e){
-			e.preventDefault();
-		})
-		$('.delete-confirm').confirmOn('click', function(e, confirmed){
-			if(confirmed) window.location = $(e.target).attr('href');
-		});
-	});
-        
-	$(function(){
-		$('.unpublish-confirm').on('click', function(e){
-			e.preventDefault();
-		})
-		$('.unpublish-confirm').confirmOn({questionText: 'If you unpublish the survey and plan to publish it again, you will lose the current submissions. Do you still want to continue?'} ,'click', function(e, confirmed){
-			if(confirmed) window.location = $(e.target).attr('href');
-		});
-	});
-</script>
-
 <div class="content-width">
 <!--======== PUBLISHIED SURVEYS ========-->
 <div id="published">
@@ -55,7 +35,7 @@
 			<a class="delete-confirm" href="<?php echo Yii::app()->request->baseUrl . '/survey/delete/' . $record->id; ?>">Delete</a>
 			<a class="unpublish-confirm" href="<?php echo Yii::app()->request->baseUrl . '/survey/unpublish/' . $record->id; ?>">Unpublish</a>
                         <?php $url = Yii::app()->request->baseUrl."/survey/take/".$record->url; ?>
-                        <a href="<?php echo $url; ?>">Preview</a>
+                        <a target="_blank" href="<?php echo $url; ?>">Preview</a>
 		</li>
 		<?php } ?>
 	</ul>
