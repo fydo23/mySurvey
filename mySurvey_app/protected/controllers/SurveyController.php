@@ -206,21 +206,24 @@ class SurveyController extends Controller
 	 * @param string $hash
 	 */
 	public function actionTake($hash){
-		//get the cookie value
+            
 		$model=Survey::model()->findByAttributes(array('url'=>$hash));
 		if($model == null){
 			$message = "Oops! Bad links happen to good people. <br>This survey is no longer available.";
 			$this->render('noSurvey',array('message'=>$message));
 			return;
 		}
-		$cookieValue = Yii::app()->request->cookies->contains($model->id.'_taken') ? Yii::app()->request->cookies[$model->id.'_taken']->value : '';
+                
+                //get the cookie value
+		$cookieValue = Yii::app()->request->cookies->contains($model->id.'_'.$model->url.'_taken') ? Yii::app()->request->cookies[$model->id.'_'.$model->url.'_taken']->value : '';
+                
 		if(isset($_POST['SurveyResponse']) && $cookieValue != true){
 		
 			//set a cookie indicating that survey has been taken
-			$cookie = new CHttpCookie($model->id.'_taken', true);
+			$cookie = new CHttpCookie($model->id.'_'.$model->url.'_taken', true);
 			$years = 3;  //number of years for the cookie to expire
 			$cookie->expire = time()+60*60*24*365*$years; 
-			Yii::app()->request->cookies[$model->id.'_taken'] = $cookie;
+			Yii::app()->request->cookies[$model->id.'_'.$model->url.'_taken'] = $cookie;
 			
 			//generate unique id for this submission
 			$takerId = $this->generate_unique_responder_id();
@@ -262,7 +265,7 @@ class SurveyController extends Controller
 		
 		
 		if($cookieValue == true && $notCreator){
-			$this->redirect('/successfulSubmit');
+			$this->redirect(Yii::app()->request->baseUrl.'/successfulSubmit');
 		}
 		
 		$questions_criteria = new CDbCriteria(array(
