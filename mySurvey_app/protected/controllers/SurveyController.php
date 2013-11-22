@@ -202,7 +202,7 @@ class SurveyController extends Controller
 		//get the cookie value
 		$model=Survey::model()->findByAttributes(array('url'=>$hash));
 		if($model == null){
-			$message = "This Survey has been removed";
+			$message = "Oops! Bad links happen to good people. <br>This survey is no longer available.";
 			$this->render('noSurvey',array('message'=>$message));
 			return;
 		}
