@@ -40,7 +40,7 @@
                 
                 <div id="survey-url">
                     <?php $url = Yii::app()->request->baseUrl."/survey/take/".$model->url; ?>
-					<h3>Survey URL:</h3><a href="<?php echo $url; ?>"><?php echo $url; ?></a>
+					<h3>Survey URL:</h3><a target="_blank" href="<?php echo $url; ?>"><?php echo $url; ?></a>
 				</div>
 
                 <h4 id="question-title">Questions</h4>
