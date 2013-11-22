@@ -169,10 +169,33 @@ class SurveyController extends Controller
 	public function actionPublish($id)
 	{
 		$model=$this->loadModel($id);
-        $model->is_published = 1;
-        $model->save();
+                $model->is_published = 1;
+                $model->save();
+                
+                //get the responses
+                $responses = array();
+                
+                foreach($questions = $model->surveyQuestions as $question) {
+                     $anwsers = $question->answers;
+                     
+                     foreach($anwsers as $answer)
+                     {
+                        $reponsesArray = $answer->responses;
+                        
+                        foreach($reponsesArray as $response)
+                        {
+                            array_push($responses, $response);
+                        }
+                     }
+                }
 
-        $this->redirect(array('index'));
+                //delete responses
+                foreach($responses as $response) {
+                    $response->delete();
+                }
+                
+        
+                $this->redirect(array('index'));
 	}       
  
 	/**
