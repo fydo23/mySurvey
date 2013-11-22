@@ -52,7 +52,7 @@
                                 <?php $this->widget('zii.widgets.CMenu',array(
                                     'items'=>array(
                                             array('label'=>'Surveys', 'url'=>array('/survey')),
-                                            array('label'=>'Reports', 'url'=>array('/reports')),
+                                            array('label'=>'Reports', 'url'=>array('site/reports')),
                                             array('label'=>'Account Settings', 'url'=>array('site/settings'))
                                     ),
                                 )); ?>
