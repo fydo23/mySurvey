@@ -7,12 +7,22 @@
     	     This form submits selected value to the current page -->
      	<form method="POST" action=""> 
 		  <select name="selectReport" style="width:200px" onChange="this.form.submit()">
-		      <option value="overall" <?php echo (isset($_POST['selectReport']) && ($_POST['selectReport'] == "overall") ? " selected='selected'" : ""); ?>>Overall Data</option>
- 		      <?php foreach ($surveys as $survey) { ?>
- 		          <option value=<?php echo $survey->id; ?> <?php echo (isset($_POST['selectReport']) && ($_POST['selectReport'] == $survey->id) ? " selected='selected'" : ""); ?>>
- 		             <?php echo $survey->title ?>
+		      <?php if ($surveys==null){
+		      	$currentSurvey=null;	
+		      ?>
+		      <option> no surveys</option>
+		      <?php }
+		      	else{
+ 		       foreach ($surveys as $key => $survey) { ?>
+ 		          <option value=<?php echo $survey->id; ?> <?php 
+ 		          if(isset($_POST['selectReport'])&&($_POST['selectReport'] == $survey->id)||$key==0){
+ 		          	echo  " selected='selected'";
+ 		          	$currentSurvey=$survey;
+ 		          }?>>
+ 		             <?php echo $survey->title;?>
  		          </option>
-    	      <?php }?>
+    	      <?php }
+ 		       }?>
 	      
 	      </select>  
 	    </form>
@@ -22,10 +32,74 @@
 	</br>
 	<?php
         
-    	if (!isset($_POST['selectReport'])) {
-    	    $_POST['selectReport'] = 0;
-    	} 
-	    
+    	//output report
+    	if($currentSurvey!=null){
+    	foreach ($currentSurvey->surveyQuestions as $question){
+    		echo '<h1>'.$question->text.'</h1></br>';
+    		//show piechart for all non-short answer questions
+    		if($question->type!=0){
+	    		$chartArray=array();
+	    		$answerCount=0;
+	    		foreach ($question->answers as $answer){
+	    			$answerCount+=count($answer->responses);
+	    		}
+	    		foreach ($question->answers as $answer){
+	    				$entry=array();
+	    				$entry[]=$answer->text;
+	    				if($answerCount==0){
+	    					$entry[]=0;
+	    				}
+	    				else{
+	    					$entry[]=count($answer->responses)/$answerCount;
+	    				}
+	    				$chartArray[]=$entry;
+	    		}
+	    		$this->Widget('ext.highcharts.HighchartsWidget', array(
+	    		            'scripts' => array('highcharts-more', 'modules/exporting', 'themes/grid'),
+	    		            'options' => array(
+	    		                    'gradient' => array('enabled'=> true),
+	    		                    'credits' => array('enabled' => false),
+	    		                    'exporting' => array('enabled' => true),
+	    		                    'chart' => array(
+	    		                            'plotBackgroundColor' => null,
+	    		                            'plotBorderWidth' => null,
+	    		                            'plotShadow' => true,
+	    		                    ),
+	    		                    'legend' => array( 'enabled' => false),
+	    		                    'title' => array( 'text' => 'Survey Pie Chart'),
+	    		                    'tooltip' => array(
+	    		                            'pointFormat' => '{series.name}: <b>{point.percentage}%</b>',
+	    		                            'percentageDecimals' => 1,
+	    		                    ),
+	    		                    'plotOptions' => array(
+	    		                            'pie' => array(
+	    		                                    'allowPointSelect' => true,
+	    		                                    'cursor' => 'pointer',
+	    		                                    'dataLabels' => array(
+	    		                                            'enabled' => true,
+	    		                                            'color' => '#000000',
+	    		                                            'connectorColor' => '#000000',
+	    		                                            'formatter' => "js:function(){return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';}",
+	    		                                    ),
+	    		                            )
+	    		                    ),
+	    		                    'series' => array(
+	    		                            array(
+	    		                                    'type' => 'pie',
+	    		                                    'name' => '% d\'utilisation',
+	    		                                    'data' => $chartArray,
+	    		                            )
+	    		                    ),
+	    		            )
+	    		    ));
+	    	}
+    	    //short answers
+    		else{
+    			echo 'short answer report goes here!!';
+    		}
+    	}
+    	}
+    	//end of output report
     	/**
     	 * Combination chart
     	 */
