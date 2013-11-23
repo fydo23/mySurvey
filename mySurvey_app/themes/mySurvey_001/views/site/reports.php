@@ -34,7 +34,12 @@
         
     	//output report
     	if($currentSurvey!=null){
-    	foreach ($currentSurvey->surveyQuestions as $question){
+    	$questions_criteria = new CDbCriteria(array(
+                        'condition'=>'survey_ID = ' . $currentSurvey->id,
+                        'order'=>'order_number'
+                         ));
+        $questions = SurveyQuestion::model()->findAll($questions_criteria);
+    	foreach ($questions as $question){
     		echo '<h1>'.$question->text.'</h1></br>';
     		//show piechart for all non-short answer questions
     		if($question->type!=0){
