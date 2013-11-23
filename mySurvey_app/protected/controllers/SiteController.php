@@ -25,7 +25,7 @@ class SiteController extends Controller
 	{
 		return array(
                         array('allow',
-                                'actions'=>array('index', 'register', 'login'),
+                                'actions'=>array('index', 'register', 'login', 'view'),
                                 'users'=>array('?'),
                         ),
 			array('deny',
@@ -206,15 +206,8 @@ class SiteController extends Controller
 	public function actionReports(){
 	    $survey_creator = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->id));
 	    $userId = $survey_creator->id;
+	    $surveys=Survey::model()->findAllByAttributes(array('survey_creator_ID'=>$userId));
 	    
-	    $criteria = new CDbCriteria();
-	    $criteria->select = array('title', 'id', 'survey_creator_ID');
-	    $criteria->condition = 'survey_creator_ID=:survey_creator_ID';
-	    $criteria->params = array(':survey_creator_ID' => $userId);
-	    
-	    $surveys = Survey::model()->findAll($criteria);
-	    $rowCount = count($surveys);
-	    
-		$this->render('reports',array('surveys'=>$surveys, 'rowCount'=>$rowCount));
+		$this->render('reports',array('surveys'=>$surveys));
 	}
 }

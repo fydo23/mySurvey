@@ -5,7 +5,7 @@
  */
 ?>
 
-<li class="answer_summary <?php echo $answer->class; ?>"> 
+<li class="answer_summary <?php echo $answer->get_class(); ?>"> 
 	<div class="row answers clearfix" data-editable="true">
         <div class="details">
 		    <?php echo CHtml::error($answer, 'text',array('successCssClass','success'));?>
@@ -17,12 +17,6 @@
 		            'disabled'=>$answer->disabled,
 		            'data-show-on-edit'=>'true',
 		            'data-source'=>'.text'
-		        ));
-		        echo CHtml::activeHiddenField($answer, 'choice_letter', array(
-		            'name'=>$answer->getNameForAttribute('choice_letter'), 
-		            'disabled'=>$answer->disabled,
-		            'data-show-on-edit'=>'true',
-		            'data-source'=>'.choice_letter'
 		        ));
 		        echo CHtml::activeHiddenField($answer, 'id', array(
 		            'name'=>$answer->getNameForAttribute('id'), 

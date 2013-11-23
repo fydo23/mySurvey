@@ -146,5 +146,51 @@ if (Yii::app()->user->id) {
 		
 	</div>
 
+
+
+
+	<!--======== LEARN MORE ========-->
+	<div id="learn-more">
+		<p><a class="learn" href="#about">learn more</a></p>
+	</div>
 </div>
 
+
+
+<!--======== ABOUT MYSURVEY ========-->
+<div id="about"> 
+
+	<div id="what-it-is" class="center-content">
+		<div class="text">
+			<h1>Surveys made easy</h1>
+			<p>Nullam et mollis neque, egestas faucibus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec turpis et nisl vestibulum aliquam pharetra a dui.</p>
+		</div>
+ 
+ 		<div class="image">
+	 		<img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/placeholder.gif">
+	 	</div>    
+	 </div>
+
+
+	 <div id="feature-1" class="center-content">  
+		 <div class="image">
+			 <img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/placeholder.gif">
+		</div>        
+		<div class="text">
+			<h1>Wherever you are</h1>
+			<p>Nullam et mollis neque, egestas faucibus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec turpis et nisl vestibulum aliquam pharetra a dui.</p>
+		</div>        
+	</div>
+
+
+	<div id="feature-2" class="center-content">
+		<div class="image">
+			 <img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/placeholder.gif">
+		</div>  
+		<div class="text">
+			<h1>Analyzing results</h1>
+			<p>Nullam et mollis neque, egestas faucibus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec turpis et nisl vestibulum aliquam pharetra a dui.</p>
+
+		</div>
+	</div>
+</div>

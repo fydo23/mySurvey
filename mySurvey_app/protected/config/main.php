@@ -43,13 +43,14 @@ $shared_config = array(
 	                        //site specific rules.
 	                        '/'=>'site/index',
 	                        '<action:(login|logout|register|home)>'=>'site/<action>',
-	                        '<page:(reports|settings)>'=>'site/view/page/<page>',
+	                        '<page:(reports|settings|successfulSubmit|contact)>'=>'site/view/page/<page>',
 
 	                         //any single word url handleded as controlle
 							'<controller:\w+>'=>'<controller>/index', //view all
 							'<controller:\w+>/<id:\d+>'=>'<controller>/view', //view one
 							'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>', //specific-model/action
 							'<controller:\w+>/<action:\w+>'=>'<controller>/<action>', //general-model/action
+	                        '<controller:\w+>/<action:\w+>/<hash:\w+>'=>'<controller>/<action>', //specific model/action
 			),
 		),
 		'db'=>array(

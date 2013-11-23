@@ -68,5 +68,27 @@ $(function(){
 		$(window).resize(function(){
 			$('#top-half').css({'height':(($(window).height())-244)+'px'});
 		});
-
+                
+                
+        //-------------- Survey delete and unpublish confirmation --------------//
+        
+	$(function(){
+		$('.delete-confirm').on('click', function(e){
+			e.preventDefault();
+		})
+		$('.delete-confirm').confirmOn('click', function(e, confirmed){
+			if(confirmed) window.location = $(e.target).attr('href');
+		});
+	});
+        
+	$(function(){
+		$('.unpublish-confirm').on('click', function(e){
+			e.preventDefault();
+		})
+		$('.unpublish-confirm').confirmOn(
+                        {questionText: 'If you unpublish the survey and plan to publish it again, you will lose the current submissions. Do you still want to continue?'} ,'click', function(e, confirmed){
+			if(confirmed) window.location = $(e.target).attr('href');
+		});
+	});
+        
 });

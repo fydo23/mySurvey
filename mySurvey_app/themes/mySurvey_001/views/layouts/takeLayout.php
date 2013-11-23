@@ -25,39 +25,18 @@
     <body>
     
     	<!--======== PAGE ========-->
-        <div class="container" id="page">
+        <div class="container take-survey-view" id="page">
 
-
-				<!--======== HEADER ========-->
-                <div id="header">
-                        <div class="content-area">
-                        		<a href="<?php echo $this->createUrl('/survey')?>">			
-                                <div id="logo-container"><img id="headerLogo" src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/logo-white.png"></div>
-								</a>
-
-                                <div id="logout">
-                                    <?php echo Yii::app()->user->name?><a href="<?php echo $this->createUrl('/logout')?>">Logout</a>
-                                </div><!-- logout -->
-
-                        </div>
-                </div><!-- header -->
 
 				
-				<!--======== MENU + MAIN CONTENT AREA ========-->
-                <div class="content-area">
-                
-                
-                		<!--======== MENU ========-->
-                        <div id="mainmenu">
-                                <?php $this->widget('zii.widgets.CMenu',array(
-                                    'items'=>array(
-                                            array('label'=>'Surveys', 'url'=>array('/survey')),
-                                            array('label'=>'Reports', 'url'=>array('site/reports')),
-                                            array('label'=>'Account Settings', 'url'=>array('site/settings'))
-                                    ),
-                                )); ?>
-                        </div><!-- mainmenu -->
 
+				
+			<!--======== MENU + MAIN CONTENT AREA ========-->
+            <div class="content-area">
+                
+                
+                		
+                        
 
 				<!--======== BREADCRUMBS ========-->
                 <?php if(isset($this->breadcrumbs)):?>
@@ -78,7 +57,7 @@
 
 				<!--======== FOOTER ========-->
                 <div id="footer">
-                        <p><a href="<?php echo Yii::app()->request->baseUrl; ?>/contact">Contact Us</a></p>
+                        <p>Powered by MySurvey</p>
                 </div><!-- footer -->
 
         </div><!-- page -->

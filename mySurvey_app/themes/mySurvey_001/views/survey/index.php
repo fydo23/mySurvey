@@ -3,6 +3,9 @@
 ?>
 
 <!--======== SURVEY LANDING PAGE ========-->
+
+
+<!--======== CREATE NEW SURVEY ========-->
 <div class="stripe">
 	<div class="page-name">
 		<h1>Surveys</h1>
@@ -18,22 +21,21 @@
 
 </div>
 
-<!--======== CREATE NEW SURVEY ========-->
-
-
 <div class="content-width">
 <!--======== PUBLISHIED SURVEYS ========-->
 <div id="published">
 	<h2>Published</h2>
-
+    <?php Yii::app()->getClientScript()->registerScriptFile(Yii::app()->baseUrl.'/static/js/jquery.confirm_on.js', CClientScript::POS_END); ?>
+    <?php Yii::app()->getClientScript()->registerCssFile(	Yii::app()->baseUrl.'/static/css/jquery.confirm_on.css'); ?>
+    
 	<ul class="survey-lists">
 		<?php foreach($published_dataProvider->getData() as $record) { ?>
 		<li>
         	<?php echo $record->title ?>
-			<a href="<?php echo Yii::app()->request->baseUrl . '/survey/delete/' . $record->id; ?>">Delete</a>
-			<a href="<?php echo Yii::app()->request->baseUrl . '/survey/unpublish/' . $record->id; ?>">Unpublish</a>
-			<a href="<?php echo Yii::app()->request->baseUrl . '/survey/update/' . $record->id; ?>">Edit</a>
-                
+			<a class="delete-confirm" href="<?php echo Yii::app()->request->baseUrl . '/survey/delete/' . $record->id; ?>">Delete</a>
+			<a class="unpublish-confirm" href="<?php echo Yii::app()->request->baseUrl . '/survey/unpublish/' . $record->id; ?>">Unpublish</a>
+                        <?php $url = Yii::app()->request->baseUrl."/survey/take/".$record->url; ?>
+                        <a target="_blank" href="<?php echo $url; ?>">Preview</a>
 		</li>
 		<?php } ?>
 	</ul>
@@ -47,7 +49,7 @@
 		<?php foreach($unPublished_dataProvider->getData() as $record) { ?>
 		<li>
         	<?php echo $record->title ?>
-			<a href="<?php echo Yii::app()->request->baseUrl . '/survey/delete/' . $record->id; ?>">Delete</a>
+			<a class="delete-confirm" href="<?php echo Yii::app()->request->baseUrl . '/survey/delete/' . $record->id; ?>">Delete</a>
 			<a href="<?php echo Yii::app()->request->baseUrl . '/survey/publish/' . $record->id; ?>">Publish</a>
 			<a href="<?php echo Yii::app()->request->baseUrl . '/survey/update/' . $record->id; ?>">Edit</a>
         

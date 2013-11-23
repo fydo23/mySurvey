@@ -48,15 +48,16 @@ class SurveyResponse extends Model
 		// will receive user inputs.
 		return array(
 
-			array('survey_answer_ID', 'required'),
+			array('survey_answer_ID', 'required', 'on'=>'save'),
+			array('survey_response_text', 'required', 'on'=>'template','message'=>'All reponses are required.'),
 			array('survey_answer_ID', 'numerical', 'integerOnly'=>true),
-			array('survey_answer_choice_letter', 'length', 'max'=>5),
-
+			//array('choice_letter', 'length', 'max'=>5),
+                  
 			array('survey_response_responder', 'length', 'max'=>45),
 			array('survey_response_time, survey_response_text', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, survey_ID, survey_question_ID, survey_answer_ID, choice_letter, survey_response_time, survey_response_responder, survey_response_text', 'safe', 'on'=>'search'),
+			array('id, survey_ID, survey_question_ID, survey_answer_ID, survey_response_time, survey_response_responder, survey_response_text', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,8 +69,6 @@ class SurveyResponse extends Model
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'survey' => array(self::BELONGS_TO, 'Survey', 'survey_ID'),
-			'question' => array(self::BELONGS_TO, 'SurveyQuestion', 'survey_question_ID'),
 			'answer' => array(self::BELONGS_TO, 'SurveyAnswer', 'survey_answer_ID'),
 		);
 	}
@@ -87,7 +86,7 @@ class SurveyResponse extends Model
 			'choice_letter' => 'Survey Answer Choice Letter',
 			'survey_response_time' => 'Survey Response Time',
 			'survey_response_responder' => 'Survey Response Responder',
-			'survey_response_text' => 'Survey Response Text',
+			'survey_response_text' => 'Your Response:',
 		);
 	}
 
