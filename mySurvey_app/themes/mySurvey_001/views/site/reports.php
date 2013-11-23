@@ -39,20 +39,8 @@
     		//show piechart for all non-short answer questions
     		if($question->type!=0){
 	    		$chartArray=array();
-	    		$answerCount=0;
 	    		foreach ($question->answers as $answer){
-	    			$answerCount+=count($answer->responses);
-	    		}
-	    		foreach ($question->answers as $answer){
-	    				$entry=array();
-	    				$entry[]=$answer->text;
-	    				if($answerCount==0){
-	    					$entry[]=0;
-	    				}
-	    				else{
-	    					$entry[]=count($answer->responses)/$answerCount;
-	    				}
-	    				$chartArray[]=$entry;
+	    				$chartArray[]=array($answer->text,count($answer->responses));
 	    		}
 	    		$this->Widget('ext.highcharts.HighchartsWidget', array(
 	    		            'scripts' => array('highcharts-more', 'modules/exporting', 'themes/grid'),
