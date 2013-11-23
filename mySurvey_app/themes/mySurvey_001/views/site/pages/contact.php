@@ -10,3 +10,6 @@ $this->breadcrumbs=array(
 ?>
 
 <h1>Contact Page</h1>
+
+<?php echo CHtml::link('Back', Yii::app()->request->baseUrl.'/survey/'); ?>
+
