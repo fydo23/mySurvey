@@ -78,7 +78,7 @@
 
 				<!--======== FOOTER ========-->
                 <div id="footer">
-                        <p><a href="contact.php">Contact Us</a></p>
+                        <p><a href="<?php echo Yii::app()->request->baseUrl; ?>/contact">Contact Us</a></p>
                 </div><!-- footer -->
 
         </div><!-- page -->
