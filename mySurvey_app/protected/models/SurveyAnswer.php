@@ -121,8 +121,8 @@ class SurveyAnswer extends Model
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'question' => array(self::BELONGS_TO, 'SurveyQuestion', 'survey_question_ID'),
-			'responses' => array(self::HAS_MANY, 'SurveyResponse', 'survey_answer_ID'),
+			'question' => array(self::BELONGS_TO, 'SurveyQuestion', 'survey_question_ID','alias'=>'answer_question'),
+			'responses' => array(self::HAS_MANY, 'SurveyResponse', 'survey_answer_ID','alias'=>'answer_response'),
 		);
 	}
 

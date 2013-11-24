@@ -88,7 +88,7 @@ class SurveyCreator extends Model
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'surveys' => array(self::HAS_MANY, 'Survey', 'survey_creator_ID'),
+			'surveys' => array(self::HAS_MANY, 'Survey', 'survey_creator_ID','alias'=>'creator_survey'),
 		);
 	}
 
