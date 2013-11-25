@@ -328,17 +328,31 @@ class SurveyController extends Controller
 
 
 	public function actionExport($id, $format = 'csv'){
-		$survey = Survey::model()->with('questions.answers.responses')->findByPk($id);
+		$survey = Survey::model()->with('questions','answers','responses')->findByPk($id);
 
 		if($survey){
-			CsvExport::export(
-				$survey->questions, // a CActiveRecord array OR any CModel array
+
+			$data = array();
+			foreach($survey->responses as $response){
+				$data[] = array(
+					'questions text' => $response->answer->question->text, 
+					'answer text' => $response->answer->text, 
+					'response text' => $response->survey_response_text
+				);
+			}
+
+			echo '<pre>';
+			echo CsvExport::export(
+				$data, // a CActiveRecord array OR any CModel array
 				array(
-					'surveyQuestion.text'=>array('number'),
+					'questions text'=>array('text'),
+					'answer text'=>array('text'),
+					'response text'=>array('text'),
 				),
 				true // boolPrintRows
 				// , $survey->title."-".date('d-m-Y H-i').".csv"
 			);
+			echo '</pre>';
 		}	
 	}
 
