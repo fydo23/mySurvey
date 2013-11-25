@@ -12,7 +12,7 @@
 		'survey_answer_ID',
 		'choice_letter',
 		'survey_response_time',
-		'survey_response_responder',
-		'survey_response_text',
+		'hash',
+		'text',
 	),
 )); ?>

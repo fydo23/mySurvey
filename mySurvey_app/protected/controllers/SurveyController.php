@@ -234,25 +234,25 @@ class SurveyController extends Controller
 			Yii::app()->request->cookies[$model->id.'_'.$model->url.'_taken'] = $cookie;
 			
 			//generate unique id for this submission
-			$takerId = $this->generate_unique_responder_id();
+			$takerId = SurveyResponse::generate_unique_token(6, 'hash');
 			foreach ($_POST['SurveyResponse'] as $i=>$response){
 				$surveyResponse=new SurveyResponse;
-				$surveyResponse->survey_response_responder=$takerId;
+				$surveyResponse->hash=$takerId;
 				if($response['survey_question_type']==0){
 					$surveyResponse->survey_answer_ID=$response['survey_answer_id'];
-					$surveyResponse->survey_response_text=$response['survey_response_text'];
+					$surveyResponse->text=$response['text'];
 					$surveyResponse->save();
 				}
 				else if($response['survey_question_type']==1||$response['survey_question_type']==2){
-					$surveyResponse->survey_answer_ID=$response['survey_response_text'];
+					$surveyResponse->survey_answer_ID=$response['text'];
 					$surveyResponse->save();
 				}
 				else if($response['survey_question_type']==3){
-					foreach($response['survey_response_text'] as $choice){
+					foreach($response['text'] as $choice){
 						$surveyResponse->survey_answer_ID=$choice;
 						$surveyResponse->save();
 						$surveyResponse=new SurveyResponse;	
-						$surveyResponse->survey_response_responder=$takerId;
+						$surveyResponse->hash=$takerId;
 					}
 				}
 			}
@@ -287,22 +287,6 @@ class SurveyController extends Controller
                     'notCreator'=>$notCreator,
                 ));
 	}
-	
-	/**
-	 * generates a unique id for every survey taken
-	 */
-	private function generate_unique_responder_id($length = 6){
-		$valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-		$result = "";
-		for($result_length = 0; $result_length < $length; $result_length++){
-			$result .= substr($valid_chars, rand(0, strlen($valid_chars)-1), 1);
-		}
-		if($conflict_responses = SurveyResponse::model()->findByAttributes(array('survey_response_responder'=>$result))){
-			//recursivly call ensures that at some point we get a unique id that is never found..
-			$result = generate_unique_responder_id($length);
-		}
-		return $result;
-	}
 
 	/**
 	 * Lists all models.
@@ -328,31 +312,30 @@ class SurveyController extends Controller
 
 
 	public function actionExport($id, $format = 'csv'){
-		$survey = Survey::model()->with('questions','answers','responses')->findByPk($id);
+		$survey = Survey::model()->with('responses', 'responses.answer','responses.answer.question')->findByPk($id);
 
 		if($survey){
-
 			$data = array();
 			foreach($survey->responses as $response){
+				$response_text = strlen($response->answer->text)? $response->answer->text : $response->text;
 				$data[] = array(
 					'questions text' => $response->answer->question->text, 
-					'answer text' => $response->answer->text, 
-					'response text' => $response->survey_response_text
+					'response text' => $response_text,
+					'identifier'=> $response->hash
 				);
 			}
 
-			echo '<pre>';
+
 			echo CsvExport::export(
 				$data, // a CActiveRecord array OR any CModel array
 				array(
 					'questions text'=>array('text'),
-					'answer text'=>array('text'),
 					'response text'=>array('text'),
+					'identifier'=>array('text'),
 				),
-				true // boolPrintRows
-				// , $survey->title."-".date('d-m-Y H-i').".csv"
+				true, // boolPrintRows
+				$survey->title."-".date('d-m-Y H-i').".csv"
 			);
-			echo '</pre>';
 		}	
 	}
 

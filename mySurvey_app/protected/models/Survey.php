@@ -59,24 +59,6 @@ class Survey extends Model
 		);
 	}
 
-        /**
-	 * Generates a unique random string for the survey url.
-	 * @param the length of the random string
-	 * @return unique random string
-	*/   
-	public function generate_unique_url($length = 6){
-		$valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-		$result = "";
-		for($result_length = 0; $result_length < $length; $result_length++){
-			$result .= substr($valid_chars, rand(0, strlen($valid_chars)-1), 1);
-		}
-		if($conflict_survey = Survey::model()->findByAttributes(array('url'=>$result))){
-			//recursivly call ensures that at some point we get a unique id that is never found..
-			$result = generate_unique_url($length);
-		}
-		return $result;
-	}
-
 	/** 
 	 * Before we validate/save this model, make sure to set the defalts.
 	 * @return boolean if validation can proceed.
@@ -89,7 +71,7 @@ class Survey extends Model
 		    //we need to remove url from the survey model
 		    $this->survey_creator_ID = $survey_creator->id;
 		    $this->created = new CDbExpression('NOW()');
-			$this->url = $this->generate_unique_url();
+			$this->url = $this::generate_unique_token(6, 'url');
 		}
 		return true;
 	}
