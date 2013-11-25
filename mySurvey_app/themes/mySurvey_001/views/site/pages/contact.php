@@ -8,8 +8,15 @@ $this->breadcrumbs=array(
 	'Contact',
 );
 ?>
+<div class="contact-us">
+	<h1>Contact Us</h1>
 
-<h1>Contact Page</h1>
+	<p>000 Commonwealth Avenue<br>
+	Boston, MA 02215
+	</p>
 
-<?php echo CHtml::link('Back', Yii::app()->request->baseUrl.'/survey'); ?>
+	<p class="white"><br>If you have business inquiries or other questions, <br>please contact us at 617-000-0000 or via <a href="#">email</a>.</p>
 
+	<div class="back-button"><?php echo CHtml::link('Back', Yii::app()->request->baseUrl.'/survey'); ?></div>
+
+</div>

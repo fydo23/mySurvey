@@ -161,35 +161,35 @@ if (Yii::app()->user->id) {
 <div id="about"> 
 
 	<div id="what-it-is" class="center-content">
+		<div class="image">
+	 		<img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/create.png">
+	 	</div> 
+	 	
 		<div class="text">
-			<h1>Surveys made easy.</h1>
-			<p>With a variety of question types including multiple choice, short answer and more, it's easy to create online surveys from scratch using the MySurvey application.</p>
-		</div>
- 
- 		<div class="image">
-	 		<img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/placeholder.gif">
-	 	</div>    
+			<h1>Survey creation made easy.</h1>
+			<p>With a variety of question types including multiple choice, short answer and more, it's easy to create online surveys from scratch using MySurvey.</p>
+		</div>	   
 	 </div>
 
-
+	 <div class="color1">
 	 <div id="feature-1" class="center-content">  
 		 <div class="image">
-			 <img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/placeholder.gif">
+			 <img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/responses.png">
 		</div>        
 		<div class="text">
-			<h1>Wherever you are.</h1>
-			<p>Nullam et mollis neque, egestas faucibus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec turpis et nisl vestibulum aliquam pharetra a dui.</p>
+			<h1>Collecting responses.</h1>
+			<p>Gather responses with one handy URL by including your link on emails, websites, Twitter, Facebook, and more.</p>
 		</div>        
 	</div>
-
+	</div>
 
 	<div id="feature-2" class="center-content">
 		<div class="image">
-			 <img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/placeholder.gif">
+			 <img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/reports.png">
 		</div>  
 		<div class="text">
 			<h1>Analyzing results.</h1>
-			<p>Nullam et mollis neque, egestas faucibus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec turpis et nisl vestibulum aliquam pharetra a dui.</p>
+			<p>Gain insights with real-time charts and graphs or download a full report to get the most out of your data.</p>
 
 		</div>
 	</div>
