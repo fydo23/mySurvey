@@ -24,11 +24,7 @@
 
 			echo CHtml::link('Download CSV',array('survey/export/id/'.$currentSurvey->id),array('class'=>'button'));
 
-			$questions = array();
-			foreach ($currentSurvey->questions as $question)
-				$questions[$question->order_number] = $question;
-			ksort($questions);
-			foreach ($questions as $question){
+			foreach ($currentSurvey->questions as $question){
 				echo '<h1>'.$question->text.'</h1></br>';
 				//show piechart for all non-short answer questions
 				if($question->type!=0){
@@ -81,7 +77,8 @@
 								),
 						)
 						));
-				}}
+					}
+				}
 				//short answers
 				else{
 					echo 'short answer report goes here!!';
