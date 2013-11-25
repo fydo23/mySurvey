@@ -6,12 +6,12 @@
 
 ?>
 
-<li class="question_summary <?php echo $question->class; ?>"> 
+<li class="question_summary <?php echo $question->get_class(); ?>"> 
         <div class="row question-text clearfix" data-editable="true">
             <div class="details">
                 <?php echo CHtml::error($question, 'text',array('successCssClass','success'));?>
                 <span data-hide-on-edit="true" class="text"><?php echo $question->text ?></span>  
-                <span data-hide-on-edit="true" class="type"><?php echo $question->type_choices[$question->type]; ?></span>  
+                <span data-hide-on-edit="true" class="type"><?php echo $question->translate_choice($question->type); ?></span>  
                 <?php 
                     echo CHtml::activeTextField($question, 'text', array(
                         'name'=>$question->getNameForAttribute('text'), 
@@ -19,7 +19,7 @@
                         'data-show-on-edit'=>'true',
                         'data-source'=>'.text'
                     ));
-                    echo CHtml::activeDropDownList($question, 'type', $question->type_choices, array(
+                    echo CHtml::activeDropDownList($question, 'type', $question->type_choices(), array(
                         'name'=>$question->getNameForAttribute('type'), 
                         'disabled'=>$question->disabled,
                         'data-show-on-edit'=>'true',
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="row">
-            <ul id="answers_<?php echo $question->answersUniqueId; ?>" class="sortable">
+            <ul id="answers_<?php echo $question->get_hash_num(); ?>" class="sortable">
                 <?php $this->renderPartial('/answer/_form',array(
                     'answer'=>new SurveyAnswer('template')
                 )); ?>
@@ -54,7 +54,7 @@
                 <li class="trash"><?php //trash goes after this list item. ?></li>
             </ul>
             <div class="row buttons add-new-answer">
-                    <a class="add-sortable <?php if($question->type == 0 && count($question->answers)>0){echo "hide";} ?>" data-parent-type="<?php echo $question->type; ?>" data-target="#answers_<?php echo $question->answersUniqueId; ?>" href="#">Add New Answer</a>
+                    <a class="add-sortable <?php echo $question->get_add_answer_button_class(); ?>" data-model="answer" data-target="#answers_<?php echo $question->get_hash_num(); ?>" href="#">Add New Answer</a>
             </div>
         </div>
 </li>

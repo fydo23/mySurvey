@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Controller class for Question model.
+ */
 class QuestionController extends Controller
 {
 	/**

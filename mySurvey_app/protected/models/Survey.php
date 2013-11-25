@@ -4,21 +4,35 @@
  * This is the model class for table "survey".
  *
  * The followings are the available columns in table 'survey':
- * @property integer $id
- * @property string $url
- * @property string $created
- * @property integer $survey_creator_ID
- * @property integer $is_published
- * @property string $title
+ * 
+ *  integer $id
+ * 
+ *  string $url
+ * 
+ *  string $created
+ * 
+ *  integer $survey_creator_ID
+ * 
+ *  integer $is_published
+ * 
+ *  string $title
  *
  * The followings are the available model relations:
- * @property SurveyCreator $surveyCreator
- * @property SurveyAnswer[] $surveyAnswers
- * @property SurveyQuestion[] $surveyQuestions
- * @property SurveyResponse[] $surveyResponses
+ * 
+ *  SurveyCreator $surveyCreator
+ * 
+ *  SurveyAnswer[] $surveyAnswers
+ * 
+ *  SurveyQuestion[] $surveyQuestions
+ * 
+ *  SurveyResponse[] $surveyResponses
  */
-class Survey extends CActiveRecord
+class Survey extends Model
 {
+
+	//constant defaults
+	public $is_published = 0;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -45,6 +59,41 @@ class Survey extends CActiveRecord
 		);
 	}
 
+        /**
+	 * Generates a unique random string for the survey url.
+	 * @param the length of the random string
+	 * @return unique random string
+	*/   
+	public function generate_unique_url($length = 6){
+		$valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+		$result = "";
+		for($result_length = 0; $result_length < $length; $result_length++){
+			$result .= substr($valid_chars, rand(0, strlen($valid_chars)-1), 1);
+		}
+		if($conflict_survey = Survey::model()->findByAttributes(array('url'=>$result))){
+			//recursivly call ensures that at some point we get a unique id that is never found..
+			$result = generate_unique_url($length);
+		}
+		return $result;
+	}
+
+	/** 
+	 * Before we validate/save this model, make sure to set the defalts.
+	 * @return boolean if validation can proceed.
+	 */
+	public function beforeValidate(){
+		if($this->scenario == "create"){
+		    $survey_creator = SurveyCreator::model()->findByAttributes(
+		            array('email'=> Yii::app()->user->id)
+		    );
+		    //we need to remove url from the survey model
+		    $this->survey_creator_ID = $survey_creator->id;
+		    $this->created = new CDbExpression('NOW()');
+			$this->url = $this->generate_unique_url();
+		}
+		return true;
+	}
+
 	/**
 	 * @return array relational rules.
 	 */
@@ -53,10 +102,8 @@ class Survey extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'surveyCreator' => array(self::BELONGS_TO, 'SurveyCreator', 'survey_creator_ID'),
-			'surveyAnswers' => array(self::HAS_MANY, 'SurveyAnswer', 'survey_ID'),
-			'surveyQuestions' => array(self::HAS_MANY, 'SurveyQuestion', 'survey_ID'),
-			'surveyResponses' => array(self::HAS_MANY, 'SurveyResponse', 'survey_ID'),
+			'surveyCreator' => array(self::BELONGS_TO, 'SurveyCreator', 'survey_creator_ID', 'alias'=>'survey_creator'),
+			'questions' => array(self::HAS_MANY, 'SurveyQuestion', 'survey_ID', 'order'=>'survey_question.order_number ASC', 'alias'=>'survey_question'),
 		);
 	}
 

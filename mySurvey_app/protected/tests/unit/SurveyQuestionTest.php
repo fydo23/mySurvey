@@ -97,7 +97,6 @@
 		}
 		
 		public function testDelete(){
-<<<<<<< HEAD
 //// 			$this->assertSame($surveyResponse::model()->deleteAllByAttributes(array('survey_response_responder'=>'TestUser')),1);
 //// 			$this->assertSame($surveyAnswers::model()->deleteAllByAttributes(array('survey_answer_choice_letter'=>'test')),1);
 //			$this->assertSame($surveyQuestion::model()->deleteAllByAttributes(array('survey_question_default_next_link'=>'test')),1);
@@ -112,20 +111,6 @@
                         
                         $surveyCreator=new SurveyCreator();
                         $this->assertSame($surveyCreator::model()->deleteAllByAttributes(array('email'=>'testCase@example.com')),1);
-=======
-			//========Delete all testing record========
-			$surveyCreator=new SurveyCreator();
-			$survey = new Survey;
-			$surveyQuestion = new SurveyQuestion;
-// 			$surveyAnswers = new SurveyAnswer;
-// 			$surveyResponse = new SurveyResponse;
-			
-// 			$this->assertSame($surveyResponse::model()->deleteAllByAttributes(array('survey_response_responder'=>'TestUser')),1);
-// 			$this->assertSame($surveyAnswers::model()->deleteAllByAttributes(array('choice_letter'=>'test')),1);
-			$this->assertSame($surveyQuestion::model()->deleteAllByAttributes(array('survey_question_default_next_link'=>'test')),1);
-			$this->assertSame($survey::model()->deleteAllByAttributes(array('url'=>'testURL')),1);
-			$this->assertSame($surveyCreator::model()->deleteAllByAttributes(array('email'=>'testCase@example.com')),1);
->>>>>>> design
 		}
 	}
 ?>

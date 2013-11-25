@@ -4,26 +4,42 @@
  * This is the model class for table "survey_question".
  *
  * The followings are the available columns in table 'survey_question':
- * @property integer $id
- * @property integer $survey_ID
- * @property integer $order_number
- * @property integer $type
- * @property string $text
+ * 
+ *  integer $id
+ * 
+ *  integer $survey_ID
+ * 
+ *  integer $order_number
+ * 
+ *  integer $type
+ * 
+ *  string $text
  *
  * The followings are the available model relations:
- * @property SurveyAnswer[] $surveyAnswers
- * @property Survey $survey
- * @property SurveyResponse[] $surveyResponses
+ * 
+ *  SurveyAnswer[] $surveyAnswers
+ * 
+ *  Survey $survey
+ * 
+ *  SurveyResponse[] $surveyResponses
  */
-class SurveyQuestion extends CActiveRecord
+class SurveyQuestion extends Model
 {
+
+	//these are used by type_choices();
+	public static $SHORT_ANSWER_TYPE 	= 0;
+	public static $TRUE_FALSE_TYPE 		= 1;
+	public static $MULTIPLE_COICE_TYPE 	= 2;
+	public static $MULTIPLE_SELECT_TYPE	= 3;
+
     //custome fields and defaults
     public $delete = False;
-    public $class = "";
     public $disabled = False;
-    public $type_choices = array('Short Answer', 'Multiple Choice');
-    public $type = 1; //default = Short Answer.
-    public $answersUniqueId = 0;
+    public $type = 2; //default = Multiple Choice.
+
+    //private fields
+    private $hash_num = 0; //used by get_unique_id()
+    private $class = ""; //used by get_class();
     
 	/**
 	 * @return string the associated database table name
@@ -31,6 +47,43 @@ class SurveyQuestion extends CActiveRecord
 	public function tableName()
 	{
 		return 'survey_question';
+	}
+
+
+
+    public function get_class(){
+    	$this->class = "";
+        if($this->scenario == 'template'){
+            $this->class .= "template";
+    	}
+    	return $this->class;
+    }
+
+	public function get_add_answer_button_class(){
+		$is_short_answer = $this->type == 0;
+		$is_true_false_with_two_answers = $this->type == 1 && count($this->answers) > 1;
+		if($is_short_answer || $is_true_false_with_two_answers) return "hide";
+    	return "";
+	}
+
+	/**
+	 * This function translates the type choice into it's string equivalent.
+	 * @param  [type] $type [description]
+	 * @return [type]       [description]
+	 */
+	public function translate_choice($type){
+		$choices = $this->type_choices();
+		return $choices[$type];
+	}
+
+	public function type_choices(){
+		$types = array(
+			SurveyQuestion::$SHORT_ANSWER_TYPE		=> 'Short Answer',
+			SurveyQuestion::$TRUE_FALSE_TYPE	 	=> 'True/False',
+			SurveyQuestion::$MULTIPLE_COICE_TYPE 	=> 'Multiple Choice',
+			SurveyQuestion::$MULTIPLE_SELECT_TYPE	=> 'Multiple Select'
+		);
+		return $types;
 	}
     
     /**
@@ -40,7 +93,6 @@ class SurveyQuestion extends CActiveRecord
      */
     public function afterConstruct() 
     {
-        $this->answersUniqueId = rand();
         if($this->scenario == 'template'){
             $this->class = "template";
             $this->disabled = True;
@@ -50,12 +102,14 @@ class SurveyQuestion extends CActiveRecord
     }
 
     /**
-     * Called after the model is fetched frmo the DB.
-     * @return parent::afterFind();
+     * This function generates and returns a unique number for this model.
+     * @return int hash_num
      */
-    public function afterFind(){
-        $this->answersUniqueId = rand();
-        return parent::afterFind();
+    public function get_hash_num(){
+    	if($this->hash_num == 0){
+    		$this->hash_num = rand();
+    	}
+    	return $this->hash_num;
     }
     
     
@@ -94,9 +148,8 @@ class SurveyQuestion extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'answers' => array(self::HAS_MANY, 'SurveyAnswer', 'survey_question_ID', 'order'=>'order_number ASC'),
-			'survey' => array(self::BELONGS_TO, 'Survey', 'survey_ID'),
-			'responses' => array(self::HAS_MANY, 'SurveyResponse', 'survey_question_ID'),
+			'answers' => array(self::HAS_MANY, 'SurveyAnswer', 'survey_question_ID', 'order'=>'question_answer.order_number ASC','alias' =>'question_answer'),
+			'survey' => array(self::BELONGS_TO, 'Survey', 'survey_ID', 'alias' =>'question_survey'),
 		);
 	}
 

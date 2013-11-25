@@ -33,7 +33,7 @@
 
 				<!--======== FOOTER ========-->
                 <div id="footer">
-                        <p>Footer content tk...</p>
+                        <p><a href="<?php echo Yii::app()->request->baseUrl; ?>/contact">Contact Us</a></p>
                 </div><!-- footer -->
 
         </div><!-- page -->

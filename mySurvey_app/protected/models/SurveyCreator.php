@@ -4,15 +4,22 @@
  * This is the model class for table "survey_creator".
  *
  * The followings are the available columns in table 'survey_creator':
- * @property integer $id
- * @property string $email
- * @property string $password
- * @property string $first_name
- * @property string $last_name
- * @property integer $level
+ * 
+ *  integer $id
+ * 
+ *  string $email
+ * 
+ *  string $password
+ * 
+ *  string $first_name
+ * 
+ *  string $last_name
+ * 
+ *  integer $level
  *
  * The followings are the available model relations:
- * @property Survey[] $surveys
+ * 
+ *  Survey[] $surveys
  */
 class SurveyCreator extends Model
 {
@@ -81,7 +88,7 @@ class SurveyCreator extends Model
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'surveys' => array(self::HAS_MANY, 'Survey', 'survey_creator_ID'),
+			'surveys' => array(self::HAS_MANY, 'Survey', 'survey_creator_ID','alias'=>'creator_survey'),
 		);
 	}
 
