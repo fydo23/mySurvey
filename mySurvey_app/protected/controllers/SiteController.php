@@ -208,6 +208,24 @@ class SiteController extends Controller
 	    $userId = $survey_creator->id;
 	    $surveys=Survey::model()->findAllByAttributes(array('survey_creator_ID'=>$userId));
 	    
+<<<<<<< HEAD
 		$this->render('reports_bar',array('surveys'=>$surveys));
+=======
+	    $currentSurvey = null;
+	    $survey_list_data = array('No Surveys');
+	    if(count($surveys)){
+	    	$currentSurvey = $surveys[0];
+	    	$survey_list_data = CHtml::listData($surveys, 'id', 'title');
+	    }
+	    if(isset($_POST['Survey']['id'])){
+	    	$currentSurvey = Survey::model()->findByPk($_POST['Survey']['id']);
+	    }
+
+		$this->render('reports',array(
+			'currentSurvey'=>$currentSurvey,
+			'survey_list_data'=>$survey_list_data,
+			'surveys'=>$surveys
+		));
+>>>>>>> master
 	}
 }

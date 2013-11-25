@@ -113,53 +113,55 @@ class SurveyController extends Controller
                 ));
 	}
         
-        /**
-         * This function processes the SurveyQuestions in $_POST by validating and attempting to save
-         * them.
-         * 
-         * @return array $questions | an array containing all the questions in the current post request.
-         */
-        private function process_post_questions($survey_id){
-        	$questions = array();
-            foreach($_POST['SurveyQuestion'] as $q_idx => $attributes){
-        		$attributes['survey_ID'] = $survey_id;
-        		$attributes['order_number'] = $q_idx;
-            	if($question = $this->create_save_or_delete('SurveyQuestion', $attributes)){
-                	$questions[$q_idx] = $question;
-	                if(isset($attributes['SurveyAnswer'])){
-	                	foreach($attributes['SurveyAnswer'] as $a_idx => $answer_attributes){
-	                		$answer_attributes['survey_question_ID'] = $question->id;
-	                		$answer_attributes['order_number'] = $a_idx;
-	                		$this->create_save_or_delete('SurveyAnswer', $answer_attributes);
-	                	}
-	                	$question->refresh(); 
-	                }
-            	}
-            }
-        	ksort($questions);
-            return $questions;
-        }
-
-        private function create_save_or_delete($model_name, $attributes){
-				$model = new $model_name('create');
-                //if $attributes id is set, try to set model 
-                if($attributes['id'] && !($model = $model_name::model()->findByPk($attributes['id'])) ){
-                	//provided an id that doesn't exist. skip this question
-                	return false;
-                }
-                if($attributes['delete']){
-                	if($model->id){
-                		//requesting to delete an existing model.
-                    	$model->delete();
+    /**
+     * This function processes the SurveyQuestions in $_POST by validating and attempting to save
+     * them.
+     * 
+     * @return array $questions | an array containing all the questions in the current post request.
+     */
+    private function process_post_questions($survey_id){
+    	$questions = array();
+        foreach($_POST['SurveyQuestion'] as $q_idx => $attributes){
+    		$attributes['survey_ID'] = $survey_id;
+    		$attributes['order_number'] = $q_idx;
+        	if($question = $this->create_save_or_delete('SurveyQuestion', $attributes)){
+            	$questions[$q_idx] = $question;
+                if(isset($attributes['SurveyAnswer'])){
+                	foreach($attributes['SurveyAnswer'] as $a_idx => $answer_attributes){
+                		$answer_attributes['survey_question_ID'] = $question->id;
+                		$answer_attributes['order_number'] = $a_idx;
+                		$this->create_save_or_delete('SurveyAnswer', $answer_attributes);
                 	}
-                	return false;
+                	$question->refresh(); 
                 }
-                $model->attributes = $attributes;
-                if($model->validate()){
-                    $model->save();
-                }
-            	return $model;
+        	}
         }
+    	ksort($questions);
+        return $questions;
+    }
+
+    private function create_save_or_delete($model_name, $attributes){
+			$model = new $model_name('create');
+            //if $attributes id is set, try to set model 
+            if($attributes['id'] && !($model = $model_name::model()->findByPk($attributes['id'])) ){
+            	//provided an id that doesn't exist. skip this question
+            	return false;
+            }
+            if($attributes['delete']){
+            	if($model->id){
+            		//requesting to delete an existing model.
+                	$model->delete();
+            	}
+            	return false;
+            }
+            $model->attributes = $attributes;
+            if($model->validate()){
+                $model->save();
+            }
+        	return $model;
+    }
+
+
         
 	/**
 	 * Publish a survey model.
@@ -169,33 +171,33 @@ class SurveyController extends Controller
 	public function actionPublish($id)
 	{
 		$model=$this->loadModel($id);
-                $model->is_published = 1;
-                $model->save();
-                
-                //get the responses
-                $responses = array();
-                
-                foreach($questions = $model->surveyQuestions as $question) {
-                     $anwsers = $question->answers;
-                     
-                     foreach($anwsers as $answer)
-                     {
-                        $reponsesArray = $answer->responses;
-                        
-                        foreach($reponsesArray as $response)
-                        {
-                            array_push($responses, $response);
-                        }
-                     }
-                }
-
-                //delete responses
-                foreach($responses as $response) {
-                    $response->delete();
-                }
-                
+        $model->is_published = 1;
+        $model->save();
         
-                $this->redirect(array('index'));
+        //get the responses
+        $responses = array();
+
+        foreach($questions = $model->questions as $question) {
+             $anwsers = $question->answers;
+             
+             foreach($anwsers as $answer)
+             {
+                $reponsesArray = $answer->responses;
+                
+                foreach($reponsesArray as $response)
+                {
+                    array_push($responses, $response);
+                }
+             }
+        }
+
+        //delete responses
+        foreach($responses as $response) {
+            $response->delete();
+        }
+        
+
+        $this->redirect(array('index'));
 	}       
  
 	/**
@@ -224,6 +226,7 @@ class SurveyController extends Controller
 		$this->loadModel($id)->delete();
                 $this->redirect(array('index'));
 	}
+
 	/**
 	 * Shows the take survey page identified by the hash value
 	 * @param string $hash
@@ -303,36 +306,36 @@ class SurveyController extends Controller
                 ));
 	}
 	
-		/**
-		 * generates a unique id for every survey taken
-		 */
-		private function generate_unique_responder_id($length = 6){
-			$valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-			$result = "";
-			for($result_length = 0; $result_length < $length; $result_length++){
-				$result .= substr($valid_chars, rand(0, strlen($valid_chars)-1), 1);
-			}
-			if($conflict_responses = SurveyResponse::model()->findByAttributes(array('survey_response_responder'=>$result))){
-				//recursivly call ensures that at some point we get a unique id that is never found..
-				$result = generate_unique_responder_id($length);
-			}
-			return $result;
+	/**
+	 * generates a unique id for every survey taken
+	 */
+	private function generate_unique_responder_id($length = 6){
+		$valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+		$result = "";
+		for($result_length = 0; $result_length < $length; $result_length++){
+			$result .= substr($valid_chars, rand(0, strlen($valid_chars)-1), 1);
 		}
+		if($conflict_responses = SurveyResponse::model()->findByAttributes(array('survey_response_responder'=>$result))){
+			//recursivly call ensures that at some point we get a unique id that is never found..
+			$result = generate_unique_responder_id($length);
+		}
+		return $result;
+	}
 
 	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
-                $survey_creator = SurveyCreator::model()->findByAttributes(
-                        array('email'=> Yii::app()->user->id)
-                );
+        $survey_creator = SurveyCreator::model()->findByAttributes(
+                array('email'=> Yii::app()->user->id)
+        );
 
-                $published_dataProvider=new CActiveDataProvider('Survey');
-                $published_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 1 AND survey_creator_ID = '.($survey_creator->id))));
+        $published_dataProvider=new CActiveDataProvider('Survey');
+        $published_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 1 AND survey_creator_ID = '.($survey_creator->id))));
 
-                $unPublished_dataProvider=new CActiveDataProvider('Survey');
-                $unPublished_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 0 AND survey_creator_ID = '.($survey_creator->id))));
+        $unPublished_dataProvider=new CActiveDataProvider('Survey');
+        $unPublished_dataProvider->setCriteria(new CDbCriteria(array('condition'=>'is_published = 0 AND survey_creator_ID = '.($survey_creator->id))));
                 
 		$this->render('index',array(
 			'published_dataProvider'=>$published_dataProvider,
@@ -340,7 +343,22 @@ class SurveyController extends Controller
 		));
                 
 	}
-        
+
+
+	public function actionExport($id, $format = 'csv'){
+		$survey = Survey::model()->with('questions.answers.responses')->findByPk($id);
+
+		if($survey){
+			CsvExport::export(
+				$survey->questions, // a CActiveRecord array OR any CModel array
+				array(
+					'surveyQuestion.text'=>array('number'),
+				),
+				true // boolPrintRows
+				// , $survey->title."-".date('d-m-Y H-i').".csv"
+			);
+		}	
+	}
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
