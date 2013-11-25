@@ -151,7 +151,7 @@ if (Yii::app()->user->id) {
 
 	<!--======== LEARN MORE ========-->
 	<div id="learn-more">
-		<p><a class="learn" href="#about">learn more</a></p>
+		<p><a class="learn" href="#about"><img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/down-arrow.png"></a></p>
 	</div>
 </div>
 
@@ -162,8 +162,8 @@ if (Yii::app()->user->id) {
 
 	<div id="what-it-is" class="center-content">
 		<div class="text">
-			<h1>Surveys made easy</h1>
-			<p>Nullam et mollis neque, egestas faucibus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec turpis et nisl vestibulum aliquam pharetra a dui.</p>
+			<h1>Surveys made easy.</h1>
+			<p>With a variety of question types including multiple choice, short answer and more, it's easy to create online surveys from scratch using the MySurvey application.</p>
 		</div>
  
  		<div class="image">
@@ -177,7 +177,7 @@ if (Yii::app()->user->id) {
 			 <img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/placeholder.gif">
 		</div>        
 		<div class="text">
-			<h1>Wherever you are</h1>
+			<h1>Wherever you are.</h1>
 			<p>Nullam et mollis neque, egestas faucibus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec turpis et nisl vestibulum aliquam pharetra a dui.</p>
 		</div>        
 	</div>
@@ -188,7 +188,7 @@ if (Yii::app()->user->id) {
 			 <img src="<?php echo Yii::app()->request->baseUrl; ?>/static/img/placeholder.gif">
 		</div>  
 		<div class="text">
-			<h1>Analyzing results</h1>
+			<h1>Analyzing results.</h1>
 			<p>Nullam et mollis neque, egestas faucibus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec turpis et nisl vestibulum aliquam pharetra a dui.</p>
 
 		</div>
