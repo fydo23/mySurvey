@@ -208,6 +208,6 @@ class SiteController extends Controller
 	    $userId = $survey_creator->id;
 	    $surveys=Survey::model()->findAllByAttributes(array('survey_creator_ID'=>$userId));
 	    
-		$this->render('reports',array('surveys'=>$surveys));
+		$this->render('reports_bar',array('surveys'=>$surveys));
 	}
 }

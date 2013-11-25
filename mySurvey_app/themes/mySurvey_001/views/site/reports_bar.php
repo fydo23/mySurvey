@@ -119,7 +119,7 @@
 									
 	    		                    'plotOptions' => array(
 													'bar' => array('groupPadding'=> 0, 'pointPadding'=>0.33, 'dataLabels' => array('enabled' => true, 'align'=>'right', 'color'=>'#FFFFFF', 'x'=>-10)),
-													'series' => array('minPointLength'=>1, 'colorByPoint'=>true, 'shadow'=>true, 'cursor'=>'pointer')),
+													'series' => array('minPointLength'=>1, 'colorByPoint'=>false, 'shadow'=>true, 'cursor'=>'pointer')),
 													
 	    		                    'series' => array(array('data' => $chartArray)),
 	    		            )
