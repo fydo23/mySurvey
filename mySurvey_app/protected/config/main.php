@@ -43,7 +43,7 @@ $shared_config = array(
 	                        //site specific rules.
 	                        '/'=>'site/index',
 	                        '<action:(login|logout|register|home)>'=>'site/<action>',
-	                        '<page:(reports|settings|successfulSubmit)>'=>'site/view/page/<page>',
+	                        '<page:(reports|settings|successfulSubmit|contact)>'=>'site/view/page/<page>',
 
 	                         //any single word url handleded as controlle
 							'<controller:\w+>'=>'<controller>/index', //view all

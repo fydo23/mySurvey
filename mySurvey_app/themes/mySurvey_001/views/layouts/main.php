@@ -52,7 +52,7 @@
                                 <?php $this->widget('zii.widgets.CMenu',array(
                                     'items'=>array(
                                             array('label'=>'Surveys', 'url'=>array('/survey')),
-                                            array('label'=>'Reports', 'url'=>array('/reports')),
+                                            array('label'=>'Reports', 'url'=>array('site/reports')),
                                             array('label'=>'Account Settings', 'url'=>array('site/settings'))
                                     ),
                                 )); ?>
@@ -78,7 +78,7 @@
 
 				<!--======== FOOTER ========-->
                 <div id="footer">
-                        <p><a href="contact.php">Contact Us</a></p>
+                        <p><a href="<?php echo Yii::app()->request->baseUrl; ?>/contact">Contact Us</a></p>
                 </div><!-- footer -->
 
         </div><!-- page -->

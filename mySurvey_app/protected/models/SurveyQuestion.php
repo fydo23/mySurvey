@@ -4,18 +4,26 @@
  * This is the model class for table "survey_question".
  *
  * The followings are the available columns in table 'survey_question':
- * @property integer $id
- * @property integer $survey_ID
- * @property integer $order_number
- * @property integer $type
- * @property string $text
+ * 
+ *  integer $id
+ * 
+ *  integer $survey_ID
+ * 
+ *  integer $order_number
+ * 
+ *  integer $type
+ * 
+ *  string $text
  *
  * The followings are the available model relations:
- * @property SurveyAnswer[] $surveyAnswers
- * @property Survey $survey
- * @property SurveyResponse[] $surveyResponses
+ * 
+ *  SurveyAnswer[] $surveyAnswers
+ * 
+ *  Survey $survey
+ * 
+ *  SurveyResponse[] $surveyResponses
  */
-class SurveyQuestion extends CActiveRecord
+class SurveyQuestion extends Model
 {
 
 	//these are used by type_choices();
@@ -140,9 +148,8 @@ class SurveyQuestion extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'answers' => array(self::HAS_MANY, 'SurveyAnswer', 'survey_question_ID', 'order'=>'order_number ASC'),
-			'survey' => array(self::BELONGS_TO, 'Survey', 'survey_ID'),
-			'responses' => array(self::HAS_MANY, 'SurveyResponse', 'survey_question_ID'),
+			'answers' => array(self::HAS_MANY, 'SurveyAnswer', 'survey_question_ID', 'order'=>'question_answer.order_number ASC','alias' =>'question_answer'),
+			'survey' => array(self::BELONGS_TO, 'Survey', 'survey_ID', 'alias' =>'question_survey'),
 		);
 	}
 

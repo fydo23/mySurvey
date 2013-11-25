@@ -4,19 +4,32 @@
  * This is the model class for table "survey_response".
  *
  * The followings are the available columns in table 'survey_response':
- * @property integer $id
- * @property integer $survey_answer_ID
- * @property string $choice_letter
- * @property string $survey_response_time
- * @property string $survey_response_responder
- * @property string $survey_response_text
+ * 
+ *  integer $id
+ * 
+ *  integer $survey_ID
+ * 
+ *  integer $survey_question_ID
+ * 
+ *  integer $survey_answer_ID
+ * 
+ *  string $choice_letter
+ * 
+ *  string $survey_response_time
+ * 
+ *  string $survey_response_responder
+ * 
+ *  string $survey_response_text
  *
  * The followings are the available model relations:
- * @property Survey $survey
- * @property SurveyQuestion $surveyQuestion
- * @property SurveyAnswer $surveyAnswer
+ * 
+ *  Survey $survey
+ * 
+ *  SurveyQuestion $surveyQuestion
+ * 
+ *  SurveyAnswer $surveyAnswer
  */
-class SurveyResponse extends CActiveRecord
+class SurveyResponse extends Model
 {
 	/**
 	 * @return string the associated database table name
@@ -34,10 +47,12 @@ class SurveyResponse extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+
 			array('survey_answer_ID', 'required', 'on'=>'save'),
 			array('survey_response_text', 'required', 'on'=>'template','message'=>'All reponses are required.'),
 			array('survey_answer_ID', 'numerical', 'integerOnly'=>true),
 			//array('choice_letter', 'length', 'max'=>5),
+                  
 			array('survey_response_responder', 'length', 'max'=>45),
 			array('survey_response_time, survey_response_text', 'safe'),
 			// The following rule is used by search().
@@ -54,7 +69,7 @@ class SurveyResponse extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'answer' => array(self::BELONGS_TO, 'SurveyAnswer', 'survey_answer_ID'),
+			'answer' => array(self::BELONGS_TO, 'SurveyAnswer', 'survey_answer_ID','alias'=>'response_answer'),
 		);
 	}
 

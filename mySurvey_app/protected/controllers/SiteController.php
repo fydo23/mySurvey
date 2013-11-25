@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Default controller class. It will handle request to the homepage level.
+ */
 class SiteController extends Controller
 {
 
@@ -180,9 +183,7 @@ class SiteController extends Controller
 	 * Show form to update the current users information
 	 */
 	public function actionSettings(){
-		$survey_creator = SurveyCreator::model()->findByAttributes(
-                        array('email'=> Yii::app()->user->id)
-                );
+		$survey_creator = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->id));
 		if(isset($_POST['SurveyCreator'])){
 			if($survey_creator->password!=sha1($_POST['SurveyCreator']['password'])){
 				$survey_creator->addError('password','Invalid password');
@@ -196,8 +197,31 @@ class SiteController extends Controller
 		}
 		$survey_creator->setScenario('update');
 		$survey_creator->password='';
-		$this->render('settings',array(
-			'model'=>$survey_creator,
+		$this->render('settings',array('model'=>$survey_creator));
+	}
+	
+	/**
+	 * Show current user's survey report
+	 */
+	public function actionReports(){
+	    $survey_creator = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->id));
+	    $userId = $survey_creator->id;
+	    $surveys=Survey::model()->findAllByAttributes(array('survey_creator_ID'=>$userId));
+	    
+	    $currentSurvey = null;
+	    $survey_list_data = array('No Surveys');
+	    if(count($surveys)){
+	    	$currentSurvey = $surveys[0];
+	    	$survey_list_data = CHtml::listData($surveys, 'id', 'title');
+	    }
+	    if(isset($_POST['Survey']['id'])){
+	    	$currentSurvey = Survey::model()->findByPk($_POST['Survey']['id']);
+	    }
+
+		$this->render('reports',array(
+			'currentSurvey'=>$currentSurvey,
+			'survey_list_data'=>$survey_list_data,
+			'surveys'=>$surveys
 		));
 	}
 }

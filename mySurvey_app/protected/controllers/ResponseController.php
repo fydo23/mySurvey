@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Controller class for Response model.
+ */
 class ResponseController extends Controller
 {
 	/**

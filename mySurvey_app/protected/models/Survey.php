@@ -4,20 +4,30 @@
  * This is the model class for table "survey".
  *
  * The followings are the available columns in table 'survey':
- * @property integer $id
- * @property string $url
- * @property string $created
- * @property integer $survey_creator_ID
- * @property integer $is_published
- * @property string $title
+ * 
+ *  integer $id
+ * 
+ *  string $url
+ * 
+ *  string $created
+ * 
+ *  integer $survey_creator_ID
+ * 
+ *  integer $is_published
+ * 
+ *  string $title
  *
  * The followings are the available model relations:
- * @property SurveyCreator $surveyCreator
- * @property SurveyAnswer[] $surveyAnswers
- * @property SurveyQuestion[] $surveyQuestions
- * @property SurveyResponse[] $surveyResponses
+ * 
+ *  SurveyCreator $surveyCreator
+ * 
+ *  SurveyAnswer[] $surveyAnswers
+ * 
+ *  SurveyQuestion[] $surveyQuestions
+ * 
+ *  SurveyResponse[] $surveyResponses
  */
-class Survey extends CActiveRecord
+class Survey extends Model
 {
 
 	//constant defaults
@@ -49,7 +59,12 @@ class Survey extends CActiveRecord
 		);
 	}
 
-	private function generate_unique_url($length = 6){
+        /**
+	 * Generates a unique random string for the survey url.
+	 * @param the length of the random string
+	 * @return unique random string
+	*/   
+	public function generate_unique_url($length = 6){
 		$valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 		$result = "";
 		for($result_length = 0; $result_length < $length; $result_length++){
@@ -87,10 +102,8 @@ class Survey extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'surveyCreator' => array(self::BELONGS_TO, 'SurveyCreator', 'survey_creator_ID'),
-			'surveyAnswers' => array(self::HAS_MANY, 'SurveyAnswer', 'survey_ID'),
-			'surveyQuestions' => array(self::HAS_MANY, 'SurveyQuestion', 'survey_ID'),
-			'surveyResponses' => array(self::HAS_MANY, 'SurveyResponse', 'survey_ID'),
+			'surveyCreator' => array(self::BELONGS_TO, 'SurveyCreator', 'survey_creator_ID', 'alias'=>'survey_creator'),
+			'questions' => array(self::HAS_MANY, 'SurveyQuestion', 'survey_ID', 'order'=>'survey_question.order_number ASC', 'alias'=>'survey_question'),
 		);
 	}
 
