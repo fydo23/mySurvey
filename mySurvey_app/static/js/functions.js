@@ -63,10 +63,17 @@ $(function(){
 
 	//-------------- Top Half Content Height = Window Size --------------//
 
+	if (($(window).height()) > 700) {
 		$('#top-half').css({'height': (($(window).height())-244)+'px'});
 
 		$(window).resize(function(){
 			$('#top-half').css({'height':(($(window).height())-244)+'px'});
 		});
+
+	}
+	else {
+		$('#top-half').css({'height': '500px'});
+		$('#learn-more').css({'display': 'none'});
+	}
 
 });

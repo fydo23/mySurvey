@@ -24,8 +24,8 @@ class Controller extends CController
 	{
 		if(isset($_POST['ajax']))
 		{
-                        echo CActiveForm::validate($models);
-                        Yii::app()->end();
+            echo CActiveForm::validate($models);
+            Yii::app()->end();
 		}
 	}
 }
