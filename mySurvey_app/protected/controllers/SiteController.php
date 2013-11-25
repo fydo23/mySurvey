@@ -207,10 +207,7 @@ class SiteController extends Controller
 	    $survey_creator = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->id));
 	    $userId = $survey_creator->id;
 	    $surveys=Survey::model()->findAllByAttributes(array('survey_creator_ID'=>$userId));
-	    
-<<<<<<< HEAD
-		$this->render('reports_bar',array('surveys'=>$surveys));
-=======
+
 	    $currentSurvey = null;
 	    $survey_list_data = array('No Surveys');
 	    if(count($surveys)){
@@ -221,11 +218,10 @@ class SiteController extends Controller
 	    	$currentSurvey = Survey::model()->findByPk($_POST['Survey']['id']);
 	    }
 
-		$this->render('reports',array(
+		$this->render('reports_bar',array(
 			'currentSurvey'=>$currentSurvey,
 			'survey_list_data'=>$survey_list_data,
 			'surveys'=>$surveys
 		));
->>>>>>> master
 	}
 }
