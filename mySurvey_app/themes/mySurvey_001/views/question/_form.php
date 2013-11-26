@@ -7,9 +7,10 @@
 ?>
 
 <li class="question_summary <?php echo $question->get_class(); ?>"> 
+        <?php echo CHtml::error($question, 'text',array('successCssClass','success'));?>
         <div class="row question-text clearfix" data-editable="true">
             <div class="details">
-                <?php echo CHtml::error($question, 'text',array('successCssClass','success'));?>
+                
                 <span data-hide-on-edit="true" class="text"><?php echo $question->text ?></span>  
                 <span data-hide-on-edit="true" class="type"><?php echo $question->translate_choice($question->type); ?></span>  
                 <?php 

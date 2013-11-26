@@ -17,7 +17,7 @@
     confirmOn.providedOptions = {};
 
     confirmOn.defaultSettings = {
-        questionText: 'Are you sure?',
+        questionText: 'Are you sure you want to delete this survey?',
         classPrepend: 'confirmon',
         textYes: 'Yes',
         textNo: 'No'
