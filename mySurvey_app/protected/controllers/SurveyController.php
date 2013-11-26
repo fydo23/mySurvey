@@ -192,7 +192,7 @@ class SurveyController extends Controller
 		$model=$this->loadModel($id);
 
                 $model->is_published = 0;
-                $model->url = $model->generate_unique_url();
+                $model->url = $model::generate_unique_token(6, 'url');
                 $model->save();
 
                 $this->redirect(array('index'));
