@@ -1,3 +1,4 @@
+<script src='http://code.highcharts.com/highcharts.js' type='text/javascript'> </script>
 <div class="stripe">
 	<div class="page-name">
 		<h1>Reports</h1>
