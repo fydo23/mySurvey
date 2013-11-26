@@ -334,7 +334,8 @@ class SurveyController extends Controller
 					'identifier'=>array('text'),
 				),
 				true, // boolPrintRows
-				$survey->title."-".date('d-m-Y H-i').".csv"
+				$survey->title."-".date('d-m-Y H-i').".csv",
+                                ','
 			);
 		}	
 	}
