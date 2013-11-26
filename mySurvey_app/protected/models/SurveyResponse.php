@@ -17,9 +17,9 @@
  * 
  *  string $survey_response_time
  * 
- *  string $survey_response_responder
+ *  string $hash
  * 
- *  string $survey_response_text
+ *  string $text
  *
  * The followings are the available model relations:
  * 
@@ -49,15 +49,15 @@ class SurveyResponse extends Model
 		return array(
 
 			array('survey_answer_ID', 'required', 'on'=>'save'),
-			array('survey_response_text', 'required', 'on'=>'template','message'=>'All reponses are required.'),
+			array('text', 'required', 'on'=>'template','message'=>'All reponses are required.'),
 			array('survey_answer_ID', 'numerical', 'integerOnly'=>true),
 			//array('choice_letter', 'length', 'max'=>5),
                   
-			array('survey_response_responder', 'length', 'max'=>45),
-			array('survey_response_time, survey_response_text', 'safe'),
+			array('hash', 'length', 'max'=>45),
+			array('survey_response_time, text', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, survey_ID, survey_question_ID, survey_answer_ID, survey_response_time, survey_response_responder, survey_response_text', 'safe', 'on'=>'search'),
+			array('id, survey_answer_ID, survey_response_time, hash, text', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -80,13 +80,10 @@ class SurveyResponse extends Model
 	{
 		return array(
 			'id' => 'ID',
-			'survey_ID' => 'Survey',
-			'survey_question_ID' => 'Survey Question',
 			'survey_answer_ID' => 'Survey Answer',
-			'choice_letter' => 'Survey Answer Choice Letter',
 			'survey_response_time' => 'Survey Response Time',
-			'survey_response_responder' => 'Survey Response Responder',
-			'survey_response_text' => 'Your Response:',
+			'hash' => 'Survey Response Responder Hash',
+			'text' => 'Your Response:',
 		);
 	}
 
@@ -109,13 +106,10 @@ class SurveyResponse extends Model
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('survey_ID',$this->survey_ID);
-		$criteria->compare('survey_question_ID',$this->survey_question_ID);
 		$criteria->compare('survey_answer_ID',$this->survey_answer_ID);
-		$criteria->compare('choice_letter',$this->choice_letter,true);
 		$criteria->compare('survey_response_time',$this->survey_response_time,true);
-		$criteria->compare('survey_response_responder',$this->survey_response_responder,true);
-		$criteria->compare('survey_response_text',$this->survey_response_text,true);
+		$criteria->compare('hash',$this->hash,true);
+		$criteria->compare('text',$this->text,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -32,13 +32,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'survey_response_responder'); ?>
-		<?php echo $form->textField($model,'survey_response_responder',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'hash'); ?>
+		<?php echo $form->textField($model,'hash',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'survey_response_text'); ?>
-		<?php echo $form->textField($model,'survey_response_text'); ?>
+		<?php echo $form->label($model,'text'); ?>
+		<?php echo $form->textField($model,'text'); ?>
 	</div>
 
 	<div class="row buttons">

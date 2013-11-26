@@ -58,8 +58,8 @@
 				'survey_answer_ID' => $surveyAnswers->id,
 				'choice_letter' => 'Test',
 				'survey_response_time' => NULL,
-				'survey_response_responder' => 'TestUser',
-				'survey_response_text' => NULL
+				'hash' => 'TestUser',
+				'text' => NULL
 			));
 			
 			//Assert the data successfully inserted
@@ -88,7 +88,7 @@
 			//Check the existing table for 'survey_ID' and 'survey_question_ID'
 			$surveyResponse = new SurveyResponse;
 
-			$surveyResponse = $surveyResponse::model()->findByAttributes(array('survey_answer_ID'=> $surveyAnswer->id,'survey_response_responder'=> 'TestUser'));
+			$surveyResponse = $surveyResponse::model()->findByAttributes(array('survey_answer_ID'=> $surveyAnswer->id,'hash'=> 'TestUser'));
                         
                         
                         //change the survey_response_time
@@ -106,13 +106,13 @@
                         //assert the update is successfull
 			$this->assertTrue($surveyResponse->save());   
                         
-                        //change the survey_response_text
-                        $surveyResponse -> survey_response_text = "test2";
+                        //change the text
+                        $surveyResponse -> text = "test2";
                         //assert the update is successfull
 			$this->assertTrue($surveyResponse->save()); 
                         
-                        //change the survey_response_responder
-                        $surveyResponse -> survey_response_responder = "test2";
+                        //change the hash
+                        $surveyResponse -> hash = "test2";
                         //assert the update is successfull
 			$this->assertTrue($surveyResponse->save()); 
 
