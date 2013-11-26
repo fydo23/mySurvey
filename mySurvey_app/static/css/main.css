@@ -201,7 +201,7 @@ p.placeholder {width: 100%; margin-left: 15px; padding-bottom: 50px;}
 #name {width: 300px; float: left;}
 #question-text {display: inline-block; width: 475px; margin-right: 22px;}
 .question_summary{min-height:30px; width:auto; border:1px solid #5887A2; background: #c8e2ea; padding: 10px; margin: 5px 0px 10px;}
-.question_summary .text {width: 475px; display: block; margin-right: 25px;}
+.question_summary .text {width: 475px; display: block; margin-right: 25px;float: left;text-align: left;}
 .question_summary .order_number {float: left;}
 .question_summary a {float:right; margin-left: 10px;}
 .question_summary .hide {display:none;}
@@ -257,7 +257,8 @@ input.title ~ .errorMessage {padding: 7px 15px;}
 .error input.title ~ .errorMessage, .error input.title ~ .arrow-left {margin-top:6px;}
 .error input[type="text"], .error input[type="password"] {border: 1px solid #a73a35; float: left;}
 .take-survey-view .error {padding-left: 0;}
-
+.question_summary .errorMessage {margin-bottom: 10px;}
+.question_summary .errorMessage + .question-text {border: 2px solid #eed3d7;}
 
 
 /*** HOMEPAGE ***/
