@@ -34,6 +34,8 @@
             echo CHtml::link('Download CSV', array('survey/export/id/' . $currentSurvey->id), array('class' => 'button'));
         }
 
+        echo CHtml::link('Pie Charts', array('site/reports'), array('class' => 'button'));
+        
         foreach ($currentSurvey->questions as $question) {
             
             //show charts for all non-short answer questions
