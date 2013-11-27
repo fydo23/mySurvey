@@ -36,7 +36,7 @@
 
         foreach ($currentSurvey->questions as $question) {
             
-            //show piechart for all non-short answer questions
+            //show charts for all non-short answer questions
             if ($question->type != 0) {
                 
                 $chartArray = array();
