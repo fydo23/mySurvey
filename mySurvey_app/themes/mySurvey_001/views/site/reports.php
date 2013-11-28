@@ -2,7 +2,6 @@
 <div class="stripe">
 	<div class="page-name">
 		<h1>Reports</h1>
-		<p class="intro-text">Choose data source to view statistical report.</p>
 		<!-- Data source select form prototype, data should be retrieved from MySQL 
 			 This form submits selected value to the current page -->
 		<form method="POST" action=""> 
@@ -28,10 +27,12 @@
 		
 		//output report
 		if($currentSurvey){
-
-			echo CHtml::link('Download CSV',array('survey/export/id/'.$currentSurvey->id),array('class'=>'button'));
-                        
-                        echo CHtml::link('Bar Charts', array('site/reportsbar'), array('class' => 'button'));
+	        if ($currentSurvey->questions == null) {
+	            echo '<h2>Add some new questions for "' . $currentSurvey->title . '" first.</h2></br>';
+	        } else {
+	            echo CHtml::link('Download CSV', array('survey/export/id/' . $currentSurvey->id), array('class' => 'button'));
+	        }
+            echo CHtml::link('Bar Charts', array('site/reportsbar'), array('class' => 'button'));
         
 			foreach ($currentSurvey->questions as $question) {
                             
