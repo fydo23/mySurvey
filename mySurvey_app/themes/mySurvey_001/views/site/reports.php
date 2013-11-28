@@ -6,13 +6,19 @@
 		<!-- Data source select form prototype, data should be retrieved from MySQL 
 			 This form submits selected value to the current page -->
 		<form method="POST" action=""> 
-			<?php echo CHtml::activeDropDownList(new Survey(), 'id', $survey_list_data, 
-				array(
-					'onChange' => "this.form.submit()", 
-					'options'=> array( 
-						$currentSurvey->id => array('selected'=>true)
-					)
-			)); ?>
+			<?php 
+					if($currentSurvey) { 
+						echo '<p class="intro-text">Choose data source to view statistical report.</p>';
+						echo CHtml::activeDropDownList(new Survey(), 'id', $survey_list_data, 
+						array(
+							'onChange' => "this.form.submit()", 
+							'options'=> array( 
+								$currentSurvey->id => array('selected'=>true)
+							)
+						)); 
+					} else {
+						echo '<p class="intro-text">To get started, please create a new survey.</p></br>';
+					}?>
 		</form>
 	</div>
 </div>
