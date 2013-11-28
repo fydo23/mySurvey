@@ -1,7 +1,11 @@
+
+<form method="POST" action="" style="display:inline-block;">
+    <?php 
+    echo CHtml::hiddenField('Survey[id]',$currentSurvey->id);
+    echo CHtml::linkButton('Pie Charts', array('submit'=>array('/site/reports/type/pie'),'class'=>'button'));?>
+</form>
+
 <?php
-
-echo CHtml::link('Pie Charts', array('site/reports/type/pie'), array('class' => 'button'));
-
 foreach ($currentSurvey->questions as $question) {
     
     //show charts for all non-short answer questions
