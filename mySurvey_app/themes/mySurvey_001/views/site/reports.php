@@ -48,7 +48,7 @@
                                 }
 
                                 if ($answerCount == 0) {
-                                    echo '<h2>Currently there are no responses</h2></br>';
+                                    echo '<h4>Currently there are no responses</h4></br>';
                                 } else {
                                     $this->Widget('ext.highcharts.HighchartsWidget', array(
                                         //'scripts' => array('highcharts-more', 'modules/exporting', 'themes/grid'),
@@ -115,13 +115,11 @@
                                     $answerArray[] = array($w);
                                     $responseCount = count($wordsArray);
                                 }
-
+								echo '<h2>' . $question->text . '</h2>';
                                 if ($responseCount == 0) {
-                                    echo '<h2>' . $question->text . '</h2>';
                                     echo '<h4>Currently there are no responses</h4></br>';
-                                    return;
+                                    //return;
                                 } else {
-                                    echo '<h2>' . $question->text . '</h2>';
                                     echo '<h5>Top 10 words used in all responses. To see all the repsonses please use the \'Download CSV\' button above.</h5>';
                                     //bar chart
                                     $this->Widget('ext.highcharts.HighchartsWidget', array(
