@@ -31,14 +31,18 @@
 	            echo '<h2>Add some new questions for "' . $currentSurvey->title . '" first.</h2></br>';
 	        } else {
 	            echo CHtml::link('Download CSV', array('survey/export/id/' . $currentSurvey->id), array('class' => 'button'));
-	        }
-            echo CHtml::link('Bar Charts', array('site/reportsbar'), array('class' => 'button'));
-        
+	        }?>
+	        <form method="POST" action="">
+	        <?php 
+	        echo CHtml::hiddenField('Survey[id]',$currentSurvey->id);
+	        echo CHtml::linkButton('Bar Charts', array('submit' => array('/site/reportsbar'),'class'=>'button'));?>
+        	</form>
+        	<?php
 			foreach ($currentSurvey->questions as $question) {
                             
                             //show piechart for all non-short answer questions
                             if ($question->type != 0) {
-                                echo '<h2>' . $question->text . '</h2><br>';
+                                echo '<h2>' . $question->text . '</h2>';
                                                             
                                 $chartArray = array();
                                 $answerCount = 0;

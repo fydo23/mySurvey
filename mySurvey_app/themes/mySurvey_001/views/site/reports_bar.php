@@ -32,10 +32,13 @@
             echo '<h2>Add some new questions for "' . $currentSurvey->title . '" first.</h2></br>';
         } else {
             echo CHtml::link('Download CSV', array('survey/export/id/' . $currentSurvey->id), array('class' => 'button'));
-        }
-
-        echo CHtml::link('Pie Charts', array('site/reports'), array('class' => 'button'));
-        
+        }?>
+        <form method="POST" action="">
+	        <?php 
+	        echo CHtml::hiddenField('Survey[id]',$currentSurvey->id);
+            echo CHtml::linkButton('Pie Charts', array('submit'=>array('/site/reports'),'class'=>'button'));?>
+        	</form>
+  <?php      
         foreach ($currentSurvey->questions as $question) {
             
             //show charts for all non-short answer questions
