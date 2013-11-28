@@ -203,7 +203,7 @@ class SiteController extends Controller
 	/**
 	 * Show current user's survey report
 	 */
-	public function actionReports(){
+	public function actionReports($type="pie"){
 	    $survey_creator = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->id));
 	    $userId = $survey_creator->id;
 	    $surveys=Survey::model()->findAllByAttributes(array('survey_creator_ID'=>$userId));
@@ -221,34 +221,9 @@ class SiteController extends Controller
             $this->render('reports',array(
                     'currentSurvey'=>$currentSurvey,
                     'survey_list_data'=>$survey_list_data,
-                    'surveys'=>$surveys
+                    'surveys'=>$surveys,
+                    'type'=>$type
             ));
-	} 
-        
-	
-	/**
-	 * Show current user's survey report
-	 */
-	public function actionReportsbar(){
-	    $survey_creator = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->id));
-	    $userId = $survey_creator->id;
-	    $surveys=Survey::model()->findAllByAttributes(array('survey_creator_ID'=>$userId));
-
-	    $currentSurvey = null;
-	    $survey_list_data = array('No Surveys');
-	    if(count($surveys)){
-	    	$currentSurvey = $surveys[0];
-	    	$survey_list_data = CHtml::listData($surveys, 'id', 'title');
-	    }
-	    if(isset($_POST['Survey']['id'])){
-	    	$currentSurvey = Survey::model()->findByPk($_POST['Survey']['id']);
-	    }
-
-            $this->render('reports_bar',array(
-                    'currentSurvey'=>$currentSurvey,
-                    'survey_list_data'=>$survey_list_data,
-                    'surveys'=>$surveys
-            ));            
-	}   
+	}  
 
 }
