@@ -48,7 +48,7 @@ foreach ($currentSurvey->questions as $question) {
                     'exporting' => array('enabled' => false, 'filename' => 'MySurvey-report'),
                 )
             ));
-            echo '</br>';
+            echo '</br></br>';
         }
     }
     //short answers

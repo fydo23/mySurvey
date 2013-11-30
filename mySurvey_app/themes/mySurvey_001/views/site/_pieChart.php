@@ -15,31 +15,31 @@ foreach ($currentSurvey->questions as $question) {
                                     
         $chartArray = array();
         $answerCount = 0;
+		$responseCount = 0;
 
         foreach ($question->answers as $answer) {
             $answerCount+=count($answer->responses);
             $chartArray[] = array($answer->text, count($answer->responses));
+			$responseCount += count($answer->responses);
         }
 
         if ($answerCount == 0) {
             echo '<h4>Currently there are no responses</h4></br>';
         } else {
             $this->Widget('ext.highcharts.HighchartsWidget', array(
-                //'scripts' => array('highcharts-more', 'modules/exporting', 'themes/grid'),
+                'scripts' => array('highcharts-more', 'modules/exporting', 'themes/grid'),
                 'options' => array(
                     'gradient' => array('enabled' => true),
                     'credits' => array('enabled' => false),
-                    'exporting' => array('enabled' => true),
                     'chart' => array(
                         'plotBackgroundColor' => null,
                         'plotBorderWidth' => null,
                         'plotShadow' => true,
                     ),
                     'legend' => array('enabled' => false),
-                    'title' => array('text' => 'Survey Pie Chart'),
+                    'title' => array(''),
                     'tooltip' => array(
-                        'pointFormat' => '{series.name}: <b>{point.percentage}%</b>',
-                        'percentageDecimals' => 1,
+                        'formatter' => "js:function(){return '<b>' + this.y + ' people chose this answer</b>'}",
                     ),
                     'plotOptions' => array(
                         'pie' => array(
@@ -47,21 +47,24 @@ foreach ($currentSurvey->questions as $question) {
                             'cursor' => 'pointer',
                             'dataLabels' => array(
                                 'enabled' => true,
-                                'color' => '#000000',
-                                'connectorColor' => '#000000',
-                                'formatter' => "js:function(){return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';}",
+                                'color' => 'black',
+                                'connectorColor' => 'black',
+                                'formatter' => "js:function(){return '<b>'+ this.point.name +': '+ this.percentage.toFixed(2) +' %</b>';}",
                             ),
-                        )
+                        ),
+						'series'=>array('animation'=>array('duration'=>1400), 'shadow'=>true),
                     ),
                     'series' => array(
                         array(
                             'type' => 'pie',
-                            'name' => '% d\'utilisation',
+                            'name' => '',
                             'data' => $chartArray,
                         )
                     ),
+					'exporting' => array('enabled' => false, 'filename' => 'MySurvey-report')
                 )
             ));
+			echo '</br></br>';
         }
     }
     //short answers
