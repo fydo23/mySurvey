@@ -1,12 +1,12 @@
 <script src='http://code.highcharts.com/highcharts.js' type='text/javascript'> </script>
-<div class="stripe">
+<div class="stripe reports">
     	<div class="page-name">
     		<h1>Reports</h1>
     		<!-- Data source select form prototype, data should be retrieved from MySQL 
     			 This form submits selected value to the current page -->
     			<?php 
     				if($currentSurvey) { 
-    					echo '<p class="intro-text">Choose data source to view statistical report.</p>';
+    					echo '<p class="intro-text">View real-time results as soon as your survey responses roll in. <br>Select a Survey:</p>';
 
                         $form=$this->beginWidget('CActiveForm'); 
 
@@ -23,10 +23,11 @@
     				}?>
         	</div>
         </div>
-        <div class="content-width">
+        <div class="content-width reports-content">
         	<?php
         		
         		//output report
+        		echo "<div class='report-basics'>";
         		if($currentSurvey){
         	        if ($currentSurvey->questions == null) {
         	            echo '<h2>Add some new questions for "' . $currentSurvey->title . '" first.</h2></br>';
@@ -35,8 +36,14 @@
 						$myResponses = array();
 						foreach ($currentSurvey -> responses as $response)
 							$myResponses[$response->hash]= true;
-						echo '<p class="intro-text"> Total number of people who took the survey:  ', count($myResponses), '</p>';
-        	            echo CHtml::link('Download CSV', array('survey/export/id/'.$currentSurvey->id), array('class' => 'button'));
+						
+						echo '<h2 id="analysis-headline">' . $currentSurvey->title . '</h2>';
+						echo '<div class="totalNum"><p class="intro-text"> Total number of people who took the survey:  ', count($myResponses), '</p></div>';
+        	            
+        	            echo CHtml::link('Download Full Report (.csv)', array('survey/export/id/'.$currentSurvey->id), array('class' => 'button'));
+        	            echo "</div>";
+        	            
+        	            
                         $this->renderPartial('/site/_'.$type.'Chart',array(
                             'currentSurvey'=>$currentSurvey,
                             'survey_list_data'=>$survey_list_data,
