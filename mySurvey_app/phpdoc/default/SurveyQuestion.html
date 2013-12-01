@@ -55,22 +55,27 @@
 								</div>
 		<div class="info-box-body">
 			<div class="var-summary">
-																																																																								<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
-					<span class="var-type">mixed</span>
-					<a href="#$add_answer_button_class" title="details" class="var-name">$add_answer_button_class</a>
+																												<div class="var-title">
+					<img src="../media/images/StaticVariable.png" alt=" " />
+					static <span class="var-type">mixed</span>
+					<a href="#$MULTIPLE_COICE_TYPE" title="details" class="var-name">$MULTIPLE_COICE_TYPE</a>
 				</div>
 																<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
-					<span class="var-type">mixed</span>
-					<a href="#$answersUniqueId" title="details" class="var-name">$answersUniqueId</a>
+					<img src="../media/images/StaticVariable.png" alt=" " />
+					static <span class="var-type">mixed</span>
+					<a href="#$MULTIPLE_SELECT_TYPE" title="details" class="var-name">$MULTIPLE_SELECT_TYPE</a>
 				</div>
 																<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
-					<span class="var-type">mixed</span>
-					<a href="#$class" title="details" class="var-name">$class</a>
+					<img src="../media/images/StaticVariable.png" alt=" " />
+					static <span class="var-type">mixed</span>
+					<a href="#$SHORT_ANSWER_TYPE" title="details" class="var-name">$SHORT_ANSWER_TYPE</a>
 				</div>
 																<div class="var-title">
+					<img src="../media/images/StaticVariable.png" alt=" " />
+					static <span class="var-type">mixed</span>
+					<a href="#$TRUE_FALSE_TYPE" title="details" class="var-name">$TRUE_FALSE_TYPE</a>
+				</div>
+																												<div class="var-title">
 					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">mixed</span>
 					<a href="#$delete" title="details" class="var-name">$delete</a>
@@ -80,15 +85,10 @@
 					<span class="var-type">mixed</span>
 					<a href="#$disabled" title="details" class="var-name">$disabled</a>
 				</div>
-																<div class="var-title">
+																																																<div class="var-title">
 					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">mixed</span>
 					<a href="#$type" title="details" class="var-name">$type</a>
-				</div>
-																<div class="var-title">
-					<img src="../media/images/Variable.png" alt=" " />
-					<span class="var-type">mixed</span>
-					<a href="#$type_choices" title="details" class="var-name">$type_choices</a>
 				</div>
 											</div>
 		</div>
@@ -106,22 +106,16 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																												<div class="method-definition">
+																																																												<div class="method-definition">
 					<img src="../media/images/StaticMethod.png" alt=" "/>
 											static <span class="method-result"><a href="../default/SurveyQuestion.html">SurveyQuestion</a></span>
 										<a href="#model" title="details" class="method-name">model</a>
 											([<span class="var-type">string</span>&nbsp;<span class="var-name">$className</span> = <span class="var-default">__CLASS__</span>])
 									</div>
-																																																				<div class="method-definition">
+																																																																				<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">parent::afterConstruct();</span>
 										<a href="#afterConstruct" title="details" class="method-name">afterConstruct</a>
-										()
-									</div>
-																<div class="method-definition">
-					<img src="../media/images/Method.png" alt=" "/>
-											<span class="method-result">parent::afterFind();</span>
-										<a href="#afterFind" title="details" class="method-name">afterFind</a>
 										()
 									</div>
 																<div class="method-definition">
@@ -135,6 +129,24 @@
 											<span class="method-result">String</span>
 										<a href="#getNameForAttribute" title="details" class="method-name">getNameForAttribute</a>
 											(<span class="var-type">String</span>&nbsp;<span class="var-name">$attribute</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#get_add_answer_button_class" title="details" class="method-name">get_add_answer_button_class</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#get_class" title="details" class="method-name">get_class</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">int</span>
+										<a href="#get_hash_num" title="details" class="method-name">get_hash_num</a>
+										()
 									</div>
 																								<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
@@ -160,6 +172,18 @@
 										<a href="#tableName" title="details" class="method-name">tableName</a>
 										()
 									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">[type]</span>
+										<a href="#translate_choice" title="details" class="method-name">translate_choice</a>
+											(<span class="var-type">[type]</span>&nbsp;<span class="var-name">$type</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#type_choices" title="details" class="method-name">type_choices</a>
+										()
+									</div>
 											</div>
 		</div>
 	</div>		
@@ -177,16 +201,15 @@
 							
 					</div>
 		<div class="info-box-body">
-			
-<a name="var$add_answer_button_class" id="$add_answer_button_class"><!-- --></A>
+			<a name="var$MULTIPLE_COICE_TYPE" id="$MULTIPLE_COICE_TYPE"><!-- --></A>
 <div class="oddrow">
 
 	<div class="var-header">
 		<img src="../media/images/Variable.png" />
 		<span class="var-title">
-			<span class="var-type">mixed</span>
-			<span class="var-name">$add_answer_button_class</span>
-			 = <span class="var-default"> &quot;&quot;</span>			(line <span class="line-number">31</span>)
+			static <span class="var-type">mixed</span>
+			<span class="var-name">$MULTIPLE_COICE_TYPE</span>
+			 = <span class="var-default"> 2</span>			(line <span class="line-number">32</span>)
 		</span>
 	</div>
 
@@ -200,15 +223,15 @@
 		
 
 </div>
-<a name="var$answersUniqueId" id="$answersUniqueId"><!-- --></A>
+<a name="var$MULTIPLE_SELECT_TYPE" id="$MULTIPLE_SELECT_TYPE"><!-- --></A>
 <div class="evenrow">
 
 	<div class="var-header">
 		<img src="../media/images/Variable.png" />
 		<span class="var-title">
-			<span class="var-type">mixed</span>
-			<span class="var-name">$answersUniqueId</span>
-			 = <span class="var-default"> 0</span>			(line <span class="line-number">35</span>)
+			static <span class="var-type">mixed</span>
+			<span class="var-name">$MULTIPLE_SELECT_TYPE</span>
+			 = <span class="var-default"> 3</span>			(line <span class="line-number">33</span>)
 		</span>
 	</div>
 
@@ -222,15 +245,15 @@
 		
 
 </div>
-<a name="var$class" id="$class"><!-- --></A>
+<a name="var$SHORT_ANSWER_TYPE" id="$SHORT_ANSWER_TYPE"><!-- --></A>
 <div class="oddrow">
 
 	<div class="var-header">
 		<img src="../media/images/Variable.png" />
 		<span class="var-title">
-			<span class="var-type">mixed</span>
-			<span class="var-name">$class</span>
-			 = <span class="var-default"> &quot;&quot;</span>			(line <span class="line-number">30</span>)
+			static <span class="var-type">mixed</span>
+			<span class="var-name">$SHORT_ANSWER_TYPE</span>
+			 = <span class="var-default"> 0</span>			(line <span class="line-number">30</span>)
 		</span>
 	</div>
 
@@ -244,15 +267,38 @@
 		
 
 </div>
+<a name="var$TRUE_FALSE_TYPE" id="$TRUE_FALSE_TYPE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			static <span class="var-type">mixed</span>
+			<span class="var-name">$TRUE_FALSE_TYPE</span>
+			 = <span class="var-default"> 1</span>			(line <span class="line-number">31</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+
 <a name="var$delete" id="$delete"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$delete</span>
-			 = <span class="var-default"> False</span>			(line <span class="line-number">29</span>)
+			 = <span class="var-default"> False</span>			(line <span class="line-number">36</span>)
 		</span>
 	</div>
 
@@ -267,14 +313,14 @@
 
 </div>
 <a name="var$disabled" id="$disabled"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">mixed</span>
 			<span class="var-name">$disabled</span>
-			 = <span class="var-default"> False</span>			(line <span class="line-number">32</span>)
+			 = <span class="var-default"> False</span>			(line <span class="line-number">37</span>)
 		</span>
 	</div>
 
@@ -289,36 +335,14 @@
 
 </div>
 <a name="var$type" id="$type"><!-- --></A>
-<div class="evenrow">
-
-	<div class="var-header">
-		<img src="../media/images/Variable.png" />
-		<span class="var-title">
-			<span class="var-type">mixed</span>
-			<span class="var-name">$type</span>
-			 = <span class="var-default"> 2</span>			(line <span class="line-number">34</span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	<ul class="tags">
-				<li><span class="field">access:</span> public</li>
-			</ul>
-	
-	
-		
-		
-
-</div>
-<a name="var$type_choices" id="$type_choices"><!-- --></A>
 <div class="oddrow">
 
 	<div class="var-header">
 		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">mixed</span>
-			<span class="var-name">$type_choices</span>
-			 = <span class="var-default">array('Short Answer', 'True/False', 'Multiple Choice', 'Multiple Select')</span>			(line <span class="line-number">33</span>)
+			<span class="var-name">$type</span>
+			 = <span class="var-default"> 2</span>			(line <span class="line-number">38</span>)
 		</span>
 	</div>
 
@@ -352,7 +376,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/StaticMethod.png" />
-		<span class="method-title">static model</span> (line <span class="line-number">164</span>)
+		<span class="method-title">static model</span> (line <span class="line-number">205</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -384,7 +408,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">afterConstruct</span> (line <span class="line-number">50</span>)
+		<span class="method-title">afterConstruct</span> (line <span class="line-number">94</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -404,37 +428,12 @@
 		
 			
 	</div>
-<a name="methodafterFind" id="afterFind"><!-- --></a>
+<a name="methodattributeLabels" id="attributeLabels"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">afterFind</span> (line <span class="line-number">65</span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Called after the model is fetched frmo the DB.</p>
-	<ul class="tags">
-				<li><span class="field">access:</span> public</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">parent::afterFind();</span>
-		<span class="method-name">
-			afterFind
-		</span>
-				()
-			</div>
-	
-		
-			
-	</div>
-<a name="methodattributeLabels" id="attributeLabels"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<img src="../media/images/Method.png" />
-		<span class="method-title">attributeLabels</span> (line <span class="line-number">118</span>)
+		<span class="method-title">attributeLabels</span> (line <span class="line-number">159</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -455,11 +454,11 @@
 			
 	</div>
 <a name="methodgetNameForAttribute" id="getNameForAttribute"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getNameForAttribute</span> (line <span class="line-number">79</span>)
+		<span class="method-title">getNameForAttribute</span> (line <span class="line-number">121</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -484,12 +483,86 @@
 		
 			
 	</div>
+<a name="methodget_add_answer_button_class" id="get_add_answer_button_class"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">get_add_answer_button_class</span> (line <span class="line-number">62</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			get_add_answer_button_class
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodget_class" id="get_class"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">get_class</span> (line <span class="line-number">54</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			get_class
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodget_hash_num" id="get_hash_num"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">get_hash_num</span> (line <span class="line-number">108</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This function generates and returns a unique number for this model.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> hash_num</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">int</span>
+		<span class="method-name">
+			get_hash_num
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
 <a name="methodrelations" id="relations"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">relations</span> (line <span class="line-number">104</span>)
+		<span class="method-title">relations</span> (line <span class="line-number">146</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -514,7 +587,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">rules</span> (line <span class="line-number">87</span>)
+		<span class="method-title">rules</span> (line <span class="line-number">129</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -539,7 +612,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">search</span> (line <span class="line-number">141</span>)
+		<span class="method-title">search</span> (line <span class="line-number">182</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -566,7 +639,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">tableName</span> (line <span class="line-number">40</span>)
+		<span class="method-title">tableName</span> (line <span class="line-number">47</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -586,13 +659,76 @@
 		
 			
 	</div>
-						
+<a name="methodtranslate_choice" id="translate_choice"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">translate_choice</span> (line <span class="line-number">74</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This function translates the type choice into it's string equivalent.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> [description]</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">[type]</span>
+		<span class="method-name">
+			translate_choice
+		</span>
+					(<span class="var-type">[type]</span>&nbsp;<span class="var-name">$type</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">[type]</span>
+				<span class="var-name">$type</span><span class="var-description">: [description]</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtype_choices" id="type_choices"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">type_choices</span> (line <span class="line-number">79</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			type_choices
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../default/Model.html">Model</a></span></p>
+					<blockquote>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../default/Model.html#methodgenerate_unique_token">Model::generate_unique_token()</a></span><br>
+											</blockquote>
+										
 		</div>
 	</div>
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 13 Nov 2013 21:47:36 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Wed, 27 Nov 2013 20:49:49 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>

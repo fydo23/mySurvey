@@ -21,12 +21,12 @@
 	<?php echo CHtml::encode($data->survey_response_time); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('survey_response_responder')); ?>:</b>
-	<?php echo CHtml::encode($data->survey_response_responder); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('hash')); ?>:</b>
+	<?php echo CHtml::encode($data->hash); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('survey_response_text')); ?>:</b>
-	<?php echo CHtml::encode($data->survey_response_text); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('text')); ?>:</b>
+	<?php echo CHtml::encode($data->text); ?>
 	<br />
 
 

@@ -97,7 +97,7 @@
 		}
 		
 		public function testDelete(){
-//// 			$this->assertSame($surveyResponse::model()->deleteAllByAttributes(array('survey_response_responder'=>'TestUser')),1);
+//// 			$this->assertSame($surveyResponse::model()->deleteAllByAttributes(array('hash'=>'TestUser')),1);
 //// 			$this->assertSame($surveyAnswers::model()->deleteAllByAttributes(array('survey_answer_choice_letter'=>'test')),1);
 //			$this->assertSame($surveyQuestion::model()->deleteAllByAttributes(array('survey_question_default_next_link'=>'test')),1);
 //			$this->assertSame($survey::model()->deleteAllByAttributes(array('url'=>'testURL')),1);

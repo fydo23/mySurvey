@@ -21,8 +21,8 @@
 
 	
 	<div class="row">
-		<?php echo $form->textField($model,'survey_response_text'); ?>
-		<?php echo $form->error($model,'survey_response_text'); ?>
+		<?php echo $form->textField($model,'text'); ?>
+		<?php echo $form->error($model,'text'); ?>
 	</div>
 	
 	<div class="row">
@@ -44,15 +44,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'survey_response_responder'); ?>
-		<?php echo $form->textField($model,'survey_response_responder',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'survey_response_responder'); ?>
+		<?php echo $form->labelEx($model,'hash'); ?>
+		<?php echo $form->textField($model,'hash',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'hash'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'survey_response_text'); ?>
-		<?php echo $form->textField($model,'survey_response_text'); ?>
-		<?php echo $form->error($model,'survey_response_text'); ?>
+		<?php echo $form->labelEx($model,'text'); ?>
+		<?php echo $form->textField($model,'text'); ?>
+		<?php echo $form->error($model,'text'); ?>
 	</div>
 
 	<div class="row buttons">

@@ -199,15 +199,15 @@ class SiteController extends Controller
 		$survey_creator->password='';
 		$this->render('settings',array('model'=>$survey_creator));
 	}
-	
+ 	
 	/**
 	 * Show current user's survey report
 	 */
-	public function actionReports(){
+	public function actionReports($type="pie"){
 	    $survey_creator = SurveyCreator::model()->findByAttributes(array('email'=> Yii::app()->user->id));
 	    $userId = $survey_creator->id;
 	    $surveys=Survey::model()->findAllByAttributes(array('survey_creator_ID'=>$userId));
-	    
+
 	    $currentSurvey = null;
 	    $survey_list_data = array('No Surveys');
 	    if(count($surveys)){
@@ -218,10 +218,12 @@ class SiteController extends Controller
 	    	$currentSurvey = Survey::model()->findByPk($_POST['Survey']['id']);
 	    }
 
-		$this->render('reports',array(
-			'currentSurvey'=>$currentSurvey,
-			'survey_list_data'=>$survey_list_data,
-			'surveys'=>$surveys
-		));
-	}
+            $this->render('reports',array(
+                    'currentSurvey'=>$currentSurvey,
+                    'survey_list_data'=>$survey_list_data,
+                    'surveys'=>$surveys,
+                    'type'=>$type
+            ));
+	}  
+
 }
