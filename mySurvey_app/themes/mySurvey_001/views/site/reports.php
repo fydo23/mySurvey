@@ -31,6 +31,11 @@
         	        if ($currentSurvey->questions == null) {
         	            echo '<h2>Add some new questions for "' . $currentSurvey->title . '" first.</h2></br>';
         	        } else {
+					    $currentSurvey -> responses;
+						$myResponses = array();
+						foreach ($currentSurvey -> responses as $response)
+							$myResponses[$response->hash]= true;
+						echo '<p class="intro-text"> Total number of people who took the survey:  ', count($myResponses), '</p>';
         	            echo CHtml::link('Download CSV', array('survey/export/id/'.$currentSurvey->id), array('class' => 'button'));
                         $this->renderPartial('/site/_'.$type.'Chart',array(
                             'currentSurvey'=>$currentSurvey,
