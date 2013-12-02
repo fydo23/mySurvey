@@ -97,7 +97,7 @@ foreach ($currentSurvey->questions as $question) {
         }
         echo '<h2>' . $question->text . '</h2>';
         if ($responseCount == 0) {
-            echo '<h4>Currently there are no responses</h4></br>';
+            echo '<h4>Currently there are no responses.</h4></br>';
         } else {
             echo '<h5>Top 10 words used. To see all the responses, download the full report above.</h5>';
             //bar chart

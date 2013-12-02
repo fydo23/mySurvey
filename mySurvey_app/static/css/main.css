@@ -110,7 +110,7 @@ div.search-form {padding: 10px; margin: 10px 0; background: #eee;}
 
 /*** PAGE TITLE & HEADER SECTION ***/
 /*************************************/
-.intro-text {font-weight: 700; font-size: 14px; color: #000; margin-bottom: 0; line-height: 21px;}
+.intro-text {font-weight: 700; font-size: 14px; color: #747475; margin-bottom: 0; line-height: 21px;}
 .intro-text span {background: #00b1c1; padding: 9px 16px; color: #fff; border-radius: 100px; margin-right: 5px; font-family: 'Arvo', sans-serif; font-size: 19px;}
 .intro-text span.two {margin-left: 25px;}
 .instructions {padding-top: 10px;}
@@ -354,7 +354,7 @@ h2.oops {color: #2c95b5;margin-top: 80px;}
 /*** REPORTS ***/
 /*************************************/
 .reports .intro-text {margin-bottom: 5px;}
-.reports .intro-text span {background: transparent;padding: 0;color: #000;border-radius: 0;margin-right: 0;font-size: 15px;text-transform: uppercase;font-family: Helvetica, sans-serif;}
+.reports .intro-text span {background: transparent;padding: 0;color: #222;border-radius: 0;margin-right: 0;font-size: inherit;text-transform: none;font-family: Helvetica, sans-serif;}
 .toggle {
 	display: inline-block;
 	cursor: pointer;
@@ -418,7 +418,7 @@ padding-bottom: 20px;
 .totalNum .intro-text {
 	font-weight: normal;
 margin-bottom: 15px;
-font-family: Helvetica;
+font-family: 'Arvo', sans-serif;
 color: 
 #666;
 }
@@ -453,6 +453,13 @@ color:
 margin-top: 5px;
 margin-bottom: 30px;}
 
+.reports-content h4 {
+	font-family: Helvetica, sans-serif;
+font-weight: 200;
+font-size: 14px;
+margin-bottom: 40px;
+}
+
 .highcharts-container rect {stroke-width:0;}
 
 .highcharts-container {border-bottom: 2px dotted 
@@ -460,3 +467,5 @@ margin-bottom: 30px;}
 padding-bottom: 40px;}
 
 tspan {font-family: Helvetica, sans-serif; font-size: 13px;}
+
+.no-questions {text-align: center;padding-top: 30px;}

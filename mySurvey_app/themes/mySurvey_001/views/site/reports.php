@@ -6,7 +6,7 @@
     			 This form submits selected value to the current page -->
     			<?php 
     				if($currentSurvey) { 
-    					echo '<p class="intro-text">View real-time results as soon as your survey responses roll in. <br>Select a Survey:</p>';
+    					echo '<p class="intro-text">View real-time results as soon as your survey responses roll in. <br><span>Select a Survey:</span></p>';
 
                         $form=$this->beginWidget('CActiveForm'); 
 
@@ -30,7 +30,7 @@
         		echo "<div class='report-basics'>";
         		if($currentSurvey){
         	        if ($currentSurvey->questions == null) {
-        	            echo '<h2>Add some new questions for "' . $currentSurvey->title . '" first.</h2></br>';
+        	            echo '<h2 class="no-questions">Oops! First, create some questions for "' . $currentSurvey->title . '".</h2></br>';
         	        } else {
 					    $currentSurvey -> responses;
 						$myResponses = array();
