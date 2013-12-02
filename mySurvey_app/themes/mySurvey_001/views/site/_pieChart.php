@@ -1,8 +1,11 @@
-
+<h3 class="reports-headline">Survey Responses</h3>
 <form method="POST" action="" style="display:inline-block;">
     <?php 
     echo CHtml::hiddenField('Survey[id]',$currentSurvey->id);
-    echo CHtml::linkButton('Bar Charts', array('submit'=>array('/site/reports/type/bar'),'class'=>'button'));?>
+    echo "<div class='toggle-bar'>";
+    echo CHtml::linkButton('View as Bar Charts', array('submit'=>array('/site/reports/type/bar'),'class'=>'toggle bar-charts'));
+    echo CHtml::linkButton('View as Pie Charts', array('submit'=>array('/site/reports/type/pie'),'class'=>'toggle selected'));
+    echo "</div>";?>
 </form>
 
 <?php           
@@ -94,9 +97,9 @@ foreach ($currentSurvey->questions as $question) {
         }
         echo '<h2>' . $question->text . '</h2>';
         if ($responseCount == 0) {
-            echo '<h4>Currently there are no responses</h4></br>';
+            echo '<h4>Currently there are no responses.</h4></br>';
         } else {
-            echo '<h5>Top 10 words used in all responses. To see all the repsonses please use the \'Download CSV\' button above.</h5>';
+            echo '<h5>Top 10 words used. To see all the responses, download the full report above.</h5>';
             //bar chart
             $this->Widget('ext.highcharts.HighchartsWidget', array(
                 'scripts' => array('highcharts-more', 'modules/exporting', 'themes/grid'),
