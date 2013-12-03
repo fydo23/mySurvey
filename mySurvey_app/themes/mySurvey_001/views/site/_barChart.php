@@ -62,7 +62,7 @@ foreach ($currentSurvey->questions as $question) {
         foreach ($question->answers as $answer) {
             foreach ($answer->responses as $response)
             {
-                $answersText = $answersText . $response->text;
+                $answersText = $answersText . ' ' . $response->text;
             }
         }
         
