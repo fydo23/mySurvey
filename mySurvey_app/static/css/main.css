@@ -21,7 +21,7 @@ body {margin: 0; padding: 0; color: #555; font-family: Helvetica, sans-serif;fon
 #header {background: #568c9e; height: 65px;}
 #header .content-area {width: 980px; margin: 0 auto; clear: both; min-height: 500px;}
 .page-name {padding-left: 15px; width: 980px; margin: 0 auto; text-align: center; padding-top: 20px;}
-.page-name h1 {font-weight: 200; font-size: 45px; margin-top: 8px; margin-bottom: 30px; color: #005a82;}
+.page-name h1 {font-weight: 200;font-size: 40px;margin-top: 20px;margin-bottom: 25px;color: #005a82;font-family: Helvetica, sans-serif;}
 .breadcrumbs {display: none;}
 .row {clear: both;}
 .row:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} /*adds clearfix property*/
@@ -100,9 +100,9 @@ div.search-form {padding: 10px; margin: 10px 0; background: #eee;}
 #mainmenu {height: 46px; text-align: center; background-image: url(../img/bg_nav.png); background-repeat: repeat-x; background-color: #f2f2f0; box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);}
 #mainmenu ul {margin: 0; padding: 0;}
 #mainmenu ul li {display: inline-block; width: 322px;padding: 0;margin-right: -5px;}
-#mainmenu ul li a {color:#6cb3cc; background-color:transparent; font-size:12px; font-weight:bold; text-decoration:none; background-image: url(../img/divider.png); padding-left: 12px; background-position: left top; padding-right: 12px; background-repeat: no-repeat; height: 30px; padding-top: 16px; color: #323527; text-shadow: 1px 1px 2px rgba(246, 245, 246, 1); color: #323527; text-decoration: none; display: block;}
+#mainmenu ul li a {background-color:transparent; font-size:13px; font-weight:700; text-decoration:none; background-image: url(../img/divider.png); padding-left: 12px; background-position: left top; padding-right: 12px; background-repeat: no-repeat; height: 30px; padding-top: 16px; color: #005a82; text-decoration: none; display: block;font-family: Helvetica, sans-serif;}
 #mainmenu ul li:last-child a {background-image: url(../img/divider.png), url(../img/divider.png); background-position: left top, top right; background-repeat: no-repeat, no-repeat;}
-#mainmenu ul li a:hover, #mainmenu ul li.active a {color: #000; text-decoration: none;}
+#mainmenu ul li a:hover, #mainmenu ul li.active a {color: #005a82; text-decoration: none;}
 #mainmenu li:hover, #mainmenu li:focus {-moz-box-shadow: inset 0px 0px 16px 16px rgba(0, 0, 0, .1); -webkit-box-shadow: inset 0px 0px 16px 16px rgba(0, 0, 0, .1); box-shadow: inset 0px 0px 16px 16px rgba(0, 0, 0, .1);}
 
 
@@ -110,7 +110,7 @@ div.search-form {padding: 10px; margin: 10px 0; background: #eee;}
 
 /*** PAGE TITLE & HEADER SECTION ***/
 /*************************************/
-.intro-text {font-weight: 700; font-size: 14px; color: #666; margin-bottom: 0; line-height: 21px;}
+.intro-text {font-weight: 700; font-size: 14px; color: #747475; margin-bottom: 0; line-height: 21px;}
 .intro-text span {background: #00b1c1; padding: 9px 16px; color: #fff; border-radius: 100px; margin-right: 5px; font-family: 'Arvo', sans-serif; font-size: 19px;}
 .intro-text span.two {margin-left: 25px;}
 .instructions {padding-top: 10px;}
@@ -130,8 +130,8 @@ div.search-form {padding: 10px; margin: 10px 0; background: #eee;}
 #unpublished {margin-bottom: 50px;}
 #published h2, #unpublished h2 {font-size: 18px; margin: 0 0 15px; color: #68aac2; text-transform: uppercase; font-weight: 200;}
 #published p, #unpublished p {width: 100%; margin-left: 30px;}
-.survey-lists {margin: 0 0 5px; -webkit-padding-start: 0;}
-.survey-lists li {background: #f1f1f1; padding: 10px 15px; list-style: none; font-weight: 700; margin-bottom: 7px; border: 2px solid #c8e2ea; font-size: 15px; font-family: 'Arvo', sans-serif; color: #000;}
+.survey-lists {margin: 0 0 5px; padding-left: 0;-webkit-padding-start: 0;}
+.survey-lists li {background: #f1f1f1; padding: 10px 15px; list-style: none; font-weight: normal; margin-bottom: 7px; border: 2px solid #c8e2ea; font-size: 15px; font-family: 'Arvo', sans-serif; color: #222;}
 .survey-lists li a {float: right; padding-left: 15px; text-decoration: none; font-size: 13px; text-transform: none; font-weight: 400; color: #0079af; font-family: Helvetica, sans-serif;}
 .survey-lists li a:hover {text-decoration: underline;color: #00b1c1;}
 
@@ -143,21 +143,21 @@ div.search-form {padding: 10px; margin: 10px 0; background: #eee;}
 #create-survey-form label {margin-right: 5px; font-family: 'Arvo', sans-serif; font-weight: 700; color: #000; margin-left: -10px;}
 #create-survey-form input[type="text"] {width: 400px;}
 #create-survey-form .buttons {float: left; margin: 25px auto 50px; width: 980px;}
-#save-cancel {z-index: 1; margin-top: -110px; position: relative; float: left; width: 980px; margin-left: 275px; margin-bottom: 70px;}
+#save-cancel {z-index: 1; margin-top: -110px; position: relative; float: left; margin-left: 275px; margin-bottom: 70px;}
 
 
 
 
 /*** SURVEY EDITOR ***/
 /*************************************/
-#survey-form label, #survey-url h3 {margin-right: 5px; font-family: 'Arvo', sans-serif; font-weight: 700; color: #000; margin-left: -10px;}
-#survey-form label, #survey-url h3 {font-size: 16px; margin-left: 0;}
+#survey-form label, #survey-url h3 {margin-right: 5px; font-family: Helvetica, sans-serif; font-weight: 200; color: #000; margin-left: -10px;text-transform: uppercase;}
+#survey-form label, #survey-url h3 {font-size: 15px; margin-left: 0;}
 #survey-url {clear: both; padding-top: 20px;}
 #survey-url h3 {width: auto; display: inline-block; float: left; padding-bottom: 25px; margin-top: 0;}
 #survey-url a {color: #2c8ed1; text-decoration: underline; font-size: 15px; padding-left: 5px;}
 #survey-url a:hover {text-decoration: none;}
 #survey-url p {width: auto; float: left; margin-top: 16px; font-size: 15px; margin-left: 5px; color: #666;}
-input.title{font-size: 23px; width:530px;}
+input.title{font-size: 22px; width:530px;font-family: 'Arvo', sans-serif;}
 
 #survey-form #save-cancel a {width: 208px; height: auto; display: inline-block; text-decoration: none; font-size: 14px; text-align: center; font-weight: normal; padding: 15px 0; margin: 20px 5px; border-radius: 10px; color: #fff; border: 1px solid #1c74b3; border-top-color: #2c8ed1; border-bottom-color: #0d5b97; background: #2181cf; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#2181cf"); background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#2181cf)); background: -moz-linear-gradient(top, #37a3eb, #2181cf); -moz-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2); -webkit-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2); box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2); text-shadow: rgba(0,0,0,0.2) 0 1px 0; -webkit-text-shadow: rgba(0,0,0,0.2) 0 1px 0; -moz-text-shadow: rgba(0,0,0,0.2) 0 1px 0;}
 
@@ -169,20 +169,20 @@ input.title{font-size: 23px; width:530px;}
 #question-title {font-size: 18px; margin: 0 0 15px; color: #68aac2; text-transform: uppercase; font-weight: 200; padding-top: 50px; border-top: 2px dotted #666;}
 
 #survey-form .buttons a {font-weight: normal; text-decoration: none; padding: 7px 28px;}
-.add-question a, #survey-form .buttons a {background: #6eb4cd; margin: 0 0 0 10px; width: 100px; height: auto; border-radius: 100px; padding: 7px 10px; color: #fff; font-size: 13px; border: none; filter: none; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; text-shadow: none; -webkit-text-shadow: none; -moz-text-shadow: none;}
+.add-question a, #survey-form .buttons a {background: #6eb4cd; margin: 0 0 0 10px; width: 100px; height: auto; border-radius: 10px; padding: 7px 10px; color: #fff; font-size: 12px; font-weight:700;border: none; filter: none; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; text-shadow: none; -webkit-text-shadow: none; -moz-text-shadow: none;}
+#survey-form .buttons a:hover {background: #0079af;}
 .add-question a {padding: 10px 20px; margin: 0; border-radius: 11px; text-decoration: none;}
 .add-question a:hover {background: #0079af;}
 .add-new-answer {float: left; margin: 20px 0;}
-#survey-form .add-new-answer a {background: #fff; color: #00b1c1; font-weight: 700; width: auto;}
-#survey-form .add-new-answer a:hover {background: #00b1c1; color: #fff;}
-.answers {margin-top: 10px; background: #fff; padding: 5px;}
+#survey-form .add-new-answer a {background: #fff; color: #00b1c1; font-weight: 700; width: 130px;font-size: 13px;text-align: center;}
+#survey-form .add-new-answer a:hover {background: #0079af; color: #fff;}
+.answer_summary {margin-top: 10px;}
+.answers {background: #fff; padding: 5px;}
 .question-text {background: #eee; min-height: 53px; padding: 5px; margin-bottom: 20px;}
-.question-text .type {margin-top: 9px; display: inline-block;}
+.question-text .type {margin-top: 9px; display: inline-block;color: #005a82;font-weight: 700;font-size: 13px;}
 .question-text .buttons,.answers .buttons {display: inline-block;}
-#survey-form .question-text .buttons a, #survey-form .answers .buttons a {padding: 7px 13px; width: auto; margin-top: 10px; margin-right: 10px; text-align: center;}
+#survey-form .question-text .buttons a, #survey-form .answers .buttons a {padding: 7px 13px; width: 70px; margin-top: 10px; margin-right: 10px; text-align: center;}
 #survey-form .answers .buttons a {margin-top: 5px;}
-#survey-form .answers .buttons a.delete {width: 94px;}
-#survey-form .answers .buttons a.edit {width: 80px;}
 
 .note {color: #a5a5a5; display: none;}
 #toolbar {background: #666; color: #fff; padding: 10px; margin-left: 15px;}
@@ -201,7 +201,7 @@ p.placeholder {width: 100%; margin-left: 15px; padding-bottom: 50px;}
 #name {width: 300px; float: left;}
 #question-text {display: inline-block; width: 475px; margin-right: 22px;}
 .question_summary{min-height:30px; width:auto; border:1px solid #5887A2; background: #c8e2ea; padding: 10px; margin: 5px 0px 10px;}
-.question_summary .text {width: 475px; display: block; margin-right: 25px;float: left;text-align: left;}
+.question_summary .text {width: 475px; display: block; margin-right: 25px;float: left;text-align: left;font-weight: 200;line-height: 22px;color: #222;font-size: 15px;font-family: 'Arvo', sans-serif;}
 .question_summary .order_number {float: left;}
 .question_summary a {float:right; margin-left: 10px;}
 .question_summary .hide {display:none;}
@@ -288,8 +288,8 @@ input.title ~ .errorMessage {padding: 7px 15px;}
 #learn-more img {opacity: .6;}
 #learn-more img:hover {opacity: 1;}
 #about {text-align: left; background: #d5f1f9;}
-#about h1 {font-weight: 700;font-size: 23px;font-family: 'Arvo', sans-serif;color: #222;}
-#about p {margin: 0; width: 100%; color: #222;}
+#about h1 {font-weight: 200;font-size: 20px;font-family: Helvetica, sans-serif;color: #222;}
+#about p {margin: 0; width: 100%; color: #666;}
 .text {position: relative; padding: 9px 6px 11px; font-family: Helvetica, sans-serif; font-size: 13px; color: #444; font-weight: normal; width: 400px;margin: 0 auto;text-align: center;}
 .image {position: relative; text-align: center;padding-top: 50px;}
 #feature-1, #feature-2 {clear: both; padding-bottom: 50px;}
@@ -317,11 +317,13 @@ input.title ~ .errorMessage {padding: 7px 15px;}
 /*************************************/
 .take-survey-view .content-area {width: 980px; margin: 0 auto;}
 .take-survey-view h1 {text-align: center; font-size: 45px; padding-top: 20px;}
-.take-survey-view h2 {margin-bottom: 5px; margin-top: 30px;}
+.take-survey-view h2 {margin-bottom: 5px; margin-top: 30px;font-family: 'Arvo', sans-serif;font-weight: normal;}
 .take-survey-view textarea {width: 60%; min-height: 70px; height: auto;}
 .min {min-height: 400px;text-align: center;background: url(../img/Alert.png) no-repeat 230px 0;}
 h2.oops {color: #2c95b5;margin-top: 80px;}
 .take-survey-view .buttons {float: none; text-align: center; margin: 50px 0;}
+#survey-response-form input {margin-bottom: 15px;}
+#survey-response-form label {font-size: 15px;font-family: Helvetica, sans-serif;font-weight: 200;padding-bottom: 10px;}
 
 
 /*** SUCCESSFULLY SUBMITTED MESSAGE ***/
@@ -342,10 +344,30 @@ h2.oops {color: #2c95b5;margin-top: 80px;}
 /*************************************/
 .contact-us {height: 400px;}
 .contact-us h1 {padding-bottom: 10px;}
-
 .back-button a {width: 208px; height: auto; display: inline-block; text-decoration: none; font-size: 14px; text-align: center; font-weight: normal; padding: 15px 0; margin: 40px 5px 20px; border-radius: 10px; color: #fff; border: 1px solid #1c74b3; border-top-color: #2c8ed1; border-bottom-color: #0d5b97; background: #2181cf; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#2181cf"); background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#2181cf)); background: -moz-linear-gradient(top, #37a3eb, #2181cf); -moz-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2); -webkit-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2); box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2); text-shadow: rgba(0,0,0,0.2) 0 1px 0; -webkit-text-shadow: rgba(0,0,0,0.2) 0 1px 0; -moz-text-shadow: rgba(0,0,0,0.2) 0 1px 0;cursor: pointer;}
-
 .back-button a:hover {filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#1e73b9"); background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#1e73b9)); background: -moz-linear-gradient(top, #37a3eb, #1e73b9); border-radius: 20px;}
-
 #home p.white {color: #fff;}
 
+
+
+/*** REPORTS ***/
+/*************************************/
+.reports .intro-text {margin-bottom: 5px;}
+.reports .intro-text span {background: transparent;padding: 0;color: #222;border-radius: 0;margin-right: 0;font-size: inherit;text-transform: none;font-family: Helvetica, sans-serif;}
+.toggle {display: inline-block;cursor: pointer;background-color: #fff;border: 1px solid #cccdd0;color: #6a6d70;text-transform: uppercase;padding: 9px 20px;line-height: 1;font-size: 11px;-webkit-border-radius: 0 20px 20px 0;-moz-border-radius: 0 20px 20px 0;border-radius: 0 20px 20px 0;-webkit-transition-property: background-color, color, border-color;-webkit-transition-duration: .3s;-webkit-transition-timing-function: ease-in-out;-moz-transition-property: background-color, color, border-color;-moz-transition-duration: .3s;-moz-transition-timing-function: ease-in-out;transition-property: background-color, color, border-color;transition-duration: .3s;transition-timing-function: ease-in-out;}
+.bar-charts {-webkit-border-radius: 20px 0 0 20px;-moz-border-radius: 20px 0 0 20px;border-radius: 20px 0 0 20px;}
+.selected {text-decoration: none;cursor: default;background-color: #005a82;color: #fff;font-weight: normal;border: 1px solid #005a82;}
+.toggle-bar {margin: 0 auto;width: 980px;text-align: center;margin-bottom: 40px;}
+.reports-headline {text-align: center;font-size: 18px;color: #68aac2;text-transform: uppercase;font-weight: 200;}
+.report-basics {border-bottom: 2px dotted #000;margin-bottom: 35px;padding-bottom: 20px;}
+.totalNum .intro-text {font-weight: normal;margin-bottom: 15px;font-family: 'Arvo', sans-serif;color: #666;}
+.totalNum {float: left;}
+.report-basics .button {margin-top: 50px;}
+#analysis-headline {color: #000;font-size: 25px;padding-top: 20px;margin-bottom: 0px;font-weight: 200;text-transform: uppercase;width: 715px;float: left;font-family: Helvetica, sans-serif;}
+.reports-content h2 {font-weight: normal;font-size: 18px;font-family: 'Arvo', sans-serif;}
+.reports-content h5 {font-weight: 200;font-size: 14px;color: #666;margin-top: 5px;margin-bottom: 30px;}
+.reports-content h4 {font-family: Helvetica, sans-serif;font-weight: 200;font-size: 14px;margin-bottom: 40px;}
+.highcharts-container rect {stroke-width:0;}
+.highcharts-container {border-bottom: 2px dotted #68aac2;padding-bottom: 40px;}
+tspan {font-family: Helvetica, sans-serif; font-size: 13px;}
+.no-questions {text-align: center;padding-top: 30px;}

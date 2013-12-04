@@ -31,7 +31,7 @@
         if ($currentSurvey->questions == null) {
             echo '<h2>Add some new questions for "' . $currentSurvey->title . '" first.</h2></br>';
         } else {
-            echo CHtml::link('Download CSV', array('survey/export/id/' . $currentSurvey->id), array('class' => 'button'));
+            echo CHtml::link('Download Full Report (.csv)', array('survey/export/id/' . $currentSurvey->id), array('class' => 'button'));
         }?>
         <form method="POST" action="">
 	        <?php 
@@ -116,7 +116,7 @@
                     echo '<h4>Currently there are no responses</h4></br>';
                     //return;
                 } else {
-                    echo '<h5>Top 10 words used in all responses. To see all the repsonses please use the \'Download CSV\' button above.</h5>';
+                    echo '<h5>Top 10 words used in all responses. To see all the responses, \'Download the Full Report (.csv)\' above.</h5>';
                     //bar chart
                     $this->Widget('ext.highcharts.HighchartsWidget', array(
                         'scripts' => array('highcharts-more', 'modules/exporting', 'themes/grid'),

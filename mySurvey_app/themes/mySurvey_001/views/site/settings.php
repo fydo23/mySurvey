@@ -1,7 +1,7 @@
 <div class="stripe">
 	<div class="page-name">
 		<h1>Account Settings</h1>
-		<p class="intro-text">Need to update your account information?<br> Review and update your settings below or reset your password.</p>
+		<p class="intro-text">Need to update your account information?<br>Update your settings below or reset your password.</p>
 	</div>
 </div>
 

@@ -39,7 +39,7 @@ class CsvExport {
         {
             header("Cache-Control: public");
             header("Content-Description: File Transfer");
-            header("Content-Disposition: attachment; filename=".$csvFileName);
+            header('Content-Disposition: attachment; filename="'.$csvFileName.'"');
             header("Content-Type: application/octet-stream");
             header("Content-Transfer-Encoding: binary");
         }

@@ -37,8 +37,8 @@
                 ?>
             
 				<div class="buttons">
-                	<a class="delete" href="#">Delete Question</a>
-					<a class="edit" href="#">Edit Question</a> 
+                	<a class="delete" href="#">Delete</a>
+					<a class="edit" href="#">Edit</a> 
 				</div>
             </div>
         </div>
