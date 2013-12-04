@@ -217,13 +217,12 @@ class SiteController extends Controller
 	    if(isset($_POST['Survey']['id'])){
 	    	$currentSurvey = Survey::model()->findByPk($_POST['Survey']['id']);
 	    }
-
-            $this->render('reports',array(
-                    'currentSurvey'=>$currentSurvey,
-                    'survey_list_data'=>$survey_list_data,
-                    'surveys'=>$surveys,
-                    'type'=>$type
-            ));
+        $this->render('reports',array(
+                'currentSurvey'=>$currentSurvey,
+                'survey_list_data'=>$survey_list_data,
+                'surveys'=>$surveys,
+                'type'=>$type
+        ));
 	}  
 
 }
