@@ -32,13 +32,8 @@
         	        if ($currentSurvey->questions == null) {
         	            echo '<h2 class="no-questions">Oops! First, create some questions for "' . $currentSurvey->title . '".</h2></br>';
         	        } else {
-					    $currentSurvey -> responses;
-						$myResponses = array();
-						foreach ($currentSurvey -> responses as $response)
-							$myResponses[$response->hash]= true;
-						
 						echo '<h2 id="analysis-headline">' . $currentSurvey->title . '</h2>';
-						echo '<div class="totalNum"><p class="intro-text"> Total number of people who took the survey:  ', count($myResponses), '</p></div>';
+						echo '<div class="totalNum"><p class="intro-text"> Total number of people who took the survey:  ', count($currentSurvey->responseHashes), '</p></div>';
         	            
         	            echo CHtml::link('Download Full Report (.csv)', array('survey/export/id/'.$currentSurvey->id), array('class' => 'button'));
         	            echo "</div>";

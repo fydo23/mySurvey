@@ -88,7 +88,7 @@ class Survey extends Model
 			'questions' => 	array(self::HAS_MANY, 'SurveyQuestion', 'survey_ID', 'order'=>'survey_question.order_number ASC', 'alias'=>'survey_question'),
 			'answers'	=>	array(self::HAS_MANY, 'SurveyAnswer', array('id'=>'survey_question_ID'), 'through'=>'questions', 'alias'=>'survey_answer'),
 			'responses'	=>	array(self::HAS_MANY, 'SurveyResponse', array('id'=>'survey_answer_ID'), 'through'=>'answers', 'alias'=>'survey_response'), 
-			'respondsHashes' =>array(self::HAS_MANY, 'SurveyResponse', array('id'=>'survey_answer_ID'), 'through'=>'answers', 'select'=>'survey_response.hash', 'group'=>'hash', 'alias'=>'survey_response'),
+			'responseHashes' =>array(self::HAS_MANY, 'SurveyResponse', array('id'=>'survey_answer_ID'), 'through'=>'answers', 'select'=>'survey_response.hash', 'group'=>'hash', 'alias'=>'survey_response'),
 		);
 	}
 
