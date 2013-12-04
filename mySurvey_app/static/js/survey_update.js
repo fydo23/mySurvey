@@ -36,7 +36,7 @@ $(function(){
                     return newItem;
                 },
                 change:function(event){
-                    //add blank answer, 
+                    //add blank answer,
                     this.add(event);
                     //hide add-sortable button
                     $(event.target).closest('li').find('.add-sortable').hide();
@@ -74,9 +74,9 @@ $(function(){
                 }
             }
         }
-   }
+    };
    //mutiple slect behaves the same as mutlple choice;
-   strategy.answer[3] = strategy.answer[2]; 
+   strategy.answer[3] = strategy.answer[2];
 
     /*Initialize the sortables.*/
     do_sortables();
@@ -148,19 +148,20 @@ $(function(){
      * of all form elements.
      */
 	$('form').on('click',':not(.template) .add-sortable', function(event){
-        event.preventDefault(); 
-        event.stopPropagation(); 
+        event.preventDefault();
+        event.stopPropagation();
 
         //add sortable functionality to the newly added item.
         do_sortables();
 
         //let the strategy pattern handle the non-default actions.
-        if($(event.target).data('model') == 'question'){
-            strategy.question.add(event);
-        }else{
+        var strat = strategy.question;
+        if($(event.target).data('model') != 'question'){
             var questionType = $(event.target).closest('li').find('[name*=type]').val();
-            strategy.answer[questionType].add(event);
+            strat = strategy.answer[questionType];
         }
+        strat.add(event);
+
         //add the new element before the delete selements that are stored at the end of the list
         fix_sortable_input_names();
 	});
@@ -168,7 +169,7 @@ $(function(){
 
     /**
      * OnChange event of a any input named type, deletes all existing sub_sortable elemnts.
-     * Delegates the function call to the appropriate change strategy. 
+     * Delegates the function call to the appropriate change strategy.
      */
     $('#questions').on('change', '[name*=type]',function(event){
         var question = $(this).closest('li');
@@ -191,58 +192,58 @@ $(function(){
             start:function(event, ui){
                 $(ui.item).addClass('dragging');
             },
-            stop:function(event, ui){      
+            stop:function(event, ui){
                 $(ui.item).removeClass('dragging');
                 fix_sortable_input_names();
             }
         });
-    };
+    }
 
 
     /**
      * Change the name of attribute to reflect survey new order_number which are
-     * Propogated into 'name' attribute. This function makes sure to format the 
-     * name attribute to make the resulting $_POST array contains a list of sortable 
-     * items with each index reflecting the element's order_number and respective parent 
+     * Propogated into 'name' attribute. This function makes sure to format the
+     * name attribute to make the resulting $_POST array contains a list of sortable
+     * items with each index reflecting the element's order_number and respective parent
      * model. This function should be called whenever a sort update is made to the list.
-     * 
+     *
      * The expected name schem should be:
      *      sortable1[sortable1_indexes][sortable2][sortable2_indexes][[...][...]etc...]['attributes']
      * (ie. expected name attributers are: SurveyQuestion[1][SurveyAnswer][2][choice_letter]['text'])
-     * 
+     *
      */
     function fix_sortable_input_names(){
-        $('#questions').find('li:not(.template, .trash)').find('input, select').each(function(idx, input){ 
+        $('#questions').find('li:not(.template, .trash)').find('input, select').each(function(idx, input){
             //get the old name
             var old_name = $(input).attr('name');
 
             //fix top level order number...
             var farthest_li = $(input).parents('.sortable li').last();
-            var top_order = farthest_li.siblings().andSelf().not('.trash, .template').index( farthest_li ); 
-            top_fixed = old_name;
+            var top_order = farthest_li.siblings().andSelf().not('.trash, .template').index( farthest_li );
+            var top_fixed = old_name;
             if(top_order > -1){
-                var top_fixed = old_name.split('[').slice(0,1) + "[" + top_order + "]" + old_name.split(']').slice(1).join(']');
+                top_fixed = old_name.split('[').slice(0,1) + "[" + top_order + "]" + old_name.split(']').slice(1).join(']');
             }
 
-            //fix sub-sortable specific order number. 
+            //fix sub-sortable specific order number.
             var nearest_li = $(input).parents('.sortable li').first();
-            var bottom_order = nearest_li.siblings().andSelf().not('.trash, .template').index( nearest_li ); 
-            new_name = top_fixed;
+            var bottom_order = nearest_li.siblings().andSelf().not('.trash, .template').index( nearest_li );
+            var new_name = top_fixed;
             if(bottom_order > -1){
-                var nesting = 2 * ($(input).parents('.sortable').length) - 1;  
-                var new_name = top_fixed.split('[').slice(0,nesting).join('[') + "[" + bottom_order + "]" + top_fixed.split(']').slice(nesting).join(']');
+                var nesting = 2 * ($(input).parents('.sortable').length) - 1;
+                new_name = top_fixed.split('[').slice(0,nesting).join('[') + "[" + bottom_order + "]" + top_fixed.split(']').slice(nesting).join(']');
             }
-            $(input).attr('name',new_name);
+            $(input).attr('name', new_name);
         });
     }
 
 
 
     /**
-     * This function fixes the repeated sortable id and add-sortable data-target inherited from 
-     * the generating template. This funtion generates a new unique sortable id for the add-sortable 
+     * This function fixes the repeated sortable id and add-sortable data-target inherited from
+     * the generating template. This funtion generates a new unique sortable id for the add-sortable
      * button to have work again.
-     * 
+     *
      * @param  $(.sortable li) sortable_item
      * @return null
      */
