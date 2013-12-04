@@ -37,6 +37,7 @@ class CsvExport {
     {
         $endLine = PHP_EOL;
         $returnVal = '';
+        $csv = fopen('php://temp/maxmemory:'. (5*1024*1024), 'r+');
  
         if($csvFileName != null)
         {
@@ -60,27 +61,26 @@ class CsvExport {
         }
  
         foreach($rows as $row){
-            $r = '';
+            $values = array();
             foreach($coldefs as $col=>$config){
- 
                 if(isset($row[$col])){
- 
                     $val = $row[$col];
- 
                     foreach($config as $conf)
                         if(!empty($conf))
                             $val = Yii::app()->format->format($val,$conf);
- 
-                    $r .= $val.$separator;
+
+                    $values[] = $val;
                 }
             }
-            $item = trim(rtrim($r,$separator)).$endLine;
-            if($csvFileName != null){
-                echo $item;
-            }else{
-                $returnVal .= $item;
-            }
+            fputcsv($csv, $values);
         }
+
+        rewind($csv);
+        $output = stream_get_contents($csv);
+        if($csvFileName != null){
+            echo $output;
+        }
+
         return $returnVal;
     }
 }
