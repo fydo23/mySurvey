@@ -1,26 +1,27 @@
 <?php
 /**
-    CsvExport
+ * CsvExport
+ *
+ *  Helper class to output an CSV from a CActiveRecord array.
+ *
+ *  example usage:
+ *      echo CsvExport::export(
+ *          People::model()->findAll(), // a CActiveRecord array OR any CModel array
+ *          array(
+ *              'idpeople'=>array('number'),      'number' and 'date' are strings used by CFormatter
+ *              'birthofdate'=>array('date'),=
+ *          )
+ *          ,true,'registros-hasta--'.date('d-m-Y H-i').".csv"
+ *      );
+ * Please refer to CFormatter about column definitions, this class will use CFormatter.
+ * @author Christian Salazar <christiansalazarh@gmail.com> @bluyell @yiienespanol (twitter)
+ * @author Fyodor Wolf <fwolf@bu.edu>
+ * 
+ * @licence Protected under MIT Licence.
+ * @date 03 Dec 2013.
+ *
+ */
  
-    helper class to output an CSV from a CActiveRecord array.
- 
-    example usage:
- 
-        CsvExport::export(
-            People::model()->findAll(), // a CActiveRecord array OR any CModel array
-            array(
-                'idpeople'=>array('number'),      'number' and 'date' are strings used by CFormatter
-                'birthofdate'=>array('date'),
-            )
-        ,true,'registros-hasta--'.date('d-m-Y H-i').".csv");
- 
- 
-    Please refer to CFormatter about column definitions, this class will use CFormatter.
- 
-    @author    Christian Salazar <christiansalazarh@gmail.com> @bluyell @yiienespanol (twitter)
-    @licence Protected under MIT Licence.
-    @date 07 october 2012.
-*/
 class CsvExport {
     /*
         export a data set to CSV output.
