@@ -35,10 +35,6 @@ class CsvExport {
     */
     public static function export($rows, $coldefs, $boolPrintRows=true, $csvFileName=null, $separator=';')
     {
-        $endLine = PHP_EOL;
-        $returnVal = '';
-        $csv = fopen('php://temp/maxmemory:'. (5*1024*1024), 'r+');
- 
         if($csvFileName != null)
         {
             header("Cache-Control: public");
@@ -47,17 +43,12 @@ class CsvExport {
             header("Content-Type: application/octet-stream");
             header("Content-Transfer-Encoding: binary");
         }
+
+        //Open a file in memory.
+        $csv = fopen('php://temp/maxmemory:'. (5*1024*1024), 'r+');
  
         if($boolPrintRows == true){
-            $names = '';
-            foreach($coldefs as $col=>$config){
-                $names .= $col.$separator;
-            }
-            $names = rtrim($names,$separator);
-            if($csvFileName != null){
-                echo $names.$endLine;
-            }else
-            $returnVal .= $names.$endLine;
+            fputcsv($csv, array_keys($coldefs));
         }
  
         foreach($rows as $row){
@@ -68,7 +59,6 @@ class CsvExport {
                     foreach($config as $conf)
                         if(!empty($conf))
                             $val = Yii::app()->format->format($val,$conf);
-
                     $values[] = $val;
                 }
             }
@@ -77,10 +67,7 @@ class CsvExport {
 
         rewind($csv);
         $output = stream_get_contents($csv);
-        if($csvFileName != null){
-            echo $output;
-        }
 
-        return $returnVal;
+        return $output;
     }
 }
