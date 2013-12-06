@@ -31,8 +31,6 @@
 	<?php 
 	if($notCreator)
 		echo CHtml::submitButton('Submit');
-	else
-		echo CHtml::link('Back to Edit Survey', Yii::app()->request->baseUrl.'/survey/update/'. $model->id);
 	$this->endWidget();
 	?>
 	</div>
