@@ -10,7 +10,6 @@
 		<body>
 						<a href="#Post-parsing">Post-parsing</a><br>
 <a href="#admin.php">admin.php</a><br>
-<a href="#AnswerController.php">AnswerController.php</a><br>
 <a href="#bootstrap.php">bootstrap.php</a><br>
 <a href="#chmContents.php">chmContents.php</a><br>
 <a href="#chmIndex.php">chmIndex.php</a><br>
@@ -60,10 +59,7 @@
 <a href="#noSurvey.php">noSurvey.php</a><br>
 <a href="#propertyDetails.php">propertyDetails.php</a><br>
 <a href="#propertySummary.php">propertySummary.php</a><br>
-<a href="#QuestionController.php">QuestionController.php</a><br>
 <a href="#reports.php">reports.php</a><br>
-<a href="#reports_bar.php">reports_bar.php</a><br>
-<a href="#ResponseController.php">ResponseController.php</a><br>
 <a href="#seeAlso.php">seeAlso.php</a><br>
 <a href="#settings.php">settings.php</a><br>
 <a href="#SignUpTest.php">SignUpTest.php</a><br>
@@ -84,6 +80,7 @@
 <a href="#SurveyTest.php">SurveyTest.php</a><br>
 <a href="#take.php">take.php</a><br>
 <a href="#takeLayout.php">takeLayout.php</a><br>
+<a href="#TakeSurveyTest.php">TakeSurveyTest.php</a><br>
 <a href="#test.php">test.php</a><br>
 <a href="#thankyou.php">thankyou.php</a><br>
 <a href="#update.php">update.php</a><br>
@@ -102,48 +99,49 @@
 <a name="Post-parsing"></a>
 <h1>Post-parsing</h1>
 <h2>Warnings:</h2><br>
+<b>Warning</b> - Class m131017_234034_fk_cascading parent CDbMigration not found<br>
+<b>Warning</b> - Class m131017_225152_update_question_table parent CDbMigration not found<br>
+<b>Warning</b> - Class m131021_150157_drop_foreign_key_answer parent CDbMigration not found<br>
+<b>Warning</b> - Class m131021_151154_drop_foreign_keys_response parent CDbMigration not found<br>
+<b>Warning</b> - Class m131031_040732_add_answer_text_and_order_number parent CDbMigration not found<br>
+<b>Warning</b> - Class m131015_171535_added_question_text_field parent CDbMigration not found<br>
+<b>Warning</b> - Class m131013_212226_survey_modification parent CDbMigration not found<br>
+<b>Warning</b> - 
+duplicate define element "YII_DEBUG" in file C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\index.php will be ignored.
+Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
 duplicate class element "SurveyTest" in file C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\tests\unit\SurveyTest.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - Class WebTestCase parent CWebTestCase not found<br>
 <b>Warning</b> - Class SurveyTest parent CDbTestCase not found<br>
-<b>Warning</b> - 
-duplicate define element "YII_DEBUG" in file C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\index.php will be ignored.
-Use an @ignore tag on the original if you want this case to be documented.<br>
-<b>Warning</b> - Class Model parent CActiveRecord not found<br>
-<b>Warning</b> - Class ContactForm parent CFormModel not found<br>
+<b>Warning</b> - Class m131105_173834_rename_survey_answer_choice_letter parent CDbMigration not found<br>
+<b>Warning</b> - Class SurveyResponseTest parent CDbTestCase not found<br>
+<b>Warning</b> - Class SignUpTest parent PHPUnit_Extensions_Selenium2TestCase not found<br>
+<b>Warning</b> - Class LoginTest parent PHPUnit_Framework_TestCase not found<br>
+<b>Warning</b> - Class SurveyTest parent PHPUnit_Framework_TestCase not found<br>
+<b>Warning</b> - Class TakeSurveyTest parent PHPUnit_Framework_TestCase not found<br>
+<b>Warning</b> - Class SurveyAnswerTest parent CDbTestCase not found<br>
 <b>Warning</b> - Class LoginForm parent CFormModel not found<br>
+<b>Warning</b> - Class ContactForm parent CFormModel not found<br>
+<b>Warning</b> - Class SurveyQuestionTest parent CDbTestCase not found<br>
+<b>Warning</b> - Class m131106_142245_cascading_on_answer_and_response parent CDbMigration not found<br>
+<b>Warning</b> - Class m131125_133525_response_table_updates parent CDbMigration not found<br>
+<b>Warning</b> - Class SurveyCreatorTest parent CDbTestCase not found<br>
+<b>Warning</b> - Class m131008_015209_added_survey_creator_level parent CDbMigration not found<br>
+<b>Warning</b> - Class m131011_125208_remove_username_from_survey_creator parent CDbMigration not found<br>
+<b>Warning</b> - Class UserIdentity parent CUserIdentity not found<br>
+<b>Warning</b> - Class m131004_124818_database_update parent CDbMigration not found<br>
 <b>Warning</b> - Class Controller parent CController not found<br>
 <b>Warning</b> - Class DocsCommand parent CConsoleCommand not found<br>
-<b>Warning</b> - Class SurveyAnswerTest parent CDbTestCase not found<br>
-<b>Warning</b> - Class m131125_133525_response_table_updates parent CDbMigration not found<br>
-<b>Warning</b> - Class LoginTest parent PHPUnit_Framework_TestCase not found<br>
-<b>Warning</b> - Class SurveyCreatorTest parent CDbTestCase not found<br>
-<b>Warning</b> - Class SurveyQuestionTest parent CDbTestCase not found<br>
-<b>Warning</b> - Class SurveyResponseTest parent CDbTestCase not found<br>
-<b>Warning</b> - Class SurveyTest parent PHPUnit_Framework_TestCase not found<br>
-<b>Warning</b> - Class SignUpTest parent PHPUnit_Extensions_Selenium2TestCase not found<br>
-<b>Warning</b> - Class UserIdentity parent CUserIdentity not found<br>
-<b>Warning</b> - Class m130928_183847_initial parent CDbMigration not found<br>
 <b>Warning</b> - Class HighchartsWidget parent CWidget not found<br>
-<b>Warning</b> - Class m131008_015209_added_survey_creator_level parent CDbMigration not found<br>
-<b>Warning</b> - Class m131017_234034_fk_cascading parent CDbMigration not found<br>
-<b>Warning</b> - Class m131011_125208_remove_username_from_survey_creator parent CDbMigration not found<br>
-<b>Warning</b> - Class m131017_225152_update_question_table parent CDbMigration not found<br>
-<b>Warning</b> - Class m131013_212226_survey_modification parent CDbMigration not found<br>
-<b>Warning</b> - Class m131004_124818_database_update parent CDbMigration not found<br>
-<b>Warning</b> - Class m131015_171535_added_question_text_field parent CDbMigration not found<br>
-<b>Warning</b> - Class m131021_150157_drop_foreign_key_answer parent CDbMigration not found<br>
-<b>Warning</b> - Class m131105_173834_rename_survey_answer_choice_letter parent CDbMigration not found<br>
-<b>Warning</b> - Class m131106_142245_cascading_on_answer_and_response parent CDbMigration not found<br>
-<b>Warning</b> - Class m131021_151154_drop_foreign_keys_response parent CDbMigration not found<br>
-<b>Warning</b> - Class m131031_040732_add_answer_text_and_order_number parent CDbMigration not found<br>
+<b>Warning</b> - Class Model parent CActiveRecord not found<br>
+<b>Warning</b> - Class m130928_183847_initial parent CDbMigration not found<br>
 <a name="about.php"></a>
 <h1>about.php</h1>
 <h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\site\pages\about.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 11</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\default\views\site\pages\about.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 11</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\site\pages\about.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
-<b>Warning on line 11</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\site\pages\about.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="admin.php"></a>
 <h1>admin.php</h1>
 <h2>Warnings:</h2><br>
@@ -151,11 +149,6 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning on line 56</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\answer\admin.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 57</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\question\admin.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 57</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\survey\admin.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
-<a name="AnswerController.php"></a>
-<h1>AnswerController.php</h1>
-<h2>Warnings:</h2><br>
-<b>Warning on line 6</b> - no @package tag was used in a DocBlock for class AnswerController<br>
-<b>Warning on line 177</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\controllers\AnswerController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="bootstrap.php"></a>
 <h1>bootstrap.php</h1>
 <h2>Warnings:</h2><br>
@@ -183,8 +176,8 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <a name="column1.php"></a>
 <h1>column1.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 5</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\layouts\column1.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 5</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\default\views\layouts\column1.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 5</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\layouts\column1.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="column2.php"></a>
 <h1>column2.php</h1>
 <h2>Warnings:</h2><br>
@@ -198,8 +191,8 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <h1>contact.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 21</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\site\pages\contact.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
-<b>Warning on line 84</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\site\contact.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 84</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\default\views\site\contact.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 84</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\site\contact.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="ContactForm.php"></a>
 <h1>ContactForm.php</h1>
 <h2>Warnings:</h2><br>
@@ -215,14 +208,16 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <h2>Warnings:</h2><br>
 <b>Warning on line 7</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\response\create.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 7</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\answer\create.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
-<b>Warning on line 17</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\survey\create.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 17</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\question\create.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 17</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\survey\create.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 39</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\survey\create.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="CsvExport.php"></a>
 <h1>CsvExport.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 23</b> - no @package tag was used in a DocBlock for class CsvExport<br>
-<b>Warning on line 85</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\components\CsvExport.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 24</b> - no @package tag was used in a DocBlock for class CsvExport<br>
+<b>Warning on line 24</b> - Unknown tag "@date" used<br>
+<b>Warning on line 24</b> - Unknown tag "@licence" used<br>
+<b>Warning on line 73</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\components\CsvExport.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="dev.php"></a>
 <h1>dev.php</h1>
 <h2>Warnings:</h2><br>
@@ -248,9 +243,9 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <a name="error.php"></a>
 <h1>error.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 14</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\default\views\site\error.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 14</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\site\error.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 14</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\site\error.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 14</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\default\views\site\error.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="eventDetails.php"></a>
 <h1>eventDetails.php</h1>
 <h2>Warnings:</h2><br>
@@ -280,13 +275,13 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <a name="index.php"></a>
 <h1>index.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 10</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\response\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 10</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\answer\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 10</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\response\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 12</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
-<b>Warning on line 19</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\default\views\site\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
-<b>Warning on line 19</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\question\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 19</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\survey\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 19</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\question\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 19</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\site\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 19</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\default\views\site\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 33</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\commands\docs\views\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 80</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\survey\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 195</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\site\index.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
@@ -408,24 +403,10 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <h1>propertySummary.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 28</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\commands\docs\views\propertySummary.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
-<a name="QuestionController.php"></a>
-<h1>QuestionController.php</h1>
-<h2>Warnings:</h2><br>
-<b>Warning on line 6</b> - no @package tag was used in a DocBlock for class QuestionController<br>
-<b>Warning on line 178</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\controllers\QuestionController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="reports.php"></a>
 <h1>reports.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 55</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\site\reports.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
-<a name="reports_bar.php"></a>
-<h1>reports_bar.php</h1>
-<h2>Warnings:</h2><br>
-<b>Warning on line 152</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\site\reports_bar.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
-<a name="ResponseController.php"></a>
-<h1>ResponseController.php</h1>
-<h2>Warnings:</h2><br>
-<b>Warning on line 6</b> - no @package tag was used in a DocBlock for class ResponseController<br>
-<b>Warning on line 169</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\controllers\ResponseController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 50</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\site\reports.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="seeAlso.php"></a>
 <h1>seeAlso.php</h1>
 <h2>Warnings:</h2><br>
@@ -443,7 +424,7 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <h1>SiteController.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 6</b> - no @package tag was used in a DocBlock for class SiteController<br>
-<b>Warning on line 228</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\controllers\SiteController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 227</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\controllers\SiteController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="SiteTest.php"></a>
 <h1>SiteTest.php</h1>
 <h2>Warnings:</h2><br>
@@ -517,11 +498,16 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <a name="take.php"></a>
 <h1>take.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 38</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\survey\take.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 36</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\survey\take.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="takeLayout.php"></a>
 <h1>takeLayout.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 68</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\themes\mySurvey_001\views\layouts\takeLayout.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="TakeSurveyTest.php"></a>
+<h1>TakeSurveyTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 2</b> - no @package tag was used in a DocBlock for class TakeSurveyTest<br>
+<b>Warning on line 186</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\tests\functional\TakeSurveyTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="test.php"></a>
 <h1>test.php</h1>
 <h2>Warnings:</h2><br>
@@ -557,8 +543,8 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning on line 11</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\commands\docs\views\view.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 16</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\answer\view.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 17</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\response\view.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
-<b>Warning on line 30</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\question\view.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 30</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\survey\view.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 30</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\question\view.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="viewSummary.php"></a>
 <h1>viewSummary.php</h1>
 <h2>Warnings:</h2><br>
@@ -598,17 +584,17 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <h2>Warnings:</h2><br>
 <b>Warning on line 44</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\answer\_search.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 44</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\question\_search.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
-<b>Warning on line 49</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\response\_search.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 49</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\survey\_search.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 49</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\response\_search.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <a name="_view.php"></a>
 <h1>_view.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 28</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\answer\_view.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 28</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\question\_view.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<b>Warning on line 28</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\answer\_view.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 32</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\survey\_view.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 <b>Warning on line 32</b> - File "C:\Users\FDemiri\Dropbox\BU\cs673\project\mySurvey\mySurvey_app\protected\views\response\_view.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
 	<p class="notes" id="credit">
-		Documentation generated on Mon, 02 Dec 2013 23:26:05 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Fri, 06 Dec 2013 21:27:58 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</body>
 </html>

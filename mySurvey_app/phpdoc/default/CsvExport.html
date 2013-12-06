@@ -24,8 +24,14 @@
 					</div>
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">CsvExport</p>
+<p class="description"><p>Helper class to output an CSV from a CActiveRecord array.</p><p>example usage:       echo CsvExport::export(           People::model()-&gt;findAll(), // a CActiveRecord array OR any CModel array           array(               'idpeople'=&gt;array('number'),      'number' and 'date' are strings used by CFormatter               'birthofdate'=&gt;array('date'),=           )           ,true,'registros-hasta--'.date('d-m-Y H-i').&quot;.csv&quot;       );  Please refer to CFormatter about column definitions, this class will use CFormatter.</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Christian Salazar &lt;<a href="mailto:christiansalazarh@gmail.com">christiansalazarh@gmail.com</a>&gt; @bluyell @yiienespanol (twitter)</li>
+				<li><span class="field">author:</span> Fyodor Wolf &lt;<a href="mailto:fwolf@bu.edu">fwolf@bu.edu</a>&gt;</li>
+			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_protected---components---CsvExport.php.html">/protected/components/CsvExport.php</a> (line <span class="field">24</span>)
+			Located in <a class="field" href="_protected---components---CsvExport.php.html">/protected/components/CsvExport.php</a> (line <span class="field">25</span>)
 		</p>
 		
 				
@@ -68,11 +74,11 @@
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
 <a name="methodexport" id="export"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/StaticMethod.png" />
-		<span class="method-title">static export</span> (line <span class="line-number">36</span>)
+		<span class="method-title">static export</span> (line <span class="line-number">37</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -114,7 +120,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Mon, 02 Dec 2013 23:26:01 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Fri, 06 Dec 2013 21:27:48 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>
