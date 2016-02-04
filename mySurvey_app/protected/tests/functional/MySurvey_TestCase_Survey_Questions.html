@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>MySurvey_TestCase_Survey_Questions</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">MySurvey_TestCase_Survey_Questions</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/mySurvey/mySurvey_app/survey</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Edit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Add New Question</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='SurveyQuestion_0_text'])[2]</td>
+	<td>question 1 in survey 1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//ul[@id='questions']/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Edit Question')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Edit Question')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Delete Question')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Add New Question</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Add New Answer')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='SurveyQuestion_0_text'])[2]</td>
+	<td>question 1 in survey 1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Add New Answer')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='SurveyQuestion_0_SurveyAnswer_0_text'])[3]</td>
+	<td>answer a</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Add New Answer')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=SurveyQuestion[0][SurveyAnswer][1][text]</td>
+	<td>answer b</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Add New Answer')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=SurveyQuestion[0][SurveyAnswer][2][text]</td>
+	<td>answer c</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Edit Answer')])[6]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Delete Answer')])[6]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Add New Question</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=SurveyQuestion[1][text]</td>
+	<td>question 2 in survey 1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=SurveyQuestion[1][type]</td>
+	<td>label=Multiple Select</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Add New Answer')])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Add New Answer')])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='SurveyQuestion_0_SurveyAnswer_0_text'])[8]</td>
+	<td>answer x</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Add New Answer')])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=SurveyQuestion[1][SurveyAnswer][1][text]</td>
+	<td>answer y</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Delete Answer')])[10]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=html</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Add New Question</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=SurveyQuestion[2][type]</td>
+	<td>label=Short Answer</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Edit Question')])[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=SurveyQuestion[2][text]</td>
+	<td>question 3 (short answer)</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Add New Question</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=SurveyQuestion[3][type]</td>
+	<td>label=True/False</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//ul[@id='answers_135152717']/li[2]/div/div/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Edit Answer')])[14]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=SurveyQuestion[3][text]</td>
+	<td>question 4 (T/F)</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Edit Answer')])[14]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='SurveyQuestion_0_SurveyAnswer_0_text'])[14]</td>
+	<td>True edited</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=yt0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Back to all Surveys</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Edit</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
